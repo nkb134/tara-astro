@@ -1,24 +1,25 @@
 export default {
-  welcome: `Vanakkam 🙏 Naan Tara. Sollunga, enna help venum?`,
+  welcome: `Vanakkam 🙏 Naan Tara. Seri madad panren — ungal peru-um pirandha theadhi-yum sollunga?`,
 
-  ask_name_career: `Career pathi? Seri paarkiren. Ungal peru enna?`,
-  ask_name_marriage: `Thirumanam pathi? Seri. Ungal peru enna?`,
-  ask_name_general: `Seri, jathagam paarkiren. Ungal peru enna?`,
-  ask_name_default: `Seri. Mudhal-la ungal peru sollunga?`,
+  ask_name_career: `Career pathi? Seri paarkiren — peru-um pirandha theadhi-yum sollunga?`,
+  ask_name_marriage: `Thirumanam pathi? Seri — peru-um pirandha theadhi-yum sollunga?`,
+  ask_name_general: `Seri jathagam paarkiren — peru-um pirandha theadhi-yum sollunga?`,
+  ask_name_default: `Seri — peru-um pirandha theadhi-yum sollunga?`,
 
-  greet_name_ask_dob: `{name} — nalla peru 😊 Jathagam paarkiren. Pirandha theadhi?`,
+  ask_dob_after_name: `{name} — seri, pirandha theadhi sollunga?`,
+  ask_time_after_name_dob: `{name} 😊 pirandha neram theriyuma? Theriyaati-na paravala`,
 
-  ask_time: `Ok. Pirandha neram theriyuma? Theriyaati-na paravala`,
-  ask_place: `Kadeisi — enga pirantheergal? Ooru sollunga`,
+  ask_time: `Ok... pirandha neram theriyuma? Theriyaatinalum paravala`,
+  ask_place: `Seri. Enga pirantheergal? Ooru sollunga`,
 
-  invalid_date: `Andha theadhi puriyala. 15/03/1990 or 15 March 1990 maadiri ezhuthungo`,
-  invalid_time: `Andha neram puriyala. 2:30 PM maadiri ezhuthungo, illa "theriyaadhu" sollunga`,
+  invalid_date: `Hmm andha theadhi puriyala... 15/03/1990 or 15 March 1990 maadiri sollunga`,
+  invalid_time: `Hmm andha neram puriyala... 2:30 PM maadiri sollunga, illa "theriyaadhu" sollunga`,
 
-  generating_chart: `Oru nimisham, jathagam paarkiren...`,
-  geocode_failed: `Andha ooru kandupudikka mudiyala. Periya nagar sollunga — Chennai, Madurai maadiri`,
-  chart_failed: `Jathagam kanakkiduvathil sikkal. Konjam neram kazhithu try pannunga 🙏`,
+  generating_chart: `Hmm... jathagam paarkiren oru nimisham`,
+  geocode_failed: `Hmm idha ooru theriala... paakkathula oru periya ooru sollunga?`,
+  chart_failed: `Jathagathula konjam sikkal... konjam neram kazhithu try pannunga 🙏`,
 
-  chart_overview: `{name}, ungal jathagam ready 🌟
+  chart_overview: `{name}, jathagam ready 🌟
 
 ☀️ Suriya raasi: {sunSign}
 🌙 Chandra raasi: {moonSign}
@@ -31,11 +32,13 @@ export default {
 Enna therinjukkanum — career, thirumanam, illa vera edhaavadhu?`,
 
   notable_exalted: `Unga {planet} {sign}-la uchcha sthaanam — romba nalla amaivu`,
-  notable_vargottama: `Unga {planet} Vargottamam — raasi, navamsam rendulayum ore raasi. Romba strong`,
+  notable_vargottama: `Unga {planet} Vargottamam — raasi navamsam rendulayum ore raasi. Romba strong`,
   notable_strong: `Unga {planet} {power}% strength-la irukku — nalla amaivu`,
   notable_default: `Unga jathagathula interesting amaivu irukku — detail-a paarkalam`,
 
-  echo_reply: `{name}, neenga sonneenga: "{message}"
+  echo_reply: `{name}, neenga sonneenga: "{message}"\n\n(Testing-la irukku — full features seekkiram varum 🌟)`,
 
-(Ippo testing-la irukku — full features seekkiram varum 🌟)`,
+  hook_frame: `Unga jathagam paarthein... oru vishayam ennai romba kavarndhadhu.\n\n`,
+  hook_suffix: `\n\nIdhu sari-aa?`,
+  thinking_phrases: ['Hmm...', 'Paaru...', 'Oru nimisham...', 'Interesting...', 'Kelu...'],
 };

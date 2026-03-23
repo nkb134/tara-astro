@@ -5,8 +5,32 @@ import { getSessionContext, saveExchange } from './sessionManager.js';
 import { classifyIntent } from '../ai/classifier.js';
 import { generateResponse, generateHook } from '../ai/responder.js';
 import { calculateDelay, sleep } from '../utils/delay.js';
-import { detectLanguage } from '../languages/index.js';
+import { detectLanguage, t } from '../languages/index.js';
 import { logger } from '../utils/logger.js';
+
+// Thinking simulation: send a short thinking phrase before complex responses
+async function sendWithThinking(whatsappId, responseText, lang, isComplex) {
+  if (!isComplex) {
+    await sendTextMessage(whatsappId, responseText);
+    return;
+  }
+
+  // Get thinking phrases from language file
+  const thinkingPhrases = t(lang, 'thinking_phrases');
+  let phrase = 'Hmm...';
+  if (Array.isArray(thinkingPhrases)) {
+    phrase = thinkingPhrases[Math.floor(Math.random() * thinkingPhrases.length)];
+  }
+
+  // Send thinking phrase first
+  await sendTextMessage(whatsappId, phrase);
+
+  // Wait 3-5 seconds (simulating thinking)
+  await sleep(3000 + Math.random() * 2000);
+
+  // Send actual response
+  await sendTextMessage(whatsappId, responseText);
+}
 
 export async function handleIncomingMessage(whatsappId, displayName, messageText, messageId) {
   const startTime = Date.now();
@@ -90,24 +114,12 @@ async function handleOnboardingFlow(whatsappId, user, messageText, startTime) {
       if (hook) {
         const hookDelay = calculateDelay('reading', hook.length);
         await sleep(hookDelay);
-        await showTyping(whatsappId);
-        await sleep(500);
 
-        // Frame the hook
-        const hookFrames = {
-          hi: 'Aapki kundli dekhi... ek baat hai jo mujhe bahut interesting lagi.\n\n',
-          ta: 'Unga jathagam paarthein... oru vishayam ennai romba kavarndhadhu.\n\n',
-          en: 'I looked at your chart... something really stood out.\n\n',
-          te: 'Mee jatakam chusanu... oka vishayam chaala interesting ga anipinchindi.\n\n',
-          bn: 'Apnar kundli dekhlam... ek ta jinish amake khub akarshon korlo.\n\n',
-        };
-
-        const frame = hookFrames[lang] || hookFrames.en;
-        const hookSuffix = lang === 'ta' ? '\n\nIdhu sari-aa?' :
-                           lang === 'hi' ? '\n\nYeh sahi hai?' :
-                           '\n\nDoes that resonate?';
-
-        await sendTextMessage(whatsappId, frame + hook + hookSuffix);
+        // Use thinking simulation for hook delivery
+        const frame = t(lang, 'hook_frame');
+        const suffix = t(lang, 'hook_suffix');
+        const fullHook = frame + hook + suffix;
+        await sendWithThinking(whatsappId, fullHook, lang, true);
 
         // Save hook as chart_summary so we don't regenerate
         await updateUser(freshUser?.id || user.id, { chart_summary: hook });
@@ -165,9 +177,10 @@ async function handleAIConversation(whatsappId, user, messageText, messageId, st
   logger.info({ delayMs: delay, intent: classification.intent }, 'Applying response delay');
   await sleep(delay);
 
-  await showTyping(whatsappId);
-  await sleep(500);
-  await sendTextMessage(whatsappId, result.text);
+  // Use thinking simulation for complex responses (readings, remedies)
+  const isComplex = classification.complexity === 'complex' ||
+    ['career_reading', 'relationship_reading', 'remedy_request', 'kundli_overview'].includes(classification.intent);
+  await sendWithThinking(whatsappId, result.text, lang, isComplex);
 
   // Save exchange to database
   await saveExchange(conversationId, user.id, messageText, result.text, {

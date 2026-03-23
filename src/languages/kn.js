@@ -1,28 +1,44 @@
 export default {
-  welcome: `Namaskara 🙏 Naanu Tara. Enu nodabeku?`,
+  welcome: `Namaskara 🙏 Naanu Tara. Helu help maadtini — nimma hesaru mattu huttida dinaanka heli?`,
 
-  ask_name_career: `Career bagge nodtini, sari. Nimma hesaru?`,
-  ask_name_marriage: `Maduve bagge nodtini. Nimma hesaru?`,
-  ask_name_general: `Jaataka nodtini. Modalu nimma hesaru heli?`,
-  ask_name_default: `Shuru maadona. Nimma hesaru?`,
+  ask_name_career: `Career bagge? Sari — hesaru mattu huttida dinaanka heli?`,
+  ask_name_marriage: `Maduve bagge? Sari — hesaru mattu huttida dinaanka heli?`,
+  ask_name_general: `Sari jaataka nodtini — hesaru mattu huttida dinaanka heli?`,
+  ask_name_default: `Sari — hesaru mattu huttida dinaanka heli?`,
 
-  greet_name_ask_dob: `{name}, sari. Jaatakakkaagi huttida dinaanka beku — heltira?`,
+  ask_dob_after_name: `{name} — huttida dinaanka heli?`,
+  ask_time_after_name_dob: `{name} 😊 huttida samaya gottaa? Gottillvendare paravaagilla`,
 
-  ask_time: `Huttida samaya gottaa? Gottillvendare paravaagilla`,
-  ask_place: `Elligae huttidiri? Nagarada hesaru heli`,
+  ask_time: `Ok... huttida samaya gottaa? Gottillvendare thik ide`,
+  ask_place: `Sari. Ellige huttidiri? City heli`,
 
-  invalid_date: `Aa dinaanka arthaagalilla. 15/03/1990 athava 15 March 1990 haage bareyiri`,
-  invalid_time: `Aa samaya arthaagalilla. 2:30 PM haage bareyiri, athava "gottilla" anta heli`,
+  invalid_date: `Hmm aa dinaanka arthaagalilla... 15/03/1990 athava 15 March 1990 haage heli`,
+  invalid_time: `Hmm aa samaya arthaagalilla... 2:30 PM haage heli, athava "gottilla"`,
 
-  // Chart generation
-  generating_chart: `Ondu nimisha, jaataka nodtiddini...`,
-  geocode_failed: `Aa ooru sigalilla. Dodda nagarada hesaru heli — Bangalore, Mysore`,
-  chart_failed: `Jaataka lekka haakuvalli samasye. Swalpa hottu bittsu prayatnisi 🙏`,
-  chart_overview: `{name}, jaataka siddha! 🌟\n\n☀️ Soorya raashi: {sunSign}\n🌙 Chandra raashi: {moonSign}\n⬆️ Lagna: {ascendant}\n⭐ Nakshatra: {nakshatra}\n🔄 Dasha: {dasha}\n\n{notable}\n\nEnu gottaagbeku — career, maduve, athava bere enaadroo?`,
+  generating_chart: `Hmm... jaataka nodtiddini ondu nimisha`,
+  geocode_failed: `Hmm aa ooru sigalilla... hattira dodda nagara heli?`,
+  chart_failed: `Jaatakadalli swalpa samasye... swalpa hottu bittru prayatnisi 🙏`,
+
+  chart_overview: `{name}, jaataka siddha 🌟
+
+☀️ Soorya raashi: {sunSign}
+🌙 Chandra raashi: {moonSign}
+⬆️ Lagna: {ascendant}
+⭐ Nakshatra: {nakshatra}
+🔄 Dasha: {dasha}
+
+{notable}
+
+Enu gottaagbeku — career, maduve, athava bere enaadroo?`,
+
   notable_exalted: `Nimma {planet} {sign} nalli uchcha — tumba olleya sthaana`,
-  notable_vargottama: `Nimma {planet} Vargottama — raashi mattu navaamsha eradalloo onde raashi. Tumba shaktishaali`,
-  notable_strong: `Nimma {planet} {power}% shaktiyalli ide — tumba manchidu`,
-  notable_default: `Nimma jaatakadalli aasaktikara amarikeygalave — vivaravagi nodona`,
+  notable_vargottama: `Nimma {planet} Vargottama — raashi mattu navaamsha eradalloo onde raashi. Tumba strong`,
+  notable_strong: `Nimma {planet} {power}% shaktiyalli — manchidi`,
+  notable_default: `Jaatakadalli interesting amarikeygalave — detail agi nodona`,
 
-  echo_reply: `{name}, neevu heliddu: "{message}"\n\n(Innoo testing nalli ide — full features sheeghradalle barutte 🌟)`,
+  echo_reply: `{name}, neevu heliddu: "{message}"\n\n(Testing nalli ide — full features sheeghradalle barutte 🌟)`,
+
+  hook_frame: `Jaataka noddenu... ondu vishaya nange tumba interesting enistu.\n\n`,
+  hook_suffix: `\n\nIdhu sari-aa?`,
+  thinking_phrases: ['Hmm...', 'Nodri...', 'Ondu nimisha...', 'Interesting...'],
 };
