@@ -64,6 +64,7 @@ Last one — which city/town were you born in?
 🌙 Moon Sign: {moonSign}
 ⬆️ Ascendant (Lagna): {ascendant}
 ⭐ Nakshatra: {nakshatra}
+🔄 Current Dasha: {dasha}
 
 {notable}
 

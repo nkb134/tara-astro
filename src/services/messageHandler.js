@@ -1,6 +1,6 @@
 import { findOrCreateUser } from '../db/users.js';
 import { sendTextMessage, showTyping, markAsRead } from '../whatsapp/sender.js';
-import { handleOnboarding, processChartGeneration } from './onboardingHandler.js';
+import { handleOnboarding } from './onboardingHandler.js';
 import { calculateDelay, sleep } from '../utils/delay.js';
 import { t } from '../languages/index.js';
 import { logger } from '../utils/logger.js';
@@ -22,13 +22,11 @@ export async function handleIncomingMessage(whatsappId, displayName, messageText
     // Step 4: Determine response
     let response;
     let messageType = 'simple';
-    let pendingChartGeneration = null;
 
     if (!user.is_onboarded) {
       const result = await handleOnboarding(user, messageText);
       response = result.response;
       messageType = result.messageType;
-      pendingChartGeneration = result.pendingChartGeneration || null;
     } else {
       // Echo mode for onboarded users (until Phase 3 AI is built)
       const lang = user.language || 'en';
@@ -49,32 +47,6 @@ export async function handleIncomingMessage(whatsappId, displayName, messageText
 
     // Step 7: Send response
     await sendTextMessage(whatsappId, response);
-
-    // Step 8: If chart generation is pending, do it async and send results
-    if (pendingChartGeneration) {
-      // Show typing periodically while chart generates
-      const typingInterval = setInterval(() => {
-        showTyping(whatsappId).catch(() => {});
-      }, 20000);
-
-      try {
-        const chartResult = await processChartGeneration(pendingChartGeneration);
-
-        clearInterval(typingInterval);
-
-        // Small delay before sending chart
-        await sleep(2000);
-        await showTyping(whatsappId);
-        await sleep(1000);
-
-        await sendTextMessage(whatsappId, chartResult.response);
-      } catch (err) {
-        clearInterval(typingInterval);
-        logger.error({ err: err.message, whatsappId }, 'Chart generation failed in handler');
-        const lang = pendingChartGeneration.lang || 'en';
-        await sendTextMessage(whatsappId, t(lang, 'chart_failed'));
-      }
-    }
 
     const elapsed = Date.now() - startTime;
     logger.info({ userId: user.id, responseTimeMs: elapsed, messageType }, 'Message processed');

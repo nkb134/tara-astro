@@ -30,6 +30,12 @@ export function formatChartOverview(chartData, lang, userName) {
   const nakshatra = chartData.nakshatra?.name || 'Unknown';
   const pada = chartData.nakshatra?.pada || '';
 
+  // Dasha info
+  const dasha = chartData.dasha?.current;
+  const dashaStr = dasha?.mahadasha && dasha.mahadasha !== 'Unknown'
+    ? `${dasha.mahadasha} / ${dasha.antardasha}`
+    : '';
+
   // Find notable features
   const notable = findNotableFeature(chartData, lang);
 
@@ -40,6 +46,7 @@ export function formatChartOverview(chartData, lang, userName) {
     .replace('{moonSign}', moonSign)
     .replace('{ascendant}', ascendant)
     .replace('{nakshatra}', nakshatra + (pada ? ` (Pada ${pada})` : ''))
+    .replace('{dasha}', dashaStr)
     .replace('{notable}', notable);
 }
 

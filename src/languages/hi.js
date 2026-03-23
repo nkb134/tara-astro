@@ -49,7 +49,7 @@ export default {
   generating_chart: `{name}, आपकी कुंडली तैयार कर रही हूँ... बस एक पल 🔮`,
   geocode_failed: `वो जगह नहीं मिली 🙏 बड़े शहर का नाम बताइए (जैसे: Delhi, Mumbai, Lucknow)`,
   chart_failed: `कुंडली बनाने में दिक्कत हुई — कुछ देर बाद फिर कोशिश कीजिए 🙏`,
-  chart_overview: `{name}, आपकी कुंडली तैयार है! 🌟\n\n☀️ सूर्य राशि: {sunSign}\n🌙 चंद्र राशि: {moonSign}\n⬆️ लग्न: {ascendant}\n⭐ नक्षत्र: {nakshatra}\n\n{notable}\n\nबहुत कुछ बताना है! किस बारे में जानना चाहेंगे?\n- करियर और पैसा\n- शादी और रिश्ते\n- उपाय\n- या कुछ भी पूछिए!`,
+  chart_overview: `{name}, आपकी कुंडली तैयार है! 🌟\n\n☀️ सूर्य राशि: {sunSign}\n🌙 चंद्र राशि: {moonSign}\n⬆️ लग्न: {ascendant}\n⭐ नक्षत्र: {nakshatra}\n🔄 वर्तमान दशा: {dasha}\n\n{notable}\n\nबहुत कुछ बताना है! किस बारे में जानना चाहेंगे?\n- करियर और पैसा\n- शादी और रिश्ते\n- उपाय\n- या कुछ भी पूछिए!`,
   notable_exalted: `आपका {planet} {sign} में उच्च है — यह बहुत शुभ स्थिति है!`,
   notable_vargottama: `आपका {planet} वर्गोत्तम है — राशि और नवांश दोनों में एक ही राशि। बहुत शक्तिशाली!`,
   notable_strong: `आपका {planet} {power}% शक्ति के साथ है — बहुत अच्छी स्थिति!`,

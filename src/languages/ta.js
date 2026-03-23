@@ -64,6 +64,7 @@ export default {
 🌙 சந்திர ராசி: {moonSign}
 ⬆️ லக்னம்: {ascendant}
 ⭐ நட்சத்திரம்: {nakshatra}
+🔄 தற்போதைய திசை: {dasha}
 
 {notable}
 

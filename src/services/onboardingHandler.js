@@ -1,56 +1,9 @@
 import { t, detectLanguage } from '../languages/index.js';
 import { updateUser } from '../db/users.js';
 import { geocodeBirthPlace } from '../jyotish/geocode.js';
-import { generateBirthChart } from '../jyotish/vedastro.js';
+import { generateBirthChart } from '../jyotish/calculator.js';
 import { formatChartOverview } from '../jyotish/chartFormatter.js';
 import { logger } from '../utils/logger.js';
-
-export async function processChartGeneration(chartInfo) {
-  const { userId, birthDate, birthTime, lat, lng, timezone, placeName, lang, userName } = chartInfo;
-
-  try {
-    // Format birth time for API (strip seconds if present)
-    const timeForApi = birthTime.slice(0, 5); // "HH:MM"
-    // Format birth date for API
-    const dateStr = typeof birthDate === 'string' ? birthDate.split('T')[0] : birthDate;
-
-    const chartData = await generateBirthChart(dateStr, timeForApi, lat, lng, timezone, placeName);
-
-    if (!chartData || !chartData.moonSign || chartData.moonSign === 'Unknown') {
-      logger.error({ userId }, 'Chart generation returned incomplete data');
-      return {
-        success: false,
-        response: t(lang, 'chart_failed'),
-      };
-    }
-
-    // Save chart data to user
-    await updateUser(userId, {
-      chart_data: JSON.stringify(chartData),
-      onboarding_step: 'onboarded',
-      is_onboarded: true,
-    });
-
-    // Format the chart overview message
-    const overview = formatChartOverview(chartData, lang, userName);
-
-    return {
-      success: true,
-      response: overview,
-    };
-  } catch (err) {
-    logger.error({ err: err.message, userId }, 'Chart generation failed');
-
-    await updateUser(userId, {
-      onboarding_step: 'awaiting_place',
-    });
-
-    return {
-      success: false,
-      response: t(lang, 'chart_failed'),
-    };
-  }
-}
 
 export async function handleOnboarding(user, messageText) {
   const step = user.onboarding_step || 'new';
@@ -69,8 +22,6 @@ export async function handleOnboarding(user, messageText) {
       return await handleTime(user, messageText, lang);
     case 'awaiting_place':
       return await handlePlace(user, messageText, lang);
-    case 'generating_chart':
-      return { response: t(lang, 'generating_chart').replace('{name}', user.display_name || 'friend'), messageType: 'simple' };
     default:
       return { response: t(lang, 'welcome'), messageType: 'greeting' };
   }
@@ -164,32 +115,39 @@ async function handlePlace(user, messageText, lang) {
     return { response: t(lang, 'geocode_failed'), messageType: 'simple' };
   }
 
-  // Save place data immediately
-  await updateUser(user.id, {
-    birth_place: geo.formattedPlace,
-    birth_lat: geo.lat,
-    birth_lng: geo.lng,
-    birth_timezone: geo.timezone,
-    onboarding_step: 'generating_chart',
-  });
+  // Step 2: Generate chart instantly via Swiss Ephemeris
+  try {
+    const birthTime = (user.birth_time || '12:00').slice(0, 5);
+    const birthDate = typeof user.birth_date === 'string'
+      ? user.birth_date.split('T')[0]
+      : user.birth_date;
 
-  // Step 2: Generate chart (this takes a while due to API rate limits)
-  // Return a preliminary message; chart generation happens async
-  return {
-    response: t(lang, 'generating_chart').replace('{name}', name),
-    messageType: 'onboarding',
-    pendingChartGeneration: {
-      userId: user.id,
-      birthDate: user.birth_date,
-      birthTime: user.birth_time || '12:00',
-      lat: geo.lat,
-      lng: geo.lng,
-      timezone: geo.timezone,
-      placeName: geo.formattedPlace,
-      lang,
-      userName: name,
-    },
-  };
+    const chartData = generateBirthChart(
+      birthDate, birthTime, geo.lat, geo.lng, geo.timezone, geo.formattedPlace
+    );
+
+    if (!chartData || !chartData.moonSign || chartData.moonSign === 'Unknown') {
+      return { response: t(lang, 'chart_failed'), messageType: 'simple' };
+    }
+
+    // Save everything to user
+    await updateUser(user.id, {
+      birth_place: geo.formattedPlace,
+      birth_lat: geo.lat,
+      birth_lng: geo.lng,
+      birth_timezone: geo.timezone,
+      chart_data: JSON.stringify(chartData),
+      onboarding_step: 'onboarded',
+      is_onboarded: true,
+    });
+
+    // Format the chart overview
+    const overview = formatChartOverview(chartData, lang, name);
+    return { response: overview, messageType: 'reading' };
+  } catch (err) {
+    logger.error({ err: err.message, userId: user.id }, 'Chart generation failed');
+    return { response: t(lang, 'chart_failed'), messageType: 'simple' };
+  }
 }
 
 // --- Helper functions ---
