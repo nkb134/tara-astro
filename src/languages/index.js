@@ -57,7 +57,10 @@ export function detectLanguage(text) {
     'mein', 'se', 'pe', 'ke', 'ki', 'ka', 'ko', 'hoon', 'hun',
     'dekho', 'suno', 'bhai', 'didi', 'ji', 'bol', 'sun', 'dasha',
     'graha', 'rashi', 'lagna', 'mangal', 'shani', 'shukra', 'guru',
-    'ghar', 'parivaar', 'bachcha', 'beta', 'beti', 'pati', 'patni'];
+    'ghar', 'parivaar', 'bachcha', 'beta', 'beti', 'pati', 'patni',
+    'madamji', 'sahab', 'sahib', 'sirji', 'maaji', 'panditji', 'guruji',
+    'accha', 'theek', 'thik', 'bilkul', 'zaroor', 'bohot', 'bahut',
+    'chahiye', 'chahte', 'boliye', 'dijiye', 'kijiye', 'rha', 'rhe', 'rhi'];
 
   const tamilWords = ['vanakkam', 'enna', 'naan', 'pathi', 'sollunga', 'theriyum',
     'venum', 'eppadi', 'romba', 'paaru', 'kovil', 'jathagam', 'rasi',
