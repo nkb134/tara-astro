@@ -31,6 +31,7 @@ export const config = {
   },
   geocoding: {
     apiKey: process.env.GEOCODING_API_KEY,
+    geonamesUsername: process.env.GEONAMES_USERNAME,
   },
   db: {
     url: process.env.DATABASE_URL,

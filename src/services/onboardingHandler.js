@@ -363,19 +363,86 @@ async function handleTime(user, messageText, lang) {
 async function handlePlace(user, messageText, lang) {
   const place = messageText.trim();
   if (place.length < 2) return { response: t(lang, 'ask_place'), messageType: 'simple' };
+
+  // Check if user is responding to disambiguation (sent "1", "2", etc.)
+  const prefs = typeof user.preferences === 'string' ? JSON.parse(user.preferences || '{}') : (user.preferences || {});
+  if (prefs.pendingGeoOptions) {
+    const choice = parseInt(place);
+    if (choice >= 1 && choice <= prefs.pendingGeoOptions.length) {
+      const selected = prefs.pendingGeoOptions[choice - 1];
+      // Clear pending options
+      const newPrefs = { ...prefs };
+      delete newPrefs.pendingGeoOptions;
+      await updateUser(user.id, { preferences: JSON.stringify(newPrefs) });
+      // Use selected option directly
+      return generateChartFromGeo(user, selected, lang);
+    }
+    // User typed something else — try it as a new place
+    const newPrefs = { ...prefs };
+    delete newPrefs.pendingGeoOptions;
+    await updateUser(user.id, { preferences: JSON.stringify(newPrefs) });
+  }
+
   return generateChartFromPlace(user, place, lang);
+}
+
+async function generateChartFromGeo(user, geoData, lang) {
+  const name = user.display_name || 'friend';
+  try {
+    const birthTime = (user.birth_time || '12:00').slice(0, 5);
+    const birthDate = typeof user.birth_date === 'string'
+      ? user.birth_date.split('T')[0] : String(user.birth_date);
+
+    const chartData = generateBirthChart(
+      birthDate, birthTime, geoData.lat, geoData.lng,
+      geoData.timezone || 'Asia/Kolkata', geoData.formatted
+    );
+
+    if (!chartData || chartData.moonSign === 'Unknown') {
+      return { response: t(lang, 'chart_failed'), messageType: 'simple' };
+    }
+
+    await updateUser(user.id, {
+      birth_place: geoData.formatted,
+      birth_lat: geoData.lat, birth_lng: geoData.lng,
+      birth_timezone: geoData.timezone || 'Asia/Kolkata',
+      chart_data: JSON.stringify(chartData),
+      onboarding_step: 'onboarded', is_onboarded: true,
+    });
+
+    return { response: t(lang, 'generating_chart'), messageType: 'reading', chartData };
+  } catch (err) {
+    logger.error({ err: err.message }, 'Chart generation failed');
+    return { response: t(lang, 'chart_failed'), messageType: 'simple' };
+  }
 }
 
 async function generateChartFromPlace(user, place, lang) {
   const name = user.display_name || 'friend';
 
-  // Bug 4: Geocoding with better error handling
-  const geo = await geocodeBirthPlace(place);
+  const geo = await geocodeBirthPlace(place, lang);
+
   if (!geo) {
     const errorCount = trackError(user.id, 'geocode');
-    // Bug 5: Escalating error messages
     const key = errorCount >= 2 ? 'geocode_failed_2' : 'geocode_failed';
     return { response: t(lang, key), messageType: 'simple' };
+  }
+
+  // Handle disambiguation
+  if (geo.ambiguous) {
+    if (geo.tooMany) {
+      return { response: t(lang, 'disambiguate_many'), messageType: 'simple' };
+    }
+    const options = geo.options || [];
+    const optionList = options.map((o, i) => `${i + 1}. ${o.formatted}`).join('\n');
+    const msg = t(lang, 'disambiguate_few')
+      .replace('{city}', place)
+      .replace('{options}', optionList);
+    // Store options in user preferences for next message
+    await updateUser(user.id, {
+      preferences: JSON.stringify({ ...(typeof user.preferences === 'string' ? JSON.parse(user.preferences || '{}') : user.preferences), pendingGeoOptions: options }),
+    });
+    return { response: msg, messageType: 'simple' };
   }
 
   try {
