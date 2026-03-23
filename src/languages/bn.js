@@ -1,61 +1,28 @@
 export default {
-  welcome: `নমস্কার! 🙏 আমি তারা — আপনার নিজের জ্যোতিষ সখী।
+  welcome: `Namaskar 🙏 Ami Tara. Ki dekhte chan?`,
 
-কী নিয়ে জানতে চান বলুন? 😊
-- ক্যারিয়ার / চাকরি
-- বিয়ে / সম্পর্ক
-- কুণ্ডলী দেখতে চাই
-- অথবা যেকোনো কিছু জিজ্ঞাসা করুন!`,
+  ask_name_career: `Career niye dekhi, bolun. Apnar naam ta ki?`,
+  ask_name_marriage: `Biye niye dekhi. Apnar naam?`,
+  ask_name_general: `Kundli dekhi apnar. Age naam ta bolun?`,
+  ask_name_default: `Shurutu kori. Apnar naam?`,
 
-  ask_name_career: `ক্যারিয়ার নিয়ে জানতে চান — খুব ভালো! অবশ্যই সাহায্য করব 🌟
+  greet_name_ask_dob: `{name}, thik ache. Kundlir jonyo jonmo tarik ta bolun?`,
 
-আগে আপনার নাম বলুন? 😊`,
+  ask_time: `Jonmo-r somoy jaanen? Na janle kichu hoy na`,
+  ask_place: `Kothay jonmechen? Shohrer naam bolun`,
 
-  ask_name_marriage: `সম্পর্ক নিয়ে জানতে চান — বুঝেছি! অবশ্যই সাহায্য করব 💫
-
-আগে আপনার নাম বলুন? 😊`,
-
-  ask_name_general: `কুণ্ডলী দেখতে চান — খুব ভালো! অবশ্যই সাহায্য করব 🌟
-
-আগে আপনার নাম বলুন? 😊`,
-
-  ask_name_default: `অবশ্যই সাহায্য করব! 🌟
-
-আগে আপনার নাম বলুন? 😊`,
-
-  greet_name_ask_dob: `{name}, কী সুন্দর নাম! 🌟
-
-আপনার কুণ্ডলী দেখতে, জন্ম তারিখ বলুন
-(15/03/1990 বা 15 March 1990 — যেভাবে খুশি লিখুন)`,
-
-  ask_time: `ধন্যবাদ! 🙏 এবার জন্মের সময় বলুন
-
-(যেমন: 2:30 PM, সকাল ৬টা, বিকেল ৫টা)
-
-না জানলে "jani na" বলুন — কোনো সমস্যা নেই! 😊`,
-
-  ask_place: `প্রায় হয়ে গেছে! 🎉
-
-শেষ প্রশ্ন — কোন শহরে জন্ম হয়েছে?
-(যেমন: Kolkata, Howrah, Siliguri)`,
-
-  invalid_date: `ওই তারিখ বুঝতে পারলাম না — আবার বলুন 🙏
-(15/03/1990 বা 15 March 1990 এভাবে লিখুন)`,
-
-  invalid_time: `ওই সময় বুঝতে পারলাম না — আবার বলুন 🙏
-(2:30 PM, সকাল ৬টা, বা "জানি না" বলুন)`,
+  invalid_date: `Oi tarik bujhte parlam na. 15/03/1990 ba 15 March 1990 likhe bolun`,
+  invalid_time: `Oi somoy bujhte parlam na. 2:30 PM likhe bolun, ba "jani na" bolun`,
 
   // Chart generation
-  generating_chart: `{name}, আপনার কুণ্ডলী তৈরি করছি... একটু অপেক্ষা করুন 🔮`,
-  geocode_failed: `ওই জায়গা খুঁজে পেলাম না 🙏 বড় শহরের নাম বলুন (যেমন: Kolkata, Howrah)`,
-  chart_failed: `কুণ্ডলী তৈরি করতে সমস্যা হয়েছে — একটু পরে আবার চেষ্টা করুন 🙏`,
-  chart_overview: `{name}, আপনার কুণ্ডলী তৈরি! 🌟\n\n☀️ সূর্য রাশি: {sunSign}\n🌙 চন্দ্র রাশি: {moonSign}\n⬆️ লগ্ন: {ascendant}\n⭐ নক্ষত্র: {nakshatra}\n🔄 বর্তমান দশা: {dasha}\n\n{notable}\n\nঅনেক কিছু বলার আছে! কী সম্পর্কে জানতে চান?\n- ক্যারিয়ার ও অর্থ\n- বিয়ে ও সম্পর্ক\n- প্রতিকার\n- অথবা যেকোনো কিছু জিজ্ঞাসা করুন!`,
-  notable_exalted: `আপনার {planet} {sign}-এ উচ্চ — এটি খুব শুভ অবস্থান!`,
-  notable_vargottama: `আপনার {planet} বর্গোত্তম — রাশি ও নবাংশ দুটিতেই একই রাশি। খুব শক্তিশালী!`,
-  notable_strong: `আপনার {planet} {power}% শক্তিতে আছে — খুব ভালো অবস্থান!`,
-  notable_default: `আপনার কুণ্ডলীতে চমকপ্রদ যোগ আছে — বিস্তারিত দেখা যাক!`,
+  generating_chart: `Ek minute, kundli dekhchi...`,
+  geocode_failed: `Oi jayga khuje pelam na. Boro shohrer naam bolun — Kolkata, Dhaka`,
+  chart_failed: `Kundli toiri korte somossa hoyeche. Ektu pore abar try korun 🙏`,
+  chart_overview: `{name}, kundli toiri! 🌟\n\n☀️ Suryo rashi: {sunSign}\n🌙 Chondro rashi: {moonSign}\n⬆️ Logno: {ascendant}\n⭐ Nakshotro: {nakshatra}\n🔄 Dosha: {dasha}\n\n{notable}\n\nKi jante chan — career, biye, na onno kichu?`,
+  notable_exalted: `Apnar {planet} {sign}-e uchcho — khub bhalo obosthan`,
+  notable_vargottama: `Apnar {planet} Borgottom — rashi o nobamshe ekoi rashi. Khub shoktishshali`,
+  notable_strong: `Apnar {planet} {power}% shoktite achhe — khub bhalo`,
+  notable_default: `Apnar kundlite chomonkoprod jog achhe — bistarito dekha jak`,
 
-  echo_reply: `{name}, আপনি বললেন: "{message}"
-
-(এখনো testing চলছে — সব features শীঘ্রই আসবে! 🌟)`,
+  echo_reply: `{name}, apni bollen: "{message}"\n\n(Ekhono testing cholche — sob features shighri ashbe 🌟)`,
 };

@@ -7,7 +7,13 @@ import { logger } from '../utils/logger.js';
 
 export async function handleOnboarding(user, messageText) {
   const step = user.onboarding_step || 'new';
-  const lang = user.language || detectLanguage(messageText);
+  // Always detect language from current message, update if changed
+  const detectedLang = detectLanguage(messageText);
+  const lang = step === 'new' ? detectedLang : (user.language || detectedLang);
+  // Persist detected language on every message
+  if (detectedLang !== 'en' || !user.language) {
+    await updateUser(user.id, { language: detectedLang }).catch(() => {});
+  }
 
   switch (step) {
     case 'new':

@@ -1,0 +1,105 @@
+import { GoogleGenerativeAI } from '@google/generative-ai';
+import { LLMProvider } from './llmProvider.js';
+import { config } from '../config/env.js';
+import { logger } from '../utils/logger.js';
+
+const MODELS = {
+  flash: 'gemini-2.0-flash',
+  pro: 'gemini-2.5-pro-preview-06-05',
+};
+
+export class GeminiProvider extends LLMProvider {
+  constructor() {
+    super();
+    this.genAI = new GoogleGenerativeAI(config.gemini.apiKey);
+  }
+
+  async classify(message, context = '') {
+    const model = this.genAI.getGenerativeModel({ model: MODELS.flash });
+
+    const prompt = `${context}\n\nUser message: "${message}"`;
+
+    try {
+      const result = await model.generateContent({
+        contents: [{ role: 'user', parts: [{ text: prompt }] }],
+        generationConfig: {
+          maxOutputTokens: 200,
+          temperature: 0.1,
+        },
+      });
+
+      const text = result.response.text().trim();
+      // Extract JSON from response
+      const jsonMatch = text.match(/\{[\s\S]*\}/);
+      if (jsonMatch) {
+        return JSON.parse(jsonMatch[0]);
+      }
+      logger.warn({ text }, 'Classifier did not return valid JSON');
+      return null;
+    } catch (err) {
+      logger.error({ err: err.message }, 'Gemini classify failed');
+      return null;
+    }
+  }
+
+  async generate(systemPrompt, userMessage, options = {}) {
+    const modelName = options.complexity === 'complex' ? MODELS.pro : MODELS.flash;
+    const maxTokens = options.complexity === 'complex' ? 1200 : 500;
+    const model = this.genAI.getGenerativeModel({ model: modelName });
+
+    const history = options.history || [];
+    const contents = [];
+
+    // Build conversation history
+    for (const msg of history) {
+      contents.push({
+        role: msg.role === 'user' ? 'user' : 'model',
+        parts: [{ text: msg.content }],
+      });
+    }
+
+    // Add current user message
+    contents.push({ role: 'user', parts: [{ text: userMessage }] });
+
+    try {
+      const startTime = Date.now();
+      const result = await model.generateContent({
+        systemInstruction: { parts: [{ text: systemPrompt }] },
+        contents,
+        generationConfig: {
+          maxOutputTokens: maxTokens,
+          temperature: options.temperature || 0.8,
+        },
+      });
+
+      const text = result.response.text().trim();
+      const elapsed = Date.now() - startTime;
+
+      logger.info({ model: modelName, responseTimeMs: elapsed, tokensOut: text.length }, 'Gemini generate completed');
+
+      return {
+        text,
+        model: modelName,
+        responseTimeMs: elapsed,
+      };
+    } catch (err) {
+      logger.error({ err: err.message, model: modelName }, 'Gemini generate failed');
+
+      // Retry once with flash if pro fails
+      if (modelName === MODELS.pro) {
+        logger.info('Retrying with flash model');
+        return this.generate(systemPrompt, userMessage, { ...options, complexity: 'simple' });
+      }
+      throw err;
+    }
+  }
+}
+
+let _provider = null;
+
+export function getProvider() {
+  if (!_provider) {
+    _provider = new GeminiProvider();
+  }
+  return _provider;
+}

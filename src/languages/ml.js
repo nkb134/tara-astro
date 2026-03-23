@@ -1,61 +1,28 @@
 export default {
-  welcome: `നമസ്കാരം! 🙏 ഞാൻ താര — നിങ്ങളുടെ സ്വന്തം ജ്യോതിഷ സഖി.
+  welcome: `Namaskaram 🙏 Njan Tara. Enthaanu nokkendathu?`,
 
-എന്താ help വേണ്ടത് പറയൂ? 😊
-- കരിയർ / ജോലി
-- വിവാഹം / ബന്ധങ്ങൾ
-- ജാതകം നോക്കണം
-- അല്ലെങ്കിൽ എന്തും ചോദിക്കൂ!`,
+  ask_name_career: `Career-ne kurichu nokkaam, seri. Ningalude per parayoo?`,
+  ask_name_marriage: `Vivaaham nokkaam. Ningalude per?`,
+  ask_name_general: `Jaatakam nokkaam. Munpe per parayoo?`,
+  ask_name_default: `Thudaraam. Ningalude per?`,
 
-  ask_name_career: `കരിയറിനെ കുറിച്ച് അറിയണം — നല്ലത്! തീർച്ചയായും help ചെയ്യാം 🌟
+  greet_name_ask_dob: `{name}, seri. Jaatakatthinayi janana theeyathi venam — parayaamo?`,
 
-ആദ്യം പേര് പറയൂ? 😊`,
+  ask_time: `Janana samayam ariyumo? Ariyillenkil kuzhappamilla`,
+  ask_place: `Evide janichhu? Nagaratthinte per parayoo`,
 
-  ask_name_marriage: `ബന്ധങ്ങളെ കുറിച്ച് അറിയണം — മനസ്സിലായി! തീർച്ചയായും help ചെയ്യാം 💫
-
-ആദ്യം പേര് പറയൂ? 😊`,
-
-  ask_name_general: `ജാതകം നോക്കണം — നല്ലത്! തീർച്ചയായും help ചെയ്യാം 🌟
-
-ആദ്യം പേര് പറയൂ? 😊`,
-
-  ask_name_default: `തീർച്ചയായും help ചെയ്യാം! 🌟
-
-ആദ്യം പേര് പറയൂ? 😊`,
-
-  greet_name_ask_dob: `{name}, എന്തൊരു നല്ല പേര്! 🌟
-
-ജാതകം നോക്കാൻ, ജനന തീയതി പറയൂ
-(15/03/1990 അല്ലെങ്കിൽ 15 March 1990 — എങ്ങനെ വേണമെങ്കിലും എഴുതാം)`,
-
-  ask_time: `നന്ദി! 🙏 ഇപ്പോൾ ജനന സമയം പറയൂ
-
-(ഉദാഹരണം: 2:30 PM, രാവിലെ 6, വൈകിട്ട് 5)
-
-അറിയില്ലെങ്കിൽ "ariyilla" എന്ന് പറയൂ — സാരമില്ല! 😊`,
-
-  ask_place: `ഏതാണ്ട് കഴിഞ്ഞു! 🎉
-
-അവസാനം — ഏത് നഗരത്തിലാണ് ജനിച്ചത്?
-(ഉദാഹരണം: Kochi, Trivandrum, Calicut)`,
-
-  invalid_date: `ആ തീയതി മനസ്സിലായില്ല — വീണ്ടും try ചെയ്യൂ 🙏
-(15/03/1990 അല്ലെങ്കിൽ 15 March 1990 പോലെ എഴുതൂ)`,
-
-  invalid_time: `ആ സമയം മനസ്സിലായില്ല — വീണ്ടും try ചെയ്യൂ 🙏
-(2:30 PM, രാവിലെ 6, അല്ലെങ്കിൽ "അറിയില്ല" എന്ന് പറയൂ)`,
+  invalid_date: `Aa theeyathi manasilaayilla. 15/03/1990 allenkil 15 March 1990 pole ezhuthoo`,
+  invalid_time: `Aa samayam manasilaayilla. 2:30 PM pole ezhuthoo, allenkil "ariyilla" enn parayoo`,
 
   // Chart generation
-  generating_chart: `{name}, ജാതകം തയ്യാറാക്കുന്നു... ഒരു നിമിഷം 🔮`,
-  geocode_failed: `ആ സ്ഥലം കണ്ടെത്താനായില്ല 🙏 വലിയ നഗരത്തിന്റെ പേര് പറയൂ (ഉദാ: Kochi, Trivandrum)`,
-  chart_failed: `ജാതകം കണക്കാക്കുന്നതിൽ പ്രശ്നം — കുറച്ച് നേരം കഴിഞ്ഞ് ശ്രമിക്കൂ 🙏`,
-  chart_overview: `{name}, ജാതകം തയ്യാർ! 🌟\n\n☀️ സൂര്യ രാശി: {sunSign}\n🌙 ചന്ദ്ര രാശി: {moonSign}\n⬆️ ലഗ്നം: {ascendant}\n⭐ നക്ഷത്രം: {nakshatra}\n🔄 നിലവിലെ ദശ: {dasha}\n\n{notable}\n\nഒരുപാട് പറയാനുണ്ട്! എന്തിനെ കുറിച്ച് അറിയണം?\n- കരിയർ & പണം\n- വിവാഹം & ബന്ധങ്ങൾ\n- പ്രതിവിധികൾ\n- അല്ലെങ്കിൽ എന്തും ചോദിക്കൂ!`,
-  notable_exalted: `നിങ്ങളുടെ {planet} {sign}-ൽ ഉച്ചം — ഇത് വളരെ ശുഭമായ സ്ഥാനം!`,
-  notable_vargottama: `നിങ്ങളുടെ {planet} വർഗോത്തമം — രാശിയിലും നവാംശത്തിലും ഒരേ രാശി. വളരെ ശക്തം!`,
-  notable_strong: `നിങ്ങളുടെ {planet} {power}% ശക്തിയിൽ — വളരെ നല്ല സ്ഥാനം!`,
-  notable_default: `നിങ്ങളുടെ ജാതകത്തിൽ ആകർഷകമായ ഘടനകൾ ഉണ്ട് — വിശദമായി നോക്കാം!`,
+  generating_chart: `Oru nimisham, jaatakam nokkunnundu...`,
+  geocode_failed: `Aa sthalam kandethaan kazhinjilla. Valiya nagaratthinte per parayoo — Kochi, Trivandrum`,
+  chart_failed: `Jaatakam kanakkukkunnathinil prasnam. Kurachhu neram kazhinjju shramikkoo 🙏`,
+  chart_overview: `{name}, jaatakam ready! 🌟\n\n☀️ Soorya raashi: {sunSign}\n🌙 Chandra raashi: {moonSign}\n⬆️ Lagnam: {ascendant}\n⭐ Nakshatram: {nakshatra}\n🔄 Dasha: {dasha}\n\n{notable}\n\nEnthinaayi nokkanum — career, vivaaham, atho vere enthenkillum?`,
+  notable_exalted: `Ningalude {planet} {sign}-il uchcham — valare shubhamaya sthanam`,
+  notable_vargottama: `Ningalude {planet} Vargottamam — raashiyilum navaamshathilum ore raashi. Valare shaktam`,
+  notable_strong: `Ningalude {planet} {power}% shaktiyil — valare nalla sthanam`,
+  notable_default: `Ningalude jaatakatthil aakarshakamaaya ghadanakal undu — vishadamaayi nokkaam`,
 
-  echo_reply: `{name}, നിങ്ങൾ പറഞ്ഞത്: "{message}"
-
-(ഇപ്പോഴും testing-ൽ ആണ് — full features ഉടൻ വരും! 🌟)`,
+  echo_reply: `{name}, ningal paranjathu: "{message}"\n\n(Ippol testing-il aanu — full features udan varum 🌟)`,
 };

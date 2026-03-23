@@ -14,6 +14,7 @@ export function t(lang, key) {
 }
 
 export function detectLanguage(text) {
+  // Script-based detection (most reliable)
   if (/[\u0B80-\u0BFF]/.test(text)) return 'ta';
   if (/[\u0900-\u097F]/.test(text)) return 'hi';
   if (/[\u0C00-\u0C7F]/.test(text)) return 'te';
@@ -21,21 +22,49 @@ export function detectLanguage(text) {
   if (/[\u0D00-\u0D7F]/.test(text)) return 'ml';
   if (/[\u0C80-\u0CFF]/.test(text)) return 'kn';
 
-  // Tanglish / Hinglish detection via common words
+  // Romanized word detection
   const lower = text.toLowerCase();
+  const words = lower.split(/\s+/);
+
+  const hindiWords = ['mera', 'meri', 'mujhe', 'mujhse', 'kya', 'hai', 'hain',
+    'kaise', 'batao', 'bataiye', 'bataao', 'kundli', 'shaadi', 'shaadhi',
+    'naukri', 'paisa', 'naam', 'bolo', 'chahiye', 'chahie', 'karun', 'karungi',
+    'kab', 'kahan', 'kaisa', 'achha', 'acha', 'hogi', 'hoga', 'karein',
+    'madad', 'zaroor', 'zarur', 'pata', 'nahi', 'nahin', 'koi', 'baat',
+    'janam', 'tithi', 'samay', 'pehle', 'abhi', 'aur', 'aapka', 'aapki',
+    'mein', 'se', 'pe', 'ke', 'ki', 'ka', 'ko', 'hoon', 'hun',
+    'dekho', 'suno', 'bhai', 'didi', 'ji', 'bol', 'sun', 'dasha',
+    'graha', 'rashi', 'lagna', 'mangal', 'shani', 'shukra', 'guru',
+    'ghar', 'parivaar', 'bachcha', 'beta', 'beti', 'pati', 'patni'];
+
   const tamilWords = ['vanakkam', 'enna', 'naan', 'pathi', 'sollunga', 'theriyum',
-    'venum', 'eppadi', 'romba', 'thala', 'paaru', 'kovil', 'jathagam', 'rasi',
-    'en', 'ungal', 'peru', 'enga', 'inga', 'anga', 'panna', 'solla', 'kelu'];
-  const hindiWords = ['mera', 'mujhe', 'kya', 'hai', 'hain', 'kaise', 'batao',
-    'kundli', 'shaadi', 'naukri', 'paisa', 'naam', 'bolo', 'chahiye'];
+    'venum', 'eppadi', 'romba', 'paaru', 'kovil', 'jathagam', 'rasi',
+    'ungal', 'peru', 'enga', 'inga', 'anga', 'panna', 'solla', 'kelu',
+    'seri', 'paarkiren', 'theriyaadhu', 'theriyala', 'illa', 'irukku',
+    'vaanga', 'ponga', 'pannunga', 'sollu', 'oru', 'enaku', 'unaku',
+    'eppo', 'eppadi', 'yenna', 'yaar', 'entha', 'ooru', 'velai',
+    'kalyanam', 'thirumanam', 'parigaram', 'natchathiram', 'lagnam',
+    'pirandha', 'theadhi', 'neram', 'nalla', 'ketta'];
 
-  const tamilScore = tamilWords.filter(w => lower.includes(w)).length;
-  const hindiScore = hindiWords.filter(w => lower.includes(w)).length;
+  const teluguWords = ['nenu', 'naaku', 'meeru', 'mee', 'emi', 'cheppandi',
+    'telusu', 'kavali', 'chustanu', 'puttina', 'tariku', 'samayam',
+    'ekkada', 'pelli', 'udyogam', 'jatakam', 'raashi', 'chudandi',
+    'sare', 'manchi', 'chala', 'oka', 'ante', 'inka', 'leda'];
 
-  if (tamilScore >= 2) return 'ta';
-  if (hindiScore >= 2) return 'hi';
-  if (tamilScore === 1) return 'ta';
-  if (hindiScore === 1) return 'hi';
+  const bengaliWords = ['ami', 'amar', 'apnar', 'apni', 'bolun', 'chai',
+    'jonmo', 'tarik', 'somoy', 'kothay', 'biye', 'chakri', 'kundli',
+    'dekhi', 'dekhchi', 'jaanen', 'jani', 'bhalo', 'kemon', 'hobe'];
+
+  const hindiScore = words.filter(w => hindiWords.includes(w)).length;
+  const tamilScore = words.filter(w => tamilWords.includes(w)).length;
+  const teluguScore = words.filter(w => teluguWords.includes(w)).length;
+  const bengaliScore = words.filter(w => bengaliWords.includes(w)).length;
+
+  const scores = { hi: hindiScore, ta: tamilScore, te: teluguScore, bn: bengaliScore };
+  const maxLang = Object.entries(scores).sort((a, b) => b[1] - a[1])[0];
+
+  if (maxLang[1] >= 2) return maxLang[0];
+  if (maxLang[1] === 1) return maxLang[0];
 
   return 'en';
 }

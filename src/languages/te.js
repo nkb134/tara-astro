@@ -1,61 +1,28 @@
 export default {
-  welcome: `నమస్కారం! 🙏 నేను తారా — మీ స్వంత జ్యోతిష్ సఖి.
+  welcome: `Namaskaram 🙏 Nenu Tara. Meeru emi telsukovaalanatukuntunnaru?`,
 
-ఏం help కావాలో చెప్పండి? 😊
-- కెరీర్ / ఉద్యోగం
-- పెళ్లి / సంబంధాలు
-- జాతకం చూడాలి
-- లేదా ఏదైనా అడగండి!`,
+  ask_name_career: `Career vishayam chustanu, sare. Mee peru cheppandi?`,
+  ask_name_marriage: `Pelli vishayam chustanu. Mee peru emi?`,
+  ask_name_general: `Jatakam chustanu. Mundu mee peru cheppandi?`,
+  ask_name_default: `Marchandi, mee peru cheppandi?`,
 
-  ask_name_career: `కెరీర్ గురించి తెలుసుకోవాలి — చాలా బాగుంది! తప్పకుండా help చేస్తాను 🌟
+  greet_name_ask_dob: `{name}, sare. Jatakam ki puttina tariku kavali — cheppagalara?`,
 
-ముందు మీ పేరు చెప్పండి? 😊`,
+  ask_time: `Puttina samayam telusaa? Teliyadante parledu`,
+  ask_place: `Ekkada puttaru? City peru cheppandi`,
 
-  ask_name_marriage: `సంబంధాల గురించి తెలుసుకోవాలి — అర్థమైంది! తప్పకుండా help చేస్తాను 💫
-
-ముందు మీ పేరు చెప్పండి? 😊`,
-
-  ask_name_general: `జాతకం చూడాలి — చాలా బాగుంది! తప్పకుండా help చేస్తాను 🌟
-
-ముందు మీ పేరు చెప్పండి? 😊`,
-
-  ask_name_default: `తప్పకుండా help చేస్తాను! 🌟
-
-ముందు మీ పేరు చెప్పండి? 😊`,
-
-  greet_name_ask_dob: `{name}, ఎంత బాగుంది పేరు! 🌟
-
-మీ జాతకం చూడటానికి, పుట్టిన తేదీ చెప్పండి
-(15/03/1990 లేదా 15 March 1990 — ఎలా అయినా రాయవచ్చు)`,
-
-  ask_time: `ధన్యవాదాలు! 🙏 ఇప్పుడు పుట్టిన సమయం చెప్పండి
-
-(ఉదాహరణ: 2:30 PM, ఉదయం 6, సాయంత్రం 5)
-
-తెలియకపోతే "teliyadu" అని చెప్పండి — ఫర్వాలేదు! 😊`,
-
-  ask_place: `దాదాపు అయిపోయింది! 🎉
-
-చివరిది — ఏ ఊరిలో పుట్టారు?
-(ఉదాహరణ: Hyderabad, Vijayawada, Tirupati)`,
-
-  invalid_date: `ఆ తేదీ అర్థం కాలేదు — మళ్ళీ try చేయండి 🙏
-(15/03/1990 లేదా 15 March 1990 లాగా రాయండి)`,
-
-  invalid_time: `ఆ సమయం అర్థం కాలేదు — మళ్ళీ try చేయండి 🙏
-(2:30 PM, ఉదయం 6 బజే, లేదా "తెలియదు" అని చెప్పండి)`,
+  invalid_date: `Aa tariku ardham kaaledu. 15/03/1990 laga raayandi`,
+  invalid_time: `Aa samayam ardham kaaledu. 2:30 PM laga raayandi, leda "teliyadu" cheppandi`,
 
   // Chart generation
-  generating_chart: `{name}, మీ జాతకం తయారు చేస్తున్నాను... ఒక్క నిమిషం 🔮`,
-  geocode_failed: `ఆ ప్రదేశం కనుగొనలేకపోయాను 🙏 పెద్ద నగరం పేరు చెప్పండి (ఉదా: Hyderabad, Vijayawada)`,
-  chart_failed: `జాతకం లెక్కించడంలో సమస్య — కొంచెం సేపు తర్వాత ప్రయత్నించండి 🙏`,
-  chart_overview: `{name}, మీ జాతకం సిద్ధం! 🌟\n\n☀️ సూర్య రాశి: {sunSign}\n🌙 చంద్ర రాశి: {moonSign}\n⬆️ లగ్నం: {ascendant}\n⭐ నక్షత్రం: {nakshatra}\n🔄 ప్రస్తుత దశ: {dasha}\n\n{notable}\n\nచాలా చెప్పాలి! ఏం గురించి తెలుసుకోవాలి?\n- కెరీర్ మరియు డబ్బు\n- పెళ్లి మరియు సంబంధాలు\n- పరిహారాలు\n- లేదా ఏదైనా అడగండి!`,
-  notable_exalted: `మీ {planet} {sign} లో ఉచ్చంలో ఉంది — ఇది చాలా మంచి స్థానం!`,
-  notable_vargottama: `మీ {planet} వర్గోత్తమం — రాశి, నవాంశం రెండింటిలోనూ ఒకే రాశి. చాలా బలమైన స్థానం!`,
-  notable_strong: `మీ {planet} {power}% బలంతో ఉంది — చాలా మంచి స్థానం!`,
-  notable_default: `మీ జాతకంలో ఆసక్తికరమైన అమరికలు ఉన్నాయి — వివరంగా చూద్దాం!`,
+  generating_chart: `Oka nimisham, jatakam chustunna...`,
+  geocode_failed: `Aa pradesham kanugonalekapoyanu. Pedda nagaram cheppandi — Hyderabad, Vijayawada lanti`,
+  chart_failed: `Jatakam lekkinchadamlao samasya. Konchemu tarvata try cheyandi 🙏`,
+  chart_overview: `{name}, jatakam siddham! 🌟\n\n☀️ Surya raashi: {sunSign}\n🌙 Chandra raashi: {moonSign}\n⬆️ Lagnam: {ascendant}\n⭐ Nakshatram: {nakshatra}\n🔄 Dasha: {dasha}\n\n{notable}\n\nEmi telsukovaali — career, pelli, leda inkemaina?`,
+  notable_exalted: `Mee {planet} {sign} lo uchchamlo undi — chaala manchi sthanam`,
+  notable_vargottama: `Mee {planet} Vargottamam — raashi, navamsham rendintilonu oke raashi. Chaala balamaina`,
+  notable_strong: `Mee {planet} {power}% balamtho undi — chaala manchidi`,
+  notable_default: `Mee jatakamlao interesting amarikaalu unnaayi — details lo chuddam`,
 
-  echo_reply: `{name}, మీరు చెప్పింది: "{message}"
-
-(ఇంకా testing లో ఉంది — full features త్వరలో వస్తాయి! 🌟)`,
+  echo_reply: `{name}, meeru cheppindi: "{message}"\n\n(Inkaa testing lo undi — full features travaloa vastayi 🌟)`,
 };

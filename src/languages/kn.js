@@ -1,61 +1,28 @@
 export default {
-  welcome: `ನಮಸ್ಕಾರ! 🙏 ನಾನು ತಾರಾ — ನಿಮ್ಮ ಸ್ವಂತ ಜ್ಯೋತಿಷ ಸಖಿ.
+  welcome: `Namaskara 🙏 Naanu Tara. Enu nodabeku?`,
 
-ಏನು help ಬೇಕು ಹೇಳಿ? 😊
-- ಕೆರಿಯರ್ / ಉದ್ಯೋಗ
-- ಮದುವೆ / ಸಂಬಂಧಗಳು
-- ಜಾತಕ ನೋಡಬೇಕು
-- ಅಥವಾ ಏನಾದರೂ ಕೇಳಿ!`,
+  ask_name_career: `Career bagge nodtini, sari. Nimma hesaru?`,
+  ask_name_marriage: `Maduve bagge nodtini. Nimma hesaru?`,
+  ask_name_general: `Jaataka nodtini. Modalu nimma hesaru heli?`,
+  ask_name_default: `Shuru maadona. Nimma hesaru?`,
 
-  ask_name_career: `ಕೆರಿಯರ್ ಬಗ್ಗೆ ತಿಳಿಯಬೇಕು — ತುಂಬಾ ಒಳ್ಳೆಯದು! ಖಂಡಿತ help ಮಾಡ್ತೀನಿ 🌟
+  greet_name_ask_dob: `{name}, sari. Jaatakakkaagi huttida dinaanka beku — heltira?`,
 
-ಮೊದಲು ನಿಮ್ಮ ಹೆಸರು ಹೇಳಿ? 😊`,
+  ask_time: `Huttida samaya gottaa? Gottillvendare paravaagilla`,
+  ask_place: `Elligae huttidiri? Nagarada hesaru heli`,
 
-  ask_name_marriage: `ಸಂಬಂಧಗಳ ಬಗ್ಗೆ ತಿಳಿಯಬೇಕು — ಅರ್ಥವಾಯ್ತು! ಖಂಡಿತ help ಮಾಡ್ತೀನಿ 💫
-
-ಮೊದಲು ನಿಮ್ಮ ಹೆಸರು ಹೇಳಿ? 😊`,
-
-  ask_name_general: `ಜಾತಕ ನೋಡಬೇಕು — ತುಂಬಾ ಒಳ್ಳೆಯದು! ಖಂಡಿತ help ಮಾಡ್ತೀನಿ 🌟
-
-ಮೊದಲು ನಿಮ್ಮ ಹೆಸರು ಹೇಳಿ? 😊`,
-
-  ask_name_default: `ಖಂಡಿತ help ಮಾಡ್ತೀನಿ! 🌟
-
-ಮೊದಲು ನಿಮ್ಮ ಹೆಸರು ಹೇಳಿ? 😊`,
-
-  greet_name_ask_dob: `{name}, ಎಂಥ ಚೆನ್ನಾಗಿದೆ ಹೆಸರು! 🌟
-
-ನಿಮ್ಮ ಜಾತಕ ನೋಡಲು, ಹುಟ್ಟಿದ ದಿನಾಂಕ ಹೇಳಿ
-(15/03/1990 ಅಥವಾ 15 March 1990 — ಹೇಗಾದರೂ ಬರೆಯಬಹುದು)`,
-
-  ask_time: `ಧನ್ಯವಾದ! 🙏 ಈಗ ಹುಟ್ಟಿದ ಸಮಯ ಹೇಳಿ
-
-(ಉದಾಹರಣೆ: 2:30 PM, ಬೆಳಗ್ಗೆ 6, ಸಂಜೆ 5)
-
-ಗೊತ್ತಿಲ್ಲವೆಂದರೆ "gottilla" ಅಂತ ಹೇಳಿ — ಪರವಾಗಿಲ್ಲ! 😊`,
-
-  ask_place: `ಬಹುತೇಕ ಆಗಿಹೋಯ್ತು! 🎉
-
-ಕೊನೆಯದು — ಯಾವ ಊರಿನಲ್ಲಿ ಹುಟ್ಟಿದಿರಿ?
-(ಉದಾಹರಣೆ: Bangalore, Mysore, Hubli)`,
-
-  invalid_date: `ಆ ದಿನಾಂಕ ಅರ್ಥವಾಗಲಿಲ್ಲ — ಮತ್ತೆ try ಮಾಡಿ 🙏
-(15/03/1990 ಅಥವಾ 15 March 1990 ಹಾಗೆ ಬರೆಯಿರಿ)`,
-
-  invalid_time: `ಆ ಸಮಯ ಅರ್ಥವಾಗಲಿಲ್ಲ — ಮತ್ತೆ try ಮಾಡಿ 🙏
-(2:30 PM, ಬೆಳಗ್ಗೆ 6, ಅಥವಾ "ಗೊತ್ತಿಲ್ಲ" ಅಂತ ಹೇಳಿ)`,
+  invalid_date: `Aa dinaanka arthaagalilla. 15/03/1990 athava 15 March 1990 haage bareyiri`,
+  invalid_time: `Aa samaya arthaagalilla. 2:30 PM haage bareyiri, athava "gottilla" anta heli`,
 
   // Chart generation
-  generating_chart: `{name}, ಜಾತಕ ತಯಾರು ಮಾಡ್ತಿದ್ದೀನಿ... ಒಂದು ನಿಮಿಷ 🔮`,
-  geocode_failed: `ಆ ಊರು ಸಿಗಲಿಲ್ಲ 🙏 ದೊಡ್ಡ ನಗರದ ಹೆಸರು ಹೇಳಿ (ಉದಾ: Bangalore, Mysore)`,
-  chart_failed: `ಜಾತಕ ಲೆಕ್ಕ ಹಾಕುವಲ್ಲಿ ಸಮಸ್ಯೆ — ಸ್ವಲ್ಪ ಹೊತ್ತು ಬಿಟ್ಟು ಪ್ರಯತ್ನಿಸಿ 🙏`,
-  chart_overview: `{name}, ಜಾತಕ ಸಿದ್ಧ! 🌟\n\n☀️ ಸೂರ್ಯ ರಾಶಿ: {sunSign}\n🌙 ಚಂದ್ರ ರಾಶಿ: {moonSign}\n⬆️ ಲಗ್ನ: {ascendant}\n⭐ ನಕ್ಷತ್ರ: {nakshatra}\n🔄 ಪ್ರಸ್ತುತ ದಶೆ: {dasha}\n\n{notable}\n\nಇನ್ನೂ ಬಹಳ ಹೇಳಬೇಕಿದೆ! ಏನು ಗೊತ್ತಾಗಬೇಕು?\n- ಕೆರಿಯರ್ ಮತ್ತು ಹಣ\n- ಮದುವೆ ಮತ್ತು ಸಂಬಂಧಗಳು\n- ಪರಿಹಾರಗಳು\n- ಅಥವಾ ಏನಾದರೂ ಕೇಳಿ!`,
-  notable_exalted: `ನಿಮ್ಮ {planet} {sign} ನಲ್ಲಿ ಉಚ್ಚ — ಇದು ತುಂಬಾ ಒಳ್ಳೆಯ ಸ್ಥಾನ!`,
-  notable_vargottama: `ನಿಮ್ಮ {planet} ವರ್ಗೋತ್ತಮ — ರಾಶಿ ಮತ್ತು ನವಾಂಶ ಎರಡರಲ್ಲೂ ಒಂದೇ ರಾಶಿ. ತುಂಬಾ ಶಕ್ತಿಶಾಲಿ!`,
-  notable_strong: `ನಿಮ್ಮ {planet} {power}% ಶಕ್ತಿಯಲ್ಲಿ ಇದೆ — ತುಂಬಾ ಒಳ್ಳೆಯ ಸ್ಥಾನ!`,
-  notable_default: `ನಿಮ್ಮ ಜಾತಕದಲ್ಲಿ ಆಸಕ್ತಿಕರ ಅಮರಿಕೆಗಳಿವೆ — ವಿವರವಾಗಿ ನೋಡೋಣ!`,
+  generating_chart: `Ondu nimisha, jaataka nodtiddini...`,
+  geocode_failed: `Aa ooru sigalilla. Dodda nagarada hesaru heli — Bangalore, Mysore`,
+  chart_failed: `Jaataka lekka haakuvalli samasye. Swalpa hottu bittsu prayatnisi 🙏`,
+  chart_overview: `{name}, jaataka siddha! 🌟\n\n☀️ Soorya raashi: {sunSign}\n🌙 Chandra raashi: {moonSign}\n⬆️ Lagna: {ascendant}\n⭐ Nakshatra: {nakshatra}\n🔄 Dasha: {dasha}\n\n{notable}\n\nEnu gottaagbeku — career, maduve, athava bere enaadroo?`,
+  notable_exalted: `Nimma {planet} {sign} nalli uchcha — tumba olleya sthaana`,
+  notable_vargottama: `Nimma {planet} Vargottama — raashi mattu navaamsha eradalloo onde raashi. Tumba shaktishaali`,
+  notable_strong: `Nimma {planet} {power}% shaktiyalli ide — tumba manchidu`,
+  notable_default: `Nimma jaatakadalli aasaktikara amarikeygalave — vivaravagi nodona`,
 
-  echo_reply: `{name}, ನೀವು ಹೇಳಿದ್ದು: "{message}"
-
-(ಇನ್ನೂ testing ನಲ್ಲಿ ಇದೆ — full features ಶೀಘ್ರದಲ್ಲೇ ಬರುತ್ತವೆ! 🌟)`,
+  echo_reply: `{name}, neevu heliddu: "{message}"\n\n(Innoo testing nalli ide — full features sheeghradalle barutte 🌟)`,
 };

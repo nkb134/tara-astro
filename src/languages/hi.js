@@ -1,61 +1,28 @@
 export default {
-  welcome: `नमस्ते! 🙏 मैं तारा हूँ — आपकी अपनी ज्योतिष सखी।
+  welcome: `Namaste 🙏 Main Tara hoon. Kya dekhna hai aapko?`,
 
-बताइए, किस बारे में जानना चाहते हैं? 😊
-- करियर / नौकरी
-- शादी / रिश्ते
-- कुंडली देखनी है
-- या कुछ और पूछिए!`,
+  ask_name_career: `Career ke baare mein baat karein, zaroor. Aapka naam kya hai?`,
+  ask_name_marriage: `Shaadi ke baare mein dekhti hoon. Pehle naam bataiye?`,
+  ask_name_general: `Kundli dekhti hoon aapki. Naam kya hai?`,
+  ask_name_default: `Chaliye shuru karte hain. Aapka naam?`,
 
-  ask_name_career: `करियर के बारे में जानना है — बहुत अच्छा! मैं ज़रूर मदद करूँगी 🌟
+  greet_name_ask_dob: `{name}, achha. Kundli ke liye janam tithi chahiye — bataiye?`,
 
-पहले आपका नाम बताइए? 😊`,
+  ask_time: `Janam ka samay pata hai? Nahi pata toh koi baat nahi`,
+  ask_place: `Aur kahan paida hue? City ka naam bata dijiye`,
 
-  ask_name_marriage: `रिश्तों के बारे में जानना है — समझ गई! मैं ज़रूर मदद करूँगी 💫
-
-पहले आपका नाम बताइए? 😊`,
-
-  ask_name_general: `कुंडली देखनी है — बहुत अच्छा! मैं ज़रूर मदद करूँगी 🌟
-
-पहले आपका नाम बताइए? 😊`,
-
-  ask_name_default: `मैं आपकी ज़रूर मदद करूँगी! 🌟
-
-पहले आपका नाम बताइए? 😊`,
-
-  greet_name_ask_dob: `{name}, बहुत प्यारा नाम! 🌟
-
-आपकी कुंडली देखने के लिए, अपनी जन्म तारीख बताइए
-(15/03/1990 या 15 March 1990 — कैसे भी लिख सकते हैं)`,
-
-  ask_time: `शुक्रिया! 🙏 अब जन्म का समय बताइए
-
-(जैसे: 2:30 PM, सुबह 6 बजे, शाम 5 बजे)
-
-अगर नहीं पता तो "pata nahi" बोल दीजिए — कोई बात नहीं! 😊`,
-
-  ask_place: `बस एक और सवाल! 🎉
-
-आप कहाँ पैदा हुए/हुई?
-(जैसे: Delhi, Mumbai, Lucknow)`,
-
-  invalid_date: `वो तारीख समझ नहीं आई — फिर से बताइए 🙏
-(15/03/1990 या 15 March 1990 जैसे लिखिए)`,
-
-  invalid_time: `वो समय समझ नहीं आया — फिर से बताइए 🙏
-(2:30 PM, सुबह 6 बजे, या "पता नहीं" बोलिए)`,
+  invalid_date: `Yeh date samajh nahi aayi. 15/03/1990 ya 15 March 1990 jaisa likhiye`,
+  invalid_time: `Yeh samay samajh nahi aaya. 2:30 PM jaisa likhiye, ya "pata nahi" bol dijiye`,
 
   // Chart generation
-  generating_chart: `{name}, आपकी कुंडली तैयार कर रही हूँ... बस एक पल 🔮`,
-  geocode_failed: `वो जगह नहीं मिली 🙏 बड़े शहर का नाम बताइए (जैसे: Delhi, Mumbai, Lucknow)`,
-  chart_failed: `कुंडली बनाने में दिक्कत हुई — कुछ देर बाद फिर कोशिश कीजिए 🙏`,
-  chart_overview: `{name}, आपकी कुंडली तैयार है! 🌟\n\n☀️ सूर्य राशि: {sunSign}\n🌙 चंद्र राशि: {moonSign}\n⬆️ लग्न: {ascendant}\n⭐ नक्षत्र: {nakshatra}\n🔄 वर्तमान दशा: {dasha}\n\n{notable}\n\nबहुत कुछ बताना है! किस बारे में जानना चाहेंगे?\n- करियर और पैसा\n- शादी और रिश्ते\n- उपाय\n- या कुछ भी पूछिए!`,
-  notable_exalted: `आपका {planet} {sign} में उच्च है — यह बहुत शुभ स्थिति है!`,
-  notable_vargottama: `आपका {planet} वर्गोत्तम है — राशि और नवांश दोनों में एक ही राशि। बहुत शक्तिशाली!`,
-  notable_strong: `आपका {planet} {power}% शक्ति के साथ है — बहुत अच्छी स्थिति!`,
-  notable_default: `आपकी कुंडली में दिलचस्प योग हैं — विस्तार से देखते हैं!`,
+  generating_chart: `Ek minute, kundli dekh rahi hoon...`,
+  geocode_failed: `Yeh jagah nahi mili. Koi bada shehar bataiye — jaise Delhi ya Mumbai`,
+  chart_failed: `Kundli banane mein dikkat hui. Thodi der baad try kijiye 🙏`,
+  chart_overview: `{name}, kundli taiyaar hai 🌟\n\n☀️ Surya rashi: {sunSign}\n🌙 Chandra rashi: {moonSign}\n⬆️ Lagna: {ascendant}\n⭐ Nakshatra: {nakshatra}\n🔄 Dasha: {dasha}\n\n{notable}\n\nKya jaanna chahenge — career, shaadi, ya kuch aur?`,
+  notable_exalted: `Aapka {planet} {sign} mein uchcha hai — bahut achhi sthiti`,
+  notable_vargottama: `Aapka {planet} Vargottam hai — rashi aur navamsh dono mein ek hi rashi. Bahut strong`,
+  notable_strong: `Aapka {planet} {power}% strength pe hai — kaafi mazboot`,
+  notable_default: `Aapki kundli mein kuch interesting hai — detail mein dekhte hain`,
 
-  echo_reply: `{name}, आपने कहा: "{message}"
-
-(अभी testing चल रहा है — पूरे features जल्दी आएंगे! 🌟)`,
+  echo_reply: `{name}, aapne kaha: "{message}"\n\n(Abhi testing chal raha hai — poore features jaldi aayenge 🌟)`,
 };

@@ -1,86 +1,41 @@
 export default {
-  // Onboarding - Step 1: Welcome
-  welcome: `வணக்கம்! 🙏 நான் தாரா — உங்கள் சொந்த ஜோதிட தோழி.
+  welcome: `Vanakkam 🙏 Naan Tara. Sollunga, enna help venum?`,
 
-என்ன help வேணும் சொல்லுங்க? 😊
-- தொழில் / career பத்தி
-- திருமணம் / relationship பத்தி
-- பொதுவா ஜாதகம் பார்க்கணும்
-- அல்லது வேற எதாவது கேளுங்க!`,
+  ask_name_career: `Career pathi? Seri paarkiren. Ungal peru enna?`,
+  ask_name_marriage: `Thirumanam pathi? Seri. Ungal peru enna?`,
+  ask_name_general: `Seri, jathagam paarkiren. Ungal peru enna?`,
+  ask_name_default: `Seri. Mudhal-la ungal peru sollunga?`,
 
-  // Onboarding - Step 2: Acknowledge intent, ask name
-  ask_name_career: `Career பத்தி பார்க்கணும் அருமை! நிச்சயம் help பண்றேன் 🌟
+  greet_name_ask_dob: `{name} — nalla peru 😊 Jathagam paarkiren. Pirandha theadhi?`,
 
-முதல்ல உங்க பேரு சொல்லுங்க? 😊`,
+  ask_time: `Ok. Pirandha neram theriyuma? Theriyaati-na paravala`,
+  ask_place: `Kadeisi — enga pirantheergal? Ooru sollunga`,
 
-  ask_name_marriage: `Relationship பத்தி பார்க்கணும் — புரியுது! நிச்சயம் help பண்றேன் 💫
+  invalid_date: `Andha theadhi puriyala. 15/03/1990 or 15 March 1990 maadiri ezhuthungo`,
+  invalid_time: `Andha neram puriyala. 2:30 PM maadiri ezhuthungo, illa "theriyaadhu" sollunga`,
 
-முதல்ல உங்க பேரு சொல்லுங்க? 😊`,
+  generating_chart: `Oru nimisham, jathagam paarkiren...`,
+  geocode_failed: `Andha ooru kandupudikka mudiyala. Periya nagar sollunga — Chennai, Madurai maadiri`,
+  chart_failed: `Jathagam kanakkiduvathil sikkal. Konjam neram kazhithu try pannunga 🙏`,
 
-  ask_name_general: `ஜாதகம் பார்க்கணும் — அருமை! நிச்சயம் help பண்றேன் 🌟
+  chart_overview: `{name}, ungal jathagam ready 🌟
 
-முதல்ல உங்க பேரு சொல்லுங்க? 😊`,
-
-  ask_name_default: `சரி, நிச்சயம் help பண்றேன்! 🌟
-
-முதல்ல உங்க பேரு சொல்லுங்க? 😊`,
-
-  // Onboarding - Step 3: Greet by name, ask DOB
-  greet_name_ask_dob: `{name}, ரொம்ப நல்ல பேரு! 🌟
-
-உங்க ஜாதகம் பார்க்க, பிறந்த தேதி சொல்லுங்க
-(15/03/1990 அல்லது 15 March 1990 — எப்படி வேணும்னாலும் எழுதுங்க)`,
-
-  // Onboarding - Step 4: Ask time
-  ask_time: `நன்றி! 🙏 இப்ப பிறந்த நேரம் சொல்லுங்க
-
-(உதாரணம்: 2:30 PM, காலையில 6 மணி, மாலை 5 மணி)
-
-நேரம் தெரியாட்டி "theriyaadhu" அல்லது "தெரியாது" னு சொல்லுங்க — பரவாயில்லை! 😊`,
-
-  // Onboarding - Step 5: Ask place
-  ask_place: `கிட்டத்தட்ட முடிஞ்சிடுச்சு! 🎉
-
-கடைசியா — எந்த ஊர்ல பிறந்தீங்க?
-(உதாரணம்: Chennai, Madurai, Coimbatore)`,
-
-  // Onboarding errors
-  invalid_date: `அந்த தேதி புரியல — மறுபடியும் try பண்ணுங்க 🙏
-(15/03/1990 அல்லது 15 March 1990 மாதிரி எழுதுங்க)`,
-
-  invalid_time: `அந்த நேரம் புரியல — மறுபடியும் try பண்ணுங்க 🙏
-(2:30 PM, காலையில 6 மணி, அல்லது "தெரியாது" னு சொல்லுங்க)`,
-
-  // Chart generation
-  generating_chart: `{name}, உங்க ஜாதகம் தயார் பண்றேன்... ஒரு நிமிஷம் பொறுங்க 🔮`,
-
-  geocode_failed: `அந்த ஊர் கண்டுபிடிக்க முடியல 🙏 பெரிய நகரத்தின் பேரு சொல்லுங்க (உதாரணம்: Chennai, Madurai)`,
-
-  chart_failed: `ஜாதகம் கணக்கிடுவதில் சிக்கல் — கொஞ்ச நேரம் கழித்து முயற்சிக்கவும் 🙏`,
-
-  chart_overview: `{name}, உங்க ஜாதகம் தயார்! 🌟
-
-☀️ சூரிய ராசி: {sunSign}
-🌙 சந்திர ராசி: {moonSign}
-⬆️ லக்னம்: {ascendant}
-⭐ நட்சத்திரம்: {nakshatra}
-🔄 தற்போதைய திசை: {dasha}
+☀️ Suriya raasi: {sunSign}
+🌙 Chandra raasi: {moonSign}
+⬆️ Lagnam: {ascendant}
+⭐ Natchathiram: {nakshatra}
+🔄 Thisai: {dasha}
 
 {notable}
 
-இன்னும் நிறைய சொல்ல வேணும்! என்ன பத்தி தெரிஞ்சுக்கணும்?
-- தொழில் மற்றும் பணம்
-- திருமணம் மற்றும் உறவுகள்
-- பரிகாரங்கள்
-- அல்லது எதையும் கேளுங்க!`,
+Enna therinjukkanum — career, thirumanam, illa vera edhaavadhu?`,
 
-  notable_exalted: `உங்க {planet} {sign}-ல உச்சம் பெற்றிருக்கு — இது ரொம்ப நல்ல அமைப்பு!`,
-  notable_vargottama: `உங்க {planet} வர்கோத்தமம் — ராசி, நவாம்சம் ரெண்டிலும் ஒரே ராசி. மிகவும் வலிமையான நிலை!`,
-  notable_strong: `உங்க {planet} {power}% வலிமையோட இருக்கு — இது மிகவும் நல்ல அமைப்பு!`,
-  notable_default: `உங்க ஜாதகத்தில் சுவாரஸ்யமான அமைப்புகள் இருக்கு — விரிவா பார்க்கலாம்!`,
+  notable_exalted: `Unga {planet} {sign}-la uchcha sthaanam — romba nalla amaivu`,
+  notable_vargottama: `Unga {planet} Vargottamam — raasi, navamsam rendulayum ore raasi. Romba strong`,
+  notable_strong: `Unga {planet} {power}% strength-la irukku — nalla amaivu`,
+  notable_default: `Unga jathagathula interesting amaivu irukku — detail-a paarkalam`,
 
-  // Phase 1 echo
-  echo_reply: `{name}, நீங்க சொன்னது: "{message}"
+  echo_reply: `{name}, neenga sonneenga: "{message}"
 
-(இது இன்னும் testing-ல இருக்கு — full features விரைவில் வரும்! 🌟)`,
+(Ippo testing-la irukku — full features seekkiram varum 🌟)`,
 };

@@ -1,8 +1,11 @@
-import { findOrCreateUser } from '../db/users.js';
+import { findOrCreateUser, updateUser } from '../db/users.js';
 import { sendTextMessage, showTyping, markAsRead } from '../whatsapp/sender.js';
 import { handleOnboarding } from './onboardingHandler.js';
+import { getSessionContext, saveExchange } from './sessionManager.js';
+import { classifyIntent } from '../ai/classifier.js';
+import { generateResponse, generateHook } from '../ai/responder.js';
 import { calculateDelay, sleep } from '../utils/delay.js';
-import { t } from '../languages/index.js';
+import { detectLanguage } from '../languages/index.js';
 import { logger } from '../utils/logger.js';
 
 export async function handleIncomingMessage(whatsappId, displayName, messageText, messageId) {
@@ -19,47 +22,165 @@ export async function handleIncomingMessage(whatsappId, displayName, messageText
     const user = await findOrCreateUser(whatsappId, displayName);
     logger.info({ userId: user.id }, 'Processing message');
 
-    // Step 4: Determine response
-    let response;
-    let messageType = 'simple';
-
-    if (!user.is_onboarded) {
-      const result = await handleOnboarding(user, messageText);
-      response = result.response;
-      messageType = result.messageType;
-    } else {
-      // Echo mode for onboarded users (until Phase 3 AI is built)
-      const lang = user.language || 'en';
-      const name = user.display_name || 'friend';
-      response = t(lang, 'echo_reply')
-        .replace('{name}', name)
-        .replace('{message}', messageText);
-      messageType = 'simple';
+    // Update language detection on every message
+    const detectedLang = detectLanguage(messageText);
+    if (detectedLang !== user.language) {
+      await updateUser(user.id, { language: detectedLang }).catch(() => {});
+      user.language = detectedLang;
     }
 
-    // Step 5: Human-like thinking delay
-    const delay = calculateDelay(messageType, response.length);
-    await sleep(delay);
+    // Step 4: Route to appropriate handler
+    if (!user.is_onboarded) {
+      await handleOnboardingFlow(whatsappId, user, messageText, startTime);
+      return;
+    }
 
-    // Step 6: Show typing again right before sending
-    await showTyping(whatsappId);
-    await sleep(500);
+    // Step 5: Handle post-onboarding hook
+    if (user.is_onboarded && !user.chart_summary && user.chart_data) {
+      await handleHookFlow(whatsappId, user, messageText, startTime);
+      return;
+    }
 
-    // Step 7: Send response
-    await sendTextMessage(whatsappId, response);
-
-    const elapsed = Date.now() - startTime;
-    logger.info({ userId: user.id, responseTimeMs: elapsed, messageType }, 'Message processed');
+    // Step 6: Regular AI conversation
+    await handleAIConversation(whatsappId, user, messageText, messageId, startTime);
   } catch (err) {
     logger.error({ err, whatsappId }, 'Failed to handle message');
-
     try {
-      await sendTextMessage(
-        whatsappId,
-        'Sorry, something went wrong on my end. Please try again in a moment.'
-      );
+      await sendTextMessage(whatsappId, 'Ek minute... phir se try kijiye 🙏');
     } catch {
-      logger.error({ whatsappId }, 'Failed to send error message to user');
+      logger.error({ whatsappId }, 'Failed to send error message');
     }
   }
+}
+
+async function handleOnboardingFlow(whatsappId, user, messageText, startTime) {
+  const result = await handleOnboarding(user, messageText);
+  const response = result.response;
+  const messageType = result.messageType;
+
+  // Apply delay
+  const delay = calculateDelay(messageType, response.length);
+  logger.info({ delayMs: delay, messageType }, 'Applying response delay');
+  await sleep(delay);
+
+  await showTyping(whatsappId);
+  await sleep(500);
+  await sendTextMessage(whatsappId, response);
+
+  // If chart was just generated, generate and send hook
+  if (result.messageType === 'reading' && user.chart_data) {
+    await sleep(2000);
+    await showTyping(whatsappId);
+
+    try {
+      const chartData = typeof user.chart_data === 'string'
+        ? JSON.parse(user.chart_data)
+        : user.chart_data;
+
+      // Re-fetch user to get updated chart_data
+      const { getUserByWhatsAppId } = await import('../db/users.js');
+      const freshUser = await getUserByWhatsAppId(whatsappId);
+      const freshChart = freshUser?.chart_data
+        ? (typeof freshUser.chart_data === 'string' ? JSON.parse(freshUser.chart_data) : freshUser.chart_data)
+        : chartData;
+
+      const lang = user.language || 'en';
+      const hook = await generateHook(freshChart, lang);
+
+      if (hook) {
+        const hookDelay = calculateDelay('reading', hook.length);
+        await sleep(hookDelay);
+        await showTyping(whatsappId);
+        await sleep(500);
+
+        // Frame the hook
+        const hookFrames = {
+          hi: 'Aapki kundli dekhi... ek baat hai jo mujhe bahut interesting lagi.\n\n',
+          ta: 'Unga jathagam paarthein... oru vishayam ennai romba kavarndhadhu.\n\n',
+          en: 'I looked at your chart... something really stood out.\n\n',
+          te: 'Mee jatakam chusanu... oka vishayam chaala interesting ga anipinchindi.\n\n',
+          bn: 'Apnar kundli dekhlam... ek ta jinish amake khub akarshon korlo.\n\n',
+        };
+
+        const frame = hookFrames[lang] || hookFrames.en;
+        const hookSuffix = lang === 'ta' ? '\n\nIdhu sari-aa?' :
+                           lang === 'hi' ? '\n\nYeh sahi hai?' :
+                           '\n\nDoes that resonate?';
+
+        await sendTextMessage(whatsappId, frame + hook + hookSuffix);
+
+        // Save hook as chart_summary so we don't regenerate
+        await updateUser(freshUser?.id || user.id, { chart_summary: hook });
+      }
+    } catch (err) {
+      logger.error({ err: err.message }, 'Hook generation failed, continuing without hook');
+    }
+  }
+
+  logger.info({ responseTimeMs: Date.now() - startTime }, 'Onboarding message processed');
+}
+
+async function handleHookFlow(whatsappId, user, messageText, startTime) {
+  // User responded to hook — now show chart overview and continue to AI conversation
+  // Mark that hook has been acknowledged by setting chart_summary
+  if (!user.chart_summary) {
+    await updateUser(user.id, { chart_summary: 'acknowledged' });
+  }
+
+  // Proceed to AI conversation
+  await handleAIConversation(whatsappId, user, messageText, null, startTime);
+}
+
+async function handleAIConversation(whatsappId, user, messageText, messageId, startTime) {
+  const lang = user.language || 'en';
+
+  // Get session context (conversation history)
+  const { conversationId, history } = await getSessionContext(user.id);
+
+  // Classify intent
+  const classification = await classifyIntent(messageText, lang);
+  logger.info({ intent: classification.intent, complexity: classification.complexity }, 'Intent classified');
+
+  // Handle special intents
+  if (classification.intent === 'crisis') {
+    const crisisResponses = {
+      hi: 'Main samajh sakti hoon. Kripya apne kareeb kisi se baat karein. Madad ke liye iCall helpline: 9152987821 par call karein. Main aapke saath hoon.',
+      ta: 'Naan purinjukiren. Thayavu seidhu ungal arugil irukkum oruvaridham pesavum. iCall helpline: 9152987821. Naan ungalukku irukkiren.',
+      en: 'I hear you. Please reach out to someone close to you, or call iCall helpline: 9152987821. I\'m here for you.',
+    };
+    const response = crisisResponses[lang] || crisisResponses.en;
+    await sleep(calculateDelay('simple', response.length));
+    await showTyping(whatsappId);
+    await sleep(500);
+    await sendTextMessage(whatsappId, response);
+    await saveExchange(conversationId, user.id, messageText, response, { language: lang, intent: 'crisis' });
+    return;
+  }
+
+  // Generate AI response
+  const result = await generateResponse(messageText, user, classification, history);
+
+  // Apply human-like delay
+  const delay = calculateDelay(classification.complexity, result.text.length);
+  logger.info({ delayMs: delay, intent: classification.intent }, 'Applying response delay');
+  await sleep(delay);
+
+  await showTyping(whatsappId);
+  await sleep(500);
+  await sendTextMessage(whatsappId, result.text);
+
+  // Save exchange to database
+  await saveExchange(conversationId, user.id, messageText, result.text, {
+    language: lang,
+    intent: classification.intent,
+    model: result.model,
+    responseTimeMs: result.responseTimeMs,
+  });
+
+  logger.info({
+    userId: user.id,
+    responseTimeMs: Date.now() - startTime,
+    intent: classification.intent,
+    model: result.model,
+  }, 'AI message processed');
 }
