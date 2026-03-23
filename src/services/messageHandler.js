@@ -25,26 +25,32 @@ async function withUserLock(whatsappId, fn) {
 }
 
 // Thinking simulation: send a short thinking phrase before complex responses
+// Cooldown: max once per 3 minutes per user to avoid annoyance
+const thinkingCooldowns = new Map();
+
 async function sendWithThinking(whatsappId, responseText, lang, isComplex) {
   if (!isComplex) {
     await sendTextMessage(whatsappId, responseText);
     return;
   }
 
-  // Get thinking phrases from language file
-  const thinkingPhrases = t(lang, 'thinking_phrases');
-  let phrase = 'Hmm...';
-  if (Array.isArray(thinkingPhrases)) {
-    phrase = thinkingPhrases[Math.floor(Math.random() * thinkingPhrases.length)];
+  const now = Date.now();
+  const lastThinking = thinkingCooldowns.get(whatsappId) || 0;
+  const shouldThink = now - lastThinking > 180000; // 3 minutes
+
+  if (shouldThink) {
+    const thinkingPhrases = t(lang, 'thinking_phrases');
+    let phrase = 'Hmm...';
+    if (Array.isArray(thinkingPhrases)) {
+      phrase = thinkingPhrases[Math.floor(Math.random() * thinkingPhrases.length)];
+    }
+    await sendTextMessage(whatsappId, phrase);
+    thinkingCooldowns.set(whatsappId, now);
+    await sleep(2000 + Math.random() * 1500);
+  } else {
+    await sleep(1000 + Math.random() * 1000);
   }
 
-  // Send thinking phrase first
-  await sendTextMessage(whatsappId, phrase);
-
-  // Wait 3-5 seconds (simulating thinking)
-  await sleep(3000 + Math.random() * 2000);
-
-  // Send actual response
   await sendTextMessage(whatsappId, responseText);
 }
 

@@ -755,18 +755,29 @@ function parseTime(text) {
 
 function isJustGreeting(text) {
   const lower = text.toLowerCase().trim();
-  const greetings = ['hi', 'hello', 'hey', 'namaste', 'namaskar', 'namaskaram', 'namaskara',
-    'vanakkam', 'pranam', 'pranaam', 'ji', 'hello ji', 'hi ji', 'hey there',
-    'good morning', 'good evening', 'hii', 'hiii', 'helloo', 'helloji',
+  const greetingWords = ['hi', 'hello', 'hey', 'namaste', 'namaskar', 'namaskaram', 'namaskara',
+    'vanakkam', 'pranam', 'pranaam', 'hii', 'hiii', 'helloo', 'helloji',
     'jai shri krishna', 'radhe radhe', 'ram ram', 'jai mata di', 'jai ho'];
+  // Casual/social words that accompany greetings (not topic-specific)
+  const casualWords = ['ji', 'madam', 'didi', 'sir', 'bhai', 'there',
+    'good', 'morning', 'evening', 'afternoon', 'kaise', 'hain', 'ho',
+    'aap', 'kemiti', 'achanti', 'enna', 'eppadi', 'irukeenga', 'irukkinga',
+    'kemon', 'achen', 'ela', 'unnaru', 'hegiddira', 'sugama',
+    'how', 'are', 'you', 'doing', 'mein', 'badhiya', 'theek', 'thik'];
 
-  // Check if message is just a greeting (possibly with punctuation/emoji)
-  const stripped = lower.replace(/[🙏😊🌟✨💫!?.]+/g, '').trim();
-  if (greetings.includes(stripped)) return true;
+  const stripped = lower.replace(/[🙏😊🌟✨💫!?.,]+/g, '').trim();
+  if (greetingWords.includes(stripped)) return true;
 
-  // "hi" or "hello" with maybe one more word like "ji" or "there"
-  const words = stripped.split(/\s+/);
-  if (words.length <= 2 && greetings.some(g => stripped.includes(g))) return true;
+  // If the message STARTS with a greeting word and the rest is casual/social, it's a greeting
+  const words = stripped.split(/\s+/).filter(w => w.length > 0);
+  if (words.length === 0) return false;
+  const firstIsGreeting = greetingWords.some(g => g === words[0] || g.split(' ')[0] === words[0]);
+  if (firstIsGreeting) {
+    // All remaining words should be casual/social
+    const rest = words.slice(1);
+    if (rest.length === 0) return true;
+    if (rest.length <= 4 && rest.every(w => casualWords.includes(w))) return true;
+  }
 
   return false;
 }
