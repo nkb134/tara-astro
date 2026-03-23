@@ -4,8 +4,8 @@ import { config } from '../config/env.js';
 import { logger } from '../utils/logger.js';
 
 const MODELS = {
-  flash: 'gemini-2.0-flash',
-  pro: 'gemini-2.5-pro-preview-06-05',
+  flash: 'gemini-2.5-flash',
+  pro: 'gemini-2.5-pro',
 };
 
 export class GeminiProvider extends LLMProvider {

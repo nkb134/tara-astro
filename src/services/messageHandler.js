@@ -8,6 +8,22 @@ import { calculateDelay, sleep } from '../utils/delay.js';
 import { detectLanguage, isLanguageNeutral, t } from '../languages/index.js';
 import { logger } from '../utils/logger.js';
 
+// Per-user message queue to prevent race conditions (double intros, state conflicts)
+const userLocks = new Map();
+
+async function withUserLock(whatsappId, fn) {
+  const prev = userLocks.get(whatsappId) || Promise.resolve();
+  const current = prev.then(fn, fn); // run after previous completes, even if it failed
+  userLocks.set(whatsappId, current);
+  // Clean up after completion to avoid memory leak
+  current.finally(() => {
+    if (userLocks.get(whatsappId) === current) {
+      userLocks.delete(whatsappId);
+    }
+  });
+  return current;
+}
+
 // Thinking simulation: send a short thinking phrase before complex responses
 async function sendWithThinking(whatsappId, responseText, lang, isComplex) {
   if (!isComplex) {
@@ -33,6 +49,11 @@ async function sendWithThinking(whatsappId, responseText, lang, isComplex) {
 }
 
 export async function handleIncomingMessage(whatsappId, displayName, messageText, messageId) {
+  // Serialize messages per user to prevent race conditions
+  return withUserLock(whatsappId, () => processMessage(whatsappId, displayName, messageText, messageId));
+}
+
+async function processMessage(whatsappId, displayName, messageText, messageId) {
   const startTime = Date.now();
 
   try {
@@ -77,6 +98,11 @@ export async function handleIncomingMessage(whatsappId, displayName, messageText
     await handleAIConversation(whatsappId, user, messageText, messageId, startTime);
   } catch (err) {
     logger.error({ err, whatsappId }, 'Failed to handle message');
+    // Don't spam the same error — max once per 60 seconds per user
+    const now = Date.now();
+    const lastErr = userLocks.get(`err_${whatsappId}`);
+    if (lastErr && now - lastErr < 60000) return;
+    userLocks.set(`err_${whatsappId}`, now);
     try {
       const errorLang = user?.language || 'en';
       await sendTextMessage(whatsappId, t(errorLang, 'generic_error'));
