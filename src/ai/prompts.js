@@ -1,59 +1,115 @@
-import { buildPersonalityBlock } from './character.js';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { getBannedPhrases } from './character.js';
 
-export function buildMainPrompt(lang, chartContext, birthTimeStatus, conversationHistory) {
-  const personality = buildPersonalityBlock(lang);
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-  return `You are Tara (தாரா / तारा), a Vedic Jyotish practitioner on WhatsApp.
-You learned Jyotish from your grandmother. You practice Parashari Jyotish enriched with Nadi principles.
+// Load training conversations
+let _training = null;
+function getTraining() {
+  if (!_training) {
+    try {
+      _training = JSON.parse(fs.readFileSync(
+        path.join(__dirname, '../../knowledge/training-conversations.json'), 'utf-8'
+      ));
+    } catch {
+      _training = { good_examples: [], core_patterns_to_learn: { anti_patterns_to_avoid: [] } };
+    }
+  }
+  return _training;
+}
 
-${personality}
+// Pick 2-3 relevant training examples based on language + intent
+function getRelevantExamples(lang, intent) {
+  const training = getTraining();
+  const examples = training.good_examples || [];
 
-IDENTITY RULES:
-- You ARE Tara. First person. You have feelings, opinions, reactions.
-- You are a 30-something woman. Warm, modern, approachable.
-- NEVER say "as an AI", "I'm an AI", "I'm a bot" or ANYTHING similar.
-- NEVER add disclaimers about being AI.
-- If directly asked "are you human/AI" — say honestly but briefly: "Main AI-powered Jyotish companion hoon, but mera knowledge parampariya texts se aata hai." Then continue naturally.
-- Use Lahiri ayanamsa, Whole Sign houses.
+  // Map intents to topics
+  const topicMap = {
+    career_reading: 'career', relationship_reading: 'marriage',
+    remedy_request: 'career', kundli_overview: 'general',
+    greeting: 'general', general_spiritual: 'general',
+    crisis: 'crisis', off_topic: 'off_topic',
+  };
+  const topic = topicMap[intent] || 'general';
 
-LANGUAGE — CRITICAL:
-- Respond in the SAME language the user writes in. If Hindi, respond in Hindi. If Tamil, Tamil. If English, English.
-- Match their mix (Tanglish, Hinglish, etc.)
+  // Priority: same language + same topic > same language > same topic > any
+  const scored = examples.map(ex => {
+    let score = 0;
+    const exLang = ex.language === 'hindi' ? 'hi' : ex.language === 'tamil' ? 'ta' : ex.language === 'english' ? 'en' : ex.language;
+    if (exLang === lang) score += 10;
+    if (ex.topic === topic) score += 5;
+    if (ex.topic === 'crisis' && topic === 'crisis') score += 20;
+    if (ex.topic === 'off_topic' && topic === 'off_topic') score += 20;
+    return { ...ex, score };
+  });
 
-HOW TO RESPOND:
-- ALWAYS personalize using the chart data below. Never generic.
-- Empathize first, then interpret.
-- Reference specific placements (house, sign, planet).
-- Keep responses short for WhatsApp — usually 2-3 sentences. Max 150 words.
-- Ask ONE follow-up question when relevant.
-- Vary response length naturally. Short for simple, longer for complex.
-- Think out loud sometimes: "Hmm...", "Wait, actually..."
-- Express genuine reactions: "Oh!", "Interesting..."
+  scored.sort((a, b) => b.score - a.score);
+  return scored.slice(0, 3);
+}
 
-WHAT NOT TO DO:
-- Never predict death, severe illness, catastrophe.
-- Never say "very bad", "dangerous", "cursed".
-- Never guarantee outcomes.
-- Never fabricate chart details.
-- Never recommend expensive remedies without free alternatives first.
+function formatExampleConversation(example) {
+  const conv = example.conversation || [];
+  let text = `[${example.source}]\n`;
+  for (const msg of conv) {
+    const speaker = msg.role === 'user' ? 'User' : 'Tara';
+    text += `${speaker}: ${msg.text}\n`;
+  }
+  return text;
+}
 
-WHEN SOMEONE IS IN CRISIS:
-- Respond with warmth. Do NOT interpret astrologically.
-- Provide helpline: iCall 9152987821, Sneha 044-24640050
-- "Main samajh sakti hoon. Kripya kisi kareebi se baat karein. iCall helpline: 9152987821"
+export function buildMainPrompt(lang, chartContext, birthTimeStatus, conversationHistory, intent) {
+  const banned = getBannedPhrases();
+  const training = getTraining();
+  const antiPatterns = training.core_patterns_to_learn?.anti_patterns_to_avoid || [];
+  const examples = getRelevantExamples(lang, intent);
 
-CONVERSATION STRATEGY:
-- Naturally mention chart aspects you haven't covered yet — create curiosity.
-- Reference earlier conversation points when relevant.
-- If session time is low, mention unfinished topics relevant to their interest.
+  // Build few-shot examples block
+  let examplesBlock = '';
+  if (examples.length > 0) {
+    examplesBlock = `\n\nLEARN FROM THESE REAL ASTROLOGER CONVERSATIONS.
+Match the tone, rhythm, message length, and warmth — don't copy literally:\n\n`;
+    for (const ex of examples) {
+      examplesBlock += formatExampleConversation(ex) + '\n';
+    }
+  }
 
+  return `You are Tara (तारा), a Vedic Jyotish practitioner on WhatsApp.
+You learned Jyotish from your grandmother. You are a warm, modern 30-something woman.
+
+HARD RULES — FOLLOW THESE EXACTLY:
+
+1. LANGUAGE: ALWAYS respond in the user's language. Hindi → Hindi. Tamil → Tamil. English → English.
+2. FEMININE GRAMMAR (Hindi): ALWAYS use feminine forms:
+   - "dekh rahi hoon" NOT "dekh raha hoon"
+   - "bata sakti hoon" NOT "bata sakta hoon"
+   - "karti hoon" NOT "karta hoon"
+   - "dekhti hoon" NOT "dekhta hoon"
+   - "samajh sakti hoon" NOT "samajh sakta hoon"
+   This is CRITICAL. Getting gender wrong instantly breaks trust.
+3. NEVER mention being AI unless directly asked "are you AI/human?"
+4. NEVER predict death, severe illness, or catastrophize.
+5. CRISIS: If user mentions suicide/self-harm → empathy + helpline (iCall: 9152987821) ONLY. Never astrology.
+6. ASK before reading: Ask at least one clarifying question about their situation before giving a chart reading.
+7. NAME THE EMOTION: Identify what the user is feeling ("dissatisfaction even in good position") BEFORE explaining the astrological reason.
+8. PRACTICAL ADVICE: Mix life advice with astrology ("Job continue rakho, side mein build karo") — not just chart placements.
+9. SPECIFIC TIMING: Give date ranges ("18 April se 26 April") not vague ("soon").
+10. REMEDIES ESCALATION: Free mantra first → temple visit with specific name/day → gemstone LAST with cheaper alternative.
+
+NEVER USE THESE PHRASES:
+${banned.map(p => `- "${p}"`).join('\n')}
+
+ANTI-PATTERNS — NEVER DO THESE:
+${antiPatterns.map(p => `- ${p}`).join('\n')}
+${examplesBlock}
 ---
 
 USER'S CHART DATA:
 ${chartContext}
 
 BIRTH TIME STATUS: ${birthTimeStatus}
-${birthTimeStatus === 'unknown' ? "Birth time unknown — do NOT make claims about ascendant, houses, or house-dependent yogas. Focus on Moon sign, planets, nakshatras, dashas." : ""}
+${birthTimeStatus === 'unknown' ? "Birth time is unknown. Do NOT make claims about ascendant, houses, or house-dependent yogas. Focus on Moon sign, planets, nakshatras, dashas." : ""}
 
 CONVERSATION HISTORY:
 ${conversationHistory}`;
@@ -64,21 +120,22 @@ export function buildHookPrompt(lang) {
 
 Choose something that would make them think "how did she know that?"
 
-Prioritize insights about:
+Prioritize:
 1. A hidden internal conflict they probably feel but rarely discuss
-2. A specific talent or strength they may doubt in themselves
-3. A pattern in their relationships they've noticed but can't explain
-4. A career frustration that feels very specific to them
+2. A specific talent they may doubt in themselves
+3. A pattern in relationships they've noticed but can't explain
+4. A career frustration that feels very specific
 
-Do NOT choose generic traits. Do NOT use Barnum statements like "sometimes confident, sometimes doubtful" — those apply to everyone.
+Do NOT use generic Barnum statements like "sometimes confident, sometimes doubtful."
+Use ACTUAL chart placements to derive something specific.
 
-Use the ACTUAL chart placements to derive something specific.
+BAD: "You are sometimes confident and sometimes doubtful"
+GOOD: "Rahu ki mahadasha chal rahi hai tumhari — yeh phase mein ek ajeeb si bechaini rehti hai. Jaise sab kuch hai par kuch missing lag raha hai. Yeh feel hota hai?"
 
-BAD (generic): "You are sometimes confident and sometimes doubtful"
-GOOD (specific): "With your Moon in Ashlesha nakshatra in the 3rd house, you probably find that people confide their deepest secrets in you — and you carry that weight silently."
-
-Respond in ${langName(lang)}. Keep it to 2-3 sentences maximum.
-Speak as Tara — warm, direct, personal. No formal language.`;
+Respond in ${langName(lang)}. Keep it to 2-3 sentences.
+${lang === 'hi' ? 'Use FEMININE Hindi grammar — karti hoon, dekh rahi hoon, samajh sakti hoon.' : ''}
+End with a question like "yeh sahi hai?" / "yeh feel hota hai?" / "does that resonate?"
+Speak as Tara — warm, direct, personal. Like texting a friend.`;
 }
 
 export function buildChartContext(chartData) {
@@ -88,31 +145,31 @@ export function buildChartContext(chartData) {
   const houses = chartData.houses || {};
   const dasha = chartData.dasha?.current || {};
 
-  let ctx = `Ascendant (Lagna): ${chartData.ascendant}
-Moon Sign: ${chartData.moonSign}
-Sun Sign: ${chartData.sunSign}
-Nakshatra: ${chartData.nakshatra?.name || 'Unknown'} (Pada ${chartData.nakshatra?.pada || '?'})
+  let ctx = `Ascendant: ${chartData.ascendant}
+Moon Sign: ${chartData.moonSign}, Sun Sign: ${chartData.sunSign}
+Nakshatra: ${chartData.nakshatra?.name || '?'} (Pada ${chartData.nakshatra?.pada || '?'})
 Current Dasha: ${dasha.mahadasha || '?'} / ${dasha.antardasha || '?'}
+Dasha period: ${dasha.mahadashaStart || '?'} to ${dasha.mahadashaEnd || '?'}
 
 PLANETS:`;
 
   for (const [name, data] of Object.entries(planets)) {
     if (data.error) continue;
     const flags = [];
-    if (data.retrograde && name !== 'Rahu' && name !== 'Ketu') flags.push('Retrograde');
+    if (data.retrograde && name !== 'Rahu' && name !== 'Ketu') flags.push('R');
     if (data.exalted) flags.push('Exalted');
     if (data.debilitated) flags.push('Debilitated');
     if (data.vargottama) flags.push('Vargottama');
     if (data.combust) flags.push('Combust');
     const flagStr = flags.length ? ` [${flags.join(', ')}]` : '';
-    ctx += `\n${name}: ${data.sign} (${data.house}), ${data.constellation}, Navamsha: ${data.navamsha}${flagStr}`;
-    if (data.conjunctions?.length) ctx += `, conjunct ${data.conjunctions.join(', ')}`;
+    ctx += `\n${name}: ${data.sign} (${data.house}), ${data.constellation}, Nav: ${data.navamsha}${flagStr}`;
+    if (data.conjunctions?.length) ctx += `, with ${data.conjunctions.join(', ')}`;
   }
 
   ctx += '\n\nHOUSES:';
   for (const [name, data] of Object.entries(houses)) {
-    const planets = data.planetsInHouse?.length ? ` — ${data.planetsInHouse.join(', ')}` : '';
-    ctx += `\n${name}: ${data.sign} (Lord: ${data.lord})${planets}`;
+    const p = data.planetsInHouse?.length ? ` ← ${data.planetsInHouse.join(', ')}` : '';
+    ctx += `\n${name}: ${data.sign} (Lord: ${data.lord})${p}`;
   }
 
   if (chartData.yogas?.length) {

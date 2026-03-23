@@ -13,7 +13,7 @@ export async function generateResponse(userMessage, user, classification, conver
     .map(m => `${m.role === 'user' ? 'User' : 'Tara'}: ${m.content}`)
     .join('\n');
 
-  const systemPrompt = buildMainPrompt(lang, chartContext, birthTimeStatus, historyStr);
+  const systemPrompt = buildMainPrompt(lang, chartContext, birthTimeStatus, historyStr, classification.intent);
 
   const provider = getProvider();
 

@@ -79,6 +79,8 @@ export async function handleOnboarding(user, messageText) {
   switch (step) {
     case 'new':
       return handleNewUser(user, messageText, lang);
+    case 'awaiting_topic':
+      return handleTopic(user, messageText, lang);
     case 'awaiting_name_dob':
       return handleNameDob(user, messageText, lang);
     case 'awaiting_dob':
@@ -132,10 +134,43 @@ async function handleFrustratedRetry(user, messageText, lang, parsed, currentSte
 
 // --- Step handlers ---
 
+async function handleTopic(user, messageText, lang) {
+  // User responded to "kisme madad karun?" — now ask for birth data
+  const intent = classifyIntent(messageText);
+
+  // Try to extract data if they gave it with their topic
+  const parsed = parseAllFields(messageText);
+  if (parsed.name && parsed.date) {
+    const updates = { display_name: parsed.name, birth_date: parsed.date, preferences: JSON.stringify({ initial_intent: intent }) };
+    if (parsed.time) { updates.birth_time = parsed.time.time; updates.birth_time_known = parsed.time.known; }
+    updates.onboarding_step = parsed.time ? (parsed.place ? 'onboarded' : 'awaiting_place') : 'awaiting_time';
+    await updateUser(user.id, updates);
+    if (parsed.time && parsed.place) {
+      user.birth_date = parsed.date; user.birth_time = parsed.time.time; user.display_name = parsed.name;
+      return generateChartFromPlace(user, parsed.place, lang);
+    }
+    if (parsed.time) return { response: t(lang, 'ask_place'), messageType: 'onboarding' };
+    return { response: t(lang, 'ask_time_after_name_dob').replace('{name}', parsed.name), messageType: 'onboarding' };
+  }
+
+  const intentKey = { career: 'ask_name_career', marriage: 'ask_name_marriage', general: 'ask_name_general' }[intent] || 'ask_name_default';
+  await updateUser(user.id, { onboarding_step: 'awaiting_name_dob', preferences: JSON.stringify({ initial_intent: intent }) });
+  return { response: t(lang, intentKey), messageType: 'onboarding' };
+}
+
 async function handleNewUser(user, messageText, lang) {
   const intent = classifyIntent(messageText);
 
-  // Bug 1: Always greet with full introduction
+  // Detect if this is just a greeting (hi, hello, namaste) vs a topic-specific request
+  const isGreeting = isJustGreeting(messageText);
+
+  if (isGreeting) {
+    // Chat first — don't ask for data yet
+    await updateUser(user.id, { language: lang, onboarding_step: 'awaiting_topic' });
+    return { response: t(lang, 'welcome_greeting'), messageType: 'greeting' };
+  }
+
+  // Topic-specific — ask for data
   const intentKey = {
     career: 'ask_name_career',
     marriage: 'ask_name_marriage',
@@ -503,7 +538,10 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 
 function extractDate(text) {
-  const slashMatch = text.match(/(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{4})/);
+  // Strip ordinal suffixes: "10th" → "10", "1st" → "1", "2nd" → "2", "3rd" → "3"
+  const cleaned = text.replace(/(\d+)(?:st|nd|rd|th)\b/gi, '$1');
+
+  const slashMatch = cleaned.match(/(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{4})/);
   if (slashMatch) {
     const [full, day, month, year] = slashMatch;
     const d = new Date(year, month - 1, day);
@@ -525,7 +563,7 @@ function extractDate(text) {
   ];
 
   for (const pattern of patterns) {
-    const match = text.match(pattern);
+    const match = cleaned.match(pattern);
     if (match) {
       let day, monthStr, year;
       if (/^\d/.test(match[1])) {
@@ -614,6 +652,24 @@ function parseTime(text) {
 }
 
 // --- Helpers ---
+
+function isJustGreeting(text) {
+  const lower = text.toLowerCase().trim();
+  const greetings = ['hi', 'hello', 'hey', 'namaste', 'namaskar', 'namaskaram', 'namaskara',
+    'vanakkam', 'pranam', 'pranaam', 'ji', 'hello ji', 'hi ji', 'hey there',
+    'good morning', 'good evening', 'hii', 'hiii', 'helloo', 'helloji',
+    'jai shri krishna', 'radhe radhe', 'ram ram', 'jai mata di', 'jai ho'];
+
+  // Check if message is just a greeting (possibly with punctuation/emoji)
+  const stripped = lower.replace(/[🙏😊🌟✨💫!?.]+/g, '').trim();
+  if (greetings.includes(stripped)) return true;
+
+  // "hi" or "hello" with maybe one more word like "ji" or "there"
+  const words = stripped.split(/\s+/);
+  if (words.length <= 2 && greetings.some(g => stripped.includes(g))) return true;
+
+  return false;
+}
 
 function classifyIntent(text) {
   const lower = text.toLowerCase();

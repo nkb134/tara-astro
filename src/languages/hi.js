@@ -1,11 +1,13 @@
 export default {
-  // Bug 1: Proper greeting with warmth + self-intro + reassurance + ask + expectation
-  welcome: `Namaste 🙏 Main Tara hoon. Haan mein aapki bilkul madad karungi — aap apna naam aur janam tithi bata denge? Phir hum aapki kundli se samjhenge ki kya karna chahiye`,
+  // Just greeting (hi/hello/namaste) — chat first, don't ask data yet
+  welcome_greeting: `Namaste 🙏 Main Tara hoon — Vedic Jyotish mein expert. Kaise hain aap aaj? Bataiye kisme madad karun?`,
 
-  ask_name_career: `Namaste 🙏 Main Tara hoon. Career ke baare mein zaroor bataungi — apna naam aur janam tithi bata do? Phir kundli se samjhenge ki kya karna chahiye`,
-  ask_name_marriage: `Namaste 🙏 Main Tara hoon. Shaadi ke baare mein zaroor bataungi — apna naam aur janam tithi bata do? Phir kundli se samjhenge aage kya karna chahiye`,
-  ask_name_general: `Namaste 🙏 Main Tara hoon. Haan kundli dekh deti hoon — apna naam aur janam tithi bata do? Phir kundli se samjhenge ki kya karna chahiye`,
-  ask_name_default: `Namaste 🙏 Main Tara hoon. Haan mein aapki bilkul madad karungi — apna naam aur janam tithi bata denge? Phir kundli se samjhenge ki kya karna chahiye`,
+  // Topic-specific intros — ask for data
+  welcome: `Namaste 🙏 Main Tara hoon. Haan zaroor madad karungi — main kundli se dekhungi ki stars kya keh rahe hain. Bas apna naam aur janam tithi bata dijiye?`,
+  ask_name_career: `Namaste 🙏 Main Tara hoon. Haan career mein zaroor madad karungi — kundli se dekhungi ki stars kya keh rahe hain. Apna naam aur janam tithi bata dijiye?`,
+  ask_name_marriage: `Namaste 🙏 Main Tara hoon. Achha shaadi ke baare mein — haan zaroor madad karungi. Kundli se dekhungi. Apna naam aur janam tithi bata dijiye?`,
+  ask_name_general: `Namaste 🙏 Main Tara hoon. Haan kundli dekh deti hoon — apna naam aur janam tithi bata dijiye?`,
+  ask_name_default: `Namaste 🙏 Main Tara hoon. Haan zaroor madad karungi — kundli se dekhungi. Apna naam aur janam tithi bata dijiye?`,
 
   // Bug 7: Warm follow-ups
   ask_dob_after_name: `{name} ji — janam tithi bata dijiye?`,

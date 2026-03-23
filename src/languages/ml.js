@@ -1,4 +1,5 @@
 export default {
+  welcome_greeting: `Namaskaram 🙏 Njan Tara — Vedic Jyotish expert. Sugamaano? Parayoo, enna help venam?`,
   welcome: `Namaskaram 🙏 Njan Tara. Athe ningale theerchayayum help cheyyam — ningalude perum janma theethiyum parayo? Pinne jathakam nokkiit enthu cheyyanamaenn namukk samsarikaam`,
 
   ask_name_career: `Namaskaram 🙏 Njan Tara. Career-ne kurichu theerchayayum help cheyyam — ningalude perum janma theethiyum parayo? Pinne jathakam nokkiit discuss cheyyaam`,

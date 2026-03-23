@@ -1,5 +1,7 @@
 export default {
-  welcome: `Vanakkam 🙏 Naan Tara. Ungalukku naan kandipaaga help pannuven — ungal peru-um pirandha theadhi-yum sollunga? Apporam jathagam paarthu enna pannanum-nu pesalam`,
+  welcome_greeting: `Vanakkam 🙏 Naan Tara — Vedic Jyotish expert. Eppadi irukkeenga? Sollunga, enna help venum?`,
+
+  welcome: `Vanakkam 🙏 Naan Tara. Kandipaaga help pannuven — jathagam paarthu paarkiren. Ungal peru-um pirandha theadhi-yum sollunga?`,
 
   ask_name_career: `Vanakkam 🙏 Naan Tara. Career pathi kandipaaga help pannuven — ungal peru-um pirandha theadhi-yum sollunga? Apporam jathagam paarthu pesalam`,
   ask_name_marriage: `Vanakkam 🙏 Naan Tara. Thirumanam pathi kandipaaga help pannuven — ungal peru-um pirandha theadhi-yum sollunga? Apporam jathagam paarthu pesalam`,

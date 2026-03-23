@@ -1,4 +1,5 @@
 export default {
+  welcome_greeting: `Namaskaram 🙏 Nenu Tara — Vedic Jyotish expert. Eppudu unnaru? Cheppandi, emi help kavali?`,
   welcome: `Namaskaram 🙏 Nenu Tara. Avunu mee ki tappakunda help chestanu — mee peru mattu puttina tariku cheppandi? Tarvata mee jatakam chusi emi cheyali ani discuss cheddaam`,
 
   ask_name_career: `Namaskaram 🙏 Nenu Tara. Career vishayamlo tappakunda help chestanu — mee peru mattu puttina tariku cheppandi? Tarvata jatakam chusi discuss cheddaam`,

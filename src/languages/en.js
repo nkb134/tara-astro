@@ -1,5 +1,7 @@
 export default {
-  welcome: `Namaste 🙏 I'm Tara. Yes absolutely — share your name and date of birth? Then we'll look at your chart together and figure out the way forward`,
+  welcome_greeting: `Namaste 🙏 I'm Tara — Vedic Jyotish expert. How are you today? What can I help with?`,
+
+  welcome: `Namaste 🙏 I'm Tara. Sure — I'll look at your chart and see what the stars say. Share your name and date of birth?`,
 
   ask_name_career: `Namaste 🙏 I'm Tara. Career guidance, sure — share your name and date of birth? Then we'll look at your chart together`,
   ask_name_marriage: `Namaste 🙏 I'm Tara. Marriage guidance, sure — share your name and date of birth? Then we'll look at your chart together`,
