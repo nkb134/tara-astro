@@ -35,3 +35,39 @@ Full spec in tara-spec.md. Read it before any work.
 - Do NOT hardcode API keys — always use process.env
 - Do NOT build all phases at once
 - Do NOT add AI/bot disclaimers in user-facing messages
+
+## Verification Rules (MANDATORY)
+
+After EVERY code change, you MUST:
+
+1. SELF-REVIEW: Before pushing, use subagent qa-reviewer to review all changed files
+2. TRACE THE FLOW: Mentally walk through at least 2 conversation scenarios
+   (one Hindi, one Tamil) and verify each message is correct
+3. CHECK LANGUAGES: Verify that every user-facing string exists in ALL 7 language files
+4. CHECK BANNED PHRASES: Grep for banned phrases from tara-character.json in all code
+5. TEST PARSING: For any parser changes, verify these inputs work:
+   - "Nissar 10 Jun 1990" → name + DOB
+   - "11:45PM Jagdalpur" → time + place
+   - "don't know" → unknown time flag
+   - "jagdalpur, chattisgarh" → geocode succeeds
+6. CHECK ERROR PATHS: For any API integration, verify what happens when it fails
+
+After pushing, run:
+- curl https://tara-astro-production.up.railway.app/health (verify deployed)
+- Check Railway logs for any startup errors
+
+## Compounding Errors Log
+Every time a bug is found during testing, add it here so it never happens again:
+
+- BUG: Language switches to English during onboarding when user sends name/date
+  FIX: Store language from first message, never re-detect from neutral inputs
+- BUG: Geocoding fails for Indian Tier 2/3 cities
+  FIX: Local india-cities.json (716 cities) checked before API
+- BUG: Error message repeated 3 times
+  FIX: Track last error, never send same error within 60 seconds
+- BUG: Combined time+place input ignored
+  FIX: Parser must extract all fields from single message
+- BUG: No greeting/self-introduction in first message
+  FIX: First message MUST always include "Main Tara hoon" / "Naan Tara"
+- BUG: Onboarding messages too curt and mechanical
+  FIX: Follow pattern: Warmth → Reassurance → Ask → Set expectation

@@ -399,24 +399,49 @@ function parseAllFields(text) {
     remaining = timeResult.remaining.trim();
   }
 
-  // Bug 3: Check remaining text for place (against india-cities.json)
-  if (remaining.length > 1) {
+  // If we have a date and remaining text, it's likely a name (not a place)
+  // Extract name BEFORE trying place to avoid "Nissar" being treated as a city
+  if (remaining.length > 1 && result.date) {
+    result.name = extractName(remaining);
+    // After extracting name, check if there's ALSO a place in the remaining text
+    // Only do place lookup against known cities DB (not fallback)
+    const placeResult = extractPlaceStrict(remaining);
+    if (placeResult) {
+      result.place = placeResult.place;
+    }
+  } else if (remaining.length > 1) {
+    // No date found — try place lookup (with fallback for standalone place inputs)
     const placeResult = extractPlace(remaining);
     if (placeResult) {
       result.place = placeResult.place;
       remaining = placeResult.remaining.trim();
     }
-  }
-
-  // Whatever remains might be a name
-  if (remaining.length > 1 && !result.date && !result.time && !result.place) {
-    result.name = extractName(remaining);
-  } else if (remaining.length > 1 && result.date) {
-    // Text before the date might be the name
-    result.name = extractName(remaining);
+    // If no place found either, treat as name
+    if (!result.place && remaining.length > 1) {
+      result.name = extractName(remaining);
+    }
   }
 
   return result;
+}
+
+// Strict place extraction — only matches known cities in DB, no fallback
+function extractPlaceStrict(text) {
+  let cities;
+  try {
+    const fs = await_import_fs();
+    const pathMod = await_import_path();
+    const citiesPath = pathMod.join(process.cwd(), 'knowledge/india-cities.json');
+    cities = JSON.parse(fs.readFileSync(citiesPath, 'utf-8'));
+  } catch { return null; }
+
+  const cleaned = text.toLowerCase().replace(/[,.\-]+/g, ' ').trim();
+  const parts = cleaned.split(/\s+/).filter(p => p.length > 1);
+
+  for (const part of parts) {
+    if (cities[part]) return { place: part, remaining: text.replace(new RegExp(part, 'i'), '').trim() };
+  }
+  return null;
 }
 
 function extractPlace(text) {
@@ -424,8 +449,8 @@ function extractPlace(text) {
   let cities;
   try {
     const fs = await_import_fs();
-    const path = await_import_path();
-    const citiesPath = path.join(process.cwd(), 'knowledge/india-cities.json');
+    const pathMod = await_import_path();
+    const citiesPath = pathMod.join(process.cwd(), 'knowledge/india-cities.json');
     cities = JSON.parse(fs.readFileSync(citiesPath, 'utf-8'));
   } catch {
     return null;

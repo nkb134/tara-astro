@@ -1,10 +1,10 @@
 export default {
-  welcome: `Namaste 🙏 I'm Tara. I'd love to help you — share your name and date of birth? Then we'll look at your chart together and figure out the way forward`,
+  welcome: `Namaste 🙏 I'm Tara. Yes absolutely — share your name and date of birth? Then we'll look at your chart together and figure out the way forward`,
 
-  ask_name_career: `Namaste 🙏 I'm Tara. I'd love to help with career guidance — share your name and date of birth? Then we'll look at your chart together`,
-  ask_name_marriage: `Namaste 🙏 I'm Tara. I'd love to help with marriage guidance — share your name and date of birth? Then we'll look at your chart together`,
-  ask_name_general: `Namaste 🙏 I'm Tara. I'd love to help — share your name and date of birth? Then we'll look at your chart together and figure out the way forward`,
-  ask_name_default: `Namaste 🙏 I'm Tara. I'd love to help you — share your name and date of birth? Then we'll look at your chart together and figure out the way forward`,
+  ask_name_career: `Namaste 🙏 I'm Tara. Career guidance, sure — share your name and date of birth? Then we'll look at your chart together`,
+  ask_name_marriage: `Namaste 🙏 I'm Tara. Marriage guidance, sure — share your name and date of birth? Then we'll look at your chart together`,
+  ask_name_general: `Namaste 🙏 I'm Tara. Sure, let's look at your chart — share your name and date of birth? We'll figure out the way forward together`,
+  ask_name_default: `Namaste 🙏 I'm Tara. Yes absolutely — share your name and date of birth? Then we'll look at your chart together and figure out the way forward`,
 
   ask_dob_after_name: `{name} — and your date of birth?`,
   ask_time_after_name_dob: `{name} 😊 ok. Do you know your birth time? If not, no worries — I can still tell you a lot without it`,

@@ -92,7 +92,8 @@ async function handleOnboardingFlow(whatsappId, user, messageText, startTime) {
   await sendTextMessage(whatsappId, response);
 
   // If chart was just generated, generate and send hook
-  if (result.messageType === 'reading' && user.chart_data) {
+  // Note: use result.chartData (returned by generateChartFromPlace) or re-fetch from DB
+  if (result.messageType === 'reading') {
     await sleep(2000);
     await showTyping(whatsappId);
 
