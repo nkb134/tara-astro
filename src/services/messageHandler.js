@@ -1,35 +1,64 @@
 import { findOrCreateUser } from '../db/users.js';
-import { sendTextMessage } from '../whatsapp/sender.js';
+import { sendTextMessage, showTyping, markAsRead } from '../whatsapp/sender.js';
+import { handleOnboarding } from './onboardingHandler.js';
+import { calculateDelay, sleep } from '../utils/delay.js';
+import { t } from '../languages/index.js';
 import { logger } from '../utils/logger.js';
 
-export async function handleIncomingMessage(whatsappId, displayName, messageText) {
+export async function handleIncomingMessage(whatsappId, displayName, messageText, messageId) {
   const startTime = Date.now();
 
   try {
-    // Step 1: Find or create user
+    // Step 1: Immediately mark as read (blue ticks)
+    await markAsRead(messageId);
+
+    // Step 2: Show typing indicator
+    await showTyping(whatsappId);
+
+    // Step 3: Find or create user
     const user = await findOrCreateUser(whatsappId, displayName);
-    logger.info({ userId: user.id, whatsappId }, 'Processing message');
+    logger.info({ userId: user.id }, 'Processing message');
 
-    // Phase 1: Echo the message back
-    const echoText = `Namaste! I'm Tara, your Jyotish companion. You said: "${messageText}"
+    // Step 4: Determine response
+    let response;
+    let messageType = 'simple';
 
-(Phase 1 echo mode — full features coming soon!)`;
+    if (!user.is_onboarded) {
+      const result = await handleOnboarding(user, messageText);
+      response = result.response;
+      messageType = result.messageType;
+    } else {
+      // Phase 1: Echo mode for onboarded users
+      const lang = user.language || 'en';
+      const name = user.display_name || 'friend';
+      response = t(lang, 'echo_reply')
+        .replace('{name}', name)
+        .replace('{message}', messageText);
+      messageType = 'simple';
+    }
 
-    await sendTextMessage(whatsappId, echoText);
+    // Step 5: Human-like thinking delay
+    const delay = calculateDelay(messageType, response.length);
+    await sleep(delay);
+
+    // Step 6: Show typing again right before sending (in case delay was long)
+    await showTyping(whatsappId);
+    await sleep(500);
+
+    // Step 7: Send response
+    await sendTextMessage(whatsappId, response);
 
     const elapsed = Date.now() - startTime;
-    logger.info({ userId: user.id, responseTimeMs: elapsed }, 'Message processed');
+    logger.info({ userId: user.id, responseTimeMs: elapsed, messageType }, 'Message processed');
   } catch (err) {
     logger.error({ err, whatsappId }, 'Failed to handle message');
 
-    // Try to send error message to user
     try {
       await sendTextMessage(
         whatsappId,
-        'Sorry, I encountered an error. Please try again in a moment.'
+        'Sorry, something went wrong on my end. Please try again in a moment.'
       );
     } catch {
-      // If we can't even send the error message, just log it
       logger.error({ whatsappId }, 'Failed to send error message to user');
     }
   }

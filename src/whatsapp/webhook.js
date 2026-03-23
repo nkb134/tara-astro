@@ -2,7 +2,6 @@ import crypto from 'crypto';
 import { config } from '../config/env.js';
 import { logger } from '../utils/logger.js';
 import { handleIncomingMessage } from '../services/messageHandler.js';
-import { markAsRead } from './sender.js';
 
 // GET /webhook — Meta verification
 export function verifyWebhook(req, res) {
@@ -53,11 +52,9 @@ export async function receiveMessage(req, res) {
 
           logger.info({ whatsappId, messageId }, 'Incoming message');
 
-          // Mark as read
-          markAsRead(messageId).catch(() => {});
-
           // Process message (don't await — already responded 200)
-          handleIncomingMessage(whatsappId, contactName, messageText).catch(err => {
+          // markAsRead is now handled inside messageHandler
+          handleIncomingMessage(whatsappId, contactName, messageText, messageId).catch(err => {
             logger.error({ err, whatsappId }, 'Error handling message');
           });
         }

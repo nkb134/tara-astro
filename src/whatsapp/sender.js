@@ -2,6 +2,7 @@ import axios from 'axios';
 import { config } from '../config/env.js';
 import { WHATSAPP_API_URL, MAX_WHATSAPP_MESSAGE_LENGTH } from '../config/constants.js';
 import { logger } from '../utils/logger.js';
+import { sleep } from '../utils/delay.js';
 
 const api = axios.create({
   baseURL: `${WHATSAPP_API_URL}/${config.whatsapp.phoneNumberId}`,
@@ -12,11 +13,15 @@ const api = axios.create({
 });
 
 export async function sendTextMessage(to, text) {
-  // Split long messages
   const chunks = splitMessage(text);
 
-  for (const chunk of chunks) {
-    await sendSingleMessage(to, chunk);
+  for (let i = 0; i < chunks.length; i++) {
+    // Show typing between split messages
+    if (i > 0) {
+      await showTyping(to);
+      await sleep(1000 + Math.random() * 1000); // 1-2s between splits
+    }
+    await sendSingleMessage(to, chunks[i]);
   }
 }
 
@@ -38,7 +43,7 @@ async function sendSingleMessage(to, text, retries = 3) {
         'Failed to send WhatsApp message'
       );
       if (attempt === retries) throw err;
-      await new Promise(r => setTimeout(r, 1000 * attempt));
+      await sleep(1000 * attempt);
     }
   }
 }
@@ -53,7 +58,6 @@ function splitMessage(text) {
       chunks.push(remaining);
       break;
     }
-    // Find a good split point (newline or space)
     let splitAt = remaining.lastIndexOf('\n', MAX_WHATSAPP_MESSAGE_LENGTH);
     if (splitAt < MAX_WHATSAPP_MESSAGE_LENGTH / 2) {
       splitAt = remaining.lastIndexOf(' ', MAX_WHATSAPP_MESSAGE_LENGTH);
@@ -75,6 +79,21 @@ export async function markAsRead(messageId) {
       message_id: messageId,
     });
   } catch (err) {
-    logger.warn({ messageId, error: err.message }, 'Failed to mark message as read');
+    logger.warn({ messageId, error: err.message }, 'Failed to mark as read');
+  }
+}
+
+export async function showTyping(to) {
+  try {
+    await api.post('/messages', {
+      messaging_product: 'whatsapp',
+      recipient_type: 'individual',
+      to,
+      type: 'reaction',
+      status: 'typing',
+    });
+  } catch {
+    // Typing indicator is best-effort — don't fail on it
+    logger.debug({ to }, 'Typing indicator not supported, using read receipt fallback');
   }
 }
