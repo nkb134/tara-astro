@@ -54,4 +54,6 @@ Kya jaanna hai — career, shaadi, ya kuch aur?`,
   hook_frame: `Kundli dekhi... ek baat hai jo mujhe bahut interesting lagi.\n\n`,
   hook_suffix: `\n\nYeh sahi hai?`,
   thinking_phrases: ['Hmm...', 'Dekho...', 'Ek minute...', 'Achha toh...', 'Suno...'],
+
+  generic_error: 'Ek minute... kuch gadbad ho gayi. Phir se try kijiye 🙏',
 };

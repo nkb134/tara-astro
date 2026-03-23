@@ -5,7 +5,7 @@ import { getSessionContext, saveExchange } from './sessionManager.js';
 import { classifyIntent } from '../ai/classifier.js';
 import { generateResponse, generateHook } from '../ai/responder.js';
 import { calculateDelay, sleep } from '../utils/delay.js';
-import { detectLanguage, t } from '../languages/index.js';
+import { detectLanguage, isLanguageNeutral, t } from '../languages/index.js';
 import { logger } from '../utils/logger.js';
 
 // Thinking simulation: send a short thinking phrase before complex responses
@@ -46,11 +46,19 @@ export async function handleIncomingMessage(whatsappId, displayName, messageText
     const user = await findOrCreateUser(whatsappId, displayName);
     logger.info({ userId: user.id }, 'Processing message');
 
-    // Update language detection on every message
-    const detectedLang = detectLanguage(messageText);
-    if (detectedLang !== user.language) {
-      await updateUser(user.id, { language: detectedLang }).catch(() => {});
-      user.language = detectedLang;
+    // Language detection during onboarding is handled by onboardingHandler.js
+    // (which correctly skips re-detection on neutral inputs like names/dates).
+    // For post-onboarding messages, update language only if non-neutral and non-English detected.
+    if (user.is_onboarded) {
+      if (!isLanguageNeutral(messageText)) {
+        const detectedLang = detectLanguage(messageText);
+        if (detectedLang !== 'en' && detectedLang !== user.language) {
+          await updateUser(user.id, { language: detectedLang }).catch(err => {
+            logger.warn({ err: err.message, userId: user.id }, 'Failed to persist language update');
+          });
+          user.language = detectedLang;
+        }
+      }
     }
 
     // Step 4: Route to appropriate handler
@@ -70,7 +78,8 @@ export async function handleIncomingMessage(whatsappId, displayName, messageText
   } catch (err) {
     logger.error({ err, whatsappId }, 'Failed to handle message');
     try {
-      await sendTextMessage(whatsappId, 'Ek minute... phir se try kijiye 🙏');
+      const errorLang = user?.language || 'en';
+      await sendTextMessage(whatsappId, t(errorLang, 'generic_error'));
     } catch {
       logger.error({ whatsappId }, 'Failed to send error message');
     }

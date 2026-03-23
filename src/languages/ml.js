@@ -39,4 +39,6 @@ export default {
   hook_frame: `Jaatakam nokkiyappol... oru kaaryam enne valare aakarsichchu.\n\n`,
   hook_suffix: `\n\nIthu shariyaano?`,
   thinking_phrases: ['Hmm...', 'Nokkatte...', 'Oru nimisham...', 'Interesting...'],
+
+  generic_error: 'Oru nimisham... oru problem vannu. Veendum try cheyyoo 🙏',
 };

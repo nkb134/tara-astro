@@ -50,4 +50,6 @@ What do you want to know — career, marriage, or something else?`,
   hook_frame: `I looked at your chart... something really stood out.\n\n`,
   hook_suffix: `\n\nDoes that resonate?`,
   thinking_phrases: ['Hmm...', 'So...', 'One sec...', 'Interesting...', 'Look...'],
+
+  generic_error: 'Hmm something went wrong on my end... try again in a minute 🙏',
 };

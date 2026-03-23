@@ -39,4 +39,6 @@ export default {
   hook_frame: `Apnar kundli dekhlam... ek ta jinish amake khub akarshon korlo.\n\n`,
   hook_suffix: `\n\nEta thik?`,
   thinking_phrases: ['Hmm...', 'Dekhun...', 'Ek minute...', 'Interesting...'],
+
+  generic_error: 'Ek minute... kichu ekta problem hoyeche. Abar try korun 🙏',
 };

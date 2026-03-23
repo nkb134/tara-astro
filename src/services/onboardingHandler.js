@@ -5,6 +5,16 @@ import { generateBirthChart } from '../jyotish/calculator.js';
 import { formatChartOverview } from '../jyotish/chartFormatter.js';
 import { logger } from '../utils/logger.js';
 
+// Convert birth_date (may be Date object from PostgreSQL or string) to YYYY-MM-DD
+function formatBirthDate(val) {
+  if (!val) return null;
+  if (val instanceof Date) {
+    return val.toISOString().split('T')[0];
+  }
+  if (typeof val === 'string') return val.split('T')[0];
+  return null;
+}
+
 // Bug 5: Track last error to avoid repeats
 const errorTracker = new Map();
 
@@ -360,9 +370,34 @@ async function handleTime(user, messageText, lang) {
   return { response: t(lang, 'invalid_time'), messageType: 'simple' };
 }
 
+// Single non-place tokens (acknowledgments, questions, filler)
+const NON_PLACE_TOKENS = new Set([
+  'ok', 'okay', 'yes', 'no', 'haan', 'nahi', 'ha', 'nhi', 'ji', 'theek',
+  'thik', 'accha', 'acha', 'sahi', 'done', 'hmm', 'ohh', 'oh',
+  'kya', 'kyu', 'kyun', 'kaise', 'why', 'what', 'how',
+  'ho', 'gya', 'hogya', 'hua', 'hai', 'hain',
+  'seri', 'illa', 'enna', 'achu', 'sollunga',
+  'wait', 'ruko', 'abhi', 'ek', 'min', 'hello', 'hi',
+  'haan', 'acha', 'theek', 'sahi', 'avunu', 'chettu',
+  'bolo', 'batao', 'bata', 'tell', 'me',
+]);
+
+function isNonPlaceInput(text) {
+  const lower = text.toLowerCase().replace(/[?!.,]+/g, '').trim();
+  // Every word must be a non-place token
+  const words = lower.split(/\s+/).filter(w => w.length > 0);
+  if (words.length === 0) return true;
+  return words.every(w => NON_PLACE_TOKENS.has(w));
+}
+
 async function handlePlace(user, messageText, lang) {
   const place = messageText.trim();
   if (place.length < 2) return { response: t(lang, 'ask_place'), messageType: 'simple' };
+
+  // Filter out non-place responses (acknowledgments, questions, etc.)
+  if (isNonPlaceInput(place)) {
+    return { response: t(lang, 'ask_place'), messageType: 'simple' };
+  }
 
   // Check if user is responding to disambiguation (sent "1", "2", etc.)
   const prefs = typeof user.preferences === 'string' ? JSON.parse(user.preferences || '{}') : (user.preferences || {});
@@ -390,8 +425,7 @@ async function generateChartFromGeo(user, geoData, lang) {
   const name = user.display_name || 'friend';
   try {
     const birthTime = (user.birth_time || '12:00').slice(0, 5);
-    const birthDate = typeof user.birth_date === 'string'
-      ? user.birth_date.split('T')[0] : String(user.birth_date);
+    const birthDate = formatBirthDate(user.birth_date);
 
     const chartData = generateBirthChart(
       birthDate, birthTime, geoData.lat, geoData.lng,
@@ -447,8 +481,7 @@ async function generateChartFromPlace(user, place, lang) {
 
   try {
     const birthTime = (user.birth_time || '12:00').slice(0, 5);
-    const birthDate = typeof user.birth_date === 'string'
-      ? user.birth_date.split('T')[0] : String(user.birth_date);
+    const birthDate = formatBirthDate(user.birth_date);
 
     const chartData = generateBirthChart(
       birthDate, birthTime, geo.lat, geo.lng, geo.timezone, geo.formattedPlace
