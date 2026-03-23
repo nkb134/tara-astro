@@ -1,23 +1,30 @@
 export default {
-  welcome: `Vanakkam 🙏 Naan Tara. Seri madad panren — ungal peru-um pirandha theadhi-yum sollunga?`,
+  welcome: `Vanakkam 🙏 Naan Tara. Ungalukku naan kandipaaga help pannuven — ungal peru-um pirandha theadhi-yum sollunga? Apporam jathagam paarthu enna pannanum-nu pesalam`,
 
-  ask_name_career: `Career pathi? Seri paarkiren — peru-um pirandha theadhi-yum sollunga?`,
-  ask_name_marriage: `Thirumanam pathi? Seri — peru-um pirandha theadhi-yum sollunga?`,
-  ask_name_general: `Seri jathagam paarkiren — peru-um pirandha theadhi-yum sollunga?`,
-  ask_name_default: `Seri — peru-um pirandha theadhi-yum sollunga?`,
+  ask_name_career: `Vanakkam 🙏 Naan Tara. Career pathi kandipaaga help pannuven — ungal peru-um pirandha theadhi-yum sollunga? Apporam jathagam paarthu pesalam`,
+  ask_name_marriage: `Vanakkam 🙏 Naan Tara. Thirumanam pathi kandipaaga help pannuven — ungal peru-um pirandha theadhi-yum sollunga? Apporam jathagam paarthu pesalam`,
+  ask_name_general: `Vanakkam 🙏 Naan Tara. Ungalukku naan kandipaaga help pannuven — ungal peru-um pirandha theadhi-yum sollunga? Apporam jathagam paarthu enna pannanum-nu pesalam`,
+  ask_name_default: `Vanakkam 🙏 Naan Tara. Ungalukku naan kandipaaga help pannuven — ungal peru-um pirandha theadhi-yum sollunga? Apporam jathagam paarthu enna pannanum-nu pesalam`,
 
   ask_dob_after_name: `{name} — seri, pirandha theadhi sollunga?`,
-  ask_time_after_name_dob: `{name} 😊 pirandha neram theriyuma? Theriyaati-na paravala`,
-
-  ask_time: `Ok... pirandha neram theriyuma? Theriyaatinalum paravala`,
+  ask_time_after_name_dob: `{name} 😊 seri. Pirandha neram theriyuma? Theriyaati-na paravala, neram illaamalayum niraiya vishayam solla mudiyum`,
+  ask_time: `Ok... pirandha neram theriyuma? Theriyaati-na paravala, neram illaamalayum niraiya vishayam solla mudiyum`,
   ask_place: `Seri. Enga pirantheergal? Ooru sollunga`,
+  ask_place_after_unknown_time: `Paravala, neram illaamalayum romba vishayam theriyum jathagathula. Enga pirantheergal?`,
 
   invalid_date: `Hmm andha theadhi puriyala... 15/03/1990 or 15 March 1990 maadiri sollunga`,
   invalid_time: `Hmm andha neram puriyala... 2:30 PM maadiri sollunga, illa "theriyaadhu" sollunga`,
 
-  generating_chart: `Hmm... jathagam paarkiren oru nimisham`,
+  generating_chart: `Hmm... ungal jathagam paarkiren, oru nimisham`,
   geocode_failed: `Hmm idha ooru theriala... paakkathula oru periya ooru sollunga?`,
-  chart_failed: `Jathagathula konjam sikkal... konjam neram kazhithu try pannunga 🙏`,
+  geocode_failed_2: `Sorry, innum theriala. Nearest periya city sollunga — Chennai, Madurai maadiri`,
+  chart_failed: `Hmm... oru nimisham, mendum try panniren`,
+  chart_failed_2: `Innum sikkal irukku... konjam neram kazhithu try pannunga 🙏`,
+
+  frustration_apology: `Sorry, en thappu — mendum paarkiren`,
+
+  disambiguate_few: `{city}-nnu pala oorugal irukku — {options}?`,
+  disambiguate_many: `Idhe peyar-la niraiya oorugal irukku... state-um sollunga?`,
 
   chart_overview: `{name}, jathagam ready 🌟
 

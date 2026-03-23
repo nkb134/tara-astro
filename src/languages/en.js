@@ -1,23 +1,30 @@
 export default {
-  welcome: `Namaste 🙏 I'm Tara. Yes I can help — what's your name and date of birth?`,
+  welcome: `Namaste 🙏 I'm Tara. I'd love to help you — share your name and date of birth? Then we'll look at your chart together and figure out the way forward`,
 
-  ask_name_career: `Career guidance? Sure — what's your name and date of birth?`,
-  ask_name_marriage: `Marriage guidance? Sure — your name and date of birth?`,
-  ask_name_general: `Sure let me check your chart — name and date of birth?`,
-  ask_name_default: `Sure — what's your name and date of birth?`,
+  ask_name_career: `Namaste 🙏 I'm Tara. I'd love to help with career guidance — share your name and date of birth? Then we'll look at your chart together`,
+  ask_name_marriage: `Namaste 🙏 I'm Tara. I'd love to help with marriage guidance — share your name and date of birth? Then we'll look at your chart together`,
+  ask_name_general: `Namaste 🙏 I'm Tara. I'd love to help — share your name and date of birth? Then we'll look at your chart together and figure out the way forward`,
+  ask_name_default: `Namaste 🙏 I'm Tara. I'd love to help you — share your name and date of birth? Then we'll look at your chart together and figure out the way forward`,
 
   ask_dob_after_name: `{name} — and your date of birth?`,
-  ask_time_after_name_dob: `{name} 😊 do you know your birth time? Totally fine if you don't`,
-
-  ask_time: `Ok... know your birth time? Totally fine if you don't`,
-  ask_place: `And which city were you born in?`,
+  ask_time_after_name_dob: `{name} 😊 ok. Do you know your birth time? If not, no worries — I can still tell you a lot without it`,
+  ask_time: `Ok... do you know your birth time? If not, no worries — I can still tell you a lot without it`,
+  ask_place: `Got it. And where were you born? Just the city name`,
+  ask_place_after_unknown_time: `That's ok, I can still read a lot from your chart without the exact time. Where were you born?`,
 
   invalid_date: `Hmm didn't catch that date... try something like 15/03/1990 or 15 March 1990`,
   invalid_time: `Hmm didn't catch that time... try like 2:30 PM, or just say "don't know"`,
 
-  generating_chart: `Hmm... checking your chart one sec`,
+  generating_chart: `Hmm... looking at your chart, give me a moment`,
   geocode_failed: `Hmm can't find that place... what's the nearest big city?`,
-  chart_failed: `Having a bit of trouble with the chart... try again in a minute 🙏`,
+  geocode_failed_2: `Sorry, still can't find it. Try a major city nearby — like the state capital`,
+  chart_failed: `Hmm... one sec, let me try again`,
+  chart_failed_2: `Still having trouble... try again in a minute 🙏`,
+
+  frustration_apology: `Sorry about that — let me try again`,
+
+  disambiguate_few: `There are a few places called {city} — {options}?`,
+  disambiguate_many: `That name matches many places... which state?`,
 
   chart_overview: `{name}, your chart is ready 🌟
 

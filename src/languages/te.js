@@ -1,35 +1,32 @@
 export default {
-  welcome: `Namaskaram 🙏 Nenu Tara. Avunu help chestanu — mee peru, puttina tariku cheppandi?`,
+  welcome: `Namaskaram 🙏 Nenu Tara. Avunu mee ki tappakunda help chestanu — mee peru mattu puttina tariku cheppandi? Tarvata mee jatakam chusi emi cheyali ani discuss cheddaam`,
 
-  ask_name_career: `Career vishayam? Sare — mee peru, puttina tariku cheppandi?`,
-  ask_name_marriage: `Pelli vishayam? Sare — peru, puttina tariku cheppandi?`,
-  ask_name_general: `Sare jatakam chustanu — peru, puttina tariku cheppandi?`,
-  ask_name_default: `Sare — mee peru, puttina tariku cheppandi?`,
+  ask_name_career: `Namaskaram 🙏 Nenu Tara. Career vishayamlo tappakunda help chestanu — mee peru mattu puttina tariku cheppandi? Tarvata jatakam chusi discuss cheddaam`,
+  ask_name_marriage: `Namaskaram 🙏 Nenu Tara. Pelli vishayamlo tappakunda help chestanu — mee peru mattu puttina tariku cheppandi? Tarvata jatakam chusi discuss cheddaam`,
+  ask_name_general: `Namaskaram 🙏 Nenu Tara. Avunu jatakam chustanu — mee peru mattu puttina tariku cheppandi? Tarvata jatakam chusi discuss cheddaam`,
+  ask_name_default: `Namaskaram 🙏 Nenu Tara. Avunu mee ki tappakunda help chestanu — mee peru mattu puttina tariku cheppandi? Tarvata mee jatakam chusi emi cheyali ani discuss cheddaam`,
 
   ask_dob_after_name: `{name} — puttina tariku cheppandi?`,
-  ask_time_after_name_dob: `{name} 😊 puttina samayam telusaa? Teliyadante parledu`,
+  ask_time_after_name_dob: `{name} 😊 sare. Puttina samayam telusaa? Teliyadante parledu, samayam lekunda kuda chala cheppagalanu`,
+  ask_time: `Ok... puttina samayam telusaa? Teliyadante parledu, samayam lekunda kuda chala cheppagalanu`,
+  ask_place: `Achha. Ekkada puttaru? City cheppandi`,
+  ask_place_after_unknown_time: `Parledu, samayam lekunda kuda jatakam lo chala kanipistundi. Ekkada puttaru?`,
 
-  ask_time: `Ok... puttina samayam telusaa? Teliyadante ok`,
-  ask_place: `Sare. Ekkada puttaru? City cheppandi`,
+  invalid_date: `Hmm aa tariku ardham kaaledu... 15/03/1990 ya 15 March 1990 laga cheppandi`,
+  invalid_time: `Hmm aa samayam ardham kaaledu... 2:30 PM laga cheppandi, leda "teliyadu" cheppandi`,
 
-  invalid_date: `Hmm aa tariku ardham kaaledu... 15/03/1990 laga cheppandi`,
-  invalid_time: `Hmm aa samayam ardham kaaledu... 2:30 PM laga cheppandi, leda "teliyadu"`,
-
-  generating_chart: `Hmm... jatakam chustunna oka nimisham`,
+  generating_chart: `Hmm... mee jatakam chustunna, oka nimisham`,
   geocode_failed: `Hmm aa pradesham dorakaledu... daggarilo pedda city cheppandi?`,
-  chart_failed: `Jatakamlao konchem samasya... konchem tarvata try cheyandi 🙏`,
+  geocode_failed_2: `Sorry, malli dorakaledu. Nearest big city cheppandi — jaise Hyderabad ya Vijayawada`,
+  chart_failed: `Hmm... oka nimisham, malli try chestunna`,
+  chart_failed_2: `Inkaa samasya vastondi... konchem tarvata try cheyandi 🙏`,
 
-  chart_overview: `{name}, jatakam siddham 🌟
+  frustration_apology: `Sorry, naa tappu — malli chustunna`,
 
-☀️ Surya raashi: {sunSign}
-🌙 Chandra raashi: {moonSign}
-⬆️ Lagnam: {ascendant}
-⭐ Nakshatram: {nakshatra}
-🔄 Dasha: {dasha}
+  disambiguate_few: `{city} ante chala chhotlu unnaayi — {options}?`,
+  disambiguate_many: `Ee peruto chala chhotlu unnaayi... state kuda cheppandi?`,
 
-{notable}
-
-Emi telusukovaali — career, pelli, leda inkemaina?`,
+  chart_overview: `{name}, jatakam siddham 🌟\n\n☀️ Surya raashi: {sunSign}\n🌙 Chandra raashi: {moonSign}\n⬆️ Lagnam: {ascendant}\n⭐ Nakshatram: {nakshatra}\n🔄 Dasha: {dasha}\n\n{notable}\n\nEmi telusukovaali — career, pelli, leda inkemaina?`,
 
   notable_exalted: `Mee {planet} {sign} lo uchcham — chaala manchi sthanam`,
   notable_vargottama: `Mee {planet} Vargottamam — raashi navamsham rendintilo oke raashi. Chaala strong`,

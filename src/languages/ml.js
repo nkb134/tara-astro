@@ -1,35 +1,32 @@
 export default {
-  welcome: `Namaskaram 🙏 Njan Tara. Help cheyyam — ningalude per-um janana theeyathi-yum parayoo?`,
+  welcome: `Namaskaram 🙏 Njan Tara. Athe ningale theerchayayum help cheyyam — ningalude perum janma theethiyum parayo? Pinne jathakam nokkiit enthu cheyyanamaenn namukk samsarikaam`,
 
-  ask_name_career: `Career-ne kurichu? Seri — per-um janana theeyathi-yum parayoo?`,
-  ask_name_marriage: `Vivaaham? Seri — per-um janana theeyathi-yum parayoo?`,
-  ask_name_general: `Seri jaatakam nokkaam — per-um janana theeyathi-yum parayoo?`,
-  ask_name_default: `Seri — per-um janana theeyathi-yum parayoo?`,
+  ask_name_career: `Namaskaram 🙏 Njan Tara. Career-ne kurichu theerchayayum help cheyyam — ningalude perum janma theethiyum parayo? Pinne jathakam nokkiit discuss cheyyaam`,
+  ask_name_marriage: `Namaskaram 🙏 Njan Tara. Vivaaham-ne kurichu theerchayayum help cheyyam — ningalude perum janma theethiyum parayo? Pinne jathakam nokkiit discuss cheyyaam`,
+  ask_name_general: `Namaskaram 🙏 Njan Tara. Athe jaatakam nokkaam — ningalude perum janma theethiyum parayo? Pinne jathakam nokkiit discuss cheyyaam`,
+  ask_name_default: `Namaskaram 🙏 Njan Tara. Athe ningale theerchayayum help cheyyam — ningalude perum janma theethiyum parayo? Pinne jathakam nokkiit enthu cheyyanamaenn namukk samsarikaam`,
 
   ask_dob_after_name: `{name} — janana theeyathi parayoo?`,
-  ask_time_after_name_dob: `{name} 😊 janana samayam ariyumo? Ariyillenkil kuzhappamilla`,
-
-  ask_time: `Ok... janana samayam ariyumo? Ariyillenkillum shariyaanu`,
+  ask_time_after_name_dob: `{name} 😊 seri. Janana samayam ariyumo? Ariyillenkil kuzhappamilla, samayam illathe thanne orupaadu kaaryangal parayan kazhiyum`,
+  ask_time: `Ok... janana samayam ariyumo? Ariyillenkil kuzhappamilla, samayam illathe thanne orupaadu kaaryangal parayan kazhiyum`,
   ask_place: `Seri. Evide janichhu? City parayoo`,
+  ask_place_after_unknown_time: `Kuzhappamilla, samayam illathe thanne jaatakatthil orupaadu kaaryangal kandethaanaayi. Evide janichhu?`,
 
   invalid_date: `Hmm aa theeyathi manasilaayilla... 15/03/1990 allenkil 15 March 1990 pole parayoo`,
-  invalid_time: `Hmm aa samayam manasilaayilla... 2:30 PM pole parayoo, allenkil "ariyilla"`,
+  invalid_time: `Hmm aa samayam manasilaayilla... 2:30 PM pole parayoo, allenkil "ariyilla" parayoo`,
 
-  generating_chart: `Hmm... jaatakam nokkunnundu oru nimisham`,
+  generating_chart: `Hmm... ningalude jaatakam nokkunnundu, oru nimisham`,
   geocode_failed: `Hmm aa sthalam kandethaan kazhinjilla... aduthulle valiya nagaratthinte per parayoo?`,
-  chart_failed: `Jaatakatthil kurachchu prasnam... kurachchu kazhinjju shramikkoo 🙏`,
+  geocode_failed_2: `Sorry, ippozum kandethaan kazhinjilla. Nearest big city parayoo — jaise Kochi ya Thiruvananthapuram`,
+  chart_failed: `Hmm... oru nimisham, veendum try cheyyunnu`,
+  chart_failed_2: `Ippozum kuzhappam undu... kurachchu kazhinjju try cheyyoo 🙏`,
 
-  chart_overview: `{name}, jaatakam ready 🌟
+  frustration_apology: `Sorry, ente thappaanu — veendum nokkaam`,
 
-☀️ Soorya raashi: {sunSign}
-🌙 Chandra raashi: {moonSign}
-⬆️ Lagnam: {ascendant}
-⭐ Nakshatram: {nakshatra}
-🔄 Dasha: {dasha}
+  disambiguate_few: `{city} ennu pala sthalamuundu — {options}?`,
+  disambiguate_many: `Ee perilu pala sthalamuundu... state koodi parayoo?`,
 
-{notable}
-
-Enthine kurichu ariyanum — career, vivaaham, atho vere enthenkillum?`,
+  chart_overview: `{name}, jaatakam ready 🌟\n\n☀️ Soorya raashi: {sunSign}\n🌙 Chandra raashi: {moonSign}\n⬆️ Lagnam: {ascendant}\n⭐ Nakshatram: {nakshatra}\n🔄 Dasha: {dasha}\n\n{notable}\n\nEnthine kurichu ariyanum — career, vivaaham, atho vere enthenkillum?`,
 
   notable_exalted: `Ningalude {planet} {sign}-il uchcham — valare nalla sthanam`,
   notable_vargottama: `Ningalude {planet} Vargottamam — raashiyilum navaamshathilum ore raashi. Valare strong`,

@@ -1,35 +1,32 @@
 export default {
-  welcome: `Namaskara 🙏 Naanu Tara. Helu help maadtini — nimma hesaru mattu huttida dinaanka heli?`,
+  welcome: `Namaskara 🙏 Naanu Tara. Haan nimage kanditta help maadtini — nimma hesaru mattu huttida dinaanka heli? Aameele jataka nodi enu maadbekuu anta discuss maadona`,
 
-  ask_name_career: `Career bagge? Sari — hesaru mattu huttida dinaanka heli?`,
-  ask_name_marriage: `Maduve bagge? Sari — hesaru mattu huttida dinaanka heli?`,
-  ask_name_general: `Sari jaataka nodtini — hesaru mattu huttida dinaanka heli?`,
-  ask_name_default: `Sari — hesaru mattu huttida dinaanka heli?`,
+  ask_name_career: `Namaskara 🙏 Naanu Tara. Career bagge kanditta help maadtini — nimma hesaru mattu huttida dinaanka heli? Aameele jataka nodi discuss maadona`,
+  ask_name_marriage: `Namaskara 🙏 Naanu Tara. Maduve bagge kanditta help maadtini — nimma hesaru mattu huttida dinaanka heli? Aameele jataka nodi discuss maadona`,
+  ask_name_general: `Namaskara 🙏 Naanu Tara. Haan jaataka nodtini — nimma hesaru mattu huttida dinaanka heli? Aameele jataka nodi discuss maadona`,
+  ask_name_default: `Namaskara 🙏 Naanu Tara. Haan nimage kanditta help maadtini — nimma hesaru mattu huttida dinaanka heli? Aameele jataka nodi enu maadbekuu anta discuss maadona`,
 
   ask_dob_after_name: `{name} — huttida dinaanka heli?`,
-  ask_time_after_name_dob: `{name} 😊 huttida samaya gottaa? Gottillvendare paravaagilla`,
-
-  ask_time: `Ok... huttida samaya gottaa? Gottillvendare thik ide`,
-  ask_place: `Sari. Ellige huttidiri? City heli`,
+  ask_time_after_name_dob: `{name} 😊 sari. Huttida samaya gottaa? Gottillvendare paravaagilla, samaya illade kooda tumba vishayagalu helballe`,
+  ask_time: `Ok... huttida samaya gottaa? Gottillvendare paravaagilla, samaya illade kooda tumba vishayagalu helballe`,
+  ask_place: `Achha. Ellige huttidiri? City heli`,
+  ask_place_after_unknown_time: `Paravaagilla, samaya illade kooda jaatakadinda tumba vishayagalu gottaagutte. Ellige huttidiri?`,
 
   invalid_date: `Hmm aa dinaanka arthaagalilla... 15/03/1990 athava 15 March 1990 haage heli`,
-  invalid_time: `Hmm aa samaya arthaagalilla... 2:30 PM haage heli, athava "gottilla"`,
+  invalid_time: `Hmm aa samaya arthaagalilla... 2:30 PM haage heli, athava "gottilla" heli`,
 
-  generating_chart: `Hmm... jaataka nodtiddini ondu nimisha`,
+  generating_chart: `Hmm... nimma jaataka nodtiddini, ondu nimisha`,
   geocode_failed: `Hmm aa ooru sigalilla... hattira dodda nagara heli?`,
-  chart_failed: `Jaatakadalli swalpa samasye... swalpa hottu bittru prayatnisi 🙏`,
+  geocode_failed_2: `Sorry, innoo sigalilla. Nearest big city heli — jaise Bangalore ya Mysore`,
+  chart_failed: `Hmm... ondu nimisha, innomme try maadtini`,
+  chart_failed_2: `Innoo samasye ide... swalpa hottu bittru try maadi 🙏`,
 
-  chart_overview: `{name}, jaataka siddha 🌟
+  frustration_apology: `Sorry, nanna tappu — innomme nodtini`,
 
-☀️ Soorya raashi: {sunSign}
-🌙 Chandra raashi: {moonSign}
-⬆️ Lagna: {ascendant}
-⭐ Nakshatra: {nakshatra}
-🔄 Dasha: {dasha}
+  disambiguate_few: `{city} anta tumba jagagalu ide — {options}?`,
+  disambiguate_many: `Ee hesaralli tumba jagagalu ide... state kooda heli?`,
 
-{notable}
-
-Enu gottaagbeku — career, maduve, athava bere enaadroo?`,
+  chart_overview: `{name}, jaataka siddha 🌟\n\n☀️ Soorya raashi: {sunSign}\n🌙 Chandra raashi: {moonSign}\n⬆️ Lagna: {ascendant}\n⭐ Nakshatra: {nakshatra}\n🔄 Dasha: {dasha}\n\n{notable}\n\nEnu gottaagbeku — career, maduve, athava bere enaadroo?`,
 
   notable_exalted: `Nimma {planet} {sign} nalli uchcha — tumba olleya sthaana`,
   notable_vargottama: `Nimma {planet} Vargottama — raashi mattu navaamsha eradalloo onde raashi. Tumba strong`,

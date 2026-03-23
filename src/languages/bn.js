@@ -1,35 +1,32 @@
 export default {
-  welcome: `Namaskar 🙏 Ami Tara. Haan help korbo — apnar naam ar jonmo tarik bolun?`,
+  welcome: `Namaskar 🙏 Ami Tara. Haan apnake bilkul help korbo — apnar naam ar jonmo tarik bolun? Tarpor kundli dekhe ki korte hobe seta bujhe nebo`,
 
-  ask_name_career: `Career niye? Haan bolun — naam ar jonmo tarik?`,
-  ask_name_marriage: `Biye niye? Sare — naam ar jonmo tarik bolun?`,
-  ask_name_general: `Haan kundli dekhi — naam ar jonmo tarik bolun?`,
-  ask_name_default: `Sare — naam ar jonmo tarik bolun?`,
+  ask_name_career: `Namaskar 🙏 Ami Tara. Career niye zaroor help korbo — apnar naam ar jonmo tarik bolun? Tarpor kundli dekhe discuss korbo`,
+  ask_name_marriage: `Namaskar 🙏 Ami Tara. Biye niye zaroor help korbo — apnar naam ar jonmo tarik bolun? Tarpor kundli dekhe discuss korbo`,
+  ask_name_general: `Namaskar 🙏 Ami Tara. Haan kundli dekhi — apnar naam ar jonmo tarik bolun? Tarpor kundli dekhe discuss korbo`,
+  ask_name_default: `Namaskar 🙏 Ami Tara. Haan apnake bilkul help korbo — apnar naam ar jonmo tarik bolun? Tarpor kundli dekhe ki korte hobe seta bujhe nebo`,
 
   ask_dob_after_name: `{name} — jonmo tarik bolun?`,
-  ask_time_after_name_dob: `{name} 😊 jonmo-r somoy jaanen? Na janle kichu hoy na`,
-
-  ask_time: `Ok... jonmo-r somoy jaanen? Na janle o thik aache`,
-  ask_place: `Ar kothay jonmechen? City bolun`,
+  ask_time_after_name_dob: `{name} 😊 thik aache. Jonmo-r somoy jaanen? Na janle kichu nei, somoy chhara-o onek kichu bola jay`,
+  ask_time: `Ok... jonmo-r somoy jaanen? Na janle kichu nei, somoy chhara-o onek kichu bola jay`,
+  ask_place: `Achha. Kothay jonmechen? City bolun`,
+  ask_place_after_unknown_time: `Kichu hoy na, somoy na janleo kundli theke onek bujhte pari. Kothay jonmechen?`,
 
   invalid_date: `Hmm oi tarik bujhte parlam na... 15/03/1990 ba 15 March 1990 likhe bolun`,
   invalid_time: `Hmm oi somoy bujhte parlam na... 2:30 PM likhe bolun, ba "jani na" bolun`,
 
-  generating_chart: `Hmm... kundli dekhchi ek minute`,
+  generating_chart: `Hmm... apnar kundli dekhchi, ektu wait korun`,
   geocode_failed: `Hmm oi jayga khuje pelam na... kachhe boro kono shohor bolun?`,
-  chart_failed: `Kundli-te ektu somossa... ektu pore abar try korun 🙏`,
+  geocode_failed_2: `Sorry, ebar-o pelam na. Nearest big city bolun — jemon Kolkata ba Dhaka`,
+  chart_failed: `Hmm... ek minute, abar try korchi`,
+  chart_failed_2: `Ebar-o somossa hochhe... ektu pore abar try korun 🙏`,
 
-  chart_overview: `{name}, kundli toiri 🌟
+  frustration_apology: `Sorry, amar bhul — abar dekhchi`,
 
-☀️ Suryo rashi: {sunSign}
-🌙 Chondro rashi: {moonSign}
-⬆️ Logno: {ascendant}
-⭐ Nakshotro: {nakshatra}
-🔄 Dosha: {dasha}
+  disambiguate_few: `{city} naamey onek jayga achhe — {options}?`,
+  disambiguate_many: `Ei naam-e onek jayga achhe... state-o bolun?`,
 
-{notable}
-
-Ki jante chan — career, biye, na onno kichu?`,
+  chart_overview: `{name}, kundli toiri 🌟\n\n☀️ Suryo rashi: {sunSign}\n🌙 Chondro rashi: {moonSign}\n⬆️ Logno: {ascendant}\n⭐ Nakshotro: {nakshatra}\n🔄 Dosha: {dasha}\n\n{notable}\n\nKi jante chan — career, biye, na onno kichu?`,
 
   notable_exalted: `Apnar {planet} {sign}-e uchcho — khub bhalo obosthan`,
   notable_vargottama: `Apnar {planet} Borgottom — rashi o nobamshe ekoi rashi. Khub strong`,

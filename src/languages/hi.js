@@ -1,33 +1,34 @@
 export default {
-  // Onboarding — natural flow, combines steps
-  welcome: `Namaste 🙏 Main Tara hoon. Haan bilkul madad kar sakti hoon — apna naam aur janam tithi bata do?`,
+  // Bug 1: Proper greeting with warmth + self-intro + reassurance + ask + expectation
+  welcome: `Namaste 🙏 Main Tara hoon. Haan mein aapki bilkul madad karungi — aap apna naam aur janam tithi bata denge? Phir hum aapki kundli se samjhenge ki kya karna chahiye`,
 
-  ask_name_career: `Achha career ke baare mein? Bilkul — apna naam aur janam tithi bata do?`,
-  ask_name_marriage: `Shaadi ke baare mein? Haan zaroor — apna naam aur janam tithi bata do?`,
-  ask_name_general: `Haan kundli dekh deti hoon — apna naam aur janam tithi bata do?`,
-  ask_name_default: `Haan zaroor — apna naam aur janam tithi bata do?`,
+  ask_name_career: `Namaste 🙏 Main Tara hoon. Career ke baare mein zaroor bataungi — apna naam aur janam tithi bata do? Phir kundli se samjhenge ki kya karna chahiye`,
+  ask_name_marriage: `Namaste 🙏 Main Tara hoon. Shaadi ke baare mein zaroor bataungi — apna naam aur janam tithi bata do? Phir kundli se samjhenge aage kya karna chahiye`,
+  ask_name_general: `Namaste 🙏 Main Tara hoon. Haan kundli dekh deti hoon — apna naam aur janam tithi bata do? Phir kundli se samjhenge ki kya karna chahiye`,
+  ask_name_default: `Namaste 🙏 Main Tara hoon. Haan mein aapki bilkul madad karungi — apna naam aur janam tithi bata denge? Phir kundli se samjhenge ki kya karna chahiye`,
 
-  // If user gave only name
+  // Bug 7: Warm follow-ups
   ask_dob_after_name: `{name} ji — janam tithi bata dijiye?`,
+  ask_time_after_name_dob: `{name} ji 😊 achha. Aur janam ka samay pata hai? Nahi pata toh koi baat nahi, bina samay ke bhi bahut kuch bata sakti hoon`,
+  ask_time: `Ok... aur janam ka samay pata hai? Nahi pata toh koi baat nahi, bina samay ke bhi bahut kuch bata sakti hoon`,
+  ask_place: `Achha. Aur kahan paida hue the aap? City bata dijiye`,
+  ask_place_after_unknown_time: `Koi baat nahi, bina time ke bhi bahut kuch dikh jaata hai kundli mein. Kahan paida hue the?`,
 
-  // If user gave name + DOB together
-  ask_time_after_name_dob: `{name} ji 😊 aur janam ka samay pata hai? Nahi toh koi baat nahi`,
+  invalid_date: `Hmm yeh date samajh nahi aayi... 15/03/1990 ya 15 March 1990 jaisa likh dijiye`,
+  invalid_time: `Hmm yeh samay samajh nahi aaya... 2:30 PM jaisa likh dijiye, ya "pata nahi" bol dijiye`,
 
-  // After DOB (if separate)
-  ask_time: `Ok... aur janam ka samay pata hai? Nahi bhi pata toh chalega`,
-
-  // After time
-  ask_place: `Achha. Aur kahan paida hue the? City bata do`,
-
-  // After time + place together → skip place step
-  // (handled in code)
-
-  invalid_date: `Hmm yeh date samajh nahi aayi... 15/03/1990 ya 15 March 1990 jaisa likh do`,
-  invalid_time: `Hmm yeh samay samajh nahi aaya... 2:30 PM jaisa likh do, ya "pata nahi" bol do`,
-
-  generating_chart: `Hmm... kundli dekh rahi hoon ek minute`,
+  generating_chart: `Hmm... aapki kundli dekh rahi hoon, ek minute dijiye`,
   geocode_failed: `Hmm yeh jagah nahi mili... koi paas ka bada shehar batao?`,
-  chart_failed: `Kundli mein thodi dikkat aa rahi hai... thodi der baad try karo 🙏`,
+  geocode_failed_2: `Sorry, phir se nahi mila. Nearest big city ka naam batao — jaise Raipur ya Nagpur`,
+  chart_failed: `Hmm... ek minute, phir try karti hoon`,
+  chart_failed_2: `Is baar bhi dikkat aa rahi hai... thodi der baad try karo 🙏`,
+
+  // Bug 6: Frustration handling
+  frustration_apology: `Sorry, meri galti — phir se dekhti hoon`,
+
+  // Disambiguation
+  disambiguate_few: `{city} toh kai jagah hai — {options} wala?`,
+  disambiguate_many: `Yeh naam bahut jagah hai... state bhi bata do?`,
 
   chart_overview: `{name}, kundli taiyaar hai 🌟
 

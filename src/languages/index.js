@@ -13,6 +13,27 @@ export function t(lang, key) {
   return strings[key] || languages.en[key] || key;
 }
 
+// Check if text is language-neutral (just names, dates, numbers, places)
+export function isLanguageNeutral(text) {
+  const cleaned = text.trim()
+    .replace(/\d{1,2}[\/\-.:]\d{1,2}[\/\-.:]\d{2,4}/g, '') // dates
+    .replace(/\d{1,2}:\d{2}\s*(am|pm)?/gi, '') // times
+    .replace(/\d+/g, '') // numbers
+    .replace(/(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\w*/gi, '') // months
+    .replace(/(am|pm)/gi, '')
+    .replace(/[,.\-\/]/g, '')
+    .trim();
+
+  // If very little text remains after stripping, it's neutral
+  if (cleaned.length < 3) return true;
+
+  // Single word that could be a name or place
+  const words = cleaned.split(/\s+/).filter(w => w.length > 1);
+  if (words.length <= 1) return true;
+
+  return false;
+}
+
 export function detectLanguage(text) {
   // Script-based detection (most reliable)
   if (/[\u0B80-\u0BFF]/.test(text)) return 'ta';
