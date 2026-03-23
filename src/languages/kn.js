@@ -45,6 +45,16 @@ export default {
   invalid_time: `ಆ ಸಮಯ ಅರ್ಥವಾಗಲಿಲ್ಲ — ಮತ್ತೆ try ಮಾಡಿ 🙏
 (2:30 PM, ಬೆಳಗ್ಗೆ 6, ಅಥವಾ "ಗೊತ್ತಿಲ್ಲ" ಅಂತ ಹೇಳಿ)`,
 
+  // Chart generation
+  generating_chart: `{name}, ಜಾತಕ ತಯಾರು ಮಾಡ್ತಿದ್ದೀನಿ... ಒಂದು ನಿಮಿಷ 🔮`,
+  geocode_failed: `ಆ ಊರು ಸಿಗಲಿಲ್ಲ 🙏 ದೊಡ್ಡ ನಗರದ ಹೆಸರು ಹೇಳಿ (ಉದಾ: Bangalore, Mysore)`,
+  chart_failed: `ಜಾತಕ ಲೆಕ್ಕ ಹಾಕುವಲ್ಲಿ ಸಮಸ್ಯೆ — ಸ್ವಲ್ಪ ಹೊತ್ತು ಬಿಟ್ಟು ಪ್ರಯತ್ನಿಸಿ 🙏`,
+  chart_overview: `{name}, ಜಾತಕ ಸಿದ್ಧ! 🌟\n\n☀️ ಸೂರ್ಯ ರಾಶಿ: {sunSign}\n🌙 ಚಂದ್ರ ರಾಶಿ: {moonSign}\n⬆️ ಲಗ್ನ: {ascendant}\n⭐ ನಕ್ಷತ್ರ: {nakshatra}\n\n{notable}\n\nಇನ್ನೂ ಬಹಳ ಹೇಳಬೇಕಿದೆ! ಏನು ಗೊತ್ತಾಗಬೇಕು?\n- ಕೆರಿಯರ್ ಮತ್ತು ಹಣ\n- ಮದುವೆ ಮತ್ತು ಸಂಬಂಧಗಳು\n- ಪರಿಹಾರಗಳು\n- ಅಥವಾ ಏನಾದರೂ ಕೇಳಿ!`,
+  notable_exalted: `ನಿಮ್ಮ {planet} {sign} ನಲ್ಲಿ ಉಚ್ಚ — ಇದು ತುಂಬಾ ಒಳ್ಳೆಯ ಸ್ಥಾನ!`,
+  notable_vargottama: `ನಿಮ್ಮ {planet} ವರ್ಗೋತ್ತಮ — ರಾಶಿ ಮತ್ತು ನವಾಂಶ ಎರಡರಲ್ಲೂ ಒಂದೇ ರಾಶಿ. ತುಂಬಾ ಶಕ್ತಿಶಾಲಿ!`,
+  notable_strong: `ನಿಮ್ಮ {planet} {power}% ಶಕ್ತಿಯಲ್ಲಿ ಇದೆ — ತುಂಬಾ ಒಳ್ಳೆಯ ಸ್ಥಾನ!`,
+  notable_default: `ನಿಮ್ಮ ಜಾತಕದಲ್ಲಿ ಆಸಕ್ತಿಕರ ಅಮರಿಕೆಗಳಿವೆ — ವಿವರವಾಗಿ ನೋಡೋಣ!`,
+
   echo_reply: `{name}, ನೀವು ಹೇಳಿದ್ದು: "{message}"
 
 (ಇನ್ನೂ testing ನಲ್ಲಿ ಇದೆ — full features ಶೀಘ್ರದಲ್ಲೇ ಬರುತ್ತವೆ! 🌟)`,

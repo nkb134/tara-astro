@@ -51,6 +51,33 @@ Last one — which city/town were you born in?
   invalid_time: `I couldn't understand that time — could you try again? 🙏
 (Like 2:30 PM, morning 6, or just say "don't know")`,
 
+  // Chart generation
+  generating_chart: `{name}, I'm preparing your birth chart... just a moment 🔮`,
+
+  geocode_failed: `I couldn't find that place 🙏 Could you try a bigger city name? (e.g., Chennai, Mumbai, Delhi)`,
+
+  chart_failed: `I had trouble calculating your chart — please try again in a few minutes 🙏`,
+
+  chart_overview: `{name}, your birth chart is ready! 🌟
+
+☀️ Sun Sign: {sunSign}
+🌙 Moon Sign: {moonSign}
+⬆️ Ascendant (Lagna): {ascendant}
+⭐ Nakshatra: {nakshatra}
+
+{notable}
+
+There's so much more to explore! What would you like to know about?
+- Career & finances
+- Marriage & relationships
+- Remedies
+- Or ask me anything!`,
+
+  notable_exalted: `Your {planet} is exalted in {sign} — this is a very auspicious placement!`,
+  notable_vargottama: `Your {planet} is Vargottama — same sign in both Rasi and Navamsha. A very powerful position!`,
+  notable_strong: `Your {planet} is at {power}% strength — a wonderfully strong placement!`,
+  notable_default: `Your chart has some fascinating patterns — let's explore them together!`,
+
   // Phase 1 echo
   echo_reply: `{name}, you said: "{message}"
 
