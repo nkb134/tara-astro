@@ -612,7 +612,7 @@
     "formatted": "Raipur, Chhattisgarh",
     "population": 0,
     "source": "seed",
-    "hits": 0,
+    "hits": 1,
     "added": "2026-03-23"
   },
   "kota": {
@@ -1899,7 +1899,7 @@
     "formatted": "Jagdalpur, Chhattisgarh",
     "population": 0,
     "source": "seed",
-    "hits": 0,
+    "hits": 1,
     "added": "2026-03-23"
   },
   "ambikapur": {
@@ -1987,7 +1987,7 @@
     "formatted": "Bastar, Chhattisgarh",
     "population": 0,
     "source": "seed",
-    "hits": 0,
+    "hits": 1,
     "added": "2026-03-23"
   },
   "janjgir": {
@@ -7873,6 +7873,18 @@
     "population": 0,
     "source": "seed",
     "hits": 0,
+    "added": "2026-03-23"
+  },
+  "paramagudi": {
+    "lat": 9.54633,
+    "lng": 78.5907,
+    "state": "Tamil Nadu",
+    "timezone": "Asia/Kolkata",
+    "formatted": "Paramagudi, Tamil Nadu",
+    "population": 95579,
+    "geonameId": 1260387,
+    "source": "geonames",
+    "hits": 1,
     "added": "2026-03-23"
   }
 }

@@ -47,7 +47,8 @@ export function detectLanguage(text) {
   const lower = text.toLowerCase();
   const words = lower.split(/\s+/);
 
-  const hindiWords = ['mera', 'meri', 'mujhe', 'mujhse', 'kya', 'hai', 'hain',
+  const hindiWords = ['namaste', 'namaskar', 'pranam', 'pranaam',
+    'mera', 'meri', 'mujhe', 'mujhse', 'kya', 'hai', 'hain',
     'kaise', 'batao', 'bataiye', 'bataao', 'kundli', 'shaadi', 'shaadhi',
     'naukri', 'paisa', 'naam', 'bolo', 'chahiye', 'chahie', 'karun', 'karungi',
     'kab', 'kahan', 'kaisa', 'achha', 'acha', 'hogi', 'hoga', 'karein',
@@ -67,7 +68,7 @@ export function detectLanguage(text) {
     'kalyanam', 'thirumanam', 'parigaram', 'natchathiram', 'lagnam',
     'pirandha', 'theadhi', 'neram', 'nalla', 'ketta'];
 
-  const teluguWords = ['nenu', 'naaku', 'meeru', 'mee', 'emi', 'cheppandi',
+  const teluguWords = ['namaskaram', 'nenu', 'naaku', 'meeru', 'mee', 'emi', 'cheppandi',
     'telusu', 'kavali', 'chustanu', 'puttina', 'tariku', 'samayam',
     'ekkada', 'pelli', 'udyogam', 'jatakam', 'raashi', 'chudandi',
     'sare', 'manchi', 'chala', 'oka', 'ante', 'inka', 'leda'];
