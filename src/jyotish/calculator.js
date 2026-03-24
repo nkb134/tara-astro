@@ -461,9 +461,18 @@ export function generateBirthChart(birthDate, birthTime, lat, lng, timezone, pla
 
     const ascendantSign = getSignFromLongitude(ascLongitude);
 
-    // Build houses (Whole Sign: each house = one sign starting from ascendant sign)
+    // Build houses — Whole Sign for sign-based lordship, Bhava Chalit for planet placement
+    // Most Indian astrologers use Bhava Chalit (Equal House from Asc degree) for "which house is planet in"
     const ascSignIndex = SIGNS.indexOf(ascendantSign);
     const houses = {};
+
+    // Bhava Chalit cusps: each house spans 30° centered on asc degree
+    // House 1 midpoint = ascLongitude, cusp starts at ascLongitude - 15°
+    const bhavaCusps = [];
+    for (let i = 0; i < 12; i++) {
+      const cusp = (ascLongitude - 15 + i * 30 + 360) % 360;
+      bhavaCusps.push(cusp);
+    }
 
     for (let i = 0; i < 12; i++) {
       const houseNum = i + 1;
@@ -480,13 +489,35 @@ export function generateBirthChart(birthDate, birthTime, lat, lng, timezone, pla
       };
     }
 
-    // Assign planets to houses and determine house numbers
+    // Assign planets to houses using Bhava Chalit (planet's longitude relative to house cusps)
     for (const [name, data] of Object.entries(planets)) {
-      const planetSignIndex = SIGNS.indexOf(data.sign);
-      const houseNumber = ((planetSignIndex - ascSignIndex + 12) % 12) + 1;
-      data.house = `House${houseNumber}`;
-      data.houseNumber = houseNumber;
+      // Bhava Chalit placement: which 30° sector does the planet fall in?
+      let bhavaHouse = 1;
+      for (let i = 0; i < 12; i++) {
+        const cuspStart = bhavaCusps[i];
+        const cuspEnd = bhavaCusps[(i + 1) % 12];
+        const pLong = data.longitude;
+
+        let inHouse = false;
+        if (cuspStart < cuspEnd) {
+          inHouse = pLong >= cuspStart && pLong < cuspEnd;
+        } else {
+          // Wraps around 360°
+          inHouse = pLong >= cuspStart || pLong < cuspEnd;
+        }
+
+        if (inHouse) {
+          bhavaHouse = i + 1;
+          break;
+        }
+      }
+
+      data.house = `House${bhavaHouse}`;
+      data.houseNumber = bhavaHouse;
       data.housesOwned = '';
+      // Also store the Whole Sign house for reference
+      const wsHouse = ((SIGNS.indexOf(data.sign) - ascSignIndex + 12) % 12) + 1;
+      data.wholeSignHouse = wsHouse;
 
       // Find which houses this planet lords
       const ownedHouses = [];
@@ -579,7 +610,7 @@ export function generateBirthChart(birthDate, birthTime, lat, lng, timezone, pla
         placeName,
         calculationEngine: 'SwissEphemeris',
         ayanamsa: 'Lahiri',
-        houseSystem: 'WholeSign',
+        houseSystem: 'BhavaChalit',
         calculationTimeMs: Date.now() - startTime,
       },
     };

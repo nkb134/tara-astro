@@ -866,9 +866,13 @@ function extractName(text) {
     .replace(/^(name:|peyar:|peru:)\s*/i, '')
     .replace(/[,.\-]+$/, '')
     .trim();
-  const words = name.split(/\s+/).filter(w => w.length > 0).slice(0, 2);
+  // Remove stray numbers/ordinals that leaked from date extraction
+  name = name.replace(/\b\d{1,2}(?:st|nd|rd|th)?\b\.?/gi, '').trim();
+  // Remove common filler words that aren't names
+  name = name.replace(/^(and|aur|or)\s+/i, '').trim();
+  const words = name.split(/\s+/).filter(w => w.length > 1).slice(0, 2);
   name = words.map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ');
-  return name || text.trim().split(/\s+/)[0];
+  return name || null;
 }
 
 function isValidDate(d, day, month, year) {
