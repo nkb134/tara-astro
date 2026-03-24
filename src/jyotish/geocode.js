@@ -188,6 +188,15 @@ export async function geocodeBirthPlace(placeString, userLang = 'en') {
   const geonamesResult = await callGeoNames(stripped, parts, userLang);
   if (geonamesResult) return geonamesResult;
 
+  // Step 3b: If multi-word query failed, retry with first part only
+  // (handles "katwa burdwan" where "burdwan" is a district, not in GeoNames)
+  if (parts.length > 1) {
+    for (const part of parts) {
+      const partResult = await callGeoNames(part, parts, userLang);
+      if (partResult) return partResult;
+    }
+  }
+
   // Step 4: OpenCage fallback
   const opencageResult = await callOpenCage(placeString);
   if (opencageResult) return opencageResult;
