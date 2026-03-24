@@ -8,6 +8,7 @@ import { generateHook } from '../ai/responder.js';
 import { calculateDelay, sleep } from '../utils/delay.js';
 import { detectLanguage, detectScript, isLanguageNeutral, t } from '../languages/index.js';
 import { logger } from '../utils/logger.js';
+import { trackUserActivity } from './followUpNudge.js';
 
 // Handle unsupported message types (voice, image, sticker, etc.)
 export async function handleUnsupportedType(whatsappId, messageType, messageId) {
@@ -207,6 +208,10 @@ async function processMessage(whatsappId, displayName, messageText, messageId) {
     // Find or create user
     user = await findOrCreateUser(whatsappId, displayName);
     logger.info({ userId: user.id }, 'Processing message');
+
+    // Track activity for follow-up nudge system
+    const userPrefs = typeof user.preferences === 'string' ? JSON.parse(user.preferences || '{}') : (user.preferences || {});
+    trackUserActivity(whatsappId, user.id, user.language, user.display_name, userPrefs.initial_intent);
 
     // Expert commands — only for users with expert role
     const prefs = typeof user.preferences === 'string' ? JSON.parse(user.preferences || '{}') : (user.preferences || {});

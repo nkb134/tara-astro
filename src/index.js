@@ -8,6 +8,7 @@ import { logger } from './utils/logger.js';
 import { verifyWebhook, receiveMessage, verifySignature } from './whatsapp/webhook.js';
 import { runAudit } from './services/qaAudit.js';
 import { startQaCron } from './services/qaCron.js';
+import { startNudgeSystem } from './services/followUpNudge.js';
 import { getDashboardData } from './services/analytics.js';
 import {
   getReadingsForReview,
@@ -298,5 +299,6 @@ maybeResetDb().then(() => {
 
     // Start QA audit cron
     startQaCron();
+    startNudgeSystem();
   });
 });
