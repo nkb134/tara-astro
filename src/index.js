@@ -9,6 +9,13 @@ import { verifyWebhook, receiveMessage, verifySignature } from './whatsapp/webho
 import { runAudit } from './services/qaAudit.js';
 import { startQaCron } from './services/qaCron.js';
 import { getDashboardData } from './services/analytics.js';
+import {
+  getReadingsForReview,
+  submitFeedback,
+  getFeedbackStats,
+  getAllFeedback,
+  getKnowledgeStats,
+} from './services/expertService.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -123,6 +130,70 @@ app.get('/api/dashboard', async (req, res) => {
   } catch (err) {
     logger.error({ err: err.message }, 'Dashboard API failed');
     res.status(500).json({ error: 'Dashboard data unavailable', message: err.message });
+  }
+});
+
+// ── Expert Review Panel ─────────────────────────────────────────────
+
+app.get('/expert', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'public', 'expert.html'));
+});
+
+app.get('/api/expert/readings', async (req, res) => {
+  try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = Math.min(parseInt(req.query.limit) || 20, 100);
+    const data = await getReadingsForReview(page, limit);
+    res.json(data);
+  } catch (err) {
+    logger.error({ err: err.message }, 'Expert readings API failed');
+    res.status(500).json({ error: 'Failed to load readings', message: err.message });
+  }
+});
+
+app.post('/api/expert/feedback', async (req, res) => {
+  try {
+    const { messageId, ...feedback } = req.body;
+    if (!messageId) {
+      return res.status(400).json({ error: 'messageId is required' });
+    }
+    const result = await submitFeedback(messageId, feedback);
+    res.json({ success: true, feedback: result });
+  } catch (err) {
+    logger.error({ err: err.message }, 'Expert feedback submission failed');
+    res.status(500).json({ error: 'Failed to submit feedback', message: err.message });
+  }
+});
+
+app.get('/api/expert/stats', async (req, res) => {
+  try {
+    const stats = await getFeedbackStats();
+    res.json(stats);
+  } catch (err) {
+    logger.error({ err: err.message }, 'Expert stats API failed');
+    res.status(500).json({ error: 'Failed to load stats', message: err.message });
+  }
+});
+
+app.get('/api/expert/feedback', async (req, res) => {
+  try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = Math.min(parseInt(req.query.limit) || 50, 200);
+    const data = await getAllFeedback(page, limit);
+    res.json(data);
+  } catch (err) {
+    logger.error({ err: err.message }, 'Expert feedback list API failed');
+    res.status(500).json({ error: 'Failed to load feedback', message: err.message });
+  }
+});
+
+app.get('/api/expert/knowledge', async (req, res) => {
+  try {
+    const stats = await getKnowledgeStats();
+    res.json(stats);
+  } catch (err) {
+    logger.error({ err: err.message }, 'Expert knowledge API failed');
+    res.status(500).json({ error: 'Failed to load knowledge stats', message: err.message });
   }
 });
 

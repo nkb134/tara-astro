@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tara — Expert Review Panel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            cosmic: {
+              950: '#0c0a1d',
+              900: '#130f2e',
+              800: '#1a1440',
+              700: '#251d5e',
+              600: '#322a7a',
+              500: '#4a3f9f',
+              400: '#6b5fc7',
+              300: '#9188db',
+              200: '#b8b0ea',
+              100: '#ddd9f5',
+            },
+            star: { gold: '#fbbf24', warm: '#f59e0b' },
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: linear-gradient(135deg, #0c0a1d 0%, #130f2e 40%, #1a1440 100%);
+      min-height: 100vh;
+    }
+    .glass {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.3s ease;
+    }
+    .glass-card:hover {
+      background: rgba(255, 255, 255, 0.07);
+      border-color: rgba(255, 255, 255, 0.12);
+    }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+    .star-bg {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      overflow: hidden; pointer-events: none; z-index: 0;
+    }
+    .star-bg::before {
+      content: ''; position: absolute; width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(107, 95, 199, 0.08) 0%, transparent 70%);
+      top: -100px; right: -100px; border-radius: 50%;
+    }
+    .star-bg::after {
+      content: ''; position: absolute; width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(251, 191, 36, 0.04) 0%, transparent 70%);
+      bottom: -50px; left: -50px; border-radius: 50%;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.5s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+
+    /* Star rating */
+    .star-rating { display: inline-flex; flex-direction: row-reverse; gap: 2px; }
+    .star-rating input { display: none; }
+    .star-rating label {
+      cursor: pointer; font-size: 1.25rem; color: rgba(255,255,255,0.15);
+      transition: color 0.15s ease;
+    }
+    .star-rating label:hover,
+    .star-rating label:hover ~ label,
+    .star-rating input:checked ~ label {
+      color: #fbbf24;
+    }
+
+    /* South Indian chart grid */
+    .chart-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      gap: 2px;
+      width: 100%;
+      max-width: 420px;
+      aspect-ratio: 1;
+    }
+    .chart-cell {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 4px;
+      font-size: 0.65rem;
+      line-height: 1.2;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+    .chart-cell .sign-label {
+      font-size: 0.55rem;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 2px;
+    }
+    .chart-center {
+      grid-column: 2 / 4;
+      grid-row: 2 / 4;
+      background: rgba(107, 95, 199, 0.06);
+      border: 1px solid rgba(107, 95, 199, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+    }
+    .planet-exalted { color: #34d399; font-weight: 600; }
+    .planet-debilitated { color: #f87171; font-weight: 600; }
+    .planet-own { color: #60a5fa; font-weight: 600; }
+    .planet-normal { color: #e2e8f0; }
+
+    /* Card expand animation */
+    .reading-details {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+      opacity: 0;
+    }
+    .reading-details.open {
+      max-height: 3000px;
+      opacity: 1;
+    }
+
+    /* Tab active state */
+    .tab-btn { transition: all 0.2s ease; }
+    .tab-btn.active {
+      background: rgba(107, 95, 199, 0.3);
+      border-color: rgba(107, 95, 199, 0.5);
+      color: #ddd9f5;
+    }
+
+    /* Flag toggle */
+    .flag-btn {
+      transition: all 0.15s ease;
+    }
+    .flag-btn.active {
+      background: rgba(107, 95, 199, 0.3);
+      border-color: rgba(107, 95, 199, 0.6);
+      color: #ddd9f5;
+    }
+    .flag-btn.active-good {
+      background: rgba(52, 211, 153, 0.2);
+      border-color: rgba(52, 211, 153, 0.5);
+      color: #6ee7b7;
+    }
+
+    /* Toast notification */
+    .toast {
+      position: fixed; bottom: 2rem; right: 2rem;
+      padding: 0.75rem 1.5rem; border-radius: 0.75rem;
+      z-index: 100; transform: translateY(100px); opacity: 0;
+      transition: all 0.3s ease;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+  </style>
+</head>
+<body class="text-white antialiased">
+  <div class="star-bg"></div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast glass text-sm"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-10">
+
+    <!-- Header -->
+    <header class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 gap-4">
+      <div>
+        <h1 class="text-2xl sm:text-3xl font-bold tracking-tight">
+          <span class="text-star-gold">&#9788;</span> Tara Expert Review Panel
+        </h1>
+        <p class="text-cosmic-300 text-sm mt-1">Vedic Jyotish Readings — Quality Assurance</p>
+      </div>
+      <div class="flex items-center gap-3 text-sm text-cosmic-300">
+        <span class="flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-dot inline-block"></span>
+          Connected
+        </span>
+        <span id="lastUpdated">Loading...</span>
+        <a href="/dashboard" class="ml-2 px-3 py-1.5 rounded-lg glass text-xs text-cosmic-200 hover:text-white transition-colors">
+          Dashboard
+        </a>
+      </div>
+    </header>
+
+    <!-- Stats Bar -->
+    <div id="statsBar" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3 mb-8">
+    </div>
+
+    <!-- Tabs -->
+    <div class="flex gap-2 mb-6 overflow-x-auto pb-2">
+      <button class="tab-btn active px-4 py-2 rounded-lg glass text-sm whitespace-nowrap" data-tab="readings">
+        Reading Queue
+      </button>
+      <button class="tab-btn px-4 py-2 rounded-lg glass text-sm whitespace-nowrap" data-tab="knowledge">
+        Knowledge Review
+      </button>
+      <button class="tab-btn px-4 py-2 rounded-lg glass text-sm whitespace-nowrap" data-tab="corrections">
+        Corrections Feed
+      </button>
+    </div>
+
+    <!-- Loading state -->
+    <div id="loading" class="text-center py-20">
+      <div class="inline-block w-8 h-8 border-2 border-cosmic-500 border-t-star-gold rounded-full animate-spin"></div>
+      <p class="text-cosmic-300 mt-4">Loading readings for review...</p>
+    </div>
+
+    <!-- Error state -->
+    <div id="error" class="hidden text-center py-20">
+      <p class="text-red-400 text-lg">Failed to load data</p>
+      <p id="errorMsg" class="text-cosmic-400 text-sm mt-2"></p>
+      <button class="mt-4 px-4 py-2 rounded-lg bg-cosmic-700 text-sm hover:bg-cosmic-600 transition-colors" id="retryBtn">
+        Retry
+      </button>
+    </div>
+
+    <!-- Tab: Readings -->
+    <div id="tab-readings" class="tab-content">
+      <div id="readingsList" class="space-y-4"></div>
+      <div id="pagination" class="flex justify-center gap-2 mt-8"></div>
+    </div>
+
+    <!-- Tab: Knowledge -->
+    <div id="tab-knowledge" class="tab-content hidden">
+      <div id="knowledgeGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+    </div>
+
+    <!-- Tab: Corrections -->
+    <div id="tab-corrections" class="tab-content hidden">
+      <div id="correctionsList" class="space-y-3"></div>
+      <div id="correctionsPagination" class="flex justify-center gap-2 mt-8"></div>
+    </div>
+
+  </div>
+
+<script>
+// ── State ────────────────────────────────────────────────────────────
+
+const state = {
+  readings: [],
+  stats: {},
+  feedback: [],
+  knowledge: {},
+  currentPage: 1,
+  totalReadings: 0,
+  feedbackPage: 1,
+  totalFeedback: 0,
+  expandedCards: new Set(),
+  drafts: loadDrafts(),
+};
+
+// ── Safe DOM Helpers ─────────────────────────────────────────────────
+
+function el(tag, className, textContent) {
+  const e = document.createElement(tag);
+  if (className) e.className = className;
+  if (textContent !== undefined) e.textContent = textContent;
+  return e;
+}
+
+function clearChildren(parent) {
+  while (parent.firstChild) parent.removeChild(parent.firstChild);
+}
+
+// ── Helpers ──────────────────────────────────────────────────────────
+
+function loadDrafts() {
+  try {
+    return JSON.parse(localStorage.getItem('tara_expert_drafts') || '{}');
+  } catch { return {}; }
+}
+
+function saveDraft(messageId, data) {
+  state.drafts[messageId] = data;
+  localStorage.setItem('tara_expert_drafts', JSON.stringify(state.drafts));
+}
+
+function clearDraft(messageId) {
+  delete state.drafts[messageId];
+  localStorage.setItem('tara_expert_drafts', JSON.stringify(state.drafts));
+}
+
+function showToast(msg, type) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.className = 'toast glass text-sm show';
+  if (type === 'success') toast.style.borderColor = 'rgba(52,211,153,0.5)';
+  else if (type === 'error') toast.style.borderColor = 'rgba(248,113,113,0.5)';
+  else toast.style.borderColor = 'rgba(107,95,199,0.5)';
+  setTimeout(function() { toast.classList.remove('show'); }, 3000);
+}
+
+function timeAgo(dateStr) {
+  if (!dateStr) return '';
+  var diff = Date.now() - new Date(dateStr).getTime();
+  var mins = Math.floor(diff / 60000);
+  if (mins < 1) return 'just now';
+  if (mins < 60) return mins + 'm ago';
+  var hours = Math.floor(mins / 60);
+  if (hours < 24) return hours + 'h ago';
+  var days = Math.floor(hours / 24);
+  return days + 'd ago';
+}
+
+function formatDate(dateStr) {
+  if (!dateStr) return 'N/A';
+  try {
+    return new Date(dateStr).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+  } catch { return dateStr; }
+}
+
+// ── API Calls ────────────────────────────────────────────────────────
+
+async function fetchReadings(page) {
+  var res = await fetch('/api/expert/readings?page=' + page + '&limit=15');
+  if (!res.ok) throw new Error('Failed to fetch readings');
+  return res.json();
+}
+
+async function fetchStats() {
+  var res = await fetch('/api/expert/stats');
+  if (!res.ok) throw new Error('Failed to fetch stats');
+  return res.json();
+}
+
+async function fetchFeedback(page) {
+  var res = await fetch('/api/expert/feedback?page=' + page + '&limit=30');
+  if (!res.ok) throw new Error('Failed to fetch feedback');
+  return res.json();
+}
+
+async function fetchKnowledge() {
+  var res = await fetch('/api/expert/knowledge');
+  if (!res.ok) throw new Error('Failed to fetch knowledge');
+  return res.json();
+}
+
+async function postFeedback(messageId, data) {
+  var res = await fetch('/api/expert/feedback', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ messageId: messageId, accuracyRating: data.accuracyRating, adviceRating: data.adviceRating, toneRating: data.toneRating, flags: data.flags, correctionText: data.correctionText }),
+  });
+  if (!res.ok) {
+    var err = await res.json().catch(function() { return {}; });
+    throw new Error(err.message || 'Submission failed');
+  }
+  return res.json();
+}
+
+// ── Data Loading ─────────────────────────────────────────────────────
+
+async function loadAll() {
+  try {
+    document.getElementById('loading').classList.remove('hidden');
+    document.getElementById('error').classList.add('hidden');
+
+    var results = await Promise.all([
+      fetchReadings(state.currentPage),
+      fetchStats(),
+      fetchFeedback(state.feedbackPage),
+      fetchKnowledge(),
+    ]);
+
+    state.readings = results[0].readings;
+    state.totalReadings = results[0].total;
+    state.stats = results[1];
+    state.feedback = results[2].feedback;
+    state.totalFeedback = results[2].total;
+    state.knowledge = results[3];
+
+    document.getElementById('loading').classList.add('hidden');
+    document.getElementById('lastUpdated').textContent = 'Updated ' + new Date().toLocaleTimeString();
+
+    renderStats();
+    renderReadings();
+    renderKnowledge();
+    renderCorrections();
+  } catch (err) {
+    document.getElementById('loading').classList.add('hidden');
+    document.getElementById('error').classList.remove('hidden');
+    document.getElementById('errorMsg').textContent = err.message;
+  }
+}
+
+// ── Rendering: Stats Bar ─────────────────────────────────────────────
+
+function renderStats() {
+  var s = state.stats;
+  var container = document.getElementById('statsBar');
+  clearChildren(container);
+
+  var items = [
+    { label: 'Readings Available', value: state.totalReadings },
+    { label: 'Reviews Done', value: s.totalReviews || 0 },
+    { label: 'Corrections', value: s.correctionsSubmitted || 0 },
+    { label: 'Avg Accuracy', value: (s.avgAccuracy || 0).toFixed(1) + '/5' },
+    { label: 'Avg Advice', value: (s.avgAdvice || 0).toFixed(1) + '/5' },
+    { label: 'Good Readings', value: s.goodReadings || 0 },
+  ];
+
+  for (var i = 0; i < items.length; i++) {
+    var card = el('div', 'glass-card rounded-xl p-4 fade-in');
+    card.appendChild(el('div', 'text-xl font-bold text-white', items[i].value));
+    card.appendChild(el('div', 'text-xs text-cosmic-300 mt-1', items[i].label));
+    container.appendChild(card);
+  }
+}
+
+// ── South Indian Chart ───────────────────────────────────────────────
+
+var SIGN_NAMES = [
+  'Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo',
+  'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'
+];
+
+// South Indian chart: fixed sign positions in 4x4 grid
+// Center 2x2 is blank (-1)
+var SI_LAYOUT = [
+  [11, 0, 1, 2],
+  [10, -1, -1, 3],
+  [9, -1, -1, 4],
+  [8, 7, 6, 5],
+];
+
+function buildChartGrid(chartData) {
+  var container = el('div', 'chart-grid');
+
+  if (!chartData || !chartData.planets) {
+    container.style.opacity = '0.3';
+  }
+
+  // Map planets to signs
+  var planetsInSign = {};
+  if (chartData && chartData.planets) {
+    var planetEntries = Object.entries(chartData.planets);
+    for (var p = 0; p < planetEntries.length; p++) {
+      var planet = planetEntries[p][0];
+      var info = planetEntries[p][1];
+      var signIdx = typeof info === 'object' ? info.sign : null;
+      if (signIdx !== null && signIdx !== undefined) {
+        var idx = typeof signIdx === 'number' ? signIdx : SIGN_NAMES.indexOf(signIdx);
+        if (idx >= 0 && idx < 12) {
+          if (!planetsInSign[idx]) planetsInSign[idx] = [];
+          planetsInSign[idx].push({
+            name: planet,
+            dignity: info.dignity || 'normal',
+            degree: info.degree,
+            retrograde: info.retrograde || false,
+          });
+        }
+      }
+    }
+  }
+
+  var centerAdded = false;
+
+  for (var row = 0; row < 4; row++) {
+    for (var col = 0; col < 4; col++) {
+      var signI = SI_LAYOUT[row][col];
+
+      if (signI === -1) {
+        if (!centerAdded) {
+          centerAdded = true;
+          var center = el('div', 'chart-center');
+          if (chartData) {
+            center.appendChild(el('div', 'text-xs text-star-gold font-semibold', 'Asc: ' + (chartData.ascendant || '?')));
+            if (chartData.moonSign) {
+              center.appendChild(el('div', 'text-xs text-cosmic-200 mt-1', 'Moon: ' + chartData.moonSign));
+            }
+            if (chartData.sunSign) {
+              center.appendChild(el('div', 'text-xs text-cosmic-300', 'Sun: ' + chartData.sunSign));
+            }
+          } else {
+            center.appendChild(el('div', 'text-xs text-cosmic-400', 'No chart data'));
+          }
+          container.appendChild(center);
+        }
+        continue;
+      }
+
+      var cell = el('div', 'chart-cell');
+      cell.appendChild(el('div', 'sign-label', SIGN_NAMES[signI]));
+
+      var planets = planetsInSign[signI] || [];
+      for (var pi = 0; pi < planets.length; pi++) {
+        var pp = planets[pi];
+        var dignityClass = 'planet-' + (pp.dignity || 'normal');
+        var text = pp.name;
+        if (pp.retrograde) text += '(R)';
+        if (pp.degree !== undefined && pp.degree !== null) text += ' ' + Math.round(pp.degree) + '\u00B0';
+        cell.appendChild(el('div', dignityClass, text));
+      }
+
+      container.appendChild(cell);
+    }
+  }
+
+  return container;
+}
+
+// ── Star Ratings ─────────────────────────────────────────────────────
+
+function createStarRating(name, messageId, existingValue) {
+  var wrapper = el('div', 'flex items-center gap-2');
+  wrapper.appendChild(el('span', 'text-xs text-cosmic-300 w-20', name));
+
+  var ratingDiv = el('div', 'star-rating');
+  var fieldName = name.toLowerCase().replace(/[^a-z]/g, '') + '_' + messageId;
+
+  for (var i = 5; i >= 1; i--) {
+    var input = document.createElement('input');
+    input.type = 'radio';
+    input.name = fieldName;
+    input.value = i;
+    input.id = fieldName + '_' + i;
+    if (existingValue === i) input.checked = true;
+
+    var lbl = document.createElement('label');
+    lbl.htmlFor = fieldName + '_' + i;
+    lbl.textContent = '\u2605';
+    lbl.title = i + ' star' + (i > 1 ? 's' : '');
+
+    (function(mid) {
+      input.addEventListener('change', function() { autoSaveDraft(mid); });
+    })(messageId);
+
+    ratingDiv.appendChild(input);
+    ratingDiv.appendChild(lbl);
+  }
+
+  wrapper.appendChild(ratingDiv);
+  return wrapper;
+}
+
+// ── Rendering: Readings ──────────────────────────────────────────────
+
+function renderReadings() {
+  var container = document.getElementById('readingsList');
+  clearChildren(container);
+
+  if (state.readings.length === 0) {
+    container.appendChild(el('div', 'text-center py-16 text-cosmic-400', 'No readings to review yet. Readings appear here when users ask Tara for astrological guidance.'));
+    return;
+  }
+
+  for (var i = 0; i < state.readings.length; i++) {
+    container.appendChild(createReadingCard(state.readings[i]));
+  }
+
+  renderPagination();
+}
+
+function createReadingCard(r) {
+  var card = el('div', 'glass-card rounded-xl overflow-hidden fade-in');
+  card.dataset.messageId = r.messageId;
+
+  var draft = state.drafts[r.messageId] || {};
+  var fb = r.existingFeedback;
+
+  // ── Collapsed header ──
+  var header = el('div', 'p-4 cursor-pointer flex items-start gap-4 hover:bg-white/[0.02] transition-colors');
+  header.addEventListener('click', function() { toggleCard(r.messageId); });
+
+  // Avatar
+  var userCol = el('div', 'flex-shrink-0');
+  var avatar = el('div', 'w-10 h-10 rounded-full bg-cosmic-700 flex items-center justify-center text-sm font-bold text-star-gold');
+  avatar.textContent = (r.user.firstName || '?')[0].toUpperCase();
+  userCol.appendChild(avatar);
+  header.appendChild(userCol);
+
+  // Middle
+  var mid = el('div', 'flex-1 min-w-0');
+
+  var topRow = el('div', 'flex items-center gap-2 flex-wrap');
+  topRow.appendChild(el('span', 'font-semibold text-sm text-white', r.user.firstName || 'Anonymous'));
+  topRow.appendChild(el('span', 'text-xs px-2 py-0.5 rounded-full bg-cosmic-700 text-cosmic-200', r.intent || 'reading'));
+  topRow.appendChild(el('span', 'text-xs px-2 py-0.5 rounded-full bg-cosmic-800 text-cosmic-300', r.modelUsed || '?'));
+  if (fb) {
+    topRow.appendChild(el('span', 'text-xs px-2 py-0.5 rounded-full bg-emerald-900/50 text-emerald-300', 'Reviewed'));
+  }
+  mid.appendChild(topRow);
+
+  // Birth info
+  var birthParts = [];
+  if (r.user.birthDate) birthParts.push(formatDate(r.user.birthDate));
+  if (r.user.birthTime) birthParts.push(String(r.user.birthTime).slice(0, 5));
+  if (r.user.birthPlace) birthParts.push(r.user.birthPlace);
+  mid.appendChild(el('div', 'text-xs text-cosmic-300 mt-1', birthParts.join(' \u00B7 ') || 'No birth data'));
+
+  // Question preview
+  if (r.userQuestion) {
+    var qPrev = el('div', 'text-xs text-cosmic-400 mt-1');
+    qPrev.style.overflow = 'hidden';
+    qPrev.style.textOverflow = 'ellipsis';
+    qPrev.style.whiteSpace = 'nowrap';
+    qPrev.textContent = 'Q: ' + r.userQuestion.slice(0, 120);
+    mid.appendChild(qPrev);
+  }
+
+  // Reading preview
+  var preview = el('div', 'text-sm text-cosmic-200 mt-2');
+  preview.style.display = '-webkit-box';
+  preview.style.webkitLineClamp = '2';
+  preview.style.webkitBoxOrient = 'vertical';
+  preview.style.overflow = 'hidden';
+  preview.textContent = r.readingText ? r.readingText.slice(0, 200) : 'No reading text';
+  mid.appendChild(preview);
+
+  header.appendChild(mid);
+
+  // Right: time + expand
+  var rightCol = el('div', 'flex-shrink-0 text-right');
+  rightCol.appendChild(el('div', 'text-xs text-cosmic-400', timeAgo(r.readingAt)));
+  var expandIcon = el('div', 'mt-2 text-cosmic-400 transition-transform');
+  expandIcon.id = 'expand-icon-' + r.messageId;
+  expandIcon.textContent = '\u25BC';
+  expandIcon.style.fontSize = '0.7rem';
+  rightCol.appendChild(expandIcon);
+  header.appendChild(rightCol);
+
+  card.appendChild(header);
+
+  // ── Expanded details ──
+  var details = el('div', 'reading-details');
+  details.id = 'details-' + r.messageId;
+
+  var detailInner = el('div', 'px-4 pb-4 border-t border-white/5 pt-4');
+
+  // Two-column layout
+  var twoCol = el('div', 'grid grid-cols-1 lg:grid-cols-2 gap-6');
+
+  // Left: Chart
+  var leftColEl = el('div');
+  leftColEl.appendChild(el('h3', 'text-sm font-semibold text-cosmic-200 mb-3', 'Birth Chart (South Indian)'));
+  leftColEl.appendChild(buildChartGrid(r.chartData));
+
+  // Dasha info
+  if (r.chartData && r.chartData.currentDasha) {
+    var dashaBox = el('div', 'mt-3 glass rounded-lg p-3');
+    dashaBox.appendChild(el('div', 'text-xs font-semibold text-star-gold', 'Current Dasha'));
+    dashaBox.appendChild(el('div', 'text-sm text-cosmic-100 mt-1', r.chartData.currentDasha));
+    if (r.chartData.currentAntardasha) {
+      dashaBox.appendChild(el('div', 'text-xs text-cosmic-300 mt-0.5', 'Antardasha: ' + r.chartData.currentAntardasha));
+    }
+    leftColEl.appendChild(dashaBox);
+  }
+
+  // Chart summary
+  if (r.chartSummary) {
+    var summaryBox = el('div', 'mt-3 glass rounded-lg p-3');
+    summaryBox.appendChild(el('div', 'text-xs font-semibold text-cosmic-200', 'Chart Summary'));
+    var summaryText = el('div', 'text-xs text-cosmic-300 mt-1');
+    summaryText.style.whiteSpace = 'pre-line';
+    summaryText.textContent = r.chartSummary;
+    summaryBox.appendChild(summaryText);
+    leftColEl.appendChild(summaryBox);
+  }
+
+  twoCol.appendChild(leftColEl);
+
+  // Right: Reading + Question
+  var rightColEl = el('div');
+
+  if (r.userQuestion) {
+    var qBox = el('div', 'glass rounded-lg p-3 mb-3');
+    qBox.appendChild(el('div', 'text-xs font-semibold text-cosmic-200 mb-1', 'User Question (' + (r.user.language || 'en') + ')'));
+    var qFull = el('div', 'text-sm text-cosmic-100');
+    qFull.style.whiteSpace = 'pre-line';
+    qFull.textContent = r.userQuestion;
+    qBox.appendChild(qFull);
+    rightColEl.appendChild(qBox);
+  }
+
+  var readingBox = el('div', 'glass rounded-lg p-3');
+  readingBox.appendChild(el('div', 'text-xs font-semibold text-cosmic-200 mb-1', "Tara's Reading"));
+  var readingFull = el('div', 'text-sm text-cosmic-100 max-h-64 overflow-y-auto');
+  readingFull.style.whiteSpace = 'pre-line';
+  readingFull.textContent = r.readingText || 'No reading text available';
+  readingBox.appendChild(readingFull);
+  rightColEl.appendChild(readingBox);
+
+  // RAG sources
+  if (r.ragSources && Array.isArray(r.ragSources) && r.ragSources.length > 0) {
+    var ragBox = el('div', 'mt-3 glass rounded-lg p-3');
+    ragBox.appendChild(el('div', 'text-xs font-semibold text-cosmic-200 mb-1', 'RAG Sources Used'));
+    for (var ri = 0; ri < r.ragSources.length; ri++) {
+      var src = r.ragSources[ri];
+      ragBox.appendChild(el('div', 'text-xs text-cosmic-300', typeof src === 'string' ? src : (src.source || JSON.stringify(src))));
+    }
+    rightColEl.appendChild(ragBox);
+  }
+
+  // Meta
+  var metaParts = [];
+  if (r.responseTimeMs) metaParts.push('Response: ' + r.responseTimeMs + 'ms');
+  if (r.chartContextUsed) metaParts.push('Chart context: used');
+  if (metaParts.length > 0) {
+    rightColEl.appendChild(el('div', 'mt-3 flex gap-3 text-xs text-cosmic-400', metaParts.join(' \u00B7 ')));
+  }
+
+  twoCol.appendChild(rightColEl);
+  detailInner.appendChild(twoCol);
+
+  // ── Feedback form ──
+  var feedbackSection = el('div', 'mt-6 border-t border-white/5 pt-4');
+  feedbackSection.appendChild(el('h3', 'text-sm font-semibold text-cosmic-200 mb-4', fb ? 'Update Feedback' : 'Expert Feedback'));
+
+  // Star ratings
+  var fbGrid = el('div', 'grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4');
+  var accVal = fb ? fb.accuracy_rating : (draft.accuracyRating || null);
+  var advVal = fb ? fb.advice_rating : (draft.adviceRating || null);
+  var toneVal = fb ? fb.tone_rating : (draft.toneRating || null);
+  fbGrid.appendChild(createStarRating('Accuracy', r.messageId, accVal));
+  fbGrid.appendChild(createStarRating('Advice', r.messageId, advVal));
+  fbGrid.appendChild(createStarRating('Tone', r.messageId, toneVal));
+  feedbackSection.appendChild(fbGrid);
+
+  // Flags
+  var flagsDiv = el('div', 'flex flex-wrap gap-2 mb-4');
+  var flagOptions = ['Wrong planet placement', 'Wrong dasha', 'Wrong yoga', 'Incorrect remedy', 'Good reading'];
+  var existingFlags = fb ? (fb.flags || []) : (draft.flags || []);
+
+  for (var fi = 0; fi < flagOptions.length; fi++) {
+    (function(flag) {
+      var isGood = flag === 'Good reading';
+      var isActive = existingFlags.indexOf(flag) !== -1;
+      var btn = el('button', 'flag-btn text-xs px-3 py-1.5 rounded-full border border-white/10 text-cosmic-300', flag);
+      if (isActive) btn.classList.add(isGood ? 'active-good' : 'active');
+      btn.dataset.flag = flag;
+      btn.dataset.messageId = r.messageId;
+      btn.addEventListener('click', function() {
+        btn.classList.toggle(isGood ? 'active-good' : 'active');
+        autoSaveDraft(r.messageId);
+      });
+      flagsDiv.appendChild(btn);
+    })(flagOptions[fi]);
+  }
+  feedbackSection.appendChild(flagsDiv);
+
+  // Correction textarea
+  var textArea = document.createElement('textarea');
+  textArea.className = 'w-full glass rounded-lg p-3 text-sm text-cosmic-100 placeholder-cosmic-500 resize-y focus:outline-none focus:border-cosmic-400';
+  textArea.placeholder = 'Write corrections, notes, or suggestions for improving this reading...';
+  textArea.id = 'correction-' + r.messageId;
+  textArea.value = fb ? (fb.correction_text || '') : (draft.correctionText || '');
+  textArea.rows = 3;
+  textArea.style.minHeight = '80px';
+  textArea.addEventListener('input', function() { autoSaveDraft(r.messageId); });
+  feedbackSection.appendChild(textArea);
+
+  // Submit row
+  var submitRow = el('div', 'flex items-center justify-between mt-3');
+
+  var draftNote = el('span', 'text-xs text-cosmic-500');
+  draftNote.id = 'draft-status-' + r.messageId;
+  draftNote.textContent = draft.savedAt ? 'Draft saved ' + timeAgo(draft.savedAt) : '';
+  submitRow.appendChild(draftNote);
+
+  var submitBtn = el('button', 'px-5 py-2 rounded-lg bg-cosmic-600 hover:bg-cosmic-500 text-sm font-medium text-white transition-colors', fb ? 'Update Feedback' : 'Submit Feedback');
+  submitBtn.addEventListener('click', function() { handleSubmit(r.messageId); });
+  submitRow.appendChild(submitBtn);
+
+  feedbackSection.appendChild(submitRow);
+  detailInner.appendChild(feedbackSection);
+  details.appendChild(detailInner);
+  card.appendChild(details);
+
+  if (state.expandedCards.has(r.messageId)) {
+    details.classList.add('open');
+  }
+
+  return card;
+}
+
+function toggleCard(messageId) {
+  var details = document.getElementById('details-' + messageId);
+  var icon = document.getElementById('expand-icon-' + messageId);
+  if (!details) return;
+
+  if (details.classList.contains('open')) {
+    details.classList.remove('open');
+    state.expandedCards.delete(messageId);
+    if (icon) icon.style.transform = 'rotate(0deg)';
+  } else {
+    details.classList.add('open');
+    state.expandedCards.add(messageId);
+    if (icon) icon.style.transform = 'rotate(180deg)';
+  }
+}
+
+function autoSaveDraft(messageId) {
+  var data = collectFormData(messageId);
+  data.savedAt = new Date().toISOString();
+  saveDraft(messageId, data);
+
+  var statusEl = document.getElementById('draft-status-' + messageId);
+  if (statusEl) statusEl.textContent = 'Draft auto-saved';
+}
+
+function collectFormData(messageId) {
+  var data = {};
+
+  // Star ratings
+  var ratingNames = ['accuracy', 'advice', 'tone'];
+  for (var ri = 0; ri < ratingNames.length; ri++) {
+    var fieldName = ratingNames[ri] + '_' + messageId;
+    var checked = document.querySelector('input[name="' + fieldName + '"]:checked');
+    if (checked) data[ratingNames[ri] + 'Rating'] = parseInt(checked.value);
+  }
+
+  // Flags
+  var card = document.querySelector('[data-message-id="' + messageId + '"]');
+  if (card) {
+    data.flags = [];
+    var activeFlags = card.querySelectorAll('.flag-btn.active, .flag-btn.active-good');
+    for (var fi = 0; fi < activeFlags.length; fi++) {
+      data.flags.push(activeFlags[fi].dataset.flag);
+    }
+  }
+
+  // Correction
+  var textArea = document.getElementById('correction-' + messageId);
+  if (textArea) data.correctionText = textArea.value;
+
+  return data;
+}
+
+async function handleSubmit(messageId) {
+  var data = collectFormData(messageId);
+
+  if (!data.accuracyRating && !data.adviceRating && !data.toneRating && !data.correctionText && (!data.flags || data.flags.length === 0)) {
+    showToast('Please provide at least one rating, flag, or correction', 'error');
+    return;
+  }
+
+  try {
+    await postFeedback(messageId, data);
+    clearDraft(messageId);
+    showToast('Feedback submitted successfully', 'success');
+    await loadAll();
+  } catch (err) {
+    showToast('Error: ' + err.message, 'error');
+  }
+}
+
+// ── Pagination ───────────────────────────────────────────────────────
+
+function renderPagination() {
+  var container = document.getElementById('pagination');
+  clearChildren(container);
+
+  var totalPages = Math.ceil(state.totalReadings / 15);
+  if (totalPages <= 1) return;
+
+  for (var i = 1; i <= totalPages; i++) {
+    (function(page) {
+      var btn = el('button', 'px-3 py-1.5 rounded-lg text-sm transition-colors ' + (page === state.currentPage ? 'bg-cosmic-600 text-white' : 'glass text-cosmic-300 hover:text-white'), page);
+      btn.addEventListener('click', async function() {
+        state.currentPage = page;
+        var data = await fetchReadings(page);
+        state.readings = data.readings;
+        state.totalReadings = data.total;
+        renderReadings();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+      container.appendChild(btn);
+    })(i);
+  }
+}
+
+// ── Rendering: Knowledge ─────────────────────────────────────────────
+
+var KNOWLEDGE_LABELS = {
+  'yogas': 'Yogas',
+  'nakshatras': 'Nakshatras',
+  'bhrigu-sutras': 'Bhrigu Sutras',
+  'dashas': 'Dashas',
+  'nadi-principles': 'Nadi Principles',
+  'planet-in-sign': 'Planet in Sign',
+  'remedies': 'Remedies',
+  'navagraha-temples': 'Navagraha Temples',
+};
+
+function renderKnowledge() {
+  var container = document.getElementById('knowledgeGrid');
+  clearChildren(container);
+
+  var entries = Object.entries(state.knowledge);
+  if (!state.knowledge || entries.length === 0) {
+    container.appendChild(el('div', 'col-span-4 text-center py-16 text-cosmic-400', 'No knowledge files found'));
+    return;
+  }
+
+  for (var i = 0; i < entries.length; i++) {
+    var name = entries[i][0];
+    var info = entries[i][1];
+
+    var card = el('div', 'glass-card rounded-xl p-5 fade-in');
+    card.appendChild(el('div', 'text-sm font-semibold text-white', KNOWLEDGE_LABELS[name] || name.replace(/-/g, ' ')));
+    card.appendChild(el('div', 'text-2xl font-bold text-star-gold mt-2', String(info.entries || 0)));
+    card.appendChild(el('div', 'text-xs text-cosmic-300', 'entries \u00B7 ' + (info.sizeKb || 0) + ' KB'));
+
+    if (info.error) {
+      card.appendChild(el('div', 'text-xs text-red-400 mt-2', info.error));
+    }
+
+    container.appendChild(card);
+  }
+}
+
+// ── Rendering: Corrections Feed ──────────────────────────────────────
+
+function renderCorrections() {
+  var container = document.getElementById('correctionsList');
+  clearChildren(container);
+
+  if (!state.feedback || state.feedback.length === 0) {
+    container.appendChild(el('div', 'text-center py-16 text-cosmic-400', 'No feedback submitted yet. Review readings and submit your first feedback above.'));
+    return;
+  }
+
+  for (var i = 0; i < state.feedback.length; i++) {
+    var fb = state.feedback[i];
+    var card = el('div', 'glass-card rounded-xl p-4 fade-in');
+
+    // Top row
+    var topRow = el('div', 'flex items-center justify-between mb-2');
+    var leftInfo = el('div', 'flex items-center gap-2');
+    leftInfo.appendChild(el('span', 'text-sm font-semibold text-white', fb.reviewerName || 'Expert'));
+    leftInfo.appendChild(el('span', 'text-xs px-2 py-0.5 rounded-full bg-cosmic-700 text-cosmic-200', fb.intent || 'reading'));
+    leftInfo.appendChild(el('span', 'text-xs text-cosmic-400', 'for ' + (fb.userName || 'Anonymous')));
+    topRow.appendChild(leftInfo);
+    topRow.appendChild(el('span', 'text-xs text-cosmic-400', timeAgo(fb.createdAt)));
+    card.appendChild(topRow);
+
+    // Ratings
+    var ratingsRow = el('div', 'flex gap-4 mb-2');
+    var ratingPairs = [['Accuracy', fb.accuracyRating], ['Advice', fb.adviceRating], ['Tone', fb.toneRating]];
+    for (var ri = 0; ri < ratingPairs.length; ri++) {
+      var rLabel = ratingPairs[ri][0];
+      var rVal = ratingPairs[ri][1];
+      if (rVal) {
+        var rEl = el('span', 'text-xs text-cosmic-300');
+        rEl.textContent = rLabel + ': ';
+        for (var si = 0; si < 5; si++) {
+          var starSpan = el('span');
+          starSpan.textContent = '\u2605';
+          starSpan.style.color = si < rVal ? '#fbbf24' : 'rgba(255,255,255,0.1)';
+          rEl.appendChild(starSpan);
+        }
+        ratingsRow.appendChild(rEl);
+      }
+    }
+    card.appendChild(ratingsRow);
+
+    // Flags
+    if (fb.flags && Array.isArray(fb.flags) && fb.flags.length > 0) {
+      var flagsRow = el('div', 'flex flex-wrap gap-1.5 mb-2');
+      for (var fi = 0; fi < fb.flags.length; fi++) {
+        var flag = fb.flags[fi];
+        var isGood = flag === 'Good reading';
+        flagsRow.appendChild(el('span', 'text-xs px-2 py-0.5 rounded-full ' + (isGood ? 'bg-emerald-900/50 text-emerald-300' : 'bg-red-900/30 text-red-300'), flag));
+      }
+      card.appendChild(flagsRow);
+    }
+
+    // Correction text
+    if (fb.correctionText) {
+      var corrBox = el('div', 'glass rounded-lg p-3 mt-2');
+      var corrText = el('div', 'text-sm text-cosmic-100');
+      corrText.style.whiteSpace = 'pre-line';
+      corrText.textContent = fb.correctionText;
+      corrBox.appendChild(corrText);
+      card.appendChild(corrBox);
+    }
+
+    // Reading preview
+    if (fb.readingPreview) {
+      var prevEl = el('div', 'text-xs text-cosmic-400 mt-2');
+      prevEl.style.overflow = 'hidden';
+      prevEl.style.textOverflow = 'ellipsis';
+      prevEl.style.whiteSpace = 'nowrap';
+      prevEl.textContent = 'Reading: ' + fb.readingPreview;
+      card.appendChild(prevEl);
+    }
+
+    container.appendChild(card);
+  }
+
+  // Corrections pagination
+  var pContainer = document.getElementById('correctionsPagination');
+  clearChildren(pContainer);
+  var totalPages = Math.ceil(state.totalFeedback / 30);
+  if (totalPages > 1) {
+    for (var pi = 1; pi <= totalPages; pi++) {
+      (function(page) {
+        var btn = el('button', 'px-3 py-1.5 rounded-lg text-sm transition-colors ' + (page === state.feedbackPage ? 'bg-cosmic-600 text-white' : 'glass text-cosmic-300 hover:text-white'), page);
+        btn.addEventListener('click', async function() {
+          state.feedbackPage = page;
+          var data = await fetchFeedback(page);
+          state.feedback = data.feedback;
+          state.totalFeedback = data.total;
+          renderCorrections();
+        });
+        pContainer.appendChild(btn);
+      })(pi);
+    }
+  }
+}
+
+// ── Tabs ─────────────────────────────────────────────────────────────
+
+function initTabs() {
+  var tabBtns = document.querySelectorAll('.tab-btn');
+  for (var i = 0; i < tabBtns.length; i++) {
+    (function(btn) {
+      btn.addEventListener('click', function() {
+        var tabName = btn.dataset.tab;
+        for (var j = 0; j < tabBtns.length; j++) tabBtns[j].classList.remove('active');
+        btn.classList.add('active');
+        var contents = document.querySelectorAll('.tab-content');
+        for (var j = 0; j < contents.length; j++) contents[j].classList.add('hidden');
+        var target = document.getElementById('tab-' + tabName);
+        if (target) target.classList.remove('hidden');
+      });
+    })(tabBtns[i]);
+  }
+}
+
+// ── Init ─────────────────────────────────────────────────────────────
+
+document.addEventListener('DOMContentLoaded', function() {
+  initTabs();
+  document.getElementById('retryBtn').addEventListener('click', loadAll);
+  loadAll();
+});
+</script>
+</body>
+</html>
