@@ -4306,5 +4306,83 @@
     "lng": 87.8667,
     "state": "West Bengal",
     "tz": "Asia/Kolkata"
+  },
+  "bhadrak": {
+    "lat": 21.05447,
+    "lng": 86.5156,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "bhanjanagar": {
+    "lat": 19.92719,
+    "lng": 84.58201,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "bhajanagar": {
+    "lat": 19.92719,
+    "lng": 84.58201,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "khordha": {
+    "lat": 20.18268,
+    "lng": 85.61629,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "bargarh": {
+    "lat": 21.33348,
+    "lng": 83.61905,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "bolangir": {
+    "lat": 20.70419,
+    "lng": 83.49029,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "balangir": {
+    "lat": 20.70419,
+    "lng": 83.49029,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "sonepur": {
+    "lat": 20.83333,
+    "lng": 83.91667,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "nuapada": {
+    "lat": 20.8167,
+    "lng": 82.5333,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "titlagarh": {
+    "lat": 20.28961,
+    "lng": 83.15233,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "talcher": {
+    "lat": 20.94927,
+    "lng": 85.23354,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "barbil": {
+    "lat": 22.10194,
+    "lng": 85.37752,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "keonjhar": {
+    "lat": 21.6318,
+    "lng": 85.59686,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
   }
 }

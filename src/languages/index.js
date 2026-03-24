@@ -5,8 +5,9 @@ import te from './te.js';
 import bn from './bn.js';
 import ml from './ml.js';
 import kn from './kn.js';
+import or_ from './or.js';
 
-const languages = { ta, en, hi, te, bn, ml, kn };
+const languages = { ta, en, hi, te, bn, ml, kn, or: or_ };
 
 export function t(lang, key) {
   const strings = languages[lang] || languages.en;
@@ -42,23 +43,22 @@ export function detectScript(text) {
   if (/[\u0980-\u09FF]/.test(text)) return 'bengali';
   if (/[\u0D00-\u0D7F]/.test(text)) return 'malayalam';
   if (/[\u0C80-\u0CFF]/.test(text)) return 'kannada';
+  if (/[\u0B00-\u0B7F]/.test(text)) return 'odia';
   return 'latin';
 }
 
 export function detectLanguage(text, storedLang = null) {
   // Script-based detection — but DON'T override stored language
-  // If user was chatting in Hinglish (Latin), don't switch to Devanagari Hindi
   const script = detectScript(text);
 
   if (script !== 'latin') {
-    // Native script detected — if stored language already matches the language family, keep it
-    // This prevents "Hinglish user accidentally types in Devanagari" from switching everything
     if (storedLang === 'hi' && script === 'devanagari') return 'hi';
     if (storedLang === 'ta' && script === 'tamil') return 'ta';
     if (storedLang === 'te' && script === 'telugu') return 'te';
     if (storedLang === 'bn' && script === 'bengali') return 'bn';
     if (storedLang === 'ml' && script === 'malayalam') return 'ml';
     if (storedLang === 'kn' && script === 'kannada') return 'kn';
+    if (storedLang === 'or' && script === 'odia') return 'or';
 
     // No stored language yet — use script detection
     if (script === 'devanagari') return 'hi';
@@ -67,6 +67,7 @@ export function detectLanguage(text, storedLang = null) {
     if (script === 'bengali') return 'bn';
     if (script === 'malayalam') return 'ml';
     if (script === 'kannada') return 'kn';
+    if (script === 'odia') return 'or';
   }
 
   // Romanized word detection
@@ -106,12 +107,18 @@ export function detectLanguage(text, storedLang = null) {
     'jonmo', 'tarik', 'somoy', 'kothay', 'biye', 'chakri', 'kundli',
     'dekhi', 'dekhchi', 'jaanen', 'jani', 'bhalo', 'kemon', 'hobe'];
 
+  const odiaWords = ['mu', 'mora', 'mote', 'aapanka', 'kemiti', 'achhi', 'achanti',
+    'kahanti', 'janma', 'tarikh', 'samaya', 'kouthi', 'baha', 'chakiri', 'kundli',
+    'dekhihi', 'dekhuchi', 'jananti', 'jaanena', 'bhala', 'sahajya', 'karibi',
+    'namaskar', 'kahi', 'paribi', 'hoisathila', 'jagaa', 'graha', 'rashi'];
+
   const hindiScore = words.filter(w => hindiWords.includes(w)).length;
   const tamilScore = words.filter(w => tamilWords.includes(w)).length;
   const teluguScore = words.filter(w => teluguWords.includes(w)).length;
   const bengaliScore = words.filter(w => bengaliWords.includes(w)).length;
+  const odiaScore = words.filter(w => odiaWords.includes(w)).length;
 
-  const scores = { hi: hindiScore, ta: tamilScore, te: teluguScore, bn: bengaliScore };
+  const scores = { hi: hindiScore, ta: tamilScore, te: teluguScore, bn: bengaliScore, or: odiaScore };
   const maxLang = Object.entries(scores).sort((a, b) => b[1] - a[1])[0];
 
   if (maxLang[1] >= 2) return maxLang[0];

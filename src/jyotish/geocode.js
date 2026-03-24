@@ -30,6 +30,10 @@ const ALIASES = {
   'హైదరాబాద్': 'hyderabad', 'విజయవాడ': 'vijayawada',
   // Bengali script
   'কলকাতা': 'kolkata', 'হাওড়া': 'howrah',
+  // Odia script
+  'ଭୁବନେଶ୍ୱର': 'bhubaneswar', 'କଟକ': 'cuttack', 'ପୁରୀ': 'puri',
+  'ରାଉରକେଲା': 'rourkela', 'ସମ୍ବଲପୁର': 'sambalpur', 'ବ୍ରହ୍ମପୁର': 'berhampur',
+  'ଭଦ୍ରକ': 'bhadrak', 'ବାଲେଶ୍ୱର': 'balasore',
 };
 
 // Words to strip from input
@@ -50,7 +54,7 @@ const STATE_FIXES = {
 // Language → state prioritization
 const LANG_STATE_MAP = {
   ta: 'Tamil Nadu', te: 'Telangana', kn: 'Karnataka',
-  ml: 'Kerala', bn: 'West Bengal',
+  ml: 'Kerala', bn: 'West Bengal', or: 'Odisha',
 };
 
 // --- Cache ---
