@@ -4,6 +4,7 @@ import { geocodeBirthPlace } from '../jyotish/geocode.js';
 import { generateBirthChart } from '../jyotish/calculator.js';
 import { formatChartOverview } from '../jyotish/chartFormatter.js';
 import { generateReviewToken } from './chartReview.js';
+import { llmParseBirthData } from './llmParser.js';
 import { logger } from '../utils/logger.js';
 
 // Convert birth_date (may be Date object from PostgreSQL or string) to YYYY-MM-DD
@@ -184,7 +185,7 @@ async function handleTopic(user, messageText, lang) {
   const intent = classifyIntent(messageText);
 
   // Try to extract data if they gave it with their topic
-  const parsed = parseAllFields(messageText);
+  const parsed = await parseWithFallback(messageText, 'awaiting_topic');
   if (parsed.name && parsed.date) {
     const updates = { display_name: parsed.name, birth_date: parsed.date, preferences: JSON.stringify({ initial_intent: intent }) };
     if (parsed.time) { updates.birth_time = parsed.time.time; updates.birth_time_known = parsed.time.known; }
@@ -229,7 +230,7 @@ async function handleNewUser(user, messageText, lang) {
   }[intent] || 'ask_name_default';
 
   // Try to extract name + DOB from first message (some users give everything upfront)
-  const parsed = parseAllFields(messageText);
+  const parsed = await parseWithFallback(messageText, 'new');
 
   if (parsed.name && parsed.date) {
     await updateUser(user.id, {
@@ -269,7 +270,7 @@ async function handleNewUser(user, messageText, lang) {
 }
 
 async function handleNameDob(user, messageText, lang) {
-  const parsed = parseAllFields(messageText);
+  const parsed = await parseWithFallback(messageText, 'awaiting_name_dob');
 
   // User gave name + DOB (and maybe more)
   if (parsed.name && parsed.date) {
@@ -334,7 +335,7 @@ async function handleNameDob(user, messageText, lang) {
 }
 
 async function handleDob(user, messageText, lang) {
-  const parsed = parseAllFields(messageText);
+  const parsed = await parseWithFallback(messageText, 'awaiting_dob');
   const name = user.display_name || 'friend';
 
   if (!parsed.date) {
@@ -367,7 +368,7 @@ async function handleDob(user, messageText, lang) {
 }
 
 async function handleTime(user, messageText, lang) {
-  const parsed = parseAllFields(messageText);
+  const parsed = await parseWithFallback(messageText, 'awaiting_time');
 
   // Bug 3: Handle combined time + place
   if (parsed.time && parsed.place) {
@@ -593,7 +594,49 @@ async function generateChartFromPlace(user, place, lang) {
   }
 }
 
-// --- Smart multi-field parser (Bug 3) ---
+// --- Smart parser: regex first, LLM fallback ---
+
+/**
+ * Parse with regex, fall back to LLM if regex misses key fields.
+ * The LLM call only fires when regex returns nothing useful.
+ */
+async function parseWithFallback(text, currentStep = '') {
+  const regexResult = parseAllFields(text);
+
+  // Determine what we NEED based on current step
+  const needsDate = ['new', 'awaiting_name_dob', 'awaiting_dob'].includes(currentStep);
+  const needsTime = currentStep === 'awaiting_time';
+  const needsPlace = currentStep === 'awaiting_place';
+
+  // Check if regex got what we need
+  const regexGotIt = (needsDate && regexResult.date)
+    || (needsTime && (regexResult.time || regexResult.place))
+    || (needsPlace && regexResult.place)
+    || (regexResult.date && regexResult.name); // Got name+date combo
+
+  if (regexGotIt) {
+    return regexResult; // Regex worked, no LLM needed
+  }
+
+  // Regex failed — try LLM (costs ~50 tokens, ~500ms)
+  logger.info({ text, step: currentStep, regexResult }, '[PARSER] Regex missed, trying LLM fallback');
+  try {
+    const llmResult = await llmParseBirthData(text, currentStep);
+
+    // Merge: LLM fills in what regex missed, regex wins where both found something
+    return {
+      name: regexResult.name || llmResult.name,
+      date: regexResult.date || llmResult.date,
+      time: regexResult.time || llmResult.time,
+      place: regexResult.place || llmResult.place,
+    };
+  } catch (err) {
+    logger.warn({ err: err.message }, '[PARSER] LLM fallback failed, using regex result');
+    return regexResult;
+  }
+}
+
+// --- Regex-only parser (fast path) ---
 
 function parseAllFields(text) {
   const result = { name: null, date: null, time: null, place: null };
