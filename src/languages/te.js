@@ -38,7 +38,7 @@ export default {
 
   hook_frame: `Mee jatakam chusanu... oka vishayam chaala interesting anipinchindi.\n\n`,
   hook_suffix: `\n\nIdhi nijamena?`,
-  thinking_phrases: ['Hmm...', 'Chudandi...', 'Oka nimisham...', 'Interesting...'],
+  thinking_phrases: ['Hmm...', 'Oka nimisham...'],
 
   generic_error: 'Oka nimisham... emi-o problem ayyindi. Malli try cheyandi 🙏',
 };

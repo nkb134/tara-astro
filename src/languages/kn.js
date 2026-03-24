@@ -38,7 +38,7 @@ export default {
 
   hook_frame: `Jaataka noddenu... ondu vishaya nange tumba interesting enistu.\n\n`,
   hook_suffix: `\n\nIdhu sari-aa?`,
-  thinking_phrases: ['Hmm...', 'Nodri...', 'Ondu nimisha...', 'Interesting...'],
+  thinking_phrases: ['Hmm...', 'Ondu nimisha...'],
 
   generic_error: 'Oru nimisha... yenoo problem aaythu. Matte try maadi 🙏',
 };

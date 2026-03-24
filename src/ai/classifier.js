@@ -15,7 +15,9 @@ Respond with ONLY a JSON object, no other text:
 
 Rules:
 - "greeting" = hi, hello, namaste, vanakkam, etc.
-- "crisis" = ONLY for explicit mentions of suicide, self-harm, wanting to die, or ending life. Regular stress, anxiety, sadness, frustration about career/relationships is NOT crisis — classify those as career_reading or relationship_reading instead.
+- "crisis" = ONLY for explicit mentions of suicide, self-harm, wanting to die, or ending life.
+  NOT crisis: "stressed hoon", "tension ho raha", "frustrated", "kya karu samajh nahi aa rha", "job chhodni hai", "pareshan hoon", "depression feel", "anxiety ho rahi"
+  These are normal life situations — classify as career_reading or relationship_reading instead.
 - "off_topic" = topics unrelated to astrology, spirituality, or life guidance
 - "complex" = detailed readings, career analysis, relationship deep-dive, remedy requests
 - "simple" = greetings, quick questions, clarifications, farewells`;

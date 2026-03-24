@@ -44,7 +44,7 @@ export class GeminiProvider extends LLMProvider {
 
   async generate(systemPrompt, userMessage, options = {}) {
     const modelName = options.complexity === 'complex' ? MODELS.pro : MODELS.flash;
-    const maxTokens = options.complexity === 'complex' ? 3000 : 1500;
+    const maxTokens = options.complexity === 'complex' ? 3000 : 2000;
     const model = this.genAI.getGenerativeModel({ model: modelName });
 
     const history = options.history || [];

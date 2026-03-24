@@ -11,6 +11,9 @@ CREATE TABLE IF NOT EXISTS users (
     onboarding_step VARCHAR(30) DEFAULT 'new',
     is_onboarded BOOLEAN DEFAULT FALSE,
 
+    -- User profile
+    gender VARCHAR(10),
+
     -- Birth data
     birth_date DATE,
     birth_time TIME,

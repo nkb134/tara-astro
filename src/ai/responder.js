@@ -13,7 +13,12 @@ export async function generateResponse(userMessage, user, classification, conver
     .map(m => `${m.role === 'user' ? 'User' : 'Tara'}: ${m.content}`)
     .join('\n');
 
-  const systemPrompt = buildMainPrompt(lang, chartContext, birthTimeStatus, historyStr, classification.intent);
+  // Extract initial_intent from user preferences (stored during onboarding)
+  const prefs = typeof user.preferences === 'string' ? JSON.parse(user.preferences || '{}') : (user.preferences || {});
+  const initialIntent = prefs.initial_intent || null;
+  const gender = user.gender || null;
+
+  const systemPrompt = buildMainPrompt(lang, chartContext, birthTimeStatus, historyStr, classification.intent, initialIntent, gender);
 
   const provider = getProvider();
 
@@ -63,7 +68,7 @@ export async function generateHook(chartData, lang) {
 
   try {
     const result = await provider.generate(
-      'You are Tara, a Vedic Jyotish practitioner. Speak naturally, warmly, like texting a friend.',
+      'You are Tara. The user already knows you. Do NOT re-introduce yourself or say your name. Jump directly into the chart insight.',
       fullPrompt,
       { complexity: 'complex', temperature: 0.9 }
     );

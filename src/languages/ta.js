@@ -49,7 +49,7 @@ Enna therinjukkanum — career, thirumanam, illa vera edhaavadhu?`,
 
   hook_frame: `Unga jathagam paarthein... oru vishayam ennai romba kavarndhadhu.\n\n`,
   hook_suffix: `\n\nIdhu sari-aa?`,
-  thinking_phrases: ['Hmm...', 'Paaru...', 'Oru nimisham...', 'Interesting...', 'Kelu...'],
+  thinking_phrases: ['Hmm...', 'Oru nimisham...'],
 
   generic_error: 'Oru nimisham... oru problem vandhuruchu. Mendum try pannunga 🙏',
 };

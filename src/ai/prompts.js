@@ -59,7 +59,7 @@ function formatExampleConversation(example) {
   return text;
 }
 
-export function buildMainPrompt(lang, chartContext, birthTimeStatus, conversationHistory, intent) {
+export function buildMainPrompt(lang, chartContext, birthTimeStatus, conversationHistory, intent, initialIntent = null, gender = null) {
   const banned = getBannedPhrases();
   const training = getTraining();
   const antiPatterns = training.core_patterns_to_learn?.anti_patterns_to_avoid || [];
@@ -102,7 +102,7 @@ HARD RULES — FOLLOW THESE EXACTLY:
 10. REMEDIES ESCALATION: Free mantra first → temple visit → gemstone LAST with cheaper alternative.
 11. MESSAGE FORMAT: You are on WhatsApp. Keep each message SHORT (2-4 sentences max, like a text message).
     If you have more to say, split into sections separated by a line containing ONLY ---
-    Each section will be sent as a separate WhatsApp message.
+    Use --- sparingly — maximum 2 separators (3 messages total). Most replies should be 1-2 messages.
     NEVER write essay-length paragraphs. Think texting, not emailing.
 12. NO REPETITION: NEVER apologize more than once. If you already said sorry, move on.
     NEVER repeat the same point rephrased. Be confident and direct like a real astrologer.
@@ -125,6 +125,12 @@ ${chartContext}
 
 BIRTH TIME STATUS: ${birthTimeStatus}
 ${birthTimeStatus === 'unknown' ? "Birth time is unknown. Focus on Moon sign, planets, nakshatras, dashas — not houses or ascendant." : ""}
+
+USER'S GENDER: ${gender || 'unknown'}
+${gender ? `The user is ${gender}. Use appropriate gender forms when addressing them.` : 'Gender unknown — use gender-neutral or masculine forms when addressing the user.'}
+
+${initialIntent ? `USER'S INITIAL TOPIC: ${initialIntent}
+The user mentioned "${initialIntent}" when they first came. If they haven't changed topic yet, continue discussing this. Do NOT ask "kya jaanna chahte hain" or "what would you like to know" if you already know their topic.` : ''}
 
 CONVERSATION HISTORY:
 ${conversationHistory}`;
@@ -149,8 +155,9 @@ GOOD: "Rahu ki mahadasha chal rahi hai tumhari — yeh phase mein ek ajeeb si be
 
 Respond in ${langName(lang)}. Keep it to 2-3 sentences.
 ${lang === 'hi' ? 'Use FEMININE Hindi grammar — karti hoon, dekh rahi hoon, samajh sakti hoon.' : ''}
+Do NOT introduce yourself or say your name — the user already knows you are Tara.
 End with a question like "yeh sahi hai?" / "yeh feel hota hai?" / "does that resonate?"
-Speak as Tara — warm, direct, personal. Like texting a friend.`;
+Speak warmly, directly, personally. Like texting a friend.`;
 }
 
 export function buildChartContext(chartData) {

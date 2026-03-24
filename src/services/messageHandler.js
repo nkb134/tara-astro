@@ -75,7 +75,7 @@ async function sendWithThinking(whatsappId, responseText, lang, isComplex) {
 
   const now = Date.now();
   const lastThinking = thinkingCooldowns.get(whatsappId) || 0;
-  const shouldThink = now - lastThinking > 180000;
+  const shouldThink = now - lastThinking > 300000; // 5 min cooldown (was 3 min)
 
   if (shouldThink) {
     const thinkingPhrases = t(lang, 'thinking_phrases');
@@ -93,11 +93,18 @@ async function sendWithThinking(whatsappId, responseText, lang, isComplex) {
   await sendMultiPart(whatsappId, responseText);
 }
 
-// Split AI responses on --- delimiter into multiple WhatsApp messages
+// Split AI responses on --- delimiter into multiple WhatsApp messages (max 3)
 async function sendMultiPart(whatsappId, text) {
   const parts = text.split(/\n---\n|^---\n|\n---$/gm)
     .map(p => p.trim())
     .filter(p => p.length > 0);
+
+  // Cap at 3 parts max — merge overflow into last part
+  if (parts.length > 3) {
+    const merged = parts.slice(2).join('\n\n');
+    parts.length = 2;
+    parts.push(merged);
+  }
 
   if (parts.length <= 1) {
     await sendTextMessage(whatsappId, text);
@@ -123,6 +130,19 @@ async function processMessage(whatsappId, displayName, messageText, messageId) {
     // Find or create user
     const user = await findOrCreateUser(whatsappId, displayName);
     logger.info({ userId: user.id }, 'Processing message');
+
+    // Gender detection from self-identification (reactive, not a separate step)
+    if (!user.gender) {
+      const malePattern = /\b(i am a man|i('m| am) male|main ladka|mein ladka|mai ladka|main purush|ladka hoon|aadmi hoon|male hoon|bhai hoon|man hoon)\b/i;
+      const femalePattern = /\b(i am a woman|i('m| am) female|main ladki|mein ladki|mai ladki|main mahila|ladki hoon|aurat hoon|female hoon|woman hoon)\b/i;
+      if (malePattern.test(messageText)) {
+        await updateUser(user.id, { gender: 'male' }).catch(() => {});
+        user.gender = 'male';
+      } else if (femalePattern.test(messageText)) {
+        await updateUser(user.id, { gender: 'female' }).catch(() => {});
+        user.gender = 'female';
+      }
+    }
 
     // Language detection (post-onboarding only)
     if (user.is_onboarded) {
@@ -204,7 +224,8 @@ async function handleOnboardingFlow(whatsappId, user, messageText, startTime) {
         const frame = t(lang, 'hook_frame');
         const suffix = t(lang, 'hook_suffix');
         const fullHook = frame + hook + suffix;
-        await sendWithThinking(whatsappId, fullHook, lang, true);
+        // Skip thinking phrase for hook — hook_frame already acts as preamble
+        await sendMultiPart(whatsappId, fullHook);
 
         await updateUser(freshUser?.id || user.id, { chart_summary: hook });
       }
@@ -231,7 +252,14 @@ async function handleAIConversation(whatsappId, user, messageText, messageId, st
   const classification = await classifyIntent(messageText, lang);
   logger.info({ intent: classification.intent, complexity: classification.complexity }, 'Intent classified');
 
-  // Crisis handling
+  // Crisis handling — double-check with keyword guard to prevent false positives
+  const crisisKeywords = /\b(suicide|suicid|marr?na|khatam kar|end.?life|jeena nahi|marna chahta|aatmahatya|die|kill myself|kill me|zindagi khatam|jaan de|khudkhushi)\b/i;
+  if (classification.intent === 'crisis' && !crisisKeywords.test(messageText)) {
+    logger.info({ messageText: '[redacted]' }, 'Crisis downgraded — no crisis keywords found');
+    classification.intent = 'career_reading';
+    classification.complexity = 'complex';
+  }
+
   if (classification.intent === 'crisis') {
     const crisisResponses = {
       hi: 'Main samajh sakti hoon. Kripya apne kareeb kisi se baat karein. Madad ke liye iCall helpline: 9152987821 par call karein. Main aapke saath hoon.',
