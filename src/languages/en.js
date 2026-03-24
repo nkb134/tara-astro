@@ -22,7 +22,11 @@ export default {
   ask_place_after_unknown_time: `That's ok, I can still read a lot from your chart without the exact time. Where were you born?`,
 
   invalid_date: `Hmm didn't catch that date... try something like 15/03/1990 or 15 March 1990`,
+  invalid_date_retry: `No worries 😊 Just type it like: 15/03/1990 or 15 March 1990`,
+  invalid_date_final: `Let's keep it simple — just send DD/MM/YYYY, like 15/03/1990`,
   invalid_time: `Hmm didn't catch that time... try like 2:30 PM, or just say "don't know"`,
+  invalid_time_retry: `No worries — type "10:30 AM" if you know, or "don't know" if not`,
+  invalid_time_final: `That's ok — I can tell you a lot without the time. Where were you born? Just the city`,
 
   location_confirmed: `Ok, {place} — generating your chart based on this location`,
   generating_chart: `Give me a moment...`,

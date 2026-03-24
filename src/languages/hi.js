@@ -26,7 +26,11 @@ export default {
   ask_place_after_unknown_time: `Koi baat nahi, bina time ke bhi bahut kuch dikh jaata hai kundli mein. Kahan paida hue the?`,
 
   invalid_date: `Hmm yeh date samajh nahi aayi... 15/03/1990 ya 15 March 1990 jaisa likh dijiye`,
+  invalid_date_retry: `Koi baat nahi 😊 Bas aise likhiye: 15/03/1990 ya 15 March 1990 — main samajh jaungi`,
+  invalid_date_final: `Ek kaam karte hain — bas date DD/MM/YYYY format mein bhej dijiye, jaise 15/03/1990`,
   invalid_time: `Hmm yeh samay samajh nahi aaya... 2:30 PM jaisa likh dijiye, ya "pata nahi" bol dijiye`,
+  invalid_time_retry: `Koi baat nahi — agar samay pata hai toh "10:30 AM" likh dijiye, warna "pata nahi" bol dijiye`,
+  invalid_time_final: `Chalo koi baat nahi — bina time ke bhi bahut kuch bata sakti hoon. Kahan paida hue the? City bata dijiye`,
 
   location_confirmed: `Ok, {place} — iss location ke hisaab se kundli nikal rahi hoon`,
   generating_chart: `Ek minute dijiye...`,

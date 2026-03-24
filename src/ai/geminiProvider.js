@@ -2,6 +2,7 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import { LLMProvider } from './llmProvider.js';
 import { config } from '../config/env.js';
 import { logger } from '../utils/logger.js';
+import { geminiBreaker } from '../utils/circuitBreaker.js';
 
 const MODELS = {
   flash: 'gemini-2.5-flash',
@@ -61,64 +62,48 @@ export class GeminiProvider extends LLMProvider {
     // Add current user message
     contents.push({ role: 'user', parts: [{ text: userMessage }] });
 
-    try {
-      const startTime = Date.now();
+    // Circuit breaker wraps the Gemini call
+    return geminiBreaker.exec(
+      async () => {
+        const startTime = Date.now();
+        const thinkingBudget = modelName === MODELS.pro ? 1024 : 512;
+        const genConfig = {
+          maxOutputTokens: maxTokens + thinkingBudget,
+          temperature: options.temperature || 0.8,
+          thinkingConfig: { thinkingBudget },
+        };
 
-      // Gemini 2.5 uses thinking tokens from the output budget.
-      // We must set maxOutputTokens HIGH ENOUGH to cover thinking + actual output.
-      // thinkingBudget caps how much goes to thinking, rest is for actual text.
-      const thinkingBudget = modelName === MODELS.pro ? 1024 : 512;
-      const genConfig = {
-        maxOutputTokens: maxTokens + thinkingBudget, // Total = output + thinking headroom
-        temperature: options.temperature || 0.8,
-        thinkingConfig: {
-          thinkingBudget,
-        },
-      };
+        const result = await model.generateContent({
+          systemInstruction: { parts: [{ text: systemPrompt }] },
+          contents,
+          generationConfig: genConfig,
+        });
 
-      const result = await model.generateContent({
-        systemInstruction: { parts: [{ text: systemPrompt }] },
-        contents,
-        generationConfig: genConfig,
-      });
-
-      let text = '';
-      try {
-        text = result.response.text().trim();
-      } catch (textErr) {
-        // Gemini 2.5 Pro may return thinking-only responses
-        // Try to extract from candidates
-        const candidate = result.response.candidates?.[0];
-        if (candidate?.content?.parts) {
-          text = candidate.content.parts
-            .filter(p => p.text)
-            .map(p => p.text)
-            .join('\n')
-            .trim();
+        let text = '';
+        try {
+          text = result.response.text().trim();
+        } catch (textErr) {
+          const candidate = result.response.candidates?.[0];
+          if (candidate?.content?.parts) {
+            text = candidate.content.parts.filter(p => p.text).map(p => p.text).join('\n').trim();
+          }
+          if (!text) {
+            logger.warn({ err: textErr.message, modelName, finishReason: candidate?.finishReason }, 'Empty response');
+          }
         }
-        if (!text) {
-          logger.warn({ err: textErr.message, modelName, finishReason: candidate?.finishReason }, 'Empty response from Gemini');
+        const elapsed = Date.now() - startTime;
+        logger.info({ model: modelName, responseTimeMs: elapsed, tokensOut: text.length }, 'Gemini generate completed');
+        return { text, model: modelName, responseTimeMs: elapsed };
+      },
+      () => {
+        // Fallback when circuit is open — try flash if pro failed
+        if (modelName === MODELS.pro) {
+          logger.warn('Gemini circuit open for pro — falling back to flash');
+          return this.generate(systemPrompt, userMessage, { ...options, complexity: 'simple' });
         }
+        throw new Error('Gemini circuit breaker open');
       }
-      const elapsed = Date.now() - startTime;
-
-      logger.info({ model: modelName, responseTimeMs: elapsed, tokensOut: text.length }, 'Gemini generate completed');
-
-      return {
-        text,
-        model: modelName,
-        responseTimeMs: elapsed,
-      };
-    } catch (err) {
-      logger.error({ err: err.message, model: modelName }, 'Gemini generate failed');
-
-      // Retry once with flash if pro fails
-      if (modelName === MODELS.pro) {
-        logger.info('Retrying with flash model');
-        return this.generate(systemPrompt, userMessage, { ...options, complexity: 'simple' });
-      }
-      throw err;
-    }
+    );
   }
 }
 

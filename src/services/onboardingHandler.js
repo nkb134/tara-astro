@@ -21,6 +21,25 @@ function formatBirthDate(val) {
   return null;
 }
 
+// Per-step retry counter — escalates re-ask messages after failures
+// Pattern from XState: guard-based transitions with retry awareness
+const stepRetries = new Map();
+
+function getStepRetryCount(userId, step) {
+  const key = `${userId}_${step}`;
+  const entry = stepRetries.get(key);
+  if (entry && Date.now() - entry.time < 600000) return entry.count; // 10 min window
+  return 0;
+}
+
+function trackStepRetry(userId, step) {
+  const key = `${userId}_${step}`;
+  const existing = stepRetries.get(key);
+  const count = (existing && Date.now() - existing.time < 600000) ? existing.count + 1 : 1;
+  stepRetries.set(key, { count, time: Date.now() });
+  return count;
+}
+
 // Bug 5: Track last error to avoid repeats
 const errorTracker = new Map();
 
@@ -319,7 +338,9 @@ async function handleDob(user, messageText, lang) {
   const name = user.display_name || 'friend';
 
   if (!parsed.date) {
-    return { response: t(lang, 'invalid_date'), messageType: 'simple' };
+    const retries = trackStepRetry(user.id, 'dob');
+    const key = retries >= 3 ? 'invalid_date_final' : retries >= 2 ? 'invalid_date_retry' : 'invalid_date';
+    return { response: t(lang, key), messageType: 'simple' };
   }
 
   // Check if time and/or place also included
@@ -401,7 +422,14 @@ async function handleTime(user, messageText, lang) {
     return { response: t(lang, 'ask_place'), messageType: 'onboarding' };
   }
 
-  return { response: t(lang, 'invalid_time'), messageType: 'simple' };
+  const retries = trackStepRetry(user.id, 'time');
+  // After 3 retries, skip time entirely and move to place
+  if (retries >= 3) {
+    await updateUser(user.id, { birth_time: '12:00:00', birth_time_known: false, onboarding_step: 'awaiting_place' });
+    return { response: t(lang, 'invalid_time_final'), messageType: 'onboarding' };
+  }
+  const key = retries >= 2 ? 'invalid_time_retry' : 'invalid_time';
+  return { response: t(lang, key), messageType: 'simple' };
 }
 
 // Single non-place tokens (acknowledgments, questions, filler)

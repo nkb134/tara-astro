@@ -81,12 +81,19 @@ export function trackError(type, message) {
 }
 
 // Health check with error stats
-app.get('/health', (req, res) => {
+app.get('/health', async (req, res) => {
+  let breakers = [];
+  try {
+    const { getAllBreakerStates } = await import('./utils/circuitBreaker.js');
+    breakers = getAllBreakerStates();
+  } catch { /* ignore if not loaded yet */ }
+
   res.json({
     status: 'ok',
     bot: config.app.botName,
     uptime: process.uptime(),
     errors: errorStats,
+    circuitBreakers: breakers,
   });
 });
 

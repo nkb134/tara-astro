@@ -5,6 +5,7 @@ import axios from 'axios';
 import { find as findTimezone } from 'geo-tz';
 import { config } from '../config/env.js';
 import { logger } from '../utils/logger.js';
+import { geocodeBreaker } from '../utils/circuitBreaker.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const CACHE_PATH = path.join(__dirname, '../../knowledge/geocache.json');
@@ -188,15 +189,20 @@ export async function geocodeBirthPlace(placeString, userLang = 'en') {
     }
   }
 
-  // Step 3: GeoNames API
-  const geonamesResult = await callGeoNames(stripped, parts, userLang);
+  // Step 3: GeoNames API (circuit breaker prevents hammering dead API)
+  const geonamesResult = await geocodeBreaker.exec(
+    () => callGeoNames(stripped, parts, userLang),
+    () => { logger.warn('[GEOCODE] GeoNames circuit open'); return null; }
+  );
   if (geonamesResult) return geonamesResult;
 
-  // Step 3b: If multi-word query failed, retry with first part only
-  // (handles "katwa burdwan" where "burdwan" is a district, not in GeoNames)
+  // Step 3b: Retry with individual parts
   if (parts.length > 1) {
     for (const part of parts) {
-      const partResult = await callGeoNames(part, parts, userLang);
+      const partResult = await geocodeBreaker.exec(
+        () => callGeoNames(part, parts, userLang),
+        () => null
+      );
       if (partResult) return partResult;
     }
   }
