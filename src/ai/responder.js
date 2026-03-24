@@ -58,9 +58,9 @@ export async function generateResponse(userMessage, user, classification, conver
   }
 }
 
-export async function generateHook(chartData, lang) {
+export async function generateHook(chartData, lang, script = 'latin') {
   const chartContext = buildChartContext(chartData);
-  const hookPrompt = buildHookPrompt(lang);
+  const hookPrompt = buildHookPrompt(lang, script);
 
   const fullPrompt = `${hookPrompt}\n\n---\n\nCHART DATA:\n${chartContext}`;
 

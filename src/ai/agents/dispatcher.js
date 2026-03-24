@@ -31,6 +31,7 @@ export async function dispatchToAgent(userMessage, user, conversationHistory = [
   const prefs = typeof user.preferences === 'string' ? JSON.parse(user.preferences || '{}') : (user.preferences || {});
   const initialIntent = prefs.initial_intent || null;
   const gender = user.gender || null;
+  const script = prefs.script || 'latin';
   const birthTimeStatus = user.birth_time_known === false ? 'unknown' : 'known';
 
   // Step 1: Route (fast classification — ~50 tokens output)
@@ -77,25 +78,25 @@ export async function dispatchToAgent(userMessage, user, conversationHistory = [
   let systemPrompt;
   switch (route.agent) {
     case AGENTS.GREETING:
-      systemPrompt = greetingPrompt(lang, gender, initialIntent);
+      systemPrompt = greetingPrompt(lang, gender, initialIntent, script);
       break;
     case AGENTS.READING:
-      systemPrompt = readingPrompt(lang, gender, chartData, birthTimeStatus, route.topic, initialIntent);
+      systemPrompt = readingPrompt(lang, gender, chartData, birthTimeStatus, route.topic, initialIntent, script);
       break;
     case AGENTS.FOLLOWUP:
-      systemPrompt = followupPrompt(lang, gender);
+      systemPrompt = followupPrompt(lang, gender, script);
       break;
     case AGENTS.REMEDY:
-      systemPrompt = remedyPrompt(lang, gender, chartData);
+      systemPrompt = remedyPrompt(lang, gender, chartData, script);
       break;
     case AGENTS.CLARIFY:
-      systemPrompt = clarifyPrompt(lang, gender, route.topic);
+      systemPrompt = clarifyPrompt(lang, gender, route.topic, script);
       break;
     case AGENTS.OFF_TOPIC:
-      systemPrompt = offTopicPrompt(lang, gender);
+      systemPrompt = offTopicPrompt(lang, gender, script);
       break;
     default:
-      systemPrompt = readingPrompt(lang, gender, chartData, birthTimeStatus, route.topic, initialIntent);
+      systemPrompt = readingPrompt(lang, gender, chartData, birthTimeStatus, route.topic, initialIntent, script);
       route.model = 'pro';
       route.tokenBudget = TOKEN_BUDGETS[AGENTS.READING];
   }
@@ -105,7 +106,7 @@ export async function dispatchToAgent(userMessage, user, conversationHistory = [
 
   // For free tier, cap token budget further
   const tokenBudget = tier.tier === 'free'
-    ? Math.min(route.tokenBudget, 400)
+    ? Math.min(route.tokenBudget, 800)   // Was 400 — too aggressive, truncated readings
     : route.tokenBudget;
 
   try {

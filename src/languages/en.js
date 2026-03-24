@@ -14,6 +14,7 @@ export default {
   ask_topic_general: `Sure, let's look at your chart — share your name and date of birth?`,
   ask_topic_default: `Yes absolutely — share your name and date of birth? Then we'll look at your chart together`,
 
+  casual_chat_response: `I'm doing good too 😊 So tell me, what would you like to know — career, relationships, or something else?`,
   ask_dob_after_name: `{name} — and your date of birth?`,
   ask_time_after_name_dob: `{name} 😊 ok. Do you know your birth time? If not, no worries — I can still tell you a lot without it`,
   ask_time: `Ok... do you know your birth time? If not, no worries — I can still tell you a lot without it`,
@@ -23,7 +24,8 @@ export default {
   invalid_date: `Hmm didn't catch that date... try something like 15/03/1990 or 15 March 1990`,
   invalid_time: `Hmm didn't catch that time... try like 2:30 PM, or just say "don't know"`,
 
-  generating_chart: `Hmm... looking at your chart, give me a moment`,
+  location_confirmed: `Ok, {place} — generating your chart based on this location`,
+  generating_chart: `Give me a moment...`,
   geocode_failed: `Hmm can't find that place... what's the nearest big city?`,
   geocode_failed_2: `Sorry, still can't find it. Try a major city nearby — like the state capital`,
   chart_failed: `Hmm... one sec, let me try again`,

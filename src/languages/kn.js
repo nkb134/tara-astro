@@ -12,6 +12,7 @@ export default {
   ask_topic_general: `Haan jataka nodi heltini — nimma hesaru mattu huttida dinaanka heli?`,
   ask_topic_default: `Haan kanditta help maadtini — jataka nodi heltini. Nimma hesaru mattu huttida dinaanka heli?`,
 
+  casual_chat_response: `Naanu kooda chennagiddini 😊 Heli, enu tiliyabeku — career, maduve, athava bere enaadru?`,
   ask_dob_after_name: `{name} — huttida dinaanka heli?`,
   ask_time_after_name_dob: `{name} 😊 sari. Huttida samaya gottaa? Gottillvendare paravaagilla, samaya illade kooda tumba vishayagalu helballe`,
   ask_time: `Ok... huttida samaya gottaa? Gottillvendare paravaagilla, samaya illade kooda tumba vishayagalu helballe`,
@@ -21,7 +22,8 @@ export default {
   invalid_date: `Hmm aa dinaanka arthaagalilla... 15/03/1990 athava 15 March 1990 haage heli`,
   invalid_time: `Hmm aa samaya arthaagalilla... 2:30 PM haage heli, athava "gottilla" heli`,
 
-  generating_chart: `Hmm... nimma jaataka nodtiddini, ondu nimisha`,
+  location_confirmed: `Ok, {place} — ee location prakara jaataka nodtiddini`,
+  generating_chart: `Ondu nimisha...`,
   geocode_failed: `Hmm aa ooru sigalilla... hattira dodda nagara heli?`,
   geocode_failed_2: `Sorry, innoo sigalilla. Nearest big city heli — jaise Bangalore ya Mysore`,
   chart_failed: `Hmm... ondu nimisha, innomme try maadtini`,

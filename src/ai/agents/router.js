@@ -20,14 +20,14 @@ export const AGENTS = {
 
 // Token budgets per agent (maxOutputTokens)
 export const TOKEN_BUDGETS = {
-  [AGENTS.GREETING]: 150,
-  [AGENTS.READING]: 800,
-  [AGENTS.FOLLOWUP]: 100,
-  [AGENTS.REMEDY]: 400,
-  [AGENTS.CLARIFY]: 150,
+  [AGENTS.GREETING]: 200,
+  [AGENTS.READING]: 1500,     // Was 800 — truncating readings mid-sentence
+  [AGENTS.FOLLOWUP]: 150,
+  [AGENTS.REMEDY]: 600,       // Was 400 — need room for specific remedies
+  [AGENTS.CLARIFY]: 200,
   [AGENTS.CRISIS]: 0,         // No LLM
   [AGENTS.GATE]: 0,           // No LLM
-  [AGENTS.OFF_TOPIC]: 150,
+  [AGENTS.OFF_TOPIC]: 200,
 };
 
 // Model per agent

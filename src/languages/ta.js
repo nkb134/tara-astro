@@ -13,6 +13,7 @@ export default {
   ask_topic_general: `Haan jathagam paarthu solren — ungal peru-um pirandha theadhi-yum sollunga?`,
   ask_topic_default: `Haan kandipaaga help pannuven — jathagam paarthu solren. Ungal peru-um pirandha theadhi-yum sollunga?`,
 
+  casual_chat_response: `Naan-um nalla irukken 😊 Sollunga, enna pathi therinjukka venum — career, kalyanam, illa vera edhavathu?`,
   ask_dob_after_name: `{name} — seri, pirandha theadhi sollunga?`,
   ask_time_after_name_dob: `{name} 😊 seri. Pirandha neram theriyuma? Theriyaati-na paravala, neram illaamalayum niraiya vishayam solla mudiyum`,
   ask_time: `Ok... pirandha neram theriyuma? Theriyaati-na paravala, neram illaamalayum niraiya vishayam solla mudiyum`,
@@ -22,7 +23,8 @@ export default {
   invalid_date: `Hmm andha theadhi puriyala... 15/03/1990 or 15 March 1990 maadiri sollunga`,
   invalid_time: `Hmm andha neram puriyala... 2:30 PM maadiri sollunga, illa "theriyaadhu" sollunga`,
 
-  generating_chart: `Hmm... ungal jathagam paarkiren, oru nimisham`,
+  location_confirmed: `Ok, {place} — indha location-ku eppadi jathagam nikarkiren`,
+  generating_chart: `Oru nimisham...`,
   geocode_failed: `Hmm idha ooru theriala... paakkathula oru periya ooru sollunga?`,
   geocode_failed_2: `Sorry, innum theriala. Nearest periya city sollunga — Chennai, Madurai maadiri`,
   chart_failed: `Hmm... oru nimisham, mendum try panniren`,

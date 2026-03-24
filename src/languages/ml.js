@@ -12,6 +12,7 @@ export default {
   ask_topic_general: `Athe jaatakam nokkiit parayaam — ningalude perum janma theethiyum parayo?`,
   ask_topic_default: `Athe theerchayayum help cheyyam — jaatakam nokkiit parayaam. Ningalude perum janma theethiyum parayo?`,
 
+  casual_chat_response: `Njanum sugam thanne 😊 Parayoo, enthaanu ariyenda — career, vivaaham, athoo mattenthenkilum?`,
   ask_dob_after_name: `{name} — janana theeyathi parayoo?`,
   ask_time_after_name_dob: `{name} 😊 seri. Janana samayam ariyumo? Ariyillenkil kuzhappamilla, samayam illathe thanne orupaadu kaaryangal parayan kazhiyum`,
   ask_time: `Ok... janana samayam ariyumo? Ariyillenkil kuzhappamilla, samayam illathe thanne orupaadu kaaryangal parayan kazhiyum`,
@@ -21,7 +22,8 @@ export default {
   invalid_date: `Hmm aa theeyathi manasilaayilla... 15/03/1990 allenkil 15 March 1990 pole parayoo`,
   invalid_time: `Hmm aa samayam manasilaayilla... 2:30 PM pole parayoo, allenkil "ariyilla" parayoo`,
 
-  generating_chart: `Hmm... ningalude jaatakam nokkunnundu, oru nimisham`,
+  location_confirmed: `Ok, {place} — ee location anusarichu jaatakam nokkunnundu`,
+  generating_chart: `Oru nimisham...`,
   geocode_failed: `Hmm aa sthalam kandethaan kazhinjilla... aduthulle valiya nagaratthinte per parayoo?`,
   geocode_failed_2: `Sorry, ippozum kandethaan kazhinjilla. Nearest big city parayoo — jaise Kochi ya Thiruvananthapuram`,
   chart_failed: `Hmm... oru nimisham, veendum try cheyyunnu`,

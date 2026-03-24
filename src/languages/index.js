@@ -34,14 +34,40 @@ export function isLanguageNeutral(text) {
   return false;
 }
 
-export function detectLanguage(text) {
-  // Script-based detection (most reliable)
-  if (/[\u0B80-\u0BFF]/.test(text)) return 'ta';
-  if (/[\u0900-\u097F]/.test(text)) return 'hi';
-  if (/[\u0C00-\u0C7F]/.test(text)) return 'te';
-  if (/[\u0980-\u09FF]/.test(text)) return 'bn';
-  if (/[\u0D00-\u0D7F]/.test(text)) return 'ml';
-  if (/[\u0C80-\u0CFF]/.test(text)) return 'kn';
+// Detect script (Latin vs native) — stored separately from language
+export function detectScript(text) {
+  if (/[\u0900-\u097F]/.test(text)) return 'devanagari';
+  if (/[\u0B80-\u0BFF]/.test(text)) return 'tamil';
+  if (/[\u0C00-\u0C7F]/.test(text)) return 'telugu';
+  if (/[\u0980-\u09FF]/.test(text)) return 'bengali';
+  if (/[\u0D00-\u0D7F]/.test(text)) return 'malayalam';
+  if (/[\u0C80-\u0CFF]/.test(text)) return 'kannada';
+  return 'latin';
+}
+
+export function detectLanguage(text, storedLang = null) {
+  // Script-based detection — but DON'T override stored language
+  // If user was chatting in Hinglish (Latin), don't switch to Devanagari Hindi
+  const script = detectScript(text);
+
+  if (script !== 'latin') {
+    // Native script detected — if stored language already matches the language family, keep it
+    // This prevents "Hinglish user accidentally types in Devanagari" from switching everything
+    if (storedLang === 'hi' && script === 'devanagari') return 'hi';
+    if (storedLang === 'ta' && script === 'tamil') return 'ta';
+    if (storedLang === 'te' && script === 'telugu') return 'te';
+    if (storedLang === 'bn' && script === 'bengali') return 'bn';
+    if (storedLang === 'ml' && script === 'malayalam') return 'ml';
+    if (storedLang === 'kn' && script === 'kannada') return 'kn';
+
+    // No stored language yet — use script detection
+    if (script === 'devanagari') return 'hi';
+    if (script === 'tamil') return 'ta';
+    if (script === 'telugu') return 'te';
+    if (script === 'bengali') return 'bn';
+    if (script === 'malayalam') return 'ml';
+    if (script === 'kannada') return 'kn';
+  }
 
   // Romanized word detection
   const lower = text.toLowerCase();

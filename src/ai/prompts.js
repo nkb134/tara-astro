@@ -136,7 +136,11 @@ CONVERSATION HISTORY:
 ${conversationHistory}`;
 }
 
-export function buildHookPrompt(lang) {
+export function buildHookPrompt(lang, script) {
+  const scriptRule = (lang === 'hi' && script !== 'devanagari')
+    ? '\nCRITICAL: Write in Roman/Latin script (Hinglish). NEVER use Devanagari (नमस्ते). Write "namaste" not "नमस्ते".'
+    : '';
+
   return `Given this birth chart data, identify the single most surprising, specific, and personally resonant insight about this person.
 
 Choose something that would make them think "how did she know that?"
@@ -153,7 +157,7 @@ Use ACTUAL chart placements to derive something specific.
 BAD: "You are sometimes confident and sometimes doubtful"
 GOOD: "Rahu ki mahadasha chal rahi hai tumhari — yeh phase mein ek ajeeb si bechaini rehti hai. Jaise sab kuch hai par kuch missing lag raha hai. Yeh feel hota hai?"
 
-Respond in ${langName(lang)}. Keep it to 2-3 sentences.
+Respond in ${langName(lang)}. Keep it to 2-3 sentences.${scriptRule}
 ${lang === 'hi' ? 'Use FEMININE Hindi grammar — karti hoon, dekh rahi hoon, samajh sakti hoon.' : ''}
 Do NOT introduce yourself or say your name — the user already knows you are Tara.
 End with a question like "yeh sahi hai?" / "yeh feel hota hai?" / "does that resonate?"

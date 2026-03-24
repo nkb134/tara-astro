@@ -12,6 +12,7 @@ export default {
   ask_topic_general: `Avunu jatakam chusi cheptanu — mee peru mattu puttina tariku cheppandi?`,
   ask_topic_default: `Avunu tappakunda help chestanu — jatakam chusi cheptanu. Mee peru mattu puttina tariku cheppandi?`,
 
+  casual_chat_response: `Nenu kuda baagunnanu 😊 Cheppandi, emi telusukovalanukuntunnaru — career, pelli, illa inkemaina?`,
   ask_dob_after_name: `{name} — puttina tariku cheppandi?`,
   ask_time_after_name_dob: `{name} 😊 sare. Puttina samayam telusaa? Teliyadante parledu, samayam lekunda kuda chala cheppagalanu`,
   ask_time: `Ok... puttina samayam telusaa? Teliyadante parledu, samayam lekunda kuda chala cheppagalanu`,
@@ -21,7 +22,8 @@ export default {
   invalid_date: `Hmm aa tariku ardham kaaledu... 15/03/1990 ya 15 March 1990 laga cheppandi`,
   invalid_time: `Hmm aa samayam ardham kaaledu... 2:30 PM laga cheppandi, leda "teliyadu" cheppandi`,
 
-  generating_chart: `Hmm... mee jatakam chustunna, oka nimisham`,
+  location_confirmed: `Ok, {place} — ee location prakaram jatakam chustunna`,
+  generating_chart: `Oka nimisham...`,
   geocode_failed: `Hmm aa pradesham dorakaledu... daggarilo pedda city cheppandi?`,
   geocode_failed_2: `Sorry, malli dorakaledu. Nearest big city cheppandi — jaise Hyderabad ya Vijayawada`,
   chart_failed: `Hmm... oka nimisham, malli try chestunna`,

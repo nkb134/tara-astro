@@ -15,6 +15,9 @@ export default {
   ask_topic_general: `Haan kundli dekh deti hoon — apna naam aur janam tithi bata dijiye?`,
   ask_topic_default: `Haan zaroor madad karungi — kundli se dekhungi. Apna naam aur janam tithi bata dijiye?`,
 
+  // Casual chat during onboarding (don't rush to data collection)
+  casual_chat_response: `Main bhi badhiya hoon 😊 Bataiye, kisme madad karun — career, shaadi, ya kuch aur?`,
+
   // Bug 7: Warm follow-ups
   ask_dob_after_name: `{name} ji — janam tithi bata dijiye?`,
   ask_time_after_name_dob: `{name} ji 😊 achha. Aur janam ka samay pata hai? Nahi pata toh koi baat nahi, bina samay ke bhi bahut kuch bata sakti hoon`,
@@ -25,7 +28,8 @@ export default {
   invalid_date: `Hmm yeh date samajh nahi aayi... 15/03/1990 ya 15 March 1990 jaisa likh dijiye`,
   invalid_time: `Hmm yeh samay samajh nahi aaya... 2:30 PM jaisa likh dijiye, ya "pata nahi" bol dijiye`,
 
-  generating_chart: `Hmm... aapki kundli dekh rahi hoon, ek minute dijiye`,
+  location_confirmed: `Ok, {place} — iss location ke hisaab se kundli nikal rahi hoon`,
+  generating_chart: `Ek minute dijiye...`,
   geocode_failed: `Hmm yeh jagah nahi mili... koi paas ka bada shehar batao?`,
   geocode_failed_2: `Sorry, phir se nahi mila. Nearest big city ka naam batao — jaise Raipur ya Nagpur`,
   chart_failed: `Hmm... ek minute, phir try karti hoon`,

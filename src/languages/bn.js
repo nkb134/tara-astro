@@ -12,6 +12,7 @@ export default {
   ask_topic_general: `Haan kundli dekhe bolbo — apnar naam ar jonmo tarik bolun?`,
   ask_topic_default: `Haan zaroor help korbo — kundli dekhe bolbo. Apnar naam ar jonmo tarik bolun?`,
 
+  casual_chat_response: `Ami-o bhalo achhi 😊 Bolun, ki jante chan — career, biye, na onyo kichu?`,
   ask_dob_after_name: `{name} — jonmo tarik bolun?`,
   ask_time_after_name_dob: `{name} 😊 thik aache. Jonmo-r somoy jaanen? Na janle kichu nei, somoy chhara-o onek kichu bola jay`,
   ask_time: `Ok... jonmo-r somoy jaanen? Na janle kichu nei, somoy chhara-o onek kichu bola jay`,
@@ -21,7 +22,8 @@ export default {
   invalid_date: `Hmm oi tarik bujhte parlam na... 15/03/1990 ba 15 March 1990 likhe bolun`,
   invalid_time: `Hmm oi somoy bujhte parlam na... 2:30 PM likhe bolun, ba "jani na" bolun`,
 
-  generating_chart: `Hmm... apnar kundli dekhchi, ektu wait korun`,
+  location_confirmed: `Ok, {place} — ei location onusare kundli dekhchi`,
+  generating_chart: `Ektu wait korun...`,
   geocode_failed: `Hmm oi jayga khuje pelam na... kachhe boro kono shohor bolun?`,
   geocode_failed_2: `Sorry, ebar-o pelam na. Nearest big city bolun — jemon Kolkata ba Dhaka`,
   chart_failed: `Hmm... ek minute, abar try korchi`,

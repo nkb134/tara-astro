@@ -1,4 +1,4 @@
-import { t, detectLanguage, isLanguageNeutral } from '../languages/index.js';
+import { t, detectLanguage, detectScript, isLanguageNeutral } from '../languages/index.js';
 import { updateUser } from '../db/users.js';
 import { geocodeBirthPlace } from '../jyotish/geocode.js';
 import { generateBirthChart } from '../jyotish/calculator.js';
@@ -50,22 +50,23 @@ function isFrustrated(text) {
 export async function handleOnboarding(user, messageText) {
   const step = user.onboarding_step || 'new';
 
-  // Bug 2: Language handling — detect from first message, read from DB afterwards
+  // Language + script handling
   let lang;
   if (step === 'new') {
     lang = detectLanguage(messageText);
-    await updateUser(user.id, { language: lang }).catch(() => {});
+    const script = detectScript(messageText);
+    // Store both language AND script (latin vs devanagari etc.)
+    await updateUser(user.id, { language: lang, preferences: JSON.stringify({ script }) }).catch(() => {});
+    user.script = script;
   } else {
-    // For subsequent steps, only update language if message is NOT neutral
     lang = user.language || 'en';
+    // For subsequent steps, only update language if message is NOT neutral
+    // Pass stored language to prevent script switching
     if (!isLanguageNeutral(messageText)) {
-      const detected = detectLanguage(messageText);
-      if (detected !== 'en' || lang === 'en') {
-        // Only switch if we detected something specific (not default English)
-        if (detected !== 'en') {
-          lang = detected;
-          await updateUser(user.id, { language: lang }).catch(() => {});
-        }
+      const detected = detectLanguage(messageText, user.language);
+      if (detected !== 'en') {
+        lang = detected;
+        await updateUser(user.id, { language: lang }).catch(() => {});
       }
     }
   }
@@ -145,6 +146,15 @@ async function handleFrustratedRetry(user, messageText, lang, parsed, currentSte
 // --- Step handlers ---
 
 async function handleTopic(user, messageText, lang) {
+  // If user is still just greeting/chatting (e.g., "mein badhiya, aap kaise hain"),
+  // respond warmly without asking for data yet
+  if (isJustGreeting(messageText) || isCasualChat(messageText)) {
+    return {
+      response: t(lang, 'casual_chat_response'),
+      messageType: 'simple',
+    };
+  }
+
   // User responded to "kisme madad karun?" — now ask for birth data
   const intent = classifyIntent(messageText);
 
@@ -274,9 +284,17 @@ async function handleNameDob(user, messageText, lang) {
 
   // Only name (no date found)
   const name = parsed.name || extractName(messageText);
-  await updateUser(user.id, { display_name: name, onboarding_step: 'awaiting_dob' });
+  const safeName = (name && name.length > 1) ? name : '';
+  await updateUser(user.id, { display_name: safeName || null, onboarding_step: 'awaiting_dob' });
+  if (safeName) {
+    return {
+      response: t(lang, 'ask_dob_after_name').replace('{name}', safeName),
+      messageType: 'onboarding',
+    };
+  }
+  // No name extracted — ask for name + DOB together
   return {
-    response: t(lang, 'ask_dob_after_name').replace('{name}', name),
+    response: t(lang, 'ask_name_default'),
     messageType: 'onboarding',
   };
 }
@@ -445,7 +463,9 @@ async function generateChartFromGeo(user, geoData, lang) {
       onboarding_step: 'onboarded', is_onboarded: true,
     });
 
-    return { response: t(lang, 'generating_chart'), messageType: 'reading', chartData };
+    const locationConfirm = t(lang, 'location_confirmed').replace('{place}', geoData.formatted);
+    const generating = t(lang, 'generating_chart');
+    return { response: `${locationConfirm}\n\n${generating}`, messageType: 'reading', chartData };
   } catch (err) {
     logger.error({ err: err.message }, 'Chart generation failed');
     return { response: t(lang, 'chart_failed'), messageType: 'simple' };
@@ -502,8 +522,10 @@ async function generateChartFromPlace(user, place, lang) {
       onboarding_step: 'onboarded', is_onboarded: true,
     });
 
-    // Send generating message first, chart overview will follow
-    return { response: t(lang, 'generating_chart'), messageType: 'reading', chartData };
+    // Confirm location + generating message
+    const locationConfirm = t(lang, 'location_confirmed').replace('{place}', geo.formattedPlace);
+    const generating = t(lang, 'generating_chart');
+    return { response: `${locationConfirm}\n\n${generating}`, messageType: 'reading', chartData };
   } catch (err) {
     logger.error({ err: err.message, userId: user.id }, 'Chart generation failed');
     const errorCount = trackError(user.id, 'chart');
@@ -753,6 +775,16 @@ function parseTime(text) {
 }
 
 // --- Helpers ---
+
+function isCasualChat(text) {
+  const lower = text.toLowerCase().trim();
+  const casualPatterns = [
+    /\b(badhiya|badiya|theek|thik|achha|acha|fine|good|great|ok|sab badhiya|mast)\b/i,
+    /\b(aap kaise|kaise ho|how are you|kemiti achanti|eppadi|kemon achen)\b/i,
+    /\b(mein badhiya|i am fine|i'm good|i'm fine|doing well|doing good)\b/i,
+  ];
+  return casualPatterns.some(p => p.test(lower));
+}
 
 function isJustGreeting(text) {
   const lower = text.toLowerCase().trim();

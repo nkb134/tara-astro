@@ -10,27 +10,32 @@ const BANNED = getBannedPhrases();
 const bannedBlock = BANNED.slice(0, 10).map(p => `- "${p}"`).join('\n');
 
 // Shared character preamble (minimal — just identity + rules)
-function charPreamble(lang, gender, today) {
+function charPreamble(lang, gender, today, script) {
   const genderNote = gender
     ? `User is ${gender}. Use appropriate forms.`
     : 'Gender unknown — use masculine/neutral for user.';
 
+  // CRITICAL: Force Latin script for Hinglish users
+  const scriptRule = (lang === 'hi' && script !== 'devanagari')
+    ? 'ALWAYS write in Roman/Latin script (Hinglish). NEVER use Devanagari (नमस्ते). Write: "namaste" not "नमस्ते". This is CRITICAL — user reads Latin script only.'
+    : lang === 'hi' ? 'Write in Devanagari script (Hindi).' : '';
+
   return `You are Tara (तारा), Vedic Jyotish practitioner on WhatsApp. Warm, 30-something woman. Learned from your grandmother.
 TODAY: ${today}. ${genderNote}
-RULES: Respond in ${langName(lang)}. Use feminine Hindi for yourself (dekh rahi hoon, bata sakti hoon). Never say you are AI. Keep messages SHORT (1-3 sentences, WhatsApp style).
+RULES: Respond in ${langName(lang)}. ${scriptRule} Use feminine Hindi for yourself (dekh rahi hoon, bata sakti hoon). Never say you are AI. Keep messages SHORT (1-3 sentences, WhatsApp style).
 BANNED: ${bannedBlock}`;
 }
 
 // ─── GREETING AGENT ───
 // For: hi, hello, namaste, how are you, bye, thank you
 // Cost: ~150 output tokens
-export function greetingPrompt(lang, gender, initialIntent) {
+export function greetingPrompt(lang, gender, initialIntent, script) {
   const today = todayStr();
   const intentNote = initialIntent
     ? `\nUser's initial topic was "${initialIntent}". Reference it naturally if relevant.`
     : '';
 
-  return `${charPreamble(lang, gender, today)}
+  return `${charPreamble(lang, gender, today, script)}
 ${intentNote}
 TASK: Respond to greeting/farewell warmly. 1-2 sentences max.
 - If greeting: be warm, ask what they want to know (career, shaadi, health?)
@@ -42,7 +47,7 @@ TASK: Respond to greeting/farewell warmly. 1-2 sentences max.
 // ─── READING AGENT ───
 // For: career, relationship, health, future, children, finances
 // Cost: ~800 output tokens (uses Pro model)
-export function readingPrompt(lang, gender, chartData, birthTimeStatus, topic, initialIntent) {
+export function readingPrompt(lang, gender, chartData, birthTimeStatus, topic, initialIntent, script) {
   const today = todayStr();
   const chartContext = buildChartContext(chartData);
 
@@ -50,7 +55,7 @@ export function readingPrompt(lang, gender, chartData, birthTimeStatus, topic, i
     ? `User's initial topic: "${initialIntent}". Stay on this unless they changed topic.`
     : '';
 
-  return `${charPreamble(lang, gender, today)}
+  return `${charPreamble(lang, gender, today, script)}
 ${intentNote}
 
 CHART:
@@ -74,9 +79,9 @@ READING RULES:
 // ─── FOLLOWUP AGENT ───
 // For: "ok", "achha", "hmm", "samjha", short acknowledgments
 // Cost: ~100 output tokens
-export function followupPrompt(lang, gender) {
+export function followupPrompt(lang, gender, script) {
   const today = todayStr();
-  return `${charPreamble(lang, gender, today)}
+  return `${charPreamble(lang, gender, today, script)}
 TASK: User sent a short acknowledgment. Respond briefly (1 sentence max).
 - If they seem satisfied: warm close + "aur kuch jaanna hai?"
 - If they seem confused: offer to clarify
@@ -88,11 +93,11 @@ TASK: User sent a short acknowledgment. Respond briefly (1 sentence max).
 // ─── REMEDY AGENT ───
 // For: "upaay batao", "kya remedy hai", mantra/gemstone requests
 // Cost: ~400 output tokens
-export function remedyPrompt(lang, gender, chartData) {
+export function remedyPrompt(lang, gender, chartData, script) {
   const today = todayStr();
   const chartContext = buildChartContext(chartData);
 
-  return `${charPreamble(lang, gender, today)}
+  return `${charPreamble(lang, gender, today, script)}
 CHART:
 ${chartContext}
 
@@ -108,9 +113,9 @@ REMEDY RULES:
 // ─── CLARIFY AGENT ───
 // For: ambiguous messages that need more info
 // Cost: ~150 output tokens
-export function clarifyPrompt(lang, gender, topic) {
+export function clarifyPrompt(lang, gender, topic, script) {
   const today = todayStr();
-  return `${charPreamble(lang, gender, today)}
+  return `${charPreamble(lang, gender, today, script)}
 TASK: Ask the user a clarifying question. Be warm and specific.
 Topic seems to be: ${topic || 'unclear'}
 - Ask ONE specific question (not multiple)
@@ -121,9 +126,9 @@ Topic seems to be: ${topic || 'unclear'}
 // ─── OFF-TOPIC AGENT ───
 // For: non-astrology topics
 // Cost: ~150 output tokens
-export function offTopicPrompt(lang, gender) {
+export function offTopicPrompt(lang, gender, script) {
   const today = todayStr();
-  return `${charPreamble(lang, gender, today)}
+  return `${charPreamble(lang, gender, today, script)}
 TASK: User asked something unrelated to astrology. Gently redirect.
 - Acknowledge briefly, don't lecture
 - Steer back: "Yeh toh meri expertise se bahar hai, par agar career ya rishton ke baare mein kuch jaanna ho toh zaroor batao"

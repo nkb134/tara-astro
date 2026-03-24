@@ -6,7 +6,7 @@ import { dispatchToAgent } from '../ai/agents/dispatcher.js';
 import { AGENTS } from '../ai/agents/router.js';
 import { generateHook } from '../ai/responder.js';
 import { calculateDelay, sleep } from '../utils/delay.js';
-import { detectLanguage, isLanguageNeutral, t } from '../languages/index.js';
+import { detectLanguage, detectScript, isLanguageNeutral, t } from '../languages/index.js';
 import { logger } from '../utils/logger.js';
 
 // Per-user message queue to prevent race conditions
@@ -62,7 +62,7 @@ export async function handleIncomingMessage(whatsappId, displayName, messageText
     ).catch(err => {
       logger.error({ err, whatsappId }, 'Debounced processing failed');
     });
-  }, 2500);
+  }, 3500); // 3.5s debounce window (was 2.5s — too short for rapid typers)
 }
 
 // Thinking simulation with cooldown (max once per 3 min per user)
@@ -146,9 +146,10 @@ async function processMessage(whatsappId, displayName, messageText, messageId) {
     }
 
     // Language detection (post-onboarding only)
+    // IMPORTANT: Pass stored language to prevent script switching (Latin↔Devanagari)
     if (user.is_onboarded) {
       if (!isLanguageNeutral(messageText)) {
-        const detectedLang = detectLanguage(messageText);
+        const detectedLang = detectLanguage(messageText, user.language);
         if (detectedLang !== 'en' && detectedLang !== user.language) {
           await updateUser(user.id, { language: detectedLang }).catch(err => {
             logger.warn({ err: err.message, userId: user.id }, 'Failed to persist language update');
@@ -216,7 +217,9 @@ async function handleOnboardingFlow(whatsappId, user, messageText, startTime) {
         : chartData;
 
       const lang = user.language || 'en';
-      const hook = await generateHook(freshChart, lang);
+      const prefs = typeof user.preferences === 'string' ? JSON.parse(user.preferences || '{}') : (user.preferences || {});
+      const hookScript = prefs.script || 'latin';
+      const hook = await generateHook(freshChart, lang, hookScript);
 
       if (hook) {
         const hookDelay = calculateDelay('reading', hook.length);
