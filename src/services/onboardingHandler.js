@@ -10,7 +10,12 @@ import { logger } from '../utils/logger.js';
 function formatBirthDate(val) {
   if (!val) return null;
   if (val instanceof Date) {
-    return val.toISOString().split('T')[0];
+    // CRITICAL: Use local date components, NOT toISOString() which converts to UTC
+    // PostgreSQL DATE stored as midnight local → JS Date shifts to previous day in UTC
+    const y = val.getFullYear();
+    const m = String(val.getMonth() + 1).padStart(2, '0');
+    const d = String(val.getDate()).padStart(2, '0');
+    return `${y}-${m}-${d}`;
   }
   if (typeof val === 'string') return val.split('T')[0];
   return null;
@@ -946,11 +951,9 @@ function extractName(text) {
   // If ALL words were filtered out, this isn't a name
   if (nameWords.length === 0) return null;
 
-  // A name should be 1-2 words, mostly alphabetic, no common English words
-  // Additional check: if remaining word count > 2 after filtering, probably still a sentence
-  if (nameWords.length > 2) return null;
-
-  name = nameWords.slice(0, 2)
+  // Indian names can be 3 words (first + middle/father + last)
+  // Take max 3 words for name, but prefer first 2 if > 3
+  name = nameWords.slice(0, 3)
     .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
     .join(' ');
   return name || null;
