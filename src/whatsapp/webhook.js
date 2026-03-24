@@ -39,16 +39,33 @@ export async function receiveMessage(req, res) {
         const contacts = value.contacts || [];
 
         for (const message of messages) {
-          // Only handle text messages for now
-          if (message.type !== 'text') {
-            logger.debug({ type: message.type }, 'Ignoring non-text message');
+          const whatsappId = message.from;
+          const contactName = contacts.find(c => c.wa_id === whatsappId)?.profile?.name || '';
+          const messageId = message.id;
+          let messageText = '';
+
+          // Handle text messages
+          if (message.type === 'text') {
+            messageText = message.text?.body || '';
+          }
+          // Handle interactive button replies
+          else if (message.type === 'interactive') {
+            const interactive = message.interactive;
+            if (interactive?.type === 'button_reply') {
+              messageText = interactive.button_reply?.title || '';
+              logger.info({ whatsappId, buttonId: interactive.button_reply?.id }, 'Button reply received');
+            } else if (interactive?.type === 'list_reply') {
+              messageText = interactive.list_reply?.title || '';
+              logger.info({ whatsappId, listId: interactive.list_reply?.id }, 'List reply received');
+            }
+          }
+          // Skip unsupported types
+          else {
+            logger.debug({ type: message.type }, 'Ignoring unsupported message type');
             continue;
           }
 
-          const whatsappId = message.from;
-          const contactName = contacts.find(c => c.wa_id === whatsappId)?.profile?.name || '';
-          const messageText = message.text?.body || '';
-          const messageId = message.id;
+          if (!messageText) continue;
 
           logger.info({ whatsappId, messageId }, 'Incoming message');
 

@@ -61,6 +61,7 @@ Kya jaanna hai — career, shaadi, ya kuch aur?`,
 
   echo_reply: `{name}, aapne kaha: "{message}"\n\n(Testing chal raha hai — poore features jaldi aayenge 🌟)`,
 
+  post_chart_prompt: `Kya jaanna chahte hain? 👇`,
   hook_frame: `Kundli dekhi... ek baat hai jo mujhe bahut interesting lagi.\n\n`,
   hook_suffix: `\n\nYeh sahi hai?`,
   thinking_phrases: ['Hmm...', 'Ek minute...'],

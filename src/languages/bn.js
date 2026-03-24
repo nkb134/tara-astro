@@ -43,6 +43,7 @@ export default {
 
   echo_reply: `{name}, apni bollen: "{message}"\n\n(Testing cholche — sob features shighri ashbe 🌟)`,
 
+  post_chart_prompt: `Ki jante chan? 👇`,
   hook_frame: `Apnar kundli dekhlam... ek ta jinish amake khub akarshon korlo.\n\n`,
   hook_suffix: `\n\nEta thik?`,
   thinking_phrases: ['Hmm...', 'Ek minute...'],

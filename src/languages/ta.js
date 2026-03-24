@@ -54,6 +54,7 @@ Enna therinjukkanum — career, thirumanam, illa vera edhaavadhu?`,
 
   echo_reply: `{name}, neenga sonneenga: "{message}"\n\n(Testing-la irukku — full features seekkiram varum 🌟)`,
 
+  post_chart_prompt: `Enna therinjukka venum? 👇`,
   hook_frame: `Unga jathagam paarthein... oru vishayam ennai romba kavarndhadhu.\n\n`,
   hook_suffix: `\n\nIdhu sari-aa?`,
   thinking_phrases: ['Hmm...', 'Oru nimisham...'],

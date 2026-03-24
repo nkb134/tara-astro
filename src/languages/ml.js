@@ -43,6 +43,7 @@ export default {
 
   echo_reply: `{name}, ningal paranjathu: "{message}"\n\n(Testing-il aanu — full features udan varum 🌟)`,
 
+  post_chart_prompt: `Enna ariyaanam? 👇`,
   hook_frame: `Jaatakam nokkiyappol... oru kaaryam enne valare aakarsichchu.\n\n`,
   hook_suffix: `\n\nIthu shariyaano?`,
   thinking_phrases: ['Hmm...', 'Oru nimisham...'],

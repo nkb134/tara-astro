@@ -1,6 +1,6 @@
 import { findOrCreateUser, updateUser } from '../db/users.js';
-import { sendTextMessage, showTyping, markAsRead } from '../whatsapp/sender.js';
-import { handleOnboarding } from './onboardingHandler.js';
+import { sendTextMessage, sendButtonMessage, showTyping, markAsRead, reactToMessage } from '../whatsapp/sender.js';
+import { handleOnboarding, getPostChartButtons } from './onboardingHandler.js';
 import { getSessionContext, saveExchange } from './sessionManager.js';
 import { dispatchToAgent } from '../ai/agents/dispatcher.js';
 import { AGENTS } from '../ai/agents/router.js';
@@ -30,8 +30,10 @@ const messageBuffers = new Map();
 
 export async function handleIncomingMessage(whatsappId, displayName, messageText, messageId) {
   // Immediately mark as read + show typing (instant feedback)
-  await markAsRead(messageId).catch(() => {});
-  await showTyping(messageId).catch(() => {});
+  await Promise.all([
+    markAsRead(messageId).catch(() => {}),
+    showTyping(messageId).catch(() => {}),
+  ]);
 
   // Add to buffer
   let buffer = messageBuffers.get(whatsappId);
@@ -203,13 +205,29 @@ async function handleOnboardingFlow(whatsappId, user, messageText, messageId, st
   const response = result.response;
   const messageType = result.messageType;
 
+  // React to user's message based on context
+  const step = user.onboarding_step || 'new';
+  if (step === 'new') {
+    reactToMessage(whatsappId, messageId, '🙏').catch(() => {});
+  } else if (['awaiting_name_dob', 'awaiting_dob'].includes(step) && result.messageType !== 'simple') {
+    reactToMessage(whatsappId, messageId, '✨').catch(() => {});
+  } else if (step === 'awaiting_place' && result.messageType === 'reading') {
+    reactToMessage(whatsappId, messageId, '🌟').catch(() => {});
+  }
+
   const delay = calculateDelay(messageType, response.length);
   logger.info({ delayMs: delay, messageType }, 'Applying response delay');
   await sleep(delay);
 
   await showTyping(messageId);
   await sleep(500);
-  await sendTextMessage(whatsappId, response);
+
+  // Use buttons for topic selection after greeting
+  if (result.useButtons && result.buttons) {
+    await sendButtonMessage(whatsappId, response, result.buttons);
+  } else {
+    await sendTextMessage(whatsappId, response);
+  }
 
   // If chart was just generated, generate and send hook
   if (result.messageType === 'reading') {
@@ -242,6 +260,12 @@ async function handleOnboardingFlow(whatsappId, user, messageText, messageId, st
         await sendMultiPart(whatsappId, messageId, fullHook);
 
         await updateUser(freshUser?.id || user.id, { chart_summary: hook });
+
+        // Send topic buttons after hook
+        await sleep(1500);
+        const postButtons = getPostChartButtons(lang);
+        const buttonText = t(lang, 'post_chart_prompt');
+        await sendButtonMessage(whatsappId, buttonText, postButtons);
       }
     } catch (err) {
       logger.error({ err: err.message }, 'Hook generation failed, continuing without hook');
@@ -266,6 +290,13 @@ async function handleAIConversation(whatsappId, user, messageText, messageId, st
   // Multi-agent dispatch
   const result = await dispatchToAgent(messageText, user, history);
   logger.info({ agent: result.agent, model: result.model, tokenBudget: result.tokenBudget }, 'Agent dispatched');
+
+  // React to emotional/grateful messages
+  if (result.agent === AGENTS.GREETING) {
+    reactToMessage(whatsappId, messageId, '🙏').catch(() => {});
+  } else if (result.agent === AGENTS.FOLLOWUP) {
+    reactToMessage(whatsappId, messageId, '👍').catch(() => {});
+  }
 
   // Gate/crisis responses — send immediately
   if (result.agent === AGENTS.GATE || result.agent === AGENTS.CRISIS) {

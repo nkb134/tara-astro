@@ -55,6 +55,7 @@ What do you want to know — career, marriage, or something else?`,
 
   echo_reply: `{name}, you said: "{message}"\n\n(Testing mode — full features coming soon 🌟)`,
 
+  post_chart_prompt: `What would you like to know? 👇`,
   hook_frame: `I looked at your chart... something really stood out.\n\n`,
   hook_suffix: `\n\nDoes that resonate?`,
   thinking_phrases: ['Hmm...', 'One sec...'],

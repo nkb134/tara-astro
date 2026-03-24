@@ -43,6 +43,7 @@ export default {
 
   echo_reply: `{name}, meeru cheppindi: "{message}"\n\n(Testing lo undi — full features travaloa vastayi 🌟)`,
 
+  post_chart_prompt: `Emi teluskovalanukuntunnaru? 👇`,
   hook_frame: `Mee jatakam chusanu... oka vishayam chaala interesting anipinchindi.\n\n`,
   hook_suffix: `\n\nIdhi nijamena?`,
   thinking_phrases: ['Hmm...', 'Oka nimisham...'],

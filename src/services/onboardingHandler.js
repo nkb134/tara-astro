@@ -186,9 +186,14 @@ async function handleNewUser(user, messageText, lang) {
   const isGreeting = isJustGreeting(messageText);
 
   if (isGreeting) {
-    // Chat first — don't ask for data yet
+    // Chat first — offer topic buttons
     await updateUser(user.id, { language: lang, onboarding_step: 'awaiting_topic' });
-    return { response: t(lang, 'welcome_greeting'), messageType: 'greeting' };
+    return {
+      response: t(lang, 'welcome_greeting'),
+      messageType: 'greeting',
+      useButtons: true,
+      buttons: getTopicButtons(lang),
+    };
   }
 
   // Topic-specific — ask for data
@@ -775,6 +780,33 @@ function parseTime(text) {
 }
 
 // --- Helpers ---
+
+// Interactive button helpers
+function getTopicButtons(lang) {
+  const labels = {
+    hi: [{ id: 'topic_career', title: 'Career' }, { id: 'topic_marriage', title: 'Shaadi / Rishte' }, { id: 'topic_general', title: 'General' }],
+    en: [{ id: 'topic_career', title: 'Career' }, { id: 'topic_marriage', title: 'Marriage' }, { id: 'topic_general', title: 'General Reading' }],
+    ta: [{ id: 'topic_career', title: 'Career' }, { id: 'topic_marriage', title: 'Thirumanam' }, { id: 'topic_general', title: 'Podhuvaaga' }],
+    te: [{ id: 'topic_career', title: 'Career' }, { id: 'topic_marriage', title: 'Pelli' }, { id: 'topic_general', title: 'General' }],
+    bn: [{ id: 'topic_career', title: 'Career' }, { id: 'topic_marriage', title: 'Biye' }, { id: 'topic_general', title: 'General' }],
+    ml: [{ id: 'topic_career', title: 'Career' }, { id: 'topic_marriage', title: 'Vivaaham' }, { id: 'topic_general', title: 'General' }],
+    kn: [{ id: 'topic_career', title: 'Career' }, { id: 'topic_marriage', title: 'Maduve' }, { id: 'topic_general', title: 'General' }],
+  };
+  return labels[lang] || labels.en;
+}
+
+export function getPostChartButtons(lang) {
+  const labels = {
+    hi: [{ id: 'read_career', title: 'Career' }, { id: 'read_marriage', title: 'Shaadi / Rishte' }, { id: 'read_health', title: 'Health' }],
+    en: [{ id: 'read_career', title: 'Career' }, { id: 'read_marriage', title: 'Relationships' }, { id: 'read_health', title: 'Health' }],
+    ta: [{ id: 'read_career', title: 'Career' }, { id: 'read_marriage', title: 'Thirumanam' }, { id: 'read_health', title: 'Udal Nalam' }],
+    te: [{ id: 'read_career', title: 'Career' }, { id: 'read_marriage', title: 'Pelli' }, { id: 'read_health', title: 'Aarogyam' }],
+    bn: [{ id: 'read_career', title: 'Career' }, { id: 'read_marriage', title: 'Biye' }, { id: 'read_health', title: 'Swasthyo' }],
+    ml: [{ id: 'read_career', title: 'Career' }, { id: 'read_marriage', title: 'Vivaaham' }, { id: 'read_health', title: 'Aarogyam' }],
+    kn: [{ id: 'read_career', title: 'Career' }, { id: 'read_marriage', title: 'Maduve' }, { id: 'read_health', title: 'Aarogya' }],
+  };
+  return labels[lang] || labels.en;
+}
 
 function isCasualChat(text) {
   const lower = text.toLowerCase().trim();

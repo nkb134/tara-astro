@@ -82,6 +82,88 @@ export async function markAsRead(messageId) {
   }
 }
 
+// React to a user's message with an emoji
+export async function reactToMessage(to, messageId, emoji) {
+  if (!messageId) return;
+  try {
+    await api.post('/messages', {
+      messaging_product: 'whatsapp',
+      recipient_type: 'individual',
+      to,
+      type: 'reaction',
+      reaction: {
+        message_id: messageId,
+        emoji,
+      },
+    });
+  } catch {
+    logger.debug({ messageId, emoji }, 'Reaction failed (best-effort)');
+  }
+}
+
+// Send interactive quick reply buttons (max 3 buttons)
+export async function sendButtonMessage(to, bodyText, buttons) {
+  try {
+    const response = await api.post('/messages', {
+      messaging_product: 'whatsapp',
+      recipient_type: 'individual',
+      to,
+      type: 'interactive',
+      interactive: {
+        type: 'button',
+        body: { text: bodyText },
+        action: {
+          buttons: buttons.slice(0, 3).map((btn, i) => ({
+            type: 'reply',
+            reply: {
+              id: btn.id || `btn_${i}`,
+              title: btn.title.substring(0, 20), // WhatsApp max 20 chars
+            },
+          })),
+        },
+      },
+    });
+    logger.debug({ to }, 'Button message sent');
+    return response.data;
+  } catch (err) {
+    logger.error({ to, error: err.response?.data || err.message }, 'Failed to send button message');
+    // Fallback to text if buttons fail
+    await sendTextMessage(to, bodyText);
+  }
+}
+
+// Send interactive list message (for more than 3 options)
+export async function sendListMessage(to, bodyText, buttonText, sections) {
+  try {
+    const response = await api.post('/messages', {
+      messaging_product: 'whatsapp',
+      recipient_type: 'individual',
+      to,
+      type: 'interactive',
+      interactive: {
+        type: 'list',
+        body: { text: bodyText },
+        action: {
+          button: buttonText.substring(0, 20),
+          sections: sections.map(s => ({
+            title: s.title,
+            rows: s.rows.map(r => ({
+              id: r.id,
+              title: r.title.substring(0, 24),
+              description: r.description?.substring(0, 72),
+            })),
+          })),
+        },
+      },
+    });
+    logger.debug({ to }, 'List message sent');
+    return response.data;
+  } catch (err) {
+    logger.error({ to, error: err.response?.data || err.message }, 'Failed to send list message');
+    await sendTextMessage(to, bodyText);
+  }
+}
+
 // Show "typing..." indicator to user (auto-dismisses after 25s or when we reply)
 // Requires the inbound messageId — piggybacks on the read receipt API
 export async function showTyping(messageId) {

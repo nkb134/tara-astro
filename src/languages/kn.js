@@ -43,6 +43,7 @@ export default {
 
   echo_reply: `{name}, neevu heliddu: "{message}"\n\n(Testing nalli ide — full features sheeghradalle barutte 🌟)`,
 
+  post_chart_prompt: `Enu tiliyabeku? 👇`,
   hook_frame: `Jaataka noddenu... ondu vishaya nange tumba interesting enistu.\n\n`,
   hook_suffix: `\n\nIdhu sari-aa?`,
   thinking_phrases: ['Hmm...', 'Ondu nimisha...'],
