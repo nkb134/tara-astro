@@ -288,19 +288,23 @@ async function handleNameDob(user, messageText, lang) {
     };
   }
 
-  // Only name (no date found)
+  // Only name (no date found) — but be careful not to treat sentences as names
   const name = parsed.name || extractName(messageText);
-  const safeName = (name && name.length > 1) ? name : '';
-  await updateUser(user.id, { display_name: safeName || null, onboarding_step: 'awaiting_dob' });
-  if (safeName) {
-    return {
-      response: t(lang, 'ask_dob_after_name').replace('{name}', safeName),
-      messageType: 'onboarding',
-    };
+
+  // If we couldn't extract a name, the user probably sent a sentence/question
+  // Treat it as intent + re-ask for name and DOB
+  if (!name) {
+    const intent = classifyIntent(messageText);
+    const prefs = typeof user.preferences === 'string' ? JSON.parse(user.preferences || '{}') : (user.preferences || {});
+    await updateUser(user.id, { preferences: JSON.stringify({ ...prefs, initial_intent: intent }) });
+    // Acknowledge their concern and ask for data
+    const intentKey = { career: 'ask_topic_career', marriage: 'ask_topic_marriage', general: 'ask_topic_general' }[intent] || 'ask_topic_default';
+    return { response: t(lang, intentKey), messageType: 'onboarding' };
   }
-  // No name extracted — ask for name + DOB together
+
+  await updateUser(user.id, { display_name: name, onboarding_step: 'awaiting_dob' });
   return {
-    response: t(lang, 'ask_name_default'),
+    response: t(lang, 'ask_dob_after_name').replace('{name}', name),
     messageType: 'onboarding',
   };
 }
@@ -901,7 +905,29 @@ const NOT_NAMES = new Set([
   'chhodh', 'chhod', 'chhodi', 'chhoda', 'quit', 'left', 'resigned',
 ]);
 
+// Detect if text looks like a sentence rather than a name
+function isSentence(text) {
+  const lower = text.toLowerCase().trim();
+  const words = lower.split(/\s+/);
+
+  // A name is typically 1-3 words. Sentences are longer.
+  if (words.length > 4) return true;
+
+  // If text contains sentence markers, it's not a name
+  const sentenceMarkers = /\b(i |i'm |i've |i'll |my |me |we |you |your |he |she |they |is |am |are |was |were |been |have |has |had |do |does |did |will |would |can |could |should |shall |may |might |must |need |want |please |help |tell |about |because |since |when |where |how |why |what |which |but |and |or |so |if |then |also |too |very |really |just |not |no |don't |didn't |can't |won't )\b/i;
+  if (sentenceMarkers.test(lower)) return true;
+
+  // Hindi sentence markers
+  const hindiSentenceMarkers = /\b(mujhe |mera |meri |main |hum |aap |kya |kaise |kahaan |kab |kyun |chahiye |chahte |karein |karo |batao |bataiye |hai |hain |tha |thi |hoon |raha |rahi |nahi |nhi |mat |bhi )\b/i;
+  if (hindiSentenceMarkers.test(lower)) return true;
+
+  return false;
+}
+
 function extractName(text) {
+  // If text looks like a sentence, it's NOT a name
+  if (isSentence(text)) return null;
+
   let name = text.trim()
     .replace(/^(my name is|i am|i'm|naam hai|mera naam|en peyar|naa peru|amar naam)\s*/i, '')
     .replace(/^(name:|peyar:|peru:)\s*/i, '')
@@ -917,10 +943,13 @@ function extractName(text) {
   // Filter out words that are clearly not names
   const nameWords = words.filter(w => !NOT_NAMES.has(w.toLowerCase()));
 
-  // If ALL words were filtered out, this isn't a name — it's a sentence
+  // If ALL words were filtered out, this isn't a name
   if (nameWords.length === 0) return null;
 
-  // Take max 2 words for the name
+  // A name should be 1-2 words, mostly alphabetic, no common English words
+  // Additional check: if remaining word count > 2 after filtering, probably still a sentence
+  if (nameWords.length > 2) return null;
+
   name = nameWords.slice(0, 2)
     .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
     .join(' ');
