@@ -23,6 +23,8 @@ let _dashas = null;
 let _remedies = null;
 let _temples = null;
 let _nadi = null;
+let _planetInSign = null;
+let _nakshatras = null;
 
 function loadJSON(filename) {
   try {
@@ -62,6 +64,16 @@ function getTemples() {
 function getNadi() {
   if (!_nadi) _nadi = loadJSON('nadi-principles.json');
   return _nadi;
+}
+
+function getPlanetInSign() {
+  if (!_planetInSign) _planetInSign = loadJSON('planet-in-sign.json');
+  return _planetInSign;
+}
+
+function getNakshatras() {
+  if (!_nakshatras) _nakshatras = loadJSON('nakshatras.json');
+  return _nakshatras;
 }
 
 // House groups by topic
@@ -111,6 +123,18 @@ export function retrieveJyotishContext(chartData, intent, topic, lang) {
       }
     }
 
+    // 1.5. Planet-in-sign — dignity-based interpretations for special placements
+    const signDB = getPlanetInSign();
+    if (signDB.length > 0) {
+      const signChunks = findRelevantPlanetInSign(signDB, planets, topicKey);
+      for (const entry of signChunks.slice(0, 2)) { // Max 2 entries (only special dignities)
+        const topicField = getTopicField(entry, topicKey);
+        const dignityLabel = entry.dignity ? ` (${entry.dignity})` : '';
+        chunks.push(`[Planet-in-Sign] ${entry.planet} in ${entry.sign}${dignityLabel}: ${entry.interpretation}${topicField ? ' ' + topicField : ''}`);
+        sources.push(`planet-sign:${entry.planet}-${entry.sign}`);
+      }
+    }
+
     // 2. Yoga matching — match chart yogas against our database
     const yogaDB = getYogas();
     if (yogaDB.length > 0 && yogas.length > 0) {
@@ -118,6 +142,22 @@ export function retrieveJyotishContext(chartData, intent, topic, lang) {
       for (const yoga of matchedYogas.slice(0, 2)) { // Max 2 yogas
         chunks.push(`[${yoga.source || 'Classical Yoga'}] ${yoga.name}: ${yoga.effects}`);
         sources.push(`yoga:${yoga.name}`);
+      }
+    }
+
+    // 2.5. Nakshatra — if chart has nakshatra data, match it
+    const nakshatraDB = getNakshatras();
+    const chartNakshatra = chartData.nakshatra?.name || chartData.moonNakshatra;
+    if (nakshatraDB.length > 0 && chartNakshatra) {
+      const nakshatraEntry = nakshatraDB.find(n =>
+        n.name.toLowerCase() === chartNakshatra.toLowerCase()
+      );
+      if (nakshatraEntry) {
+        let nText = `[Nakshatra] ${nakshatraEntry.name} (ruled by ${nakshatraEntry.ruler}): ${nakshatraEntry.personality}`;
+        if (topicKey === 'career' && nakshatraEntry.careerStrengths) nText += ` ${nakshatraEntry.careerStrengths}`;
+        if (topicKey === 'marriage' && nakshatraEntry.relationshipStyle) nText += ` ${nakshatraEntry.relationshipStyle}`;
+        chunks.push(nText);
+        sources.push(`nakshatra:${nakshatraEntry.name}`);
       }
     }
 
@@ -217,6 +257,31 @@ function findRelevantBhriguSutras(bhrigu, planets, relevantHouses, topicKey) {
   }
 
   // Sort by score (most relevant first)
+  results.sort((a, b) => (b._score || 0) - (a._score || 0));
+  return results;
+}
+
+function findRelevantPlanetInSign(signDB, planets, topicKey) {
+  const results = [];
+  const specialDignities = ['exalted', 'debilitated', 'own_sign', 'moolatrikona'];
+
+  for (const [planetName, planetData] of Object.entries(planets)) {
+    if (!planetData.sign) continue;
+
+    const entry = signDB.find(s =>
+      s.planet.toLowerCase() === planetName.toLowerCase() &&
+      s.sign.toLowerCase() === planetData.sign.toLowerCase()
+    );
+
+    if (entry && specialDignities.includes(entry.dignity)) {
+      // Only include planets with special dignity (exalted/debilitated/own sign)
+      entry._score = entry.dignity === 'exalted' ? 10 :
+                     entry.dignity === 'debilitated' ? 9 :
+                     entry.dignity === 'own_sign' ? 7 : 5;
+      results.push(entry);
+    }
+  }
+
   results.sort((a, b) => (b._score || 0) - (a._score || 0));
   return results;
 }

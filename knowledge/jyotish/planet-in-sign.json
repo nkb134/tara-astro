@@ -1,0 +1,974 @@
+[
+  {
+    "planet": "Sun",
+    "sign": "Aries",
+    "dignity": "exalted",
+    "interpretation": "Sun reaches its highest strength in Aries, bestowing powerful leadership qualities and a commanding presence. The native radiates confidence, courage, and a pioneering spirit that naturally draws others to follow.",
+    "careerEffect": "Exceptional success in government, politics, administration, and any role requiring authority and decisive action.",
+    "relationshipEffect": "Dominant partner who leads the relationship with warmth but may struggle to compromise.",
+    "healthEffect": "Strong vitality and constitution, though prone to heat-related issues like inflammation, fevers, and headaches."
+  },
+  {
+    "planet": "Sun",
+    "sign": "Taurus",
+    "dignity": "friend",
+    "interpretation": "Sun in Taurus brings a steady, determined personality with a love for material comforts and beauty. The native expresses authority through wealth accumulation and artistic pursuits rather than overt dominance.",
+    "careerEffect": "Success in finance, banking, arts, luxury goods, and agriculture where patience and persistence are rewarded.",
+    "relationshipEffect": "Loyal and devoted partner who values stability but can become possessive and stubborn in love matters.",
+    "healthEffect": "Generally good health with tendency toward throat ailments, thyroid issues, and overindulgence in rich foods."
+  },
+  {
+    "planet": "Sun",
+    "sign": "Gemini",
+    "dignity": "friend",
+    "interpretation": "Sun in Gemini creates an intellectually brilliant and communicative personality. The native shines through words, writing, and versatile knowledge, though focus and consistency may be challenged.",
+    "careerEffect": "Thrives in media, journalism, teaching, communication, and roles requiring quick thinking and adaptability.",
+    "relationshipEffect": "Engaging and witty partner who needs intellectual stimulation but may appear emotionally detached at times.",
+    "healthEffect": "Nervous energy can lead to anxiety, respiratory issues, and problems with arms and shoulders."
+  },
+  {
+    "planet": "Sun",
+    "sign": "Cancer",
+    "dignity": "friend",
+    "interpretation": "Sun in Cancer produces a deeply nurturing soul with strong attachment to home, family, and traditions. The native leads through emotional intelligence and protective instincts, finding strength in caring for others.",
+    "careerEffect": "Does well in hospitality, real estate, nursing, psychology, and any profession involving care or nourishment.",
+    "relationshipEffect": "Deeply caring and emotionally invested partner, though moodiness and over-sensitivity can create turbulence.",
+    "healthEffect": "Susceptible to digestive troubles, chest ailments, water retention, and stress-related stomach issues."
+  },
+  {
+    "planet": "Sun",
+    "sign": "Leo",
+    "dignity": "own_sign",
+    "interpretation": "Sun in its own sign Leo is majestic and powerful, granting the native a regal bearing and natural charisma. There is an innate sense of dignity, generosity, and creative self-expression that commands respect.",
+    "careerEffect": "Excels in leadership positions, entertainment, politics, management, and any field where they can be center stage.",
+    "relationshipEffect": "Generous and warm-hearted lover who desires admiration and loyalty, but can become ego-driven in partnerships.",
+    "healthEffect": "Strong heart and vitality overall, though prone to cardiac issues, back problems, and blood pressure fluctuations."
+  },
+  {
+    "planet": "Sun",
+    "sign": "Virgo",
+    "dignity": "friend",
+    "interpretation": "Sun in Virgo produces a meticulous, service-oriented individual with sharp analytical abilities. The native finds purpose through perfecting skills, serving others, and bringing order to chaos.",
+    "careerEffect": "Excels in healthcare, accounting, editing, quality control, and analytical or detail-oriented professions.",
+    "relationshipEffect": "Devoted partner who shows love through acts of service, though excessive criticism can strain relationships.",
+    "healthEffect": "Tendency toward digestive disorders, intestinal issues, and stress-related ailments from overthinking and worry."
+  },
+  {
+    "planet": "Sun",
+    "sign": "Libra",
+    "dignity": "debilitated",
+    "interpretation": "Sun is weakened in Libra, creating inner conflict between the desire for authority and the need for harmony. The native may struggle with self-confidence and decision-making, often seeking validation from others.",
+    "careerEffect": "Can succeed in diplomacy, law, fashion, and partnerships, but may lack the drive for solo leadership roles.",
+    "relationshipEffect": "Overly dependent on partner for identity and self-worth, prone to losing themselves in relationships.",
+    "healthEffect": "Weak vitality with susceptibility to kidney problems, lower back pain, and skin disorders."
+  },
+  {
+    "planet": "Sun",
+    "sign": "Scorpio",
+    "dignity": "friend",
+    "interpretation": "Sun in Scorpio produces an intensely powerful and transformative personality. The native possesses extraordinary willpower, penetrating insight, and the ability to rise from adversity like the mythical phoenix.",
+    "careerEffect": "Thrives in research, investigation, surgery, psychology, occult sciences, and crisis management roles.",
+    "relationshipEffect": "Passionate and deeply loyal partner, but jealousy, possessiveness, and power struggles can dominate relationships.",
+    "healthEffect": "Prone to reproductive system issues, urinary problems, and ailments that require surgical intervention."
+  },
+  {
+    "planet": "Sun",
+    "sign": "Sagittarius",
+    "dignity": "friend",
+    "interpretation": "Sun in Sagittarius creates a noble, philosophical, and truth-seeking personality. The native is blessed with optimism, high moral standards, and a natural inclination toward dharma and higher learning.",
+    "careerEffect": "Excels in teaching, law, religious leadership, publishing, international affairs, and advisory roles.",
+    "relationshipEffect": "Freedom-loving partner who values shared ideals and philosophy, but may resist emotional commitment.",
+    "healthEffect": "Generally robust health with vulnerability to hip and thigh problems, liver issues, and weight gain."
+  },
+  {
+    "planet": "Sun",
+    "sign": "Capricorn",
+    "dignity": "enemy",
+    "interpretation": "Sun in Capricorn is in an unfriendly sign, producing a serious, ambitious personality that earns authority through hard work rather than birthright. Success comes slowly but surely through discipline and perseverance.",
+    "careerEffect": "Suited for corporate leadership, government bureaucracy, engineering, and structured organizations requiring endurance.",
+    "relationshipEffect": "Reserved and duty-bound partner who prioritizes career over romance, often marrying later in life.",
+    "healthEffect": "Prone to bone and joint problems, dental issues, knee ailments, and skin dryness from cold constitution."
+  },
+  {
+    "planet": "Sun",
+    "sign": "Aquarius",
+    "dignity": "enemy",
+    "interpretation": "Sun in Aquarius, ruled by Saturn, creates tension between ego and collective service. The native is humanitarian, unconventional, and intellectually independent, but may feel alienated from mainstream society.",
+    "careerEffect": "Does well in technology, social reform, NGOs, scientific research, and networking-based enterprises.",
+    "relationshipEffect": "Values friendship and intellectual connection over romance, can appear emotionally distant in intimate relationships.",
+    "healthEffect": "Susceptible to circulatory problems, ankle and shin injuries, and nervous system disorders."
+  },
+  {
+    "planet": "Sun",
+    "sign": "Pisces",
+    "dignity": "friend",
+    "interpretation": "Sun in Pisces creates a deeply spiritual, compassionate, and intuitive personality. The native finds purpose through selfless service, creative expression, and connecting with the divine, though worldly ambition may be lacking.",
+    "careerEffect": "Thrives in spiritual vocations, healing arts, music, cinema, charity work, and roles requiring imagination.",
+    "relationshipEffect": "Romantic and self-sacrificing partner who idealizes love, but may attract partners who take advantage of their kindness.",
+    "healthEffect": "Vulnerable to foot ailments, immune system weakness, lymphatic issues, and susceptibility to addictions."
+  },
+  {
+    "planet": "Moon",
+    "sign": "Aries",
+    "dignity": "neutral",
+    "interpretation": "Moon in Aries produces quick emotional reactions and an impulsive, courageous mind. The native processes feelings rapidly, preferring action over contemplation, with a fiery temperament that flares and subsides quickly.",
+    "careerEffect": "Suited for emergency services, sports, military, entrepreneurship, and fast-paced environments requiring quick decisions.",
+    "relationshipEffect": "Passionate but impatient in love, prone to arguments and quick reconciliations with equal intensity.",
+    "healthEffect": "Head-related ailments including migraines, sinus issues, and injuries to the face or head from impulsive behavior."
+  },
+  {
+    "planet": "Moon",
+    "sign": "Taurus",
+    "dignity": "exalted",
+    "interpretation": "Moon reaches peak strength in Taurus, granting exceptional emotional stability, contentment, and sensory appreciation. The mind is calm, steady, and finds deep satisfaction in beauty, comfort, and the simple pleasures of life.",
+    "careerEffect": "Excellent for finance, agriculture, food industry, luxury goods, singing, and any career requiring patience and aesthetic sense.",
+    "relationshipEffect": "Deeply devoted and sensual partner who creates a warm, secure home and remains steadfast in love.",
+    "healthEffect": "Strong constitution with good recovery; occasional throat infections, thyroid imbalance, and tendency to gain weight."
+  },
+  {
+    "planet": "Moon",
+    "sign": "Gemini",
+    "dignity": "neutral",
+    "interpretation": "Moon in Gemini creates a restless, curious, and highly communicative mind. The native processes emotions through talking and thinking, often juggling multiple feelings simultaneously with remarkable intellectual agility.",
+    "careerEffect": "Excels in writing, teaching, sales, media, translation, and any profession requiring verbal dexterity and adaptability.",
+    "relationshipEffect": "Needs constant mental stimulation in relationships and may appear emotionally inconsistent or fickle to partners.",
+    "healthEffect": "Prone to nervous tension, insomnia, respiratory issues, and ailments of the hands, arms, and shoulders."
+  },
+  {
+    "planet": "Moon",
+    "sign": "Cancer",
+    "dignity": "own_sign",
+    "interpretation": "Moon in its own sign Cancer is exceptionally strong, producing deep emotional intelligence, powerful intuition, and profound nurturing instincts. The native is deeply connected to mother, home, and ancestral roots.",
+    "careerEffect": "Thrives in caregiving, hospitality, real estate, marine activities, psychology, and food-related businesses.",
+    "relationshipEffect": "Incredibly nurturing and emotionally attuned partner, though clingy tendencies and mood swings need management.",
+    "healthEffect": "Sensitive digestion, chest congestion, water retention, and emotional eating patterns affecting overall health."
+  },
+  {
+    "planet": "Moon",
+    "sign": "Leo",
+    "dignity": "friend",
+    "interpretation": "Moon in Leo produces a warm, generous, and dramatically expressive emotional nature. The native craves recognition and appreciation, with a natural ability to inspire and uplift others through their emotional warmth.",
+    "careerEffect": "Suited for entertainment, performing arts, politics, education, and leadership roles where emotional connection with audiences matters.",
+    "relationshipEffect": "Romantic and grand in love expressions, but demands loyalty and admiration from partner, taking slights to heart.",
+    "healthEffect": "Heart palpitations from emotional stress, back problems, and blood pressure issues linked to pride and emotional intensity."
+  },
+  {
+    "planet": "Moon",
+    "sign": "Virgo",
+    "dignity": "friend",
+    "interpretation": "Moon in Virgo creates a practical, detail-oriented emotional nature with a strong desire for order and purity. The native processes feelings through analysis, often worrying excessively but serving others with quiet devotion.",
+    "careerEffect": "Excels in healthcare, nutrition, accounting, editing, herbalism, and service-oriented professions requiring precision.",
+    "relationshipEffect": "Shows love through practical service and helpful acts, but can be overly critical and anxious about relationship imperfections.",
+    "healthEffect": "Digestive sensitivity, food allergies, intestinal issues, and psychosomatic illnesses triggered by worry and anxiety."
+  },
+  {
+    "planet": "Moon",
+    "sign": "Libra",
+    "dignity": "neutral",
+    "interpretation": "Moon in Libra seeks emotional balance, harmony, and beautiful surroundings. The native finds peace through relationships and aesthetic pleasures, possessing a refined sensibility and natural charm in social situations.",
+    "careerEffect": "Suited for diplomacy, interior design, fashion, counseling, law, and partnerships requiring tact and social grace.",
+    "relationshipEffect": "Deeply relationship-oriented and accommodating, but may compromise their own needs excessively to maintain peace.",
+    "healthEffect": "Kidney and bladder sensitivities, lower back discomfort, and health issues arising from emotional suppression."
+  },
+  {
+    "planet": "Moon",
+    "sign": "Scorpio",
+    "dignity": "debilitated",
+    "interpretation": "Moon is weakened in Scorpio, creating intense, turbulent emotions and a suspicious, probing mind. The native experiences feelings with overwhelming depth and may struggle with jealousy, fear, and emotional extremes.",
+    "careerEffect": "Can excel in research, detective work, psychology, surgery, and occult sciences if emotional turmoil is channeled productively.",
+    "relationshipEffect": "Deeply passionate but possessive and jealous in love, with trust issues that create intense relationship dynamics.",
+    "healthEffect": "Reproductive system vulnerabilities, chronic infections, hormonal imbalances, and mental health challenges from emotional intensity."
+  },
+  {
+    "planet": "Moon",
+    "sign": "Sagittarius",
+    "dignity": "friend",
+    "interpretation": "Moon in Sagittarius produces an optimistic, philosophically inclined, and adventurous emotional nature. The native finds emotional fulfillment through travel, learning, spiritual pursuits, and expanding horizons.",
+    "careerEffect": "Thrives in education, publishing, travel industry, religious institutions, and cross-cultural enterprises.",
+    "relationshipEffect": "Enthusiastic and honest in love but needs freedom and may resist emotional depth or domestic routine.",
+    "healthEffect": "Prone to liver issues, hip and thigh problems, weight fluctuations, and restlessness that affects sleep quality."
+  },
+  {
+    "planet": "Moon",
+    "sign": "Capricorn",
+    "dignity": "enemy",
+    "interpretation": "Moon in Saturn-ruled Capricorn creates emotional restraint, seriousness, and a tendency toward melancholy. The native processes feelings cautiously, often suppressing emotions in favor of duty and practical responsibilities.",
+    "careerEffect": "Suited for corporate management, government service, mining, construction, and careers requiring emotional discipline.",
+    "relationshipEffect": "Emotionally reserved and slow to trust, but deeply loyal once committed, showing love through responsibility and provision.",
+    "healthEffect": "Bone and joint weakness, dental problems, knee issues, depression, and ailments worsened by emotional coldness."
+  },
+  {
+    "planet": "Moon",
+    "sign": "Aquarius",
+    "dignity": "enemy",
+    "interpretation": "Moon in Aquarius produces a detached, humanitarian, and unconventional emotional nature. The native feels deeply for humanity at large but may struggle with personal emotional intimacy and close bonds.",
+    "careerEffect": "Excels in technology, social activism, group leadership, innovation, and careers serving large communities.",
+    "relationshipEffect": "Values friendship and intellectual equality in relationships, but partners may find them emotionally unavailable and unpredictable.",
+    "healthEffect": "Circulatory system issues, varicose veins, ankle problems, and nervous system irregularities linked to emotional detachment."
+  },
+  {
+    "planet": "Moon",
+    "sign": "Pisces",
+    "dignity": "friend",
+    "interpretation": "Moon in Pisces creates an extraordinarily sensitive, intuitive, and compassionate emotional nature. The native absorbs others' feelings like a sponge, possessing psychic sensitivity and deep spiritual yearning.",
+    "careerEffect": "Thrives in healing arts, music, spiritual counseling, charity work, cinema, and creative fields requiring emotional depth.",
+    "relationshipEffect": "Romantic idealist who loves unconditionally, but may lose boundaries and attract partners who exploit their compassion.",
+    "healthEffect": "Vulnerable to foot problems, immune weakness, lymphatic congestion, allergies, and susceptibility to substances and addictions."
+  },
+  {
+    "planet": "Mars",
+    "sign": "Aries",
+    "dignity": "own_sign",
+    "interpretation": "Mars in its own sign Aries is exceptionally powerful, bestowing tremendous courage, initiative, and physical vitality. The native is a natural warrior and pioneer, fearlessly tackling challenges with direct, aggressive energy.",
+    "careerEffect": "Excels in military, sports, surgery, engineering, entrepreneurship, and any field requiring bold initiative and physical courage.",
+    "relationshipEffect": "Dominant and passionate partner with high physical drive, but aggressive temperament can cause frequent conflicts.",
+    "healthEffect": "Prone to head injuries, burns, fevers, inflammatory conditions, and accidents from impulsive behavior."
+  },
+  {
+    "planet": "Mars",
+    "sign": "Taurus",
+    "dignity": "neutral",
+    "interpretation": "Mars in Taurus channels aggressive energy into persistent, determined effort toward material goals. The native is stubborn and slow to anger but once provoked, their fury is formidable and long-lasting.",
+    "careerEffect": "Suited for agriculture, construction, banking, real estate, and physical labor requiring strength and endurance.",
+    "relationshipEffect": "Sensual and possessive in love with strong physical desires, but jealousy and stubbornness create relationship friction.",
+    "healthEffect": "Throat inflammations, jaw tension, dental surgery, and injuries related to neck and throat region."
+  },
+  {
+    "planet": "Mars",
+    "sign": "Gemini",
+    "dignity": "neutral",
+    "interpretation": "Mars in Gemini directs warrior energy into sharp communication and mental combat. The native is argumentative, quick-witted, and versatile in action, though energy may scatter across too many pursuits.",
+    "careerEffect": "Thrives in debate, journalism, sales, litigation, technical writing, and competitive intellectual fields.",
+    "relationshipEffect": "Stimulating but argumentative partner who expresses passion through words and may use sharp speech in conflicts.",
+    "healthEffect": "Injuries to hands and arms, carpal tunnel issues, respiratory inflammations, and nervous exhaustion from mental overactivity."
+  },
+  {
+    "planet": "Mars",
+    "sign": "Cancer",
+    "dignity": "debilitated",
+    "interpretation": "Mars is weakened in Cancer, creating internal conflict between aggressive drive and emotional sensitivity. The native's energy is undermined by mood swings, and anger often manifests as passive-aggression or emotional outbursts.",
+    "careerEffect": "Struggles in competitive environments but can succeed in real estate, marine industries, and protective services if emotions are managed.",
+    "relationshipEffect": "Emotionally volatile partner whose anger stems from insecurity, creating a turbulent domestic environment.",
+    "healthEffect": "Stomach ulcers, acid reflux, chest inflammations, and digestive issues worsened by suppressed anger and emotional stress."
+  },
+  {
+    "planet": "Mars",
+    "sign": "Leo",
+    "dignity": "friend",
+    "interpretation": "Mars in Leo produces a bold, dramatic, and heroic personality with natural leadership in action. The native fights with pride and honor, displaying tremendous courage and a commanding physical presence.",
+    "careerEffect": "Excels in government, military leadership, sports management, entertainment, and roles requiring authoritative action.",
+    "relationshipEffect": "Passionate and generous lover who demands respect and admiration, with a flair for romantic drama.",
+    "healthEffect": "Heart strain from overexertion, back injuries, blood pressure issues, and inflammatory heart conditions."
+  },
+  {
+    "planet": "Mars",
+    "sign": "Virgo",
+    "dignity": "neutral",
+    "interpretation": "Mars in Virgo channels combative energy into precise, methodical action and critical analysis. The native is a skilled craftsman and problem-solver who fights battles through meticulous planning rather than brute force.",
+    "careerEffect": "Suited for surgery, engineering, quality control, military strategy, skilled trades, and technical troubleshooting.",
+    "relationshipEffect": "Shows passion through practical service but can be overly critical and fault-finding with partners.",
+    "healthEffect": "Intestinal inflammations, surgical interventions in abdominal area, appendicitis risk, and stress-related digestive problems."
+  },
+  {
+    "planet": "Mars",
+    "sign": "Libra",
+    "dignity": "enemy",
+    "interpretation": "Mars in Venus-ruled Libra struggles to express its aggressive nature, creating a diplomat who fights through charm and strategy. The native oscillates between assertiveness and accommodation, often frustrating their own ambitions.",
+    "careerEffect": "Can succeed in law, diplomacy, fashion industry, and partnership-based ventures, though competitive drive is muted.",
+    "relationshipEffect": "Passionate about partnerships but struggles with conflict avoidance, leading to suppressed resentment and eventual eruptions.",
+    "healthEffect": "Kidney inflammations, urinary tract infections, lower back strain, and health issues from suppressed aggression."
+  },
+  {
+    "planet": "Mars",
+    "sign": "Scorpio",
+    "dignity": "own_sign",
+    "interpretation": "Mars in its own sign Scorpio is intensely powerful, granting extraordinary willpower, strategic cunning, and transformative energy. The native is a formidable force who operates with deep intensity and never forgets a slight.",
+    "careerEffect": "Excels in surgery, criminal investigation, military intelligence, research, mining, and crisis management.",
+    "relationshipEffect": "Deeply passionate and all-or-nothing in love, with intense sexual energy but dangerous jealousy and possessiveness.",
+    "healthEffect": "Prone to reproductive system issues, surgical needs, poisoning risks, and injuries to private areas."
+  },
+  {
+    "planet": "Mars",
+    "sign": "Sagittarius",
+    "dignity": "friend",
+    "interpretation": "Mars in Sagittarius produces a righteous warrior who fights for truth, justice, and higher principles. The native is adventurous, athletic, and morally courageous, channeling aggression into noble causes.",
+    "careerEffect": "Thrives in law enforcement, military, sports, adventure tourism, religious activism, and outdoor pursuits.",
+    "relationshipEffect": "Enthusiastic and honest lover who values shared adventures and ideals, but may be blunt and commitment-averse.",
+    "healthEffect": "Hip and thigh injuries, sports-related trauma, liver inflammation, and accidents during travel or adventure."
+  },
+  {
+    "planet": "Mars",
+    "sign": "Capricorn",
+    "dignity": "exalted",
+    "interpretation": "Mars reaches its highest power in Capricorn, producing disciplined, strategic, and supremely effective action. The native achieves great feats through patient, calculated effort and unwavering determination toward long-term goals.",
+    "careerEffect": "Outstanding success in engineering, military command, corporate leadership, construction, and government administration.",
+    "relationshipEffect": "Reliable and ambitious partner who prioritizes building a secure future, though emotional expression may be limited.",
+    "healthEffect": "Bone fractures, knee injuries, dental problems, and joint inflammations, especially from overwork and physical strain."
+  },
+  {
+    "planet": "Mars",
+    "sign": "Aquarius",
+    "dignity": "neutral",
+    "interpretation": "Mars in Aquarius directs combative energy toward social reform and unconventional pursuits. The native is a revolutionary who fights for group causes and humanitarian ideals with intellectual rather than physical force.",
+    "careerEffect": "Suited for technology, social activism, engineering innovation, group leadership, and unconventional enterprises.",
+    "relationshipEffect": "Independent and freedom-loving partner who values friendship in romance but may resist emotional vulnerability.",
+    "healthEffect": "Ankle sprains, shin injuries, circulatory inflammations, and electrical or technology-related accidents."
+  },
+  {
+    "planet": "Mars",
+    "sign": "Pisces",
+    "dignity": "neutral",
+    "interpretation": "Mars in Pisces diffuses aggressive energy into spiritual pursuits and creative expression. The native fights through subtle, indirect means and may struggle with assertiveness, channeling drive into artistic or healing endeavors.",
+    "careerEffect": "Can succeed in martial arts, spiritual warfare, naval forces, film action, and creative fields requiring emotional intensity.",
+    "relationshipEffect": "Romantic and self-sacrificing lover who may attract unhealthy dynamics or struggle to set boundaries in relationships.",
+    "healthEffect": "Foot injuries, immune system inflammations, allergic reactions, and health issues related to substance sensitivity."
+  },
+  {
+    "planet": "Mercury",
+    "sign": "Aries",
+    "dignity": "neutral",
+    "interpretation": "Mercury in Aries produces quick, decisive thinking with a bold communication style. The native speaks directly and thinks fast, excelling at initiating ideas but sometimes lacking patience for detailed follow-through.",
+    "careerEffect": "Suited for entrepreneurial ventures, competitive sales, sports commentary, and roles requiring fast decision-making.",
+    "relationshipEffect": "Direct and honest communicator in relationships who says what they think, sometimes with hurtful bluntness.",
+    "healthEffect": "Headache-prone from mental overexertion, nervous tension in the head region, and stress from impatient thinking."
+  },
+  {
+    "planet": "Mercury",
+    "sign": "Taurus",
+    "dignity": "friend",
+    "interpretation": "Mercury in Taurus produces slow, methodical thinking with a practical and financially astute mind. The native communicates with deliberation and possesses excellent business sense and aesthetic judgment.",
+    "careerEffect": "Excels in banking, accounting, singing, voice-related work, agriculture planning, and luxury retail.",
+    "relationshipEffect": "Speaks with warmth and sincerity, prefers stable communication patterns, and dislikes arguments or rushed conversations.",
+    "healthEffect": "Throat and vocal cord sensitivities, neck tension from mental stress, and thyroid-related nervous system issues."
+  },
+  {
+    "planet": "Mercury",
+    "sign": "Gemini",
+    "dignity": "own_sign",
+    "interpretation": "Mercury in its own sign Gemini is brilliant, versatile, and supremely communicative. The native possesses exceptional linguistic ability, quick wit, and the capacity to process and convey information with remarkable speed and clarity.",
+    "careerEffect": "Outstanding in journalism, writing, teaching, trading, technology, and any field requiring communication mastery.",
+    "relationshipEffect": "Engaging conversationalist who keeps relationships lively, but may intellectualize emotions and avoid depth.",
+    "healthEffect": "Nervous system sensitivity, respiratory issues, hand and arm strain, and anxiety from mental overstimulation."
+  },
+  {
+    "planet": "Mercury",
+    "sign": "Cancer",
+    "dignity": "enemy",
+    "interpretation": "Mercury in Cancer blends intellect with emotion, creating a mind that thinks through feelings and intuition. The native has excellent memory, especially for emotional experiences, but logical clarity may be clouded by mood fluctuations.",
+    "careerEffect": "Suited for historical research, counseling, writing fiction, food criticism, and nurturing-based communication roles.",
+    "relationshipEffect": "Communicates with emotional sensitivity and remembers every word spoken, but may take innocent comments personally.",
+    "healthEffect": "Nervous stomach, anxiety-related digestive issues, and mental unrest connected to emotional disturbances."
+  },
+  {
+    "planet": "Mercury",
+    "sign": "Leo",
+    "dignity": "neutral",
+    "interpretation": "Mercury in Leo produces a dramatic, confident communicator with a flair for creative expression. The native speaks with authority and warmth, naturally commanding attention through eloquent and persuasive speech.",
+    "careerEffect": "Excels in public speaking, creative writing, entertainment industry, education, and political communication.",
+    "relationshipEffect": "Expressive and generous with words of affirmation, but may dominate conversations and take criticism of ideas personally.",
+    "healthEffect": "Heart palpitations from nervous excitement, back tension from stage presence, and stress from intellectual pride."
+  },
+  {
+    "planet": "Mercury",
+    "sign": "Virgo",
+    "dignity": "exalted",
+    "interpretation": "Mercury reaches its highest expression in Virgo, granting supreme analytical ability, precision, and discriminating intellect. The native possesses an extraordinarily detailed mind capable of organizing complex information with flawless accuracy.",
+    "careerEffect": "Outstanding in medicine, data analysis, editing, accounting, research, and any field requiring meticulous intellectual precision.",
+    "relationshipEffect": "Thoughtful and helpful communicator who shows love through practical advice, though excessive analysis can feel cold.",
+    "healthEffect": "Nervous digestive issues, intestinal sensitivity, and health anxiety that may lead to hypochondria or obsessive health monitoring."
+  },
+  {
+    "planet": "Mercury",
+    "sign": "Libra",
+    "dignity": "friend",
+    "interpretation": "Mercury in Libra creates a balanced, diplomatic, and aesthetically refined communicator. The native excels at seeing all sides of an issue, negotiating fairly, and expressing ideas with grace and charm.",
+    "careerEffect": "Thrives in law, counseling, diplomacy, public relations, interior design, and mediation.",
+    "relationshipEffect": "Harmonious communicator who avoids conflict through tactful speech, but indecisiveness about expressing true feelings can frustrate partners.",
+    "healthEffect": "Kidney-related nervous issues, lower back tension from desk work, and skin sensitivities triggered by stress."
+  },
+  {
+    "planet": "Mercury",
+    "sign": "Scorpio",
+    "dignity": "enemy",
+    "interpretation": "Mercury in Scorpio produces a penetrating, investigative mind that seeks hidden truths. The native communicates with intensity and psychological insight, excelling at reading between the lines but prone to suspicious thinking.",
+    "careerEffect": "Suited for detective work, psychology, research, surgery planning, intelligence work, and investigative journalism.",
+    "relationshipEffect": "Perceptive communicator who senses deception easily, but suspicion and sharp tongue can wound partners deeply.",
+    "healthEffect": "Reproductive system nervous disorders, urinary issues linked to stress, and mental health challenges from obsessive thinking."
+  },
+  {
+    "planet": "Mercury",
+    "sign": "Sagittarius",
+    "dignity": "enemy",
+    "interpretation": "Mercury in Jupiter-ruled Sagittarius thinks in broad strokes and grand philosophies, sometimes at the expense of precision. The native communicates with enthusiasm about big ideas but may overlook important details.",
+    "careerEffect": "Suited for teaching philosophy, publishing, international communication, preaching, and motivational speaking.",
+    "relationshipEffect": "Honest and optimistic communicator who inspires partners, but careless words and exaggeration can create trust issues.",
+    "healthEffect": "Hip and thigh nervousness, liver issues from scattered lifestyle, and respiratory problems from overextension."
+  },
+  {
+    "planet": "Mercury",
+    "sign": "Capricorn",
+    "dignity": "friend",
+    "interpretation": "Mercury in Capricorn produces a serious, structured, and goal-oriented mind. The native thinks strategically with excellent organizational ability, communicating with authority and precision about practical matters.",
+    "careerEffect": "Excels in corporate planning, government administration, architecture, engineering, and structured management roles.",
+    "relationshipEffect": "Reliable and responsible communicator who follows through on promises, but emotional expression feels formal and limited.",
+    "healthEffect": "Bone-related stress issues, dental nervousness, knee tension, and depression from mental rigidity and overwork."
+  },
+  {
+    "planet": "Mercury",
+    "sign": "Aquarius",
+    "dignity": "friend",
+    "interpretation": "Mercury in Aquarius creates an innovative, original, and future-oriented thinker. The native processes information in unconventional ways, often arriving at brilliant insights through sudden flashes of understanding.",
+    "careerEffect": "Thrives in technology, scientific research, astrology, social media, programming, and futuristic planning.",
+    "relationshipEffect": "Stimulating intellectual companion who values unique perspectives, but emotional detachment in communication can feel impersonal.",
+    "healthEffect": "Nervous system irregularities, ankle and shin issues, circulatory problems, and erratic sleep patterns."
+  },
+  {
+    "planet": "Mercury",
+    "sign": "Pisces",
+    "dignity": "debilitated",
+    "interpretation": "Mercury is weakened in Pisces, where logical thinking dissolves into imagination and intuition. The native may struggle with practical details and clear communication but possesses extraordinary creative and psychic intelligence.",
+    "careerEffect": "Can succeed in poetry, music composition, spiritual counseling, film, and creative arts, but struggles with mundane business tasks.",
+    "relationshipEffect": "Communicates through feelings, art, and intuition rather than words, which can lead to misunderstandings with practical partners.",
+    "healthEffect": "Foot-related nerve issues, immune system sensitivity, allergies, and mental confusion or escapist tendencies."
+  },
+  {
+    "planet": "Jupiter",
+    "sign": "Aries",
+    "dignity": "friend",
+    "interpretation": "Jupiter in Aries produces bold optimism, pioneering faith, and enthusiastic expansion. The native approaches opportunities with courage and confidence, blessed with the ability to inspire others through dynamic leadership and moral conviction.",
+    "careerEffect": "Excels in entrepreneurship, motivational leadership, religious pioneering, sports coaching, and venture capitalism.",
+    "relationshipEffect": "Generous and encouraging partner who inspires growth, but may push their beliefs too forcefully on others.",
+    "healthEffect": "Generally good vitality with excess heat causing liver strain, blood impurities, and inflammation from overindulgence."
+  },
+  {
+    "planet": "Jupiter",
+    "sign": "Taurus",
+    "dignity": "neutral",
+    "interpretation": "Jupiter in Taurus brings abundant material blessings and a talent for growing wealth steadily. The native has refined taste, generous hospitality, and a philosophical approach to life's pleasures and comforts.",
+    "careerEffect": "Suited for banking, investment, agriculture, food industry, luxury retail, and wealth management.",
+    "relationshipEffect": "Generous and indulgent partner who creates material abundance in the home, though complacency may set in over time.",
+    "healthEffect": "Weight gain from overindulgence, diabetes risk, throat and thyroid issues, and liver strain from rich foods."
+  },
+  {
+    "planet": "Jupiter",
+    "sign": "Gemini",
+    "dignity": "enemy",
+    "interpretation": "Jupiter in Mercury-ruled Gemini scatters wisdom across many interests without deep mastery. The native is a versatile learner and engaging teacher, though restlessness and superficiality may dilute Jupiter's profound wisdom.",
+    "careerEffect": "Suited for publishing, multiple teaching subjects, media, literary criticism, and knowledge-based networking.",
+    "relationshipEffect": "Intellectually generous and fun partner, but commitment to one philosophy or path in the relationship may be lacking.",
+    "healthEffect": "Respiratory issues from excess, nervous system strain from information overload, and shoulder and arm problems."
+  },
+  {
+    "planet": "Jupiter",
+    "sign": "Cancer",
+    "dignity": "exalted",
+    "interpretation": "Jupiter reaches its highest power in Cancer, producing exceptional wisdom rooted in emotional intelligence and compassion. The native is blessed with profound nurturing ability, strong intuition, and a generous spirit that creates abundance for family and community.",
+    "careerEffect": "Outstanding success in education, real estate, hospitality, counseling, maternal health, and religious or charitable institutions.",
+    "relationshipEffect": "Deeply nurturing and emotionally generous partner who creates a home filled with love, abundance, and spiritual warmth.",
+    "healthEffect": "Generally protected by strong recuperative powers, though excess water element may cause weight gain and chest congestion."
+  },
+  {
+    "planet": "Jupiter",
+    "sign": "Leo",
+    "dignity": "friend",
+    "interpretation": "Jupiter in Leo produces a magnanimous, noble, and spiritually confident personality. The native leads with wisdom and generosity, often achieving prominence through their ability to inspire faith and enthusiasm in others.",
+    "careerEffect": "Excels in educational leadership, government advisory, entertainment, religious leadership, and creative enterprise.",
+    "relationshipEffect": "Grand and generous in love, showering partners with warmth and gifts, though ego and self-righteousness may surface.",
+    "healthEffect": "Heart issues from excess joy and indulgence, spinal problems, blood pressure from high living, and cholesterol concerns."
+  },
+  {
+    "planet": "Jupiter",
+    "sign": "Virgo",
+    "dignity": "enemy",
+    "interpretation": "Jupiter in Mercury-ruled Virgo creates tension between expansive wisdom and analytical precision. The native may miss the forest for the trees, becoming overly critical in philosophical matters while possessing excellent teaching ability in technical subjects.",
+    "careerEffect": "Suited for medical teaching, health administration, accounting, editorial work, and service-oriented education.",
+    "relationshipEffect": "Helpful and improvement-oriented partner who teaches through example, but constant critiquing can feel judgmental.",
+    "healthEffect": "Digestive issues from dietary philosophies, intestinal problems, and health complications from conflicting wellness approaches."
+  },
+  {
+    "planet": "Jupiter",
+    "sign": "Libra",
+    "dignity": "neutral",
+    "interpretation": "Jupiter in Libra brings wisdom to partnerships and a deep understanding of justice and balance. The native excels at creating harmonious relationships and fair agreements, with a natural talent for diplomacy and social grace.",
+    "careerEffect": "Thrives in law, judicial service, counseling, diplomacy, art dealing, and partnership-based enterprises.",
+    "relationshipEffect": "Balanced and fair partner who prioritizes harmony and mutual growth, with a talent for resolving conflicts wisely.",
+    "healthEffect": "Kidney issues from excess, lower back strain, sugar-related health problems, and weight gain around the midsection."
+  },
+  {
+    "planet": "Jupiter",
+    "sign": "Scorpio",
+    "dignity": "neutral",
+    "interpretation": "Jupiter in Scorpio produces profound wisdom about life's mysteries, transformation, and hidden truths. The native possesses deep spiritual insight, powerful intuition about others' motivations, and the ability to regenerate from any crisis.",
+    "careerEffect": "Excels in occult research, psychology, insurance, inheritance management, surgery, and esoteric teaching.",
+    "relationshipEffect": "Intensely loyal and transformative partner who facilitates deep emotional growth, though power dynamics may complicate the bond.",
+    "healthEffect": "Reproductive system excesses, hemorrhoids, and health issues related to indulgence in intense experiences."
+  },
+  {
+    "planet": "Jupiter",
+    "sign": "Sagittarius",
+    "dignity": "own_sign",
+    "interpretation": "Jupiter in its own sign Sagittarius is supremely powerful, granting the native profound wisdom, strong dharmic values, and boundless optimism. This is the natural philosopher, teacher, and guide who inspires others toward truth and higher purpose.",
+    "careerEffect": "Outstanding in education, law, religious leadership, international affairs, publishing, and philosophical advisory roles.",
+    "relationshipEffect": "Inspiring and growth-oriented partner who values shared spiritual journey, but may prioritize ideology over emotional needs.",
+    "healthEffect": "Prone to liver issues, weight gain from excess optimism about diet, hip and thigh problems, and arterial concerns."
+  },
+  {
+    "planet": "Jupiter",
+    "sign": "Capricorn",
+    "dignity": "debilitated",
+    "interpretation": "Jupiter is weakened in Saturn-ruled Capricorn, where expansive optimism is constrained by practical limitations. The native may struggle with faith and generosity, becoming overly materialistic or pessimistic about spiritual matters.",
+    "careerEffect": "Can achieve success in corporate management and structured institutions, but growth feels slow and burdened by responsibilities.",
+    "relationshipEffect": "Cautious and reserved in expressing generosity, may withhold warmth and abundance due to fear of scarcity.",
+    "healthEffect": "Bone-related issues, joint problems, knee weakness, and health complications from delayed treatment or neglect."
+  },
+  {
+    "planet": "Jupiter",
+    "sign": "Aquarius",
+    "dignity": "neutral",
+    "interpretation": "Jupiter in Aquarius directs wisdom toward humanitarian causes and collective upliftment. The native possesses visionary idealism and innovative approaches to education and social improvement, though detachment may weaken personal connections.",
+    "careerEffect": "Suited for social reform, NGO leadership, technological education, group facilitation, and innovative teaching methods.",
+    "relationshipEffect": "Progressive and equality-minded partner who values friendship, but emotional distance may leave partners feeling unspecial.",
+    "healthEffect": "Circulatory excess, ankle swelling, and health issues related to irregular lifestyle and humanitarian overextension."
+  },
+  {
+    "planet": "Jupiter",
+    "sign": "Pisces",
+    "dignity": "own_sign",
+    "interpretation": "Jupiter in its own sign Pisces produces the highest spiritual wisdom, boundless compassion, and mystical insight. The native is blessed with extraordinary intuition, selfless generosity, and a direct connection to the divine that inspires deep devotion.",
+    "careerEffect": "Outstanding in spiritual teaching, healing arts, charity work, music, cinema, and any vocation serving the soul's evolution.",
+    "relationshipEffect": "Unconditionally loving and spiritually nurturing partner, though idealism may blind them to partner's flaws.",
+    "healthEffect": "Foot ailments, lymphatic congestion, immune system sensitivities, and health risks from excessive compassion and self-neglect."
+  },
+  {
+    "planet": "Venus",
+    "sign": "Aries",
+    "dignity": "neutral",
+    "interpretation": "Venus in Aries creates passionate, impulsive love and a bold approach to beauty and pleasure. The native falls in love quickly and intensely, pursuing romantic interests with fiery determination and courage.",
+    "careerEffect": "Suited for fashion design, cosmetics entrepreneurship, entertainment, and creative ventures requiring bold initiative.",
+    "relationshipEffect": "Passionate and exciting lover who initiates romance aggressively, but interest may fade quickly without constant stimulation.",
+    "healthEffect": "Facial skin sensitivities, head-related beauty concerns, and reproductive issues triggered by inflammatory conditions."
+  },
+  {
+    "planet": "Venus",
+    "sign": "Taurus",
+    "dignity": "own_sign",
+    "interpretation": "Venus in its own sign Taurus is supremely comfortable, granting exceptional beauty, artistic talent, and a deep appreciation for life's sensory pleasures. The native possesses natural grace, magnetic charm, and a talent for attracting wealth.",
+    "careerEffect": "Outstanding in music, fine arts, luxury goods, banking, jewelry, agriculture, and beauty industry.",
+    "relationshipEffect": "Devoted, sensual, and deeply loyal partner who creates a beautiful home environment but can become possessive.",
+    "healthEffect": "Throat and vocal issues, thyroid imbalances, and health problems from overindulgence in rich food and luxury."
+  },
+  {
+    "planet": "Venus",
+    "sign": "Gemini",
+    "dignity": "friend",
+    "interpretation": "Venus in Gemini creates a charming, witty, and socially versatile personality with diverse aesthetic interests. The native attracts through intellectual charm and verbal grace, enjoying variety in both love and creative expression.",
+    "careerEffect": "Thrives in media, fashion writing, social media, interior decorating, and communication-based creative fields.",
+    "relationshipEffect": "Flirtatious and intellectually engaging partner who needs variety and mental connection, but may struggle with deep commitment.",
+    "healthEffect": "Skin sensitivities on arms and hands, respiratory allergies, and nervous system issues affecting beauty and complexion."
+  },
+  {
+    "planet": "Venus",
+    "sign": "Cancer",
+    "dignity": "neutral",
+    "interpretation": "Venus in Cancer produces deep emotional sensitivity in love and a strong need for domestic beauty and security. The native expresses affection through nurturing, creating a warm and aesthetically pleasing home environment.",
+    "careerEffect": "Suited for interior design, food styling, home products, childcare, hospitality, and maternal fashion.",
+    "relationshipEffect": "Deeply caring and emotionally nurturing partner who craves security, but clinginess and emotional neediness may overwhelm partners.",
+    "healthEffect": "Breast and chest sensitivities, water retention affecting appearance, digestive issues from emotional eating."
+  },
+  {
+    "planet": "Venus",
+    "sign": "Leo",
+    "dignity": "neutral",
+    "interpretation": "Venus in Leo produces a dramatic, generous, and regal approach to love and beauty. The native demands admiration and expresses affection grandly, with a natural flair for luxury, performance, and creative self-expression.",
+    "careerEffect": "Excels in entertainment, luxury branding, jewelry design, performing arts, and high-end creative direction.",
+    "relationshipEffect": "Generous and devoted lover who treats romance as a grand affair, but wounded pride and need for attention can create drama.",
+    "healthEffect": "Heart issues related to romantic stress, back problems from lavish lifestyle, and blood pressure from emotional intensity."
+  },
+  {
+    "planet": "Venus",
+    "sign": "Virgo",
+    "dignity": "debilitated",
+    "interpretation": "Venus is weakened in Virgo, where the pursuit of perfection undermines the ability to enjoy love and beauty freely. The native may be overly critical in matters of love and aesthetics, analyzing romance rather than surrendering to it.",
+    "careerEffect": "Can succeed in health and beauty, dietetics, craft work, and precision arts, but creative confidence may be lacking.",
+    "relationshipEffect": "Devoted but critical partner who shows love through service while finding flaws in romance, creating dissatisfaction.",
+    "healthEffect": "Reproductive system weaknesses, skin sensitivities from dietary issues, and intestinal problems affecting vitality and appearance."
+  },
+  {
+    "planet": "Venus",
+    "sign": "Libra",
+    "dignity": "own_sign",
+    "interpretation": "Venus in its own sign Libra is at its most refined, bestowing exceptional social grace, artistic talent, and relationship harmony. The native possesses natural diplomacy, impeccable aesthetic sense, and the ability to create beauty and balance in all areas of life.",
+    "careerEffect": "Outstanding in fashion, law, diplomacy, art curation, event planning, and any field requiring taste and social finesse.",
+    "relationshipEffect": "The ideal romantic partner who prioritizes harmony, fairness, and mutual appreciation, though avoiding conflict may suppress real issues.",
+    "healthEffect": "Kidney sensitivities, lower back issues from sedentary elegance, and skin conditions related to cosmetic sensitivities."
+  },
+  {
+    "planet": "Venus",
+    "sign": "Scorpio",
+    "dignity": "enemy",
+    "interpretation": "Venus in Mars-ruled Scorpio creates intense, transformative, and deeply passionate love. The native experiences attraction with overwhelming intensity, seeking soul-deep connections but often encountering jealousy and power struggles.",
+    "careerEffect": "Suited for psychology, tantric arts, research into beauty secrets, detective work, and transformative healing.",
+    "relationshipEffect": "Magnetically attractive and deeply passionate partner, but possessiveness, jealousy, and obsessive attachment can be destructive.",
+    "healthEffect": "Reproductive and sexual health issues, urinary tract problems, and health complications from intense emotional experiences."
+  },
+  {
+    "planet": "Venus",
+    "sign": "Sagittarius",
+    "dignity": "neutral",
+    "interpretation": "Venus in Sagittarius creates a love of freedom, adventure, and philosophical beauty. The native is attracted to foreign cultures, higher learning, and expansive experiences, bringing enthusiasm and optimism to relationships.",
+    "careerEffect": "Thrives in international fashion, travel luxury industry, cultural arts, publishing aesthetics, and cross-cultural design.",
+    "relationshipEffect": "Fun-loving and adventurous partner who values growth and shared ideals, but may resist domestic routine and deep commitment.",
+    "healthEffect": "Hip and thigh issues, liver problems from excess enjoyment, and weight fluctuations from indulgent lifestyle."
+  },
+  {
+    "planet": "Venus",
+    "sign": "Capricorn",
+    "dignity": "friend",
+    "interpretation": "Venus in Capricorn produces a mature, responsible approach to love with appreciation for enduring beauty and status. The native values tradition, commitment, and quality over quantity in relationships and material possessions.",
+    "careerEffect": "Excels in luxury corporate branding, antiques, classical arts, architecture, and high-end business development.",
+    "relationshipEffect": "Loyal and committed partner who values stability and tradition, but emotional expression may feel restrained and formal.",
+    "healthEffect": "Skin dryness and aging concerns, bone-related beauty issues, dental aesthetics, and knee problems."
+  },
+  {
+    "planet": "Venus",
+    "sign": "Aquarius",
+    "dignity": "friend",
+    "interpretation": "Venus in Aquarius creates unconventional tastes, progressive values in love, and attraction to unique beauty. The native values intellectual connection and friendship in romance, with a talent for innovative artistic expression.",
+    "careerEffect": "Suited for digital art, social media aesthetics, technology design, progressive fashion, and community-based creative ventures.",
+    "relationshipEffect": "Values equality and friendship in love, attracted to unconventional partners, but emotional detachment may frustrate intimate needs.",
+    "healthEffect": "Circulatory issues affecting complexion, ankle problems, and health sensitivities from unusual lifestyle choices."
+  },
+  {
+    "planet": "Venus",
+    "sign": "Pisces",
+    "dignity": "exalted",
+    "interpretation": "Venus reaches its highest expression in Pisces, producing transcendent love, divine beauty, and boundless artistic inspiration. The native experiences love as a spiritual sacrament and possesses extraordinary sensitivity to beauty in all its forms.",
+    "careerEffect": "Outstanding in music, poetry, film, spiritual arts, dance, charitable beauty initiatives, and healing through art.",
+    "relationshipEffect": "Unconditionally loving and romantically idealistic partner who merges completely with their beloved, risking loss of self.",
+    "healthEffect": "Foot sensitivities, immune system vulnerability, lymphatic issues, and susceptibility to intoxicants and emotional overwhelm."
+  },
+  {
+    "planet": "Saturn",
+    "sign": "Aries",
+    "dignity": "debilitated",
+    "interpretation": "Saturn is weakened in Aries, where its need for patience and structure conflicts with impulsive fire energy. The native struggles with discipline versus desire for immediate action, often facing delays and frustrations in asserting themselves.",
+    "careerEffect": "Slow start in career with obstacles to initiative, but persistence eventually builds authority in competitive fields.",
+    "relationshipEffect": "Difficulty expressing needs assertively, leading to suppressed frustration and delayed relationship milestones.",
+    "healthEffect": "Head and bone issues, dental problems, knee injuries during physical activity, and chronic headaches from frustrated energy."
+  },
+  {
+    "planet": "Saturn",
+    "sign": "Taurus",
+    "dignity": "friend",
+    "interpretation": "Saturn in Taurus produces steady, patient wealth-building through disciplined effort and frugal management. The native has a practical, conservative approach to material security and builds lasting foundations through persistent labor.",
+    "careerEffect": "Excels in real estate, agriculture, long-term investments, government finance, and industries requiring patient capital growth.",
+    "relationshipEffect": "Reliable and stable partner who provides material security, but may be overly frugal and emotionally withholding.",
+    "healthEffect": "Throat ailments, dental issues, thyroid problems, and chronic conditions that develop slowly over time."
+  },
+  {
+    "planet": "Saturn",
+    "sign": "Gemini",
+    "dignity": "friend",
+    "interpretation": "Saturn in Gemini structures the scattered mind, producing disciplined intellectual ability and serious communication skills. The native excels at systematic learning and careful documentation, though mental rigidity may limit creative thinking.",
+    "careerEffect": "Suited for technical writing, mathematics, accounting, administrative communication, and structured education.",
+    "relationshipEffect": "Thoughtful and deliberate communicator who keeps promises, but serious demeanor may make conversations feel heavy.",
+    "healthEffect": "Respiratory problems, chronic shoulder and arm issues, nervous system disorders, and lung-related conditions."
+  },
+  {
+    "planet": "Saturn",
+    "sign": "Cancer",
+    "dignity": "enemy",
+    "interpretation": "Saturn in Moon-ruled Cancer creates emotional restriction and difficulty expressing nurturing feelings. The native may have experienced early domestic hardship, developing a protective shell that guards deep emotional vulnerability.",
+    "careerEffect": "Slow progress in real estate or hospitality, success through patient public service, and careers involving care for the elderly.",
+    "relationshipEffect": "Emotionally guarded partner who struggles to express warmth, often recreating childhood deprivation patterns in adult relationships.",
+    "healthEffect": "Chronic digestive issues, chest congestion, emotional depression, and stomach ailments worsened by suppressed feelings."
+  },
+  {
+    "planet": "Saturn",
+    "sign": "Leo",
+    "dignity": "enemy",
+    "interpretation": "Saturn in Sun-ruled Leo creates conflict between humility and the desire for recognition. The native may feel creatively blocked or denied rightful acknowledgment, learning authority through hard-won experience rather than natural charisma.",
+    "careerEffect": "Delayed recognition in leadership, eventual success in government or structured creative industries through persistent effort.",
+    "relationshipEffect": "Struggles with expressing love openly and may feel unappreciated, leading to pride wounds and emotional withdrawal.",
+    "healthEffect": "Heart problems, spinal stiffness, chronic back pain, and cardiovascular issues from suppressed self-expression."
+  },
+  {
+    "planet": "Saturn",
+    "sign": "Virgo",
+    "dignity": "friend",
+    "interpretation": "Saturn in Virgo produces extraordinary precision, methodical work ethic, and mastery through detailed practice. The native excels at systematic improvement and quality control, building expertise through patient, repetitive effort.",
+    "careerEffect": "Outstanding in quality assurance, medical practice, auditing, skilled craftsmanship, and health administration.",
+    "relationshipEffect": "Reliable and helpful partner with high standards, but perfectionism and criticism can create a joyless atmosphere.",
+    "healthEffect": "Chronic digestive disorders, intestinal blockages, skin conditions from toxin accumulation, and anxiety-related health decline."
+  },
+  {
+    "planet": "Saturn",
+    "sign": "Libra",
+    "dignity": "exalted",
+    "interpretation": "Saturn reaches its highest power in Libra, producing exceptional fairness, balanced judgment, and mastery of justice and law. The native commands respect through impartial wisdom and the ability to create lasting, equitable structures in society.",
+    "careerEffect": "Outstanding in judiciary, law, diplomacy, corporate governance, and any role requiring fair and structured decision-making.",
+    "relationshipEffect": "Committed and fair partner who takes marriage seriously as a duty, building enduring partnerships based on mutual respect.",
+    "healthEffect": "Kidney issues developing later in life, chronic lower back problems, and skin conditions requiring long-term management."
+  },
+  {
+    "planet": "Saturn",
+    "sign": "Scorpio",
+    "dignity": "neutral",
+    "interpretation": "Saturn in Scorpio produces deep endurance, psychological strength, and mastery over hidden fears. The native faces life's darkest challenges with stoic determination, developing wisdom through transformative suffering and rebirth.",
+    "careerEffect": "Suited for mining, underground work, insurance, estate management, occult research, and long-term investigative roles.",
+    "relationshipEffect": "Intensely loyal but emotionally guarded partner who tests relationships through crises, building deep trust over time.",
+    "healthEffect": "Chronic reproductive issues, constipation, hemorrhoids, and health problems related to toxin retention and emotional suppression."
+  },
+  {
+    "planet": "Saturn",
+    "sign": "Sagittarius",
+    "dignity": "neutral",
+    "interpretation": "Saturn in Sagittarius structures philosophical wisdom into practical systems of knowledge and law. The native develops deep, disciplined understanding of truth through patient study rather than quick inspiration.",
+    "careerEffect": "Excels in academia, legal systems, religious institutions, structured education, and philosophical publishing.",
+    "relationshipEffect": "Serious partner who values shared moral framework and long-term vision, but rigidity in beliefs may create ideological conflicts.",
+    "healthEffect": "Hip and thigh weakness, sciatica, liver issues developing slowly, and bone problems in the pelvic region."
+  },
+  {
+    "planet": "Saturn",
+    "sign": "Capricorn",
+    "dignity": "own_sign",
+    "interpretation": "Saturn in its own sign Capricorn is supremely powerful, granting the native extraordinary ambition, discipline, and the capacity for monumental achievement. Success comes through relentless effort, strategic patience, and mastery of worldly structures.",
+    "careerEffect": "Outstanding in corporate leadership, government, engineering, construction, mining, and any career requiring long-term strategic vision.",
+    "relationshipEffect": "Responsible and dutiful partner who builds lasting security, but workaholism and emotional austerity may starve the relationship.",
+    "healthEffect": "Bone density issues, chronic knee problems, dental deterioration, skin dryness, and arthritis in later years."
+  },
+  {
+    "planet": "Saturn",
+    "sign": "Aquarius",
+    "dignity": "own_sign",
+    "interpretation": "Saturn in its own sign Aquarius combines structural discipline with humanitarian vision. The native builds lasting systems for collective welfare, possessing both the idealism to envision a better world and the practical ability to create it.",
+    "careerEffect": "Excels in technology infrastructure, social policy, organizational leadership, scientific institutions, and community governance.",
+    "relationshipEffect": "Values equality and intellectual partnership, creating structured yet progressive relationships based on shared ideals.",
+    "healthEffect": "Circulatory weakness, chronic ankle and shin problems, varicose veins, and nervous system disorders in later life."
+  },
+  {
+    "planet": "Saturn",
+    "sign": "Pisces",
+    "dignity": "neutral",
+    "interpretation": "Saturn in Pisces brings structure to spiritual and creative endeavors, creating disciplined mystics and practical healers. The native may experience isolation or suffering that deepens spiritual wisdom and compassionate service.",
+    "careerEffect": "Suited for institutional spiritual work, hospital administration, prison reform, charity management, and structured healing practices.",
+    "relationshipEffect": "Compassionate but melancholic partner who may withdraw into solitude, struggling to balance spiritual calling with worldly relationships.",
+    "healthEffect": "Chronic foot problems, immune system weakness, lymphatic stagnation, and mental health challenges including depression."
+  },
+  {
+    "planet": "Rahu",
+    "sign": "Aries",
+    "dignity": "neutral",
+    "interpretation": "Rahu in Aries amplifies ambition, aggression, and the obsessive drive to be first. The native is driven by an insatiable desire for independence and leadership, often taking unconventional or revolutionary paths to assert dominance.",
+    "careerEffect": "Drawn to pioneering technology, unconventional warfare, foreign military, or disruptive entrepreneurship.",
+    "relationshipEffect": "Magnetically attractive but restless partner driven by desire for conquest, creating intense but unstable romantic dynamics.",
+    "healthEffect": "Mysterious head ailments, unusual neurological symptoms, and health issues that are difficult to diagnose."
+  },
+  {
+    "planet": "Rahu",
+    "sign": "Taurus",
+    "dignity": "friend",
+    "interpretation": "Rahu in Taurus creates an obsessive desire for material wealth, luxury, and sensory pleasures beyond normal limits. The native may accumulate great wealth through unusual means and foreign connections, with an insatiable appetite for comfort.",
+    "careerEffect": "Success in foreign trade, speculative finance, luxury imports, unconventional food industry, and cross-border commerce.",
+    "relationshipEffect": "Materially generous but emotionally unpredictable partner with unconventional desires and attraction to foreign partners.",
+    "healthEffect": "Unusual throat conditions, mysterious dietary sensitivities, toxin accumulation, and hormonal imbalances from excess."
+  },
+  {
+    "planet": "Rahu",
+    "sign": "Gemini",
+    "dignity": "exalted",
+    "interpretation": "Rahu is most powerful in Gemini, granting exceptional talent in communication, technology, and intellectual manipulation. The native possesses extraordinary ability to influence through media, words, and information, often achieving fame through unconventional channels.",
+    "careerEffect": "Outstanding in media, technology, digital marketing, foreign languages, intelligence, and innovative communication platforms.",
+    "relationshipEffect": "Fascinating and intellectually seductive partner, but truth may be manipulated and multiple simultaneous connections are possible.",
+    "healthEffect": "Unusual nervous system disorders, mysterious respiratory issues, and mental health challenges from information overload."
+  },
+  {
+    "planet": "Rahu",
+    "sign": "Cancer",
+    "dignity": "enemy",
+    "interpretation": "Rahu in Cancer creates obsessive emotional needs and an exaggerated desire for nurturing and security. The native may experience unusual family dynamics, foreign domestic situations, or an insatiable need for emotional comfort that can never be fully satisfied.",
+    "careerEffect": "Success in foreign food industry, real estate in distant lands, unconventional hospitality, and maritime commerce.",
+    "relationshipEffect": "Emotionally volatile partner with deep insecurity and unusual attachment patterns, often drawn to foreign or unconventional partners.",
+    "healthEffect": "Strange digestive conditions, mysterious chest ailments, psychological disturbances related to early nurturing wounds."
+  },
+  {
+    "planet": "Rahu",
+    "sign": "Leo",
+    "dignity": "neutral",
+    "interpretation": "Rahu in Leo amplifies the desire for power, fame, and recognition to obsessive levels. The native craves center stage through any means necessary, sometimes achieving dramatic success in unconventional or foreign leadership arenas.",
+    "careerEffect": "Drawn to entertainment industry, political drama, foreign government roles, and unconventional paths to fame.",
+    "relationshipEffect": "Magnetically charismatic but ego-driven partner who demands constant admiration and may use relationships for status.",
+    "healthEffect": "Unusual heart palpitations, mysterious blood conditions, and health scares related to ego-driven stress."
+  },
+  {
+    "planet": "Rahu",
+    "sign": "Virgo",
+    "dignity": "friend",
+    "interpretation": "Rahu in Virgo creates obsessive perfectionism and an unusual approach to health, service, and analytical work. The native may develop extraordinary skills in alternative healing, foreign medical practices, or unconventional problem-solving methods.",
+    "careerEffect": "Success in alternative medicine, foreign healthcare, technology troubleshooting, data analytics, and unconventional service industries.",
+    "relationshipEffect": "Analytically fixated partner who may obsess over relationship imperfections or pursue unusual healing modalities together.",
+    "healthEffect": "Mysterious digestive problems, undiagnosable intestinal conditions, and health obsessions leading to unusual treatments."
+  },
+  {
+    "planet": "Rahu",
+    "sign": "Libra",
+    "dignity": "neutral",
+    "interpretation": "Rahu in Libra amplifies the desire for partnership, social status, and aesthetic pleasure to extreme levels. The native may form unusual alliances, cross-cultural partnerships, and achieve success through unconventional diplomatic or artistic means.",
+    "careerEffect": "Thrives in international diplomacy, foreign fashion, cross-cultural art, unconventional law, and global partnership ventures.",
+    "relationshipEffect": "Strongly drawn to foreign or unconventional partners with obsessive need for relationship validation and social standing.",
+    "healthEffect": "Unusual kidney conditions, mysterious lower back issues, and skin reactions to foreign substances or environments."
+  },
+  {
+    "planet": "Rahu",
+    "sign": "Scorpio",
+    "dignity": "enemy",
+    "interpretation": "Rahu in Scorpio intensifies obsession with power, secrets, and transformation to dangerous levels. The native may be drawn to occult practices, hidden knowledge, and taboo experiences, possessing extraordinary ability to manipulate unseen forces.",
+    "careerEffect": "Drawn to espionage, occult research, underground economies, foreign investigation, and taboo industries.",
+    "relationshipEffect": "Intensely obsessive and manipulative in love, with powerful sexual magnetism but dangerous possessiveness and secrecy.",
+    "healthEffect": "Mysterious reproductive issues, unusual poisoning risks, undiagnosable conditions, and psychological disturbances."
+  },
+  {
+    "planet": "Rahu",
+    "sign": "Sagittarius",
+    "dignity": "debilitated",
+    "interpretation": "Rahu is weakened in Sagittarius, where its illusions clash with the sign's pursuit of truth. The native may develop distorted spiritual beliefs, fall prey to false gurus, or use philosophy and religion for selfish gain rather than genuine wisdom.",
+    "careerEffect": "Struggles in traditional education but may succeed in unorthodox teaching, foreign religious movements, or exploitative spiritual ventures.",
+    "relationshipEffect": "Preaches high ideals but may practice deception, attracting partners through false spiritual pretenses.",
+    "healthEffect": "Liver problems from excess, hip issues from foreign travel, and health complications from following misguided spiritual practices."
+  },
+  {
+    "planet": "Rahu",
+    "sign": "Capricorn",
+    "dignity": "friend",
+    "interpretation": "Rahu in Capricorn amplifies worldly ambition to extraordinary levels, driving the native toward power and status through unconventional or foreign means. The desire for material achievement is relentless, often breaking traditional boundaries to reach the top.",
+    "careerEffect": "Success in foreign corporations, unconventional government roles, cross-border infrastructure, and technology-driven industries.",
+    "relationshipEffect": "Ambitious partner who may use relationships strategically for advancement, prioritizing status over emotional connection.",
+    "healthEffect": "Unusual bone and joint conditions, knee problems from overambition, and mysterious chronic ailments from overwork."
+  },
+  {
+    "planet": "Rahu",
+    "sign": "Aquarius",
+    "dignity": "friend",
+    "interpretation": "Rahu in Aquarius amplifies humanitarian vision and technological innovation to visionary levels. The native may revolutionize social systems, create breakthrough technologies, or build massive networks that transform how communities function.",
+    "careerEffect": "Outstanding in cutting-edge technology, social media platforms, revolutionary movements, and large-scale networking enterprises.",
+    "relationshipEffect": "Unconventional partner who values freedom and collective vision over traditional romance, attracted to foreign or unusual connections.",
+    "healthEffect": "Unusual circulatory conditions, electromagnetic sensitivity, nervous system anomalies, and technology-related health issues."
+  },
+  {
+    "planet": "Rahu",
+    "sign": "Pisces",
+    "dignity": "neutral",
+    "interpretation": "Rahu in Pisces creates a powerful pull toward spiritual illusion, psychic experiences, and otherworldly realms. The native may possess unusual intuitive gifts but risks deception, escapism, and losing themselves in fantasy or altered states.",
+    "careerEffect": "Drawn to film industry, foreign spiritual traditions, pharmaceutical industry, marine work, and unconventional healing.",
+    "relationshipEffect": "Dreamy and elusive partner who may idealize love to the point of delusion, attracted to foreign or spiritual connections.",
+    "healthEffect": "Mysterious foot ailments, unusual immune reactions, susceptibility to undiagnosed conditions, and risks from substance use."
+  },
+  {
+    "planet": "Ketu",
+    "sign": "Aries",
+    "dignity": "neutral",
+    "interpretation": "Ketu in Aries indicates past-life mastery over courage and independence, creating a native who is naturally brave but detached from ego-driven competition. The warrior spirit is present but directed inward toward spiritual conquest.",
+    "careerEffect": "Natural skill in martial arts, spiritual warfare, ascetic practices, and careers that require fearless selfless action.",
+    "relationshipEffect": "Emotionally detached in partnerships with little interest in power dynamics, creating confusion for partners who seek engagement.",
+    "healthEffect": "Head injuries from negligence, mysterious headaches, neurological sensitivities, and wounds that heal in unusual ways."
+  },
+  {
+    "planet": "Ketu",
+    "sign": "Taurus",
+    "dignity": "enemy",
+    "interpretation": "Ketu in Taurus creates detachment from material security and sensory pleasures. The native may feel disconnected from wealth and physical comforts despite having access to them, as past-life fulfillment in these areas reduces current motivation.",
+    "careerEffect": "Indifferent to wealth accumulation, may leave lucrative positions for spiritual pursuits or unconventional callings.",
+    "relationshipEffect": "Detached from physical intimacy and material aspects of partnership, confusing partners who value stability and sensuality.",
+    "healthEffect": "Throat and speech irregularities, thyroid anomalies, nutritional deficiencies from indifference to food quality."
+  },
+  {
+    "planet": "Ketu",
+    "sign": "Gemini",
+    "dignity": "debilitated",
+    "interpretation": "Ketu is weakened in Gemini, creating confusion in communication and intellectual pursuits. The native may struggle with coherent expression and logical thinking, as past-life spiritual wisdom does not translate well into worldly communication.",
+    "careerEffect": "Difficulty in mainstream communication roles, but may excel in non-verbal arts, coding, or mystical writing.",
+    "relationshipEffect": "Poor communication skills in relationships leading to misunderstandings, with a tendency to withdraw rather than discuss issues.",
+    "healthEffect": "Speech impediments, unusual hand and arm conditions, respiratory anomalies, and nervous system irregularities."
+  },
+  {
+    "planet": "Ketu",
+    "sign": "Cancer",
+    "dignity": "neutral",
+    "interpretation": "Ketu in Cancer creates emotional detachment from family, home, and nurturing bonds. The native may feel like an outsider in their own family, carrying past-life completion in domestic matters that creates present-life disconnection from emotional security.",
+    "careerEffect": "Detached from conventional home-based or caregiving roles, may excel in monastic life, foreign residence, or nomadic careers.",
+    "relationshipEffect": "Emotionally unavailable and detached from domestic life, creating a sense of absence even when physically present.",
+    "healthEffect": "Mysterious stomach ailments, chest complaints without clear cause, and emotional numbness affecting physical well-being."
+  },
+  {
+    "planet": "Ketu",
+    "sign": "Leo",
+    "dignity": "neutral",
+    "interpretation": "Ketu in Leo creates detachment from ego, fame, and personal recognition. The native may possess natural leadership qualities but feels no desire to be center stage, having completed that karma in past lives.",
+    "careerEffect": "Uninterested in fame or power positions, may serve behind the scenes or in spiritual leadership without seeking credit.",
+    "relationshipEffect": "Humble and ego-free in partnerships, but lack of self-expression and ambition may frustrate achievement-oriented partners.",
+    "healthEffect": "Heart irregularities of mysterious origin, spinal issues, and low vitality from lack of ego-driven life force."
+  },
+  {
+    "planet": "Ketu",
+    "sign": "Virgo",
+    "dignity": "enemy",
+    "interpretation": "Ketu in Virgo creates detachment from analytical precision and practical service. The native may struggle with mundane details and organization, as their consciousness gravitates toward the abstract and spiritual rather than the material and methodical.",
+    "careerEffect": "Difficulty in detail-oriented or service roles, but innate ability in intuitive healing, spiritual diagnosis, and abstract analysis.",
+    "relationshipEffect": "Disinterested in practical relationship maintenance and daily routines, creating frustration for partners who value order.",
+    "healthEffect": "Mysterious digestive problems, intestinal sensitivities without clear diagnosis, and health issues from neglecting practical self-care."
+  },
+  {
+    "planet": "Ketu",
+    "sign": "Libra",
+    "dignity": "neutral",
+    "interpretation": "Ketu in Libra indicates past-life mastery over relationships and diplomacy, creating present-life detachment from partnership dynamics. The native may be skilled at creating harmony but feels no deep need for romantic partnership.",
+    "careerEffect": "Natural diplomatic ability used without personal ambition, suited for mediation, spiritual counseling, and selfless service in justice.",
+    "relationshipEffect": "Detached from romance and partnership needs, creating confusion for partners who desire deep emotional engagement.",
+    "healthEffect": "Kidney anomalies, unexplained lower back pain, and skin conditions with mysterious triggers."
+  },
+  {
+    "planet": "Ketu",
+    "sign": "Scorpio",
+    "dignity": "friend",
+    "interpretation": "Ketu in Scorpio grants natural mastery over occult knowledge, psychological depth, and transformative processes from past lives. The native possesses innate psychic ability and fearlessness about death and transformation.",
+    "careerEffect": "Natural talent in occult sciences, past-life regression, spiritual healing, and research into hidden knowledge.",
+    "relationshipEffect": "Psychically attuned but emotionally detached in intimate relationships, with an otherworldly quality that both attracts and unsettles partners.",
+    "healthEffect": "Mysterious reproductive system issues, unusual healing abilities, and health conditions that respond to alternative rather than conventional medicine."
+  },
+  {
+    "planet": "Ketu",
+    "sign": "Sagittarius",
+    "dignity": "exalted",
+    "interpretation": "Ketu reaches its highest expression in Sagittarius, granting profound spiritual wisdom and liberation from worldly attachments. The native possesses innate knowledge of dharma and cosmic truth, often serving as a natural spiritual guide without conscious effort.",
+    "careerEffect": "Outstanding in spiritual teaching, philosophical guidance, monastic life, and any path leading to moksha and higher consciousness.",
+    "relationshipEffect": "Deeply wise and spiritually evolved partner, but extreme detachment from worldly concerns may leave partners feeling alone.",
+    "healthEffect": "Hip and thigh sensitivities, unusual metabolic patterns, and health that responds better to spiritual practice than medical intervention."
+  },
+  {
+    "planet": "Ketu",
+    "sign": "Capricorn",
+    "dignity": "neutral",
+    "interpretation": "Ketu in Capricorn creates detachment from worldly ambition, status, and structured achievement. The native may have mastered material success in past lives and now feels indifferent to career advancement and social position.",
+    "careerEffect": "Disinterested in corporate climbing or status-driven careers, may abandon successful positions for spiritual or unconventional paths.",
+    "relationshipEffect": "Indifferent to social status in relationships and may confuse partners by lacking worldly ambition or career drive.",
+    "healthEffect": "Bone and joint weaknesses of mysterious origin, knee problems, and chronic conditions that resist conventional treatment."
+  },
+  {
+    "planet": "Ketu",
+    "sign": "Aquarius",
+    "dignity": "neutral",
+    "interpretation": "Ketu in Aquarius indicates past-life mastery over community, technology, and humanitarian vision. The native may feel detached from group dynamics and social causes, preferring solitary spiritual practice over collective action.",
+    "careerEffect": "Natural but disinterested ability in technology and social systems, may use skills in service of spiritual rather than material goals.",
+    "relationshipEffect": "Detached from social circles and group belonging, creating a hermit-like quality that isolates them from partners' social needs.",
+    "healthEffect": "Circulatory irregularities, unusual ankle and leg conditions, and nervous system anomalies of unexplained origin."
+  },
+  {
+    "planet": "Ketu",
+    "sign": "Pisces",
+    "dignity": "friend",
+    "interpretation": "Ketu in Pisces deepens the native's connection to the spiritual realm, granting extraordinary intuition, psychic sensitivity, and mystical experiences. Past-life spiritual attainment manifests as natural transcendence and dissolution of ego boundaries.",
+    "careerEffect": "Naturally drawn to meditation, spiritual retreats, healing arts, and selfless service without desire for recognition.",
+    "relationshipEffect": "Ethereal and spiritually connected partner who may seem to exist in another realm, creating beautiful but elusive romantic dynamics.",
+    "healthEffect": "Foot problems, immune system mysteries, sensitivity to medications, and health that fluctuates with spiritual practice intensity."
+  }
+]

@@ -190,5 +190,253 @@
     "effects": "Wealthy, famous, generous ruler-type personality. Protector of others.",
     "strengthFactors": "Rare when fully formed. Even partial formation gives good results.",
     "source": "BPHS"
+  },
+  {
+    "name": "Kemdrum Yoga",
+    "aliases": ["Kemadruma Yoga", "Kemdrum Dosha"],
+    "condition": "No planet (except Sun, Rahu, Ketu) in 2nd or 12th house from Moon",
+    "effects": "Poverty, loneliness, struggles, mental anxiety. Person may feel unsupported despite abilities. Financial instability and emotional isolation.",
+    "strengthFactors": "Cancelled if Moon is in kendra from Lagna, or if Moon is aspected by Jupiter/Venus, or if kendras from Lagna/Moon are occupied. Kemadruma cancellation (bhanga) is very common.",
+    "source": "BPHS"
+  },
+  {
+    "name": "Pitra Dosha",
+    "aliases": ["Pitru Dosha", "Pitri Dosha"],
+    "condition": "Sun conjunct Rahu in the horoscope, especially in 9th house. Also formed when 9th lord is afflicted by Rahu/Ketu or Saturn.",
+    "effects": "Ancestral karma, obstacles from father's side. Delays in career, issues with authority figures, problems with progeny. Past-life debts manifesting.",
+    "strengthFactors": "Strongest in 1st, 5th, or 9th house. Remedied through ancestral rituals (Pind Daan, Tarpan). Jupiter's aspect can mitigate.",
+    "source": "Nadi Jyotish and Lal Kitab"
+  },
+  {
+    "name": "Guru Chandala Yoga",
+    "aliases": ["Guru Chandal Yoga", "Jupiter-Rahu conjunction"],
+    "condition": "Jupiter conjunct Rahu (or Ketu) in the same house",
+    "effects": "Unorthodox beliefs, challenges to traditional values, unconventional guru/teacher. Can give brilliance in research but moral dilemmas. Foreign travel for education.",
+    "strengthFactors": "Stronger in houses 1, 5, 9. Mitigated if Jupiter is in own/exalted sign. Rahu amplifies Jupiter's significations in unpredictable ways.",
+    "source": "Classical Jyotish texts"
+  },
+  {
+    "name": "Angarak Yoga",
+    "aliases": ["Angarak Dosha", "Mars-Rahu conjunction"],
+    "condition": "Mars conjunct Rahu in the same house",
+    "effects": "Explosive temper, accidents, surgical interventions, conflicts with authority. Aggressive drive that can be channeled into courage and bold action if well-placed.",
+    "strengthFactors": "Most intense in houses 1, 4, 7, 8, 10. Mitigated if Mars is in own/exalted sign or aspected by Jupiter.",
+    "source": "Classical Jyotish texts"
+  },
+  {
+    "name": "Shakata Yoga",
+    "aliases": ["Shakat Yoga"],
+    "condition": "Jupiter in 6th or 8th house from Moon",
+    "effects": "Fluctuating fortune, ups and downs in life. Periodic setbacks despite talent. Loss of wealth and status followed by recovery. Unstable career.",
+    "strengthFactors": "Cancelled if Jupiter is in kendra from Lagna. Less severe if Jupiter is strong in own/exalted sign.",
+    "source": "Phaladeepika"
+  },
+  {
+    "name": "Daridra Yoga",
+    "aliases": ["Daridrya Yoga"],
+    "condition": "Lord of 11th house placed in 6th, 8th, or 12th house. Also formed when lords of income houses (2nd, 11th) are weak and afflicted.",
+    "effects": "Financial hardship, poverty, difficulty in earning. Income lost to debts, health expenses, or wasteful spending. Struggles with savings.",
+    "strengthFactors": "Stronger when multiple wealth-significators are afflicted. Mitigated by strong Jupiter or benefic aspects on 2nd/11th houses.",
+    "source": "BPHS"
+  },
+  {
+    "name": "Chandra-Ketu Yoga",
+    "aliases": ["Moon-Ketu conjunction", "Matri Dosha"],
+    "condition": "Moon conjunct Ketu in the same house",
+    "effects": "Detachment from emotions, spiritual inclination, psychic sensitivity. Difficulty connecting with mother or maternal figures. Anxiety and restlessness. Past-life spiritual karmas.",
+    "strengthFactors": "Most impactful in houses 1, 4, 5, 8, 12. Mitigated by Jupiter's aspect. Can give profound intuition if well-aspected.",
+    "source": "Nadi Jyotish"
+  },
+  {
+    "name": "Grahan Yoga",
+    "aliases": ["Eclipse Yoga", "Grahan Dosha"],
+    "condition": "Sun or Moon conjunct Rahu or Ketu (luminaries eclipsed by shadow planets)",
+    "effects": "Health issues related to eyes/head (Sun-Rahu) or mind/emotions (Moon-Rahu/Ketu). Confusion about life purpose. Karmic challenges. Can also give research ability and deep investigation skills.",
+    "strengthFactors": "Intensity depends on closeness of conjunction (within 5 degrees is strong). Jupiter's aspect significantly reduces negative effects.",
+    "source": "BPHS and Nadi Jyotish"
+  },
+  {
+    "name": "Vish Yoga",
+    "aliases": ["Visha Yoga", "Punarphoo Dosha", "Moon-Saturn conjunction"],
+    "condition": "Moon conjunct Saturn in the same house",
+    "effects": "Emotional heaviness, depression tendencies, delayed emotional development. Strained relationship with mother. Hard work with delayed rewards. Responsible and mature beyond age.",
+    "strengthFactors": "Strongest in houses 1, 4, 7, 8. Mitigated by Jupiter's aspect or if Saturn is in own/exalted sign. Results improve with age.",
+    "source": "Classical Jyotish texts"
+  },
+  {
+    "name": "Kahala Yoga",
+    "aliases": [],
+    "condition": "Lords of 4th and 9th houses in mutual kendras, and Lagna lord is strong",
+    "effects": "Bold, daring, head of a group or army. Stubborn but courageous. Good for leadership in military, police, or competitive fields.",
+    "strengthFactors": "Strongest when involving Mars or Sun. Lagna lord must be in good dignity.",
+    "source": "BPHS"
+  },
+  {
+    "name": "Chamara Yoga",
+    "aliases": [],
+    "condition": "Lagna lord exalted and aspected by Jupiter, occupying a kendra or trikona",
+    "effects": "Eloquent speaker, learned scholar, advisor to rulers. Long-lived, morally upright, commands respect in assemblies.",
+    "strengthFactors": "Jupiter's aspect is essential. Strongest when Lagna lord is in 1st, 9th, or 10th house.",
+    "source": "BPHS"
+  },
+  {
+    "name": "Akhanda Samrajya Yoga",
+    "aliases": ["Akhanda Rajya Yoga"],
+    "condition": "Jupiter rules 2nd, 5th, or 11th house AND is in kendra from Lagna or Moon, with 11th lord in kendra",
+    "effects": "Undivided empire/kingdom. Great political power, immense authority, lasting legacy. In modern context: CEO, political leader, head of large organization.",
+    "strengthFactors": "Extremely rare. Requires strong Jupiter and unafflicted 11th lord. Multiple supporting Raj Yogas amplify it.",
+    "source": "BPHS"
+  },
+  {
+    "name": "Pancha Mahapurusha Yoga",
+    "aliases": ["Five Great Person Yogas"],
+    "condition": "Any of the five tara grahas (Mars, Mercury, Jupiter, Venus, Saturn) in own or exalted sign AND in kendra from Lagna. Forms: Ruchaka (Mars), Bhadra (Mercury), Hamsa (Jupiter), Malavya (Venus), Sasa (Saturn).",
+    "effects": "Each gives qualities of the respective planet at its best. Collectively, they produce great individuals — leaders, scholars, artists, administrators, and commanders.",
+    "strengthFactors": "Strongest in 1st or 10th house. Weakened if the planet is combust or hemmed by malefics. Multiple Mahapurusha Yogas in one chart are very powerful.",
+    "source": "BPHS Chapter 75"
+  },
+  {
+    "name": "Ubhayachari Yoga",
+    "aliases": ["Ubhayachara Yoga"],
+    "condition": "Planets (other than Moon) on both sides of Sun — in 2nd and 12th from Sun simultaneously",
+    "effects": "Balanced personality, good speaker, wealthy, well-respected. Combines benefits of Veshi and Vosi yogas. Equal in status to rulers.",
+    "strengthFactors": "Benefics on both sides give best results. Malefics give mixed results — strength but conflicts.",
+    "source": "BPHS"
+  },
+  {
+    "name": "Parivartana Yoga",
+    "aliases": ["Mutual Exchange Yoga", "Parivartan Yoga"],
+    "condition": "Two planets exchange houses — each occupies the sign ruled by the other (e.g., Mars in Gemini and Mercury in Aries)",
+    "effects": "Strong connection between the two houses involved. Creates powerful synergy. Maha Parivartana (involving kendra/trikona lords) gives Raj Yoga-like results. Dainya Parivartana (involving dusthana lords) gives struggles.",
+    "strengthFactors": "Maha Parivartana (1-5, 1-9, 5-9, etc.) is most auspicious. Dainya Parivartana (involving 6, 8, 12) is challenging. Khala Parivartana is mixed.",
+    "source": "BPHS"
+  },
+  {
+    "name": "Pravrajya Yoga",
+    "aliases": ["Sanyasa Yoga", "Ascetic Yoga"],
+    "condition": "Four or more planets (including Saturn) conjunct in one house, or strong Saturn influencing luminaries and Lagna lord. Moon in Navamsa of Saturn aspected by Saturn.",
+    "effects": "Ascetic/spiritual life, renunciation of material world. Deep spiritual inclination, may take sanyasa. Interest in meditation, monasticism, or service.",
+    "strengthFactors": "Stronger when involving 8th, 12th houses or their lords. Jupiter's involvement gives dignified renunciation. Saturn-Ketu-Moon combinations are classic indicators.",
+    "source": "BPHS and Brihat Jataka"
+  },
+  {
+    "name": "Shrinatha Yoga",
+    "aliases": ["Srinath Yoga"],
+    "condition": "Lord of 7th house exalted in 10th house, and 10th lord is with 9th lord",
+    "effects": "Great wealth, equivalent to a king. Prosperity through partnerships and business. Spouse brings fortune.",
+    "strengthFactors": "All involved lords should be strong and unafflicted. Jupiter's association amplifies wealth.",
+    "source": "BPHS"
+  },
+  {
+    "name": "Maha Bhagya Yoga",
+    "aliases": ["Mahabhagya Yoga"],
+    "condition": "For males: day birth, Sun/Moon/Lagna all in odd signs. For females: night birth, Sun/Moon/Lagna all in even signs.",
+    "effects": "Great fortune, long life, fame, wealth, virtuous character. Person is blessed from birth. Rises to prominence. Respected and prosperous throughout life.",
+    "strengthFactors": "Extremely auspicious when fully formed. Partial formation (2 of 3 conditions) gives reduced but still positive results.",
+    "source": "Brihat Parashara Hora Shastra"
+  },
+  {
+    "name": "Pushkala Yoga",
+    "aliases": [],
+    "condition": "Lagna lord and Moon sign lord conjunct, aspected by a strong planet, and Lagna is a fixed sign with a strong planet in it",
+    "effects": "Famous, wealthy, sweet-spoken, respected by rulers. Blessed with comfort, honor, and public acclaim.",
+    "strengthFactors": "Strongest in fixed Lagnas (Taurus, Leo, Scorpio, Aquarius). Benefic aspects enhance fame.",
+    "source": "BPHS"
+  },
+  {
+    "name": "Vasumati Yoga",
+    "aliases": [],
+    "condition": "All natural benefics (Jupiter, Venus, Mercury, Moon) in upachaya houses (3, 6, 10, 11) from Lagna or Moon",
+    "effects": "Immense wealth, financial prosperity throughout life. Person never faces poverty. Earns through multiple avenues.",
+    "strengthFactors": "Strongest when benefics are unafflicted and in good dignity. Even 2-3 benefics in upachayas give partial results.",
+    "source": "BPHS"
+  },
+  {
+    "name": "Raja Yoga (9th-10th combination)",
+    "aliases": ["Dharma-Karma Adhipati Yoga"],
+    "condition": "Lords of 9th house (dharma) and 10th house (karma) conjunct, mutually aspect, or exchange signs",
+    "effects": "The most powerful Raja Yoga. Supreme success in career, authority, fame, and righteous power. Fortune supports professional achievements.",
+    "strengthFactors": "Strongest when both lords are strong in dignity and placed in kendras or trikonas. Jupiter as either lord amplifies results.",
+    "source": "BPHS Chapter 41"
+  },
+  {
+    "name": "Sunapha Yoga (Mars variant)",
+    "aliases": ["Mars-Sunapha"],
+    "condition": "Mars in 2nd house from Moon",
+    "effects": "Wealth through land, property, real estate, or military/police service. Bold, aggressive earner. Self-made through courage and physical effort.",
+    "strengthFactors": "Stronger in earth signs or Mars's own signs. Weakened if Mars is debilitated.",
+    "source": "BPHS"
+  },
+  {
+    "name": "Sunapha Yoga (Jupiter variant)",
+    "aliases": ["Jupiter-Sunapha"],
+    "condition": "Jupiter in 2nd house from Moon",
+    "effects": "Wealth through teaching, law, advisory, religion, or banking. Wise, respected, earns through knowledge. Financially secure through ethical means.",
+    "strengthFactors": "Best results when Jupiter is in own or exalted sign. Aspect from other benefics amplifies.",
+    "source": "BPHS"
+  },
+  {
+    "name": "Anapha Yoga (Venus variant)",
+    "aliases": ["Venus-Anapha"],
+    "condition": "Venus in 12th house from Moon",
+    "effects": "Comfortable life through arts, luxury goods, entertainment, or beauty-related fields. Enjoys fine things, well-dressed, attractive personality.",
+    "strengthFactors": "Best in Venus's own or exalted signs. Association with Jupiter adds spiritual depth to material comforts.",
+    "source": "BPHS"
+  },
+  {
+    "name": "Anapha Yoga (Saturn variant)",
+    "aliases": ["Saturn-Anapha"],
+    "condition": "Saturn in 12th house from Moon",
+    "effects": "Leadership through hard work and persistence. May manage large organizations or government bodies. Serious demeanor but strong character.",
+    "strengthFactors": "Better when Saturn is in own or exalted sign. Age improves results significantly.",
+    "source": "BPHS"
+  },
+  {
+    "name": "Chandra Adhi Yoga",
+    "aliases": ["Lunar Adhi Yoga"],
+    "condition": "Benefics in 6th, 7th, and 8th houses from Moon specifically, with at least two of three positions occupied by benefics",
+    "effects": "Polite, wealthy, healthy, defeats enemies gracefully. Ministerial or advisory position. Trustworthy and well-mannered leader.",
+    "strengthFactors": "Full Adhi Yoga (all three houses occupied) is rare and very powerful. Even partial (2 positions) gives strong results.",
+    "source": "Varahamihira's Brihat Jataka"
+  },
+  {
+    "name": "Gaja Yoga",
+    "aliases": [],
+    "condition": "Lord of 9th in kendra and lord of 5th in trikona, both strong and unafflicted",
+    "effects": "Prosperity, high status, noble character. Person rises in life through righteous conduct and good fortune.",
+    "strengthFactors": "Stronger with Jupiter's involvement. Well-placed benefics in chart amplify results.",
+    "source": "BPHS"
+  },
+  {
+    "name": "Kalanidhi Yoga",
+    "aliases": [],
+    "condition": "Jupiter in 2nd or 5th house conjunct or aspected by Mercury and Venus",
+    "effects": "Highly learned in arts and sciences, patron of arts, virtuous, wealthy. Excels in music, dance, or literature. Deeply cultured personality.",
+    "strengthFactors": "Strongest when Jupiter is in own/exalted sign. All three planets should be well-placed.",
+    "source": "BPHS"
+  },
+  {
+    "name": "Hari Yoga",
+    "aliases": [],
+    "condition": "Benefics in 2nd, 12th, and 8th houses from the lord of the 2nd house",
+    "effects": "Happy, blessed, lucky. Supported by friends and family. Material and spiritual comforts throughout life.",
+    "strengthFactors": "Rare yoga. Best when all involved benefics are strong and in good dignity.",
+    "source": "BPHS"
+  },
+  {
+    "name": "Brahma Yoga",
+    "aliases": [],
+    "condition": "Jupiter in kendra from 9th lord, Venus in kendra from 11th lord, and Mercury in kendra from either Lagna lord or 10th lord",
+    "effects": "Long life, wealthy, respected, learned. Enjoys all comforts, good reputation, blessed with family happiness.",
+    "strengthFactors": "All planets involved must be strong. Very rare when fully formed.",
+    "source": "BPHS"
+  },
+  {
+    "name": "Chatussagara Yoga",
+    "aliases": ["Chatursagara Yoga"],
+    "condition": "All four kendras (1st, 4th, 7th, 10th) occupied by planets",
+    "effects": "Famous, long-lived, prosperous, virtuous. Respected across regions. Leadership in social or political spheres.",
+    "strengthFactors": "Benefics in kendras give better results than malefics. More planets strengthen the yoga.",
+    "source": "BPHS"
   }
 ]
