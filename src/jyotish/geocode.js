@@ -386,10 +386,18 @@ async function callOpenCage(placeString) {
 // --- Helpers ---
 
 function buildResult(entry) {
+  let formatted = entry.formatted || 'India';
+
+  // Deduplicate "Delhi, Delhi" → "Delhi", "Chandigarh, Chandigarh" → "Chandigarh"
+  const parts = formatted.split(',').map(p => p.trim());
+  if (parts.length === 2 && parts[0].toLowerCase() === parts[1].toLowerCase()) {
+    formatted = parts[0];
+  }
+
   return {
     lat: entry.lat,
     lng: entry.lng,
     timezone: entry.timezone || 'Asia/Kolkata',
-    formattedPlace: entry.formatted || 'India',
+    formattedPlace: formatted,
   };
 }
