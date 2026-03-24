@@ -10,16 +10,19 @@
 import { getProvider } from '../ai/geminiProvider.js';
 import { logger } from '../utils/logger.js';
 
-const PARSE_PROMPT = `Extract birth data from this message. Return ONLY valid JSON, nothing else.
+const PARSE_PROMPT = `Extract birth data from this message. Return ONLY valid JSON, no markdown, no explanation.
 
 Rules:
-- date: YYYY-MM-DD format. Parse any date format (DD/MM/YYYY, "10 June 1990", "5.7.1990" = 5 July 1990)
-- time: HH:MM in 24h format. Parse Hindi ("poune 11 baje raat" = 22:45, "sawa 3 baje subah" = 03:15, "around 10:20am" = 10:20)
-- time_known: false if user said "pata nahi", "don't know", "not sure", or no time given
-- name: person's name only, NOT "Date of birth" or other prefixes
-- place: city/town name only, strip "mein", "me", "ka", "district" etc.
-- Null for any field not found in the message
-- If message is just a greeting or acknowledgment, return all nulls
+- date: YYYY-MM-DD format. Parse any format (DD/MM/YYYY, "10 June 1990", "5.7.1990" = 5 July 1990)
+- time: HH:MM in 24h format. Parse Hindi time words:
+  poune/paune = quarter to (poune 11 = 10:45), sawa = quarter past (sawa 3 = 3:15),
+  dedh = 1:30, dhai/adhai = 2:30, subah/morning = AM, shaam/evening/raat/night = PM
+  "around/lagbhag" = approximate but still known
+- time_known: false ONLY if user explicitly says "pata nahi", "don't know", "not sure", "nahi pata"
+- name: person's name only. Strip "Name:", "my name is", "Date of birth", "DOB" etc.
+- place: city/town name only. Strip "mein", "me", "ka", "district", "se", "paida hua" etc.
+- Null for any field not found
+- Greetings/acknowledgments ("ok", "hi", "achha") = all nulls
 
 {"name":string|null, "date":string|null, "time":string|null, "time_known":boolean, "place":string|null}`;
 

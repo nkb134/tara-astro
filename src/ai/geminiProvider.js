@@ -24,12 +24,15 @@ export class GeminiProvider extends LLMProvider {
       const result = await model.generateContent({
         contents: [{ role: 'user', parts: [{ text: prompt }] }],
         generationConfig: {
-          maxOutputTokens: 200,
+          maxOutputTokens: 600,
           temperature: 0.1,
+          thinkingConfig: { thinkingBudget: 200 },
         },
       });
 
-      const text = result.response.text().trim();
+      let text = result.response.text().trim();
+      // Strip markdown code fences that Gemini loves to add
+      text = text.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/i, '').trim();
       // Extract JSON from response
       const jsonMatch = text.match(/\{[\s\S]*\}/);
       if (jsonMatch) {
