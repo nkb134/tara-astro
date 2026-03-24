@@ -4,6 +4,8 @@ import rateLimit from 'express-rate-limit';
 import { config } from './config/env.js';
 import { logger } from './utils/logger.js';
 import { verifyWebhook, receiveMessage, verifySignature } from './whatsapp/webhook.js';
+import { runAudit } from './services/qaAudit.js';
+import { startQaCron } from './services/qaCron.js';
 
 const app = express();
 
@@ -80,6 +82,17 @@ app.get('/stats', async (req, res) => {
   }
 });
 
+// QA audit endpoint (on-demand)
+app.get('/qa-audit', async (req, res) => {
+  try {
+    const report = await runAudit();
+    res.json(report);
+  } catch (err) {
+    logger.error({ err: err.message }, 'QA audit endpoint failed');
+    res.status(500).json({ error: 'Audit failed', message: err.message });
+  }
+});
+
 // WhatsApp webhook
 app.get('/webhook', verifyWebhook);
 app.post('/webhook', webhookLimiter, receiveMessage);
@@ -100,5 +113,8 @@ async function maybeResetDb() {
 maybeResetDb().then(() => {
   app.listen(config.app.port, () => {
     logger.info({ port: config.app.port, env: config.app.nodeEnv }, `${config.app.botName} bot is running`);
+
+    // Start QA audit cron
+    startQaCron();
   });
 });
