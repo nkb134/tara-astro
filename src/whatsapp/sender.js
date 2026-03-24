@@ -16,10 +16,9 @@ export async function sendTextMessage(to, text) {
   const chunks = splitMessage(text);
 
   for (let i = 0; i < chunks.length; i++) {
-    // Show typing between split messages
+    // Small pause between overflow splits (rare — only for very long messages)
     if (i > 0) {
-      await showTyping(to);
-      await sleep(1000 + Math.random() * 1000); // 1-2s between splits
+      await sleep(1000 + Math.random() * 1000);
     }
     await sendSingleMessage(to, chunks[i]);
   }
@@ -83,17 +82,21 @@ export async function markAsRead(messageId) {
   }
 }
 
-export async function showTyping(to) {
+// Show "typing..." indicator to user (auto-dismisses after 25s or when we reply)
+// Requires the inbound messageId — piggybacks on the read receipt API
+export async function showTyping(messageId) {
+  if (!messageId) return;
   try {
     await api.post('/messages', {
       messaging_product: 'whatsapp',
-      recipient_type: 'individual',
-      to,
-      type: 'reaction',
-      status: 'typing',
+      status: 'read',
+      message_id: messageId,
+      typing_indicator: {
+        type: 'text',
+      },
     });
   } catch {
     // Typing indicator is best-effort — don't fail on it
-    logger.debug({ to }, 'Typing indicator not supported, using read receipt fallback');
+    logger.debug({ messageId }, 'Typing indicator failed (best-effort)');
   }
 }

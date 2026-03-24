@@ -25,13 +25,13 @@ async function withUserLock(whatsappId, fn) {
 }
 
 // Message debouncing: wait for user to finish typing before processing
-// Collects rapid-fire messages into one batch (2.5s window)
+// Collects rapid-fire messages into one batch (3.5s window)
 const messageBuffers = new Map();
 
 export async function handleIncomingMessage(whatsappId, displayName, messageText, messageId) {
-  // Immediately mark as read and show typing (instant feedback)
+  // Immediately mark as read + show typing (instant feedback)
   await markAsRead(messageId).catch(() => {});
-  await showTyping(whatsappId).catch(() => {});
+  await showTyping(messageId).catch(() => {});
 
   // Add to buffer
   let buffer = messageBuffers.get(whatsappId);
@@ -62,21 +62,21 @@ export async function handleIncomingMessage(whatsappId, displayName, messageText
     ).catch(err => {
       logger.error({ err, whatsappId }, 'Debounced processing failed');
     });
-  }, 3500); // 3.5s debounce window (was 2.5s — too short for rapid typers)
+  }, 3500); // 3.5s debounce window
 }
 
-// Thinking simulation with cooldown (max once per 3 min per user)
+// Thinking simulation with cooldown (max once per 10 min per user)
 const thinkingCooldowns = new Map();
 
-async function sendWithThinking(whatsappId, responseText, lang, isComplex) {
+async function sendWithThinking(whatsappId, messageId, responseText, lang, isComplex) {
   if (!isComplex) {
-    await sendMultiPart(whatsappId, responseText);
+    await sendMultiPart(whatsappId, messageId, responseText);
     return;
   }
 
   const now = Date.now();
   const lastThinking = thinkingCooldowns.get(whatsappId) || 0;
-  const shouldThink = now - lastThinking > 600000; // 10 min cooldown — once per conversation is enough
+  const shouldThink = now - lastThinking > 600000; // 10 min cooldown
 
   if (shouldThink) {
     const thinkingPhrases = t(lang, 'thinking_phrases');
@@ -91,12 +91,12 @@ async function sendWithThinking(whatsappId, responseText, lang, isComplex) {
     await sleep(1000 + Math.random() * 1000);
   }
 
-  await sendMultiPart(whatsappId, responseText);
+  await sendMultiPart(whatsappId, messageId, responseText);
 }
 
 // Split AI responses on --- delimiter into multiple WhatsApp messages (max 2)
-async function sendMultiPart(whatsappId, text) {
-  // Strip empty preambles that AI loves to add ("Achha toh...", "Dekho...", "So...")
+async function sendMultiPart(whatsappId, messageId, text) {
+  // Strip empty preambles that AI loves to add
   const cleaned = text
     .replace(/^(Achha toh\.{0,3}|Dekho\.{0,3}|So\.{0,3}|Hmm\.{0,3}|Interesting\.{0,3})\s*\n+/i, '')
     .trim();
@@ -105,7 +105,7 @@ async function sendMultiPart(whatsappId, text) {
     .map(p => p.trim())
     .filter(p => p.length > 0);
 
-  // Cap at 2 parts max — merge everything beyond into second part
+  // Cap at 2 parts max
   if (parts.length > 2) {
     const merged = parts.slice(1).join('\n\n');
     parts.length = 1;
@@ -119,7 +119,7 @@ async function sendMultiPart(whatsappId, text) {
 
   for (let i = 0; i < parts.length; i++) {
     if (i > 0) {
-      await showTyping(whatsappId);
+      await showTyping(messageId);
       await sleep(1500 + Math.random() * 1000);
     }
     await sendTextMessage(whatsappId, parts[i]);
@@ -128,13 +128,14 @@ async function sendMultiPart(whatsappId, text) {
 
 async function processMessage(whatsappId, displayName, messageText, messageId) {
   const startTime = Date.now();
+  let user;
 
   try {
     // Show typing (refresh since debounce delay may have expired it)
-    await showTyping(whatsappId);
+    await showTyping(messageId);
 
     // Find or create user
-    const user = await findOrCreateUser(whatsappId, displayName);
+    user = await findOrCreateUser(whatsappId, displayName);
     logger.info({ userId: user.id }, 'Processing message');
 
     // Gender detection from self-identification (reactive, not a separate step)
@@ -151,7 +152,6 @@ async function processMessage(whatsappId, displayName, messageText, messageId) {
     }
 
     // Language detection (post-onboarding only)
-    // IMPORTANT: Pass stored language to prevent script switching (Latin↔Devanagari)
     if (user.is_onboarded) {
       if (!isLanguageNeutral(messageText)) {
         const detectedLang = detectLanguage(messageText, user.language);
@@ -166,19 +166,18 @@ async function processMessage(whatsappId, displayName, messageText, messageId) {
 
     // Route to handler
     if (!user.is_onboarded) {
-      await handleOnboardingFlow(whatsappId, user, messageText, startTime);
+      await handleOnboardingFlow(whatsappId, user, messageText, messageId, startTime);
       return;
     }
 
     if (user.is_onboarded && !user.chart_summary && user.chart_data) {
-      await handleHookFlow(whatsappId, user, messageText, startTime);
+      await handleHookFlow(whatsappId, user, messageText, messageId, startTime);
       return;
     }
 
     await handleAIConversation(whatsappId, user, messageText, messageId, startTime);
   } catch (err) {
     logger.error({ err, whatsappId }, 'Failed to handle message');
-    // Don't spam errors — max once per 60s per user
     const now = Date.now();
     const lastErr = userLocks.get(`err_${whatsappId}`);
     if (lastErr && now - lastErr < 60000) return;
@@ -192,7 +191,7 @@ async function processMessage(whatsappId, displayName, messageText, messageId) {
   }
 }
 
-async function handleOnboardingFlow(whatsappId, user, messageText, startTime) {
+async function handleOnboardingFlow(whatsappId, user, messageText, messageId, startTime) {
   const result = await handleOnboarding(user, messageText);
   const response = result.response;
   const messageType = result.messageType;
@@ -201,14 +200,14 @@ async function handleOnboardingFlow(whatsappId, user, messageText, startTime) {
   logger.info({ delayMs: delay, messageType }, 'Applying response delay');
   await sleep(delay);
 
-  await showTyping(whatsappId);
+  await showTyping(messageId);
   await sleep(500);
   await sendTextMessage(whatsappId, response);
 
   // If chart was just generated, generate and send hook
   if (result.messageType === 'reading') {
     await sleep(2000);
-    await showTyping(whatsappId);
+    await showTyping(messageId);
 
     try {
       const chartData = typeof user.chart_data === 'string'
@@ -233,8 +232,7 @@ async function handleOnboardingFlow(whatsappId, user, messageText, startTime) {
         const frame = t(lang, 'hook_frame');
         const suffix = t(lang, 'hook_suffix');
         const fullHook = frame + hook + suffix;
-        // Skip thinking phrase for hook — hook_frame already acts as preamble
-        await sendMultiPart(whatsappId, fullHook);
+        await sendMultiPart(whatsappId, messageId, fullHook);
 
         await updateUser(freshUser?.id || user.id, { chart_summary: hook });
       }
@@ -246,11 +244,11 @@ async function handleOnboardingFlow(whatsappId, user, messageText, startTime) {
   logger.info({ responseTimeMs: Date.now() - startTime }, 'Onboarding message processed');
 }
 
-async function handleHookFlow(whatsappId, user, messageText, startTime) {
+async function handleHookFlow(whatsappId, user, messageText, messageId, startTime) {
   if (!user.chart_summary) {
     await updateUser(user.id, { chart_summary: 'acknowledged' });
   }
-  await handleAIConversation(whatsappId, user, messageText, null, startTime);
+  await handleAIConversation(whatsappId, user, messageText, messageId, startTime);
 }
 
 async function handleAIConversation(whatsappId, user, messageText, messageId, startTime) {
@@ -258,11 +256,11 @@ async function handleAIConversation(whatsappId, user, messageText, messageId, st
 
   const { conversationId, history } = await getSessionContext(user.id);
 
-  // Multi-agent dispatch — router classifies + selects agent + generates response
+  // Multi-agent dispatch
   const result = await dispatchToAgent(messageText, user, history);
   logger.info({ agent: result.agent, model: result.model, tokenBudget: result.tokenBudget }, 'Agent dispatched');
 
-  // Gate/crisis responses — send immediately, no delay
+  // Gate/crisis responses — send immediately
   if (result.agent === AGENTS.GATE || result.agent === AGENTS.CRISIS) {
     await sendTextMessage(whatsappId, result.text);
     await saveExchange(conversationId, user.id, messageText, result.text, {
@@ -274,14 +272,17 @@ async function handleAIConversation(whatsappId, user, messageText, messageId, st
     return;
   }
 
-  // Apply human-like delay based on agent type
+  // Apply human-like delay
   const isComplex = [AGENTS.READING, AGENTS.REMEDY].includes(result.agent);
   const delay = calculateDelay(isComplex ? 'complex' : 'simple', result.text.length);
   logger.info({ delayMs: delay, agent: result.agent }, 'Applying response delay');
   await sleep(delay);
 
-  // Send (with thinking for complex readings, multi-part splitting for ---)
-  await sendWithThinking(whatsappId, result.text, lang, isComplex);
+  // Show typing before response
+  await showTyping(messageId);
+
+  // Send response
+  await sendWithThinking(whatsappId, messageId, result.text, lang, isComplex);
 
   // Save exchange
   await saveExchange(conversationId, user.id, messageText, result.text, {
