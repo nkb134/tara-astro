@@ -394,6 +394,18 @@ function buildResult(entry) {
     formatted = parts[0];
   }
 
+  // Cap length — OpenCage sometimes returns full addresses
+  // Keep only "City, State" format (max 80 chars)
+  if (formatted.length > 80) {
+    const shortParts = formatted.split(',').map(p => p.trim());
+    // Take first part (city) + last meaningful part (state/country)
+    if (shortParts.length >= 2) {
+      formatted = `${shortParts[0]}, ${shortParts[shortParts.length - 2] || shortParts[shortParts.length - 1]}`;
+    } else {
+      formatted = formatted.substring(0, 80);
+    }
+  }
+
   return {
     lat: entry.lat,
     lng: entry.lng,

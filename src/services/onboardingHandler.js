@@ -936,6 +936,8 @@ function extractName(text) {
   let name = text.trim()
     .replace(/^(my name is|i am|i'm|naam hai|mera naam|en peyar|naa peru|amar naam)\s*/i, '')
     .replace(/^(name:|peyar:|peru:)\s*/i, '')
+    // Strip "date of birth", "dob", "date", "birth" fragments that leak from multi-line input
+    .replace(/\b(date\s+of\s+birth|dob|janam\s+tithi|janam\s+din|birth\s+date)\b/gi, '')
     .replace(/[,.\-]+$/, '')
     .trim();
   // Remove stray numbers/ordinals that leaked from date extraction

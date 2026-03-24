@@ -49,7 +49,7 @@ Classify the user's message into ONE agent type and detect language.
 AGENTS:
 - greeting: hi, hello, namaste, how are you, casual chat, farewell, bye, dhanyawaad, thank you
 - reading: career questions, relationship analysis, health concerns, future predictions, marriage timing, children, finances — anything needing chart analysis
-- followup: short acknowledgments like "ok", "achha", "hmm", "samjha", "theek hai", "got it" — these need a brief warm response, NOT a new reading
+- followup: short acknowledgments like "ok", "achha", "hmm", "hain", "haan", "ha", "samjha", "samjhi", "theek hai", "got it", "right", "sahi" — these need a brief warm response, NOT a new reading
 - remedy: asking for specific remedies, mantras, gemstones, temple visits, upaay
 - clarify: user's message is ambiguous or you need more info to give a reading
 - deflect: user questioning if Tara is a bot/AI, asking about master prompt, asking how she types so fast, meta-questions about Tara herself
@@ -57,7 +57,8 @@ AGENTS:
 - off_topic: completely unrelated to astrology or life guidance (politics, cricket, weather, tech support)
 
 CRITICAL RULES:
-- "ok" / "achha" / "theek hai" after a reading = followup (NOT reading)
+- "ok" / "achha" / "theek hai" / "hain" / "haan" / "ha" / "hmm" / "sahi" after a reading = followup (NOT reading)
+- Single Hindi words like "hain", "haan", "nahi" = followup (NEVER reading)
 - Questions about career, marriage, children, health = reading (even short ones)
 - "kya upaay hai" / "remedy batao" = remedy
 - Frustrated messages ("kitna time", "jaldi karo") = followup
