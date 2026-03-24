@@ -76,7 +76,7 @@ async function sendWithThinking(whatsappId, responseText, lang, isComplex) {
 
   const now = Date.now();
   const lastThinking = thinkingCooldowns.get(whatsappId) || 0;
-  const shouldThink = now - lastThinking > 300000; // 5 min cooldown (was 3 min)
+  const shouldThink = now - lastThinking > 600000; // 10 min cooldown — once per conversation is enough
 
   if (shouldThink) {
     const thinkingPhrases = t(lang, 'thinking_phrases');
@@ -94,21 +94,26 @@ async function sendWithThinking(whatsappId, responseText, lang, isComplex) {
   await sendMultiPart(whatsappId, responseText);
 }
 
-// Split AI responses on --- delimiter into multiple WhatsApp messages (max 3)
+// Split AI responses on --- delimiter into multiple WhatsApp messages (max 2)
 async function sendMultiPart(whatsappId, text) {
-  const parts = text.split(/\n---\n|^---\n|\n---$/gm)
+  // Strip empty preambles that AI loves to add ("Achha toh...", "Dekho...", "So...")
+  const cleaned = text
+    .replace(/^(Achha toh\.{0,3}|Dekho\.{0,3}|So\.{0,3}|Hmm\.{0,3}|Interesting\.{0,3})\s*\n+/i, '')
+    .trim();
+
+  const parts = cleaned.split(/\n---\n|^---\n|\n---$/gm)
     .map(p => p.trim())
     .filter(p => p.length > 0);
 
-  // Cap at 3 parts max — merge overflow into last part
-  if (parts.length > 3) {
-    const merged = parts.slice(2).join('\n\n');
-    parts.length = 2;
+  // Cap at 2 parts max — merge everything beyond into second part
+  if (parts.length > 2) {
+    const merged = parts.slice(1).join('\n\n');
+    parts.length = 1;
     parts.push(merged);
   }
 
   if (parts.length <= 1) {
-    await sendTextMessage(whatsappId, text);
+    await sendTextMessage(whatsappId, cleaned);
     return;
   }
 
