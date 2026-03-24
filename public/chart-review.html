@@ -55,55 +55,67 @@
       border-color: rgba(255, 255, 255, 0.12);
     }
 
-    /* South Indian Chart Grid */
-    .chart-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(4, 1fr);
-      gap: 1px;
-      background: rgba(255, 255, 255, 0.1);
-      border: 2px solid rgba(251, 191, 36, 0.3);
-      border-radius: 8px;
-      overflow: hidden;
+    /* North Indian Diamond Chart */
+    .ni-chart {
+      position: relative;
+      width: 100%;
+      max-width: 520px;
       aspect-ratio: 1;
-      max-width: 600px;
       margin: 0 auto;
     }
-    .chart-cell {
-      background: rgba(13, 10, 30, 0.9);
-      padding: 6px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      min-height: 0;
-      position: relative;
-      overflow: hidden;
-    }
-    .chart-cell .sign-label {
-      font-size: 0.6rem;
-      color: rgba(255, 255, 255, 0.35);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 2px;
-      white-space: nowrap;
-    }
-    .chart-cell .sign-number {
+    .ni-chart svg {
       position: absolute;
-      top: 2px;
-      left: 4px;
-      font-size: 0.55rem;
-      color: rgba(251, 191, 36, 0.4);
-      font-weight: 600;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
     }
-    .chart-center {
-      background: rgba(13, 10, 30, 0.95);
+    .ni-house {
+      position: absolute;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 12px;
-      border: 1px solid rgba(251, 191, 36, 0.2);
+      text-align: center;
+      overflow: hidden;
+      cursor: default;
+      z-index: 2;
+    }
+    .ni-house:hover {
+      background: rgba(107, 95, 199, 0.08);
+    }
+    .ni-house .house-num {
+      font-size: 0.55rem;
+      color: rgba(251, 191, 36, 0.5);
+      font-weight: 700;
+      line-height: 1;
+    }
+    .ni-house .sign-label {
+      font-size: 0.6rem;
+      color: rgba(255, 255, 255, 0.35);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1px;
+      white-space: nowrap;
+    }
+    .ni-house .asc-marker {
+      color: #fbbf24;
+      font-size: 0.6rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .ni-center {
+      position: absolute;
+      top: 25%;
+      left: 25%;
+      width: 50%;
+      height: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      pointer-events: none;
     }
     .planet-tag {
       display: inline-block;
@@ -122,9 +134,9 @@
     .planet-tag.combust { text-decoration: line-through; }
     .planet-tag.neutral { color: rgba(255, 255, 255, 0.8); }
 
-    .asc-marker {
+    .ni-house .asc-badge {
       color: #fbbf24;
-      font-size: 0.7rem;
+      font-size: 0.6rem;
       font-weight: 700;
     }
 
@@ -201,18 +213,18 @@
 
     /* Responsive chart */
     @media (max-width: 640px) {
-      .chart-grid {
+      .ni-chart {
         max-width: 100%;
       }
-      .chart-cell .sign-label {
+      .ni-house .sign-label {
         font-size: 0.5rem;
       }
       .planet-tag {
-        font-size: 0.55rem;
+        font-size: 0.5rem;
         padding: 0px 2px;
       }
-      .chart-center {
-        padding: 6px;
+      .ni-house .house-num {
+        font-size: 0.45rem;
       }
     }
   </style>
@@ -257,9 +269,9 @@
       <!-- ── CHART VISUALIZATION ────────────────────────────────── -->
       <section class="fade-in">
         <h2 class="text-lg font-semibold text-star-gold mb-4 flex items-center gap-2">
-          <span>&#x1F30C;</span> Birth Chart (South Indian)
+          <span>&#x1F30C;</span> Birth Chart (North Indian)
         </h2>
-        <div class="chart-grid" id="chart-grid">
+        <div class="ni-chart" id="chart-grid">
           <!-- Filled by JS -->
         </div>
       </section>
@@ -386,19 +398,6 @@
       Jupiter: 'Ju', Venus: 'Ve', Saturn: 'Sa', Rahu: 'Ra', Ketu: 'Ke'
     };
 
-    // ── South Indian chart: signs are FIXED in position ──────────
-    // Grid layout (row, col) -> sign number (1-indexed)
-    // Row 0: Pisces(12), Aries(1), Taurus(2), Gemini(3)
-    // Row 1: Aquarius(11), CENTER, CENTER, Cancer(4)
-    // Row 2: Capricorn(10), CENTER, CENTER, Leo(5)
-    // Row 3: Sagittarius(9), Scorpio(8), Libra(7), Virgo(6)
-    const SIGN_GRID = [
-      [12, 1,  2,  3],
-      [11, 0,  0,  4],
-      [10, 0,  0,  5],
-      [ 9, 8,  7,  6],
-    ];
-
     const SIGN_NAMES = [
       '', 'Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo',
       'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'
@@ -408,6 +407,38 @@
       '', 'Ari', 'Tau', 'Gem', 'Can', 'Leo', 'Vir',
       'Lib', 'Sco', 'Sag', 'Cap', 'Aqu', 'Pis'
     ];
+
+    // North Indian chart: houses are FIXED in position, signs rotate.
+    // House positions as percentage-based bounding boxes [left%, top%, width%, height%]
+    // The diamond is formed by diagonals of the outer square plus
+    // horizontal/vertical midlines, creating 12 triangular/trapezoidal regions.
+    const NI_HOUSES = {
+      // Top row: H12 (top-left triangle), H1 (top-center diamond), H2 (top-right triangle)
+      1:  { left: 25, top: 0,  w: 50, h: 25 },   // top center — Ascendant
+      2:  { left: 62, top: 0,  w: 38, h: 25 },    // top right
+      3:  { left: 75, top: 12, w: 25, h: 26 },    // right upper
+      4:  { left: 75, top: 37, w: 25, h: 26 },    // right lower
+      5:  { left: 62, top: 50, w: 38, h: 25 },    // bottom right upper
+      6:  { left: 62, top: 75, w: 38, h: 25 },    // bottom right
+      7:  { left: 25, top: 75, w: 50, h: 25 },    // bottom center
+      8:  { left: 0,  top: 75, w: 38, h: 25 },    // bottom left
+      9:  { left: 0,  top: 50, w: 25, h: 26 },    // left lower
+      10: { left: 0,  top: 37, w: 25, h: 26 },    // left upper
+      11: { left: 0,  top: 12, w: 25, h: 26 },    // left upper top
+      12: { left: 0,  top: 0,  w: 38, h: 25 },    // top left
+    };
+
+    // Get sign number for a given house, based on ascendant sign
+    function getSignForHouse(houseNum, ascSignNum) {
+      // House 1 = ascendant sign, House 2 = ascendant+1, etc.
+      return ((ascSignNum - 1 + houseNum - 1) % 12) + 1;
+    }
+
+    // Get ascendant sign number from sign name
+    function getSignNumber(signName) {
+      const idx = SIGN_NAMES.indexOf(signName);
+      return idx > 0 ? idx : 1;
+    }
 
     // ── Fetch chart data ─────────────────────────────────────────
 
@@ -443,76 +474,121 @@
       }
     }
 
-    // ── Render South Indian Chart ────────────────────────────────
+    // ── Render North Indian Diamond Chart ─────────────────────────
 
     function renderChart() {
-      const grid = document.getElementById('chart-grid');
-      grid.textContent = '';
+      const container = document.getElementById('chart-grid');
+      container.textContent = '';
 
       if (!chartData || !chartData.planets) return;
 
       const planets = chartData.planets;
-      const ascSign = chartData.ascendant;
+      const ascSignName = chartData.ascendant;
+      const ascSignNum = getSignNumber(ascSignName);
 
-      // Map: signName -> [planet objects]
+      // Map: houseNumber -> [planet objects]
+      // Also build signName -> [planet objects] as fallback
+      const housePlanets = {};
       const signPlanets = {};
       for (const [name, data] of Object.entries(planets)) {
+        // By house number (preferred for North Indian)
+        if (data.houseNumber) {
+          if (!housePlanets[data.houseNumber]) housePlanets[data.houseNumber] = [];
+          housePlanets[data.houseNumber].push({ name, ...data });
+        }
+        // By sign (fallback)
         const sign = data.sign;
         if (!signPlanets[sign]) signPlanets[sign] = [];
         signPlanets[sign].push({ name, ...data });
       }
 
-      // Build all 16 cells with explicit grid positions
-      for (let row = 0; row < 4; row++) {
-        for (let col = 0; col < 4; col++) {
-          const signNum = SIGN_GRID[row][col];
+      // SVG lines for the diamond pattern
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('viewBox', '0 0 400 400');
+      svg.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;';
 
-          // Center cells: only create the spanning element at (1,1), skip others
-          if (signNum === 0) {
-            if (row === 1 && col === 1) {
-              const center = document.createElement('div');
-              center.className = 'chart-center';
-              center.style.gridColumn = '2 / 4';
-              center.style.gridRow = '2 / 4';
-              renderCenterInfo(center);
-              grid.appendChild(center);
-            }
-            // Other center cells (1,2), (2,1), (2,2) are covered by the span
-            continue;
-          }
+      const lineColor = 'rgba(251, 191, 36, 0.25)';
+      const lines = [
+        // Outer border
+        [0, 0, 400, 0], [400, 0, 400, 400], [400, 400, 0, 400], [0, 400, 0, 0],
+        // Diagonals of outer square
+        [0, 0, 200, 200], [200, 200, 400, 0],
+        [0, 400, 200, 200], [200, 200, 400, 400],
+        // Horizontal and vertical midlines
+        [0, 200, 400, 200],
+        [200, 0, 200, 400],
+        // Inner diamond connecting midpoints
+        [200, 0, 400, 200], [400, 200, 200, 400],
+        [200, 400, 0, 200], [0, 200, 200, 0],
+      ];
 
-          const cell = document.createElement('div');
-          cell.className = 'chart-cell';
-          // Explicit grid placement to avoid auto-flow issues
-          cell.style.gridColumn = (col + 1).toString();
-          cell.style.gridRow = (row + 1).toString();
+      for (const [x1, y1, x2, y2] of lines) {
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('x1', x1);
+        line.setAttribute('y1', y1);
+        line.setAttribute('x2', x2);
+        line.setAttribute('y2', y2);
+        line.setAttribute('stroke', lineColor);
+        line.setAttribute('stroke-width', '1.5');
+        svg.appendChild(line);
+      }
 
-          const signName = SIGN_NAMES[signNum];
+      // Outer glow border
+      const outerRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      outerRect.setAttribute('x', '0.5');
+      outerRect.setAttribute('y', '0.5');
+      outerRect.setAttribute('width', '399');
+      outerRect.setAttribute('height', '399');
+      outerRect.setAttribute('fill', 'none');
+      outerRect.setAttribute('stroke', 'rgba(251, 191, 36, 0.35)');
+      outerRect.setAttribute('stroke-width', '2');
+      outerRect.setAttribute('rx', '6');
+      svg.appendChild(outerRect);
 
-          // Sign number
-          const numEl = document.createElement('span');
-          numEl.className = 'sign-number';
-          numEl.textContent = signNum;
-          cell.appendChild(numEl);
+      container.appendChild(svg);
 
-          // Sign label
-          const labelEl = document.createElement('span');
-          labelEl.className = 'sign-label';
-          labelEl.textContent = SIGN_SHORT[signNum];
-          cell.appendChild(labelEl);
+      // House positions — positioned as overlays on the diamond sections
+      // Each house is a clickable region with sign + planets
+      for (let h = 1; h <= 12; h++) {
+        const pos = NI_HOUSES[h];
+        const signNum = getSignForHouse(h, ascSignNum);
+        const signName = SIGN_NAMES[signNum];
 
-          // Ascendant marker
-          if (signName === ascSign) {
-            const ascEl = document.createElement('span');
-            ascEl.className = 'asc-marker';
-            ascEl.textContent = '\u25B2 Asc';
-            cell.appendChild(ascEl);
-          }
+        const houseDiv = document.createElement('div');
+        houseDiv.className = 'ni-house';
+        houseDiv.style.cssText = `left:${pos.left}%;top:${pos.top}%;width:${pos.w}%;height:${pos.h}%;`;
 
-          // Planets in this sign
-          const planetsHere = signPlanets[signName] || [];
+        // House number
+        const hNum = document.createElement('div');
+        hNum.className = 'house-num';
+        hNum.textContent = h;
+        houseDiv.appendChild(hNum);
+
+        // Sign label
+        const signLabel = document.createElement('div');
+        signLabel.className = 'sign-label';
+        signLabel.textContent = SIGN_SHORT[signNum];
+        houseDiv.appendChild(signLabel);
+
+        // Ascendant marker on house 1
+        if (h === 1) {
+          const ascEl = document.createElement('div');
+          ascEl.className = 'asc-marker';
+          ascEl.textContent = '\u25B2 Asc';
+          houseDiv.appendChild(ascEl);
+        }
+
+        // Planets in this house
+        // Use houseNumber if available, otherwise map by sign
+        let planetsHere = housePlanets[h] || [];
+        if (planetsHere.length === 0) {
+          // Fallback: use sign-based mapping
+          planetsHere = signPlanets[signName] || [];
+        }
+
+        if (planetsHere.length > 0) {
           const planetsContainer = document.createElement('div');
-          planetsContainer.className = 'flex flex-wrap justify-center gap-0.5 mt-1';
+          planetsContainer.className = 'flex flex-wrap justify-center gap-0.5';
 
           for (const p of planetsHere) {
             const tag = document.createElement('span');
@@ -536,10 +612,17 @@
             planetsContainer.appendChild(tag);
           }
 
-          cell.appendChild(planetsContainer);
-          grid.appendChild(cell);
+          houseDiv.appendChild(planetsContainer);
         }
+
+        container.appendChild(houseDiv);
       }
+
+      // Center info overlay
+      const centerDiv = document.createElement('div');
+      centerDiv.className = 'ni-center';
+      renderCenterInfo(centerDiv);
+      container.appendChild(centerDiv);
     }
 
     function renderCenterInfo(container) {

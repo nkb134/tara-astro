@@ -97,42 +97,54 @@
       color: #fbbf24;
     }
 
-    /* South Indian chart grid */
-    .chart-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(4, 1fr);
-      gap: 2px;
+    /* North Indian Diamond Chart */
+    .ni-chart {
+      position: relative;
       width: 100%;
       max-width: 420px;
       aspect-ratio: 1;
     }
-    .chart-cell {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-      padding: 4px;
-      font-size: 0.65rem;
-      line-height: 1.2;
+    .ni-chart svg {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+    }
+    .ni-house {
+      position: absolute;
       display: flex;
       flex-direction: column;
-      overflow: hidden;
-      position: relative;
-    }
-    .chart-cell .sign-label {
-      font-size: 0.55rem;
-      color: rgba(255,255,255,0.35);
-      margin-bottom: 2px;
-    }
-    .chart-center {
-      grid-column: 2 / 4;
-      grid-row: 2 / 4;
-      background: rgba(107, 95, 199, 0.06);
-      border: 1px solid rgba(107, 95, 199, 0.15);
-      display: flex;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
       text-align: center;
+      overflow: hidden;
+      z-index: 2;
+      font-size: 0.6rem;
+      line-height: 1.2;
+    }
+    .ni-house:hover {
+      background: rgba(107, 95, 199, 0.08);
+    }
+    .ni-house .house-num {
+      font-size: 0.5rem;
+      color: rgba(251, 191, 36, 0.5);
+      font-weight: 700;
+      line-height: 1;
+    }
+    .ni-house .sign-label {
+      font-size: 0.55rem;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 1px;
+    }
+    .ni-center {
+      position: absolute;
+      top: 25%; left: 25%;
+      width: 50%; height: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      pointer-events: none;
     }
     .planet-exalted { color: #34d399; font-weight: 600; }
     .planet-debilitated { color: #f87171; font-weight: 600; }
@@ -436,42 +448,88 @@ function renderStats() {
   }
 }
 
-// ── South Indian Chart ───────────────────────────────────────────────
+// ── North Indian Diamond Chart ───────────────────────────────────────
 
+var SIGN_NAMES_FULL = [
+  '', 'Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo',
+  'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'
+];
 var SIGN_NAMES = [
   'Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo',
   'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'
 ];
-
-// South Indian chart: fixed sign positions in 4x4 grid
-// Center 2x2 is blank (-1)
-var SI_LAYOUT = [
-  [11, 0, 1, 2],
-  [10, -1, -1, 3],
-  [9, -1, -1, 4],
-  [8, 7, 6, 5],
+var SIGN_SHORT = [
+  '', 'Ari', 'Tau', 'Gem', 'Can', 'Leo', 'Vir',
+  'Lib', 'Sco', 'Sag', 'Cap', 'Aqu', 'Pis'
 ];
 
+// House positions as percentage-based bounding boxes [left%, top%, width%, height%]
+var NI_HOUSES = {
+  1:  { left: 25, top: 0,  w: 50, h: 25 },
+  2:  { left: 62, top: 0,  w: 38, h: 25 },
+  3:  { left: 75, top: 12, w: 25, h: 26 },
+  4:  { left: 75, top: 37, w: 25, h: 26 },
+  5:  { left: 62, top: 50, w: 38, h: 25 },
+  6:  { left: 62, top: 75, w: 38, h: 25 },
+  7:  { left: 25, top: 75, w: 50, h: 25 },
+  8:  { left: 0,  top: 75, w: 38, h: 25 },
+  9:  { left: 0,  top: 50, w: 25, h: 26 },
+  10: { left: 0,  top: 37, w: 25, h: 26 },
+  11: { left: 0,  top: 12, w: 25, h: 26 },
+  12: { left: 0,  top: 0,  w: 38, h: 25 },
+};
+
+function getSignNumber(signName) {
+  var idx = SIGN_NAMES_FULL.indexOf(signName);
+  if (idx > 0) return idx;
+  // Try 0-indexed array
+  var idx2 = SIGN_NAMES.indexOf(signName);
+  return idx2 >= 0 ? idx2 + 1 : 1;
+}
+
+function getSignForHouse(houseNum, ascSignNum) {
+  return ((ascSignNum - 1 + houseNum - 1) % 12) + 1;
+}
+
 function buildChartGrid(chartData) {
-  var container = el('div', 'chart-grid');
+  var container = el('div', 'ni-chart');
 
   if (!chartData || !chartData.planets) {
     container.style.opacity = '0.3';
   }
 
-  // Map planets to signs
-  var planetsInSign = {};
+  var ascSignNum = 1;
+  if (chartData && chartData.ascendant) {
+    ascSignNum = getSignNumber(chartData.ascendant);
+  }
+
+  // Map planets to houses (by houseNumber) and signs (fallback)
+  var housePlanets = {};
+  var signPlanetsMap = {};
   if (chartData && chartData.planets) {
     var planetEntries = Object.entries(chartData.planets);
     for (var p = 0; p < planetEntries.length; p++) {
       var planet = planetEntries[p][0];
       var info = planetEntries[p][1];
+
+      // By house number
+      if (info.houseNumber) {
+        if (!housePlanets[info.houseNumber]) housePlanets[info.houseNumber] = [];
+        housePlanets[info.houseNumber].push({
+          name: planet,
+          dignity: info.dignity || 'normal',
+          degree: info.degree,
+          retrograde: info.retrograde || false,
+        });
+      }
+
+      // By sign (fallback)
       var signIdx = typeof info === 'object' ? info.sign : null;
       if (signIdx !== null && signIdx !== undefined) {
-        var idx = typeof signIdx === 'number' ? signIdx : SIGN_NAMES.indexOf(signIdx);
-        if (idx >= 0 && idx < 12) {
-          if (!planetsInSign[idx]) planetsInSign[idx] = [];
-          planetsInSign[idx].push({
+        var signName = typeof signIdx === 'string' ? signIdx : SIGN_NAMES_FULL[signIdx] || '';
+        if (signName) {
+          if (!signPlanetsMap[signName]) signPlanetsMap[signName] = [];
+          signPlanetsMap[signName].push({
             name: planet,
             dignity: info.dignity || 'normal',
             degree: info.degree,
@@ -482,48 +540,88 @@ function buildChartGrid(chartData) {
     }
   }
 
-  var centerAdded = false;
+  // SVG diamond lines
+  var svgNS = 'http://www.w3.org/2000/svg';
+  var svg = document.createElementNS(svgNS, 'svg');
+  svg.setAttribute('viewBox', '0 0 400 400');
+  svg.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;';
 
-  for (var row = 0; row < 4; row++) {
-    for (var col = 0; col < 4; col++) {
-      var signI = SI_LAYOUT[row][col];
-
-      if (signI === -1) {
-        if (!centerAdded) {
-          centerAdded = true;
-          var center = el('div', 'chart-center');
-          if (chartData) {
-            center.appendChild(el('div', 'text-xs text-star-gold font-semibold', 'Asc: ' + (chartData.ascendant || '?')));
-            if (chartData.moonSign) {
-              center.appendChild(el('div', 'text-xs text-cosmic-200 mt-1', 'Moon: ' + chartData.moonSign));
-            }
-            if (chartData.sunSign) {
-              center.appendChild(el('div', 'text-xs text-cosmic-300', 'Sun: ' + chartData.sunSign));
-            }
-          } else {
-            center.appendChild(el('div', 'text-xs text-cosmic-400', 'No chart data'));
-          }
-          container.appendChild(center);
-        }
-        continue;
-      }
-
-      var cell = el('div', 'chart-cell');
-      cell.appendChild(el('div', 'sign-label', SIGN_NAMES[signI]));
-
-      var planets = planetsInSign[signI] || [];
-      for (var pi = 0; pi < planets.length; pi++) {
-        var pp = planets[pi];
-        var dignityClass = 'planet-' + (pp.dignity || 'normal');
-        var text = pp.name;
-        if (pp.retrograde) text += '(R)';
-        if (pp.degree !== undefined && pp.degree !== null) text += ' ' + Math.round(pp.degree) + '\u00B0';
-        cell.appendChild(el('div', dignityClass, text));
-      }
-
-      container.appendChild(cell);
-    }
+  var lineColor = 'rgba(251, 191, 36, 0.25)';
+  var svgLines = [
+    [0,0,400,0],[400,0,400,400],[400,400,0,400],[0,400,0,0],
+    [0,0,200,200],[200,200,400,0],
+    [0,400,200,200],[200,200,400,400],
+    [0,200,400,200],[200,0,200,400],
+    [200,0,400,200],[400,200,200,400],
+    [200,400,0,200],[0,200,200,0],
+  ];
+  for (var li = 0; li < svgLines.length; li++) {
+    var ln = document.createElementNS(svgNS, 'line');
+    ln.setAttribute('x1', svgLines[li][0]);
+    ln.setAttribute('y1', svgLines[li][1]);
+    ln.setAttribute('x2', svgLines[li][2]);
+    ln.setAttribute('y2', svgLines[li][3]);
+    ln.setAttribute('stroke', lineColor);
+    ln.setAttribute('stroke-width', '1.5');
+    svg.appendChild(ln);
   }
+  var outerRect = document.createElementNS(svgNS, 'rect');
+  outerRect.setAttribute('x', '0.5'); outerRect.setAttribute('y', '0.5');
+  outerRect.setAttribute('width', '399'); outerRect.setAttribute('height', '399');
+  outerRect.setAttribute('fill', 'none');
+  outerRect.setAttribute('stroke', 'rgba(251, 191, 36, 0.35)');
+  outerRect.setAttribute('stroke-width', '2'); outerRect.setAttribute('rx', '6');
+  svg.appendChild(outerRect);
+  container.appendChild(svg);
+
+  // Build houses
+  for (var h = 1; h <= 12; h++) {
+    var pos = NI_HOUSES[h];
+    var signNum = getSignForHouse(h, ascSignNum);
+    var sName = SIGN_NAMES_FULL[signNum];
+
+    var houseDiv = el('div', 'ni-house');
+    houseDiv.style.cssText = 'left:' + pos.left + '%;top:' + pos.top + '%;width:' + pos.w + '%;height:' + pos.h + '%;';
+
+    houseDiv.appendChild(el('div', 'house-num', String(h)));
+    houseDiv.appendChild(el('div', 'sign-label', SIGN_SHORT[signNum]));
+
+    if (h === 1) {
+      houseDiv.appendChild(el('div', 'text-xs text-star-gold font-bold', '\u25B2 Asc'));
+    }
+
+    // Planets: prefer houseNumber, fallback to sign
+    var planetsHere = housePlanets[h] || [];
+    if (planetsHere.length === 0 && sName) {
+      planetsHere = signPlanetsMap[sName] || [];
+    }
+
+    for (var pi = 0; pi < planetsHere.length; pi++) {
+      var pp = planetsHere[pi];
+      var dignityClass = 'planet-' + (pp.dignity || 'normal');
+      var text = pp.name;
+      if (pp.retrograde) text += '(R)';
+      if (pp.degree !== undefined && pp.degree !== null) text += ' ' + Math.round(pp.degree) + '\u00B0';
+      houseDiv.appendChild(el('div', dignityClass + ' text-xs', text));
+    }
+
+    container.appendChild(houseDiv);
+  }
+
+  // Center info
+  var centerDiv = el('div', 'ni-center');
+  if (chartData) {
+    centerDiv.appendChild(el('div', 'text-xs text-star-gold font-semibold', 'Asc: ' + (chartData.ascendant || '?')));
+    if (chartData.moonSign) {
+      centerDiv.appendChild(el('div', 'text-xs text-cosmic-200 mt-1', 'Moon: ' + chartData.moonSign));
+    }
+    if (chartData.sunSign) {
+      centerDiv.appendChild(el('div', 'text-xs text-cosmic-300', 'Sun: ' + chartData.sunSign));
+    }
+  } else {
+    centerDiv.appendChild(el('div', 'text-xs text-cosmic-400', 'No chart data'));
+  }
+  container.appendChild(centerDiv);
 
   return container;
 }
@@ -661,7 +759,7 @@ function createReadingCard(r) {
 
   // Left: Chart
   var leftColEl = el('div');
-  leftColEl.appendChild(el('h3', 'text-sm font-semibold text-cosmic-200 mb-3', 'Birth Chart (South Indian)'));
+  leftColEl.appendChild(el('h3', 'text-sm font-semibold text-cosmic-200 mb-3', 'Birth Chart (North Indian)'));
   leftColEl.appendChild(buildChartGrid(r.chartData));
 
   // Dasha info
