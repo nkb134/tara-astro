@@ -104,10 +104,12 @@ export async function dispatchToAgent(userMessage, user, conversationHistory = [
   // Step 5: Generate with the right model + token budget
   const provider = getProvider();
 
-  // For free tier, cap token budget further
-  const tokenBudget = tier.tier === 'free'
-    ? Math.min(route.tokenBudget, 800)   // Was 400 — too aggressive, truncated readings
-    : route.tokenBudget;
+  // For free tier, cap token budget — but don't starve Pro model readings
+  let tokenBudget = route.tokenBudget;
+  if (tier.tier === 'free') {
+    const freeCap = route.model === 'pro' ? 1200 : 600;
+    tokenBudget = Math.min(route.tokenBudget, freeCap);
+  }
 
   try {
     const result = await provider.generate(systemPrompt, userMessage, {

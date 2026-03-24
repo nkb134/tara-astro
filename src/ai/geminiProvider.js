@@ -63,16 +63,45 @@ export class GeminiProvider extends LLMProvider {
 
     try {
       const startTime = Date.now();
+
+      // Gemini 2.5 Pro uses thinking tokens from the output budget.
+      // Set thinking budget separately so output doesn't get starved.
+      const genConfig = {
+        maxOutputTokens: maxTokens,
+        temperature: options.temperature || 0.8,
+      };
+
+      // For Pro model, cap thinking to prevent it from eating the entire budget
+      if (modelName === MODELS.pro) {
+        genConfig.thinkingConfig = {
+          thinkingBudget: Math.min(1024, Math.floor(maxTokens * 0.4)),
+        };
+      }
+
       const result = await model.generateContent({
         systemInstruction: { parts: [{ text: systemPrompt }] },
         contents,
-        generationConfig: {
-          maxOutputTokens: maxTokens,
-          temperature: options.temperature || 0.8,
-        },
+        generationConfig: genConfig,
       });
 
-      const text = result.response.text().trim();
+      let text = '';
+      try {
+        text = result.response.text().trim();
+      } catch (textErr) {
+        // Gemini 2.5 Pro may return thinking-only responses
+        // Try to extract from candidates
+        const candidate = result.response.candidates?.[0];
+        if (candidate?.content?.parts) {
+          text = candidate.content.parts
+            .filter(p => p.text)
+            .map(p => p.text)
+            .join('\n')
+            .trim();
+        }
+        if (!text) {
+          logger.warn({ err: textErr.message, modelName, finishReason: candidate?.finishReason }, 'Empty response from Gemini');
+        }
+      }
       const elapsed = Date.now() - startTime;
 
       logger.info({ model: modelName, responseTimeMs: elapsed, tokensOut: text.length }, 'Gemini generate completed');
