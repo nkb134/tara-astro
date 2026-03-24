@@ -159,6 +159,8 @@ export async function dispatchToAgent(userMessage, user, conversationHistory = [
     };
   } catch (err) {
     logger.error({ err: err.message, agent: route.agent }, 'Agent generation failed');
+    // Track error for /health monitoring
+    try { const { trackError } = await import('../../index.js'); trackError('gemini', err.message); } catch {};
 
     const fallbacks = {
       hi: 'Ek minute, phir se try karti hoon... thodi der baad message kijiye 🙏',

@@ -59,9 +59,19 @@ export async function receiveMessage(req, res) {
               logger.info({ whatsappId, listId: interactive.list_reply?.id }, 'List reply received');
             }
           }
-          // Skip unsupported types
+          // Unsupported types — tell user we only handle text for now
           else {
-            logger.debug({ type: message.type }, 'Ignoring unsupported message type');
+            const unsupportedTypes = ['audio', 'voice', 'image', 'video', 'document', 'sticker', 'location', 'contacts'];
+            if (unsupportedTypes.includes(message.type)) {
+              logger.info({ whatsappId, type: message.type }, 'Unsupported message type received');
+              // Import lazily to avoid circular deps
+              const { handleUnsupportedType } = await import('../services/messageHandler.js');
+              handleUnsupportedType(whatsappId, message.type, message.id).catch(err => {
+                logger.error({ err, whatsappId }, 'Error handling unsupported type');
+              });
+            } else {
+              logger.debug({ type: message.type }, 'Ignoring unknown message type');
+            }
             continue;
           }
 

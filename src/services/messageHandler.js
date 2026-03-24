@@ -9,6 +9,45 @@ import { calculateDelay, sleep } from '../utils/delay.js';
 import { detectLanguage, detectScript, isLanguageNeutral, t } from '../languages/index.js';
 import { logger } from '../utils/logger.js';
 
+// Handle unsupported message types (voice, image, sticker, etc.)
+export async function handleUnsupportedType(whatsappId, messageType, messageId) {
+  await markAsRead(messageId).catch(() => {});
+
+  const { findOrCreateUser } = await import('../db/users.js');
+  const user = await findOrCreateUser(whatsappId, null);
+  const lang = user?.language || 'hi';
+
+  const responses = {
+    hi: {
+      audio: 'Abhi main sirf text padh sakti hoon 😊 Voice note ki jagah likh kar bhejiye na?',
+      voice: 'Abhi main sirf text padh sakti hoon 😊 Voice note ki jagah likh kar bhejiye na?',
+      image: 'Photo mil gayi, par abhi main sirf text se kaam karti hoon 😊 Apna sawaal likh kar bhejiye?',
+      video: 'Video abhi nahi dekh sakti 😊 Text mein bataiye kya jaanna hai?',
+      sticker: '😊',
+      default: 'Abhi main sirf text messages padh sakti hoon. Likh kar bhejiye na?',
+    },
+    en: {
+      audio: "I can only read text for now 😊 Could you type your message instead?",
+      voice: "I can only read text for now 😊 Could you type your message instead?",
+      image: "Got the image, but I can only work with text right now 😊 What would you like to know?",
+      video: "Can't watch videos yet 😊 Please type your question?",
+      sticker: '😊',
+      default: "I can only read text messages for now. Could you type it out?",
+    },
+  };
+
+  const langResponses = responses[lang] || responses.hi;
+  const reply = langResponses[messageType] || langResponses.default;
+
+  // Don't respond to stickers with a full message — just react
+  if (messageType === 'sticker') {
+    await reactToMessage(whatsappId, messageId, '😊').catch(() => {});
+    return;
+  }
+
+  await sendTextMessage(whatsappId, reply);
+}
+
 // Per-user message queue to prevent race conditions
 const userLocks = new Map();
 
@@ -28,7 +67,36 @@ async function withUserLock(whatsappId, fn) {
 // Collects rapid-fire messages into one batch (3.5s window)
 const messageBuffers = new Map();
 
+// Per-user rate limiting — max 10 messages per minute
+const userRateLimits = new Map();
+
+function isRateLimited(whatsappId) {
+  const now = Date.now();
+  const entry = userRateLimits.get(whatsappId);
+  if (!entry) {
+    userRateLimits.set(whatsappId, { count: 1, windowStart: now });
+    return false;
+  }
+  // Reset window after 60s
+  if (now - entry.windowStart > 60000) {
+    userRateLimits.set(whatsappId, { count: 1, windowStart: now });
+    return false;
+  }
+  entry.count++;
+  if (entry.count > 10) {
+    logger.warn({ whatsappId, count: entry.count }, 'User rate limited');
+    return true;
+  }
+  return false;
+}
+
 export async function handleIncomingMessage(whatsappId, displayName, messageText, messageId) {
+  // Per-user rate limit — silently drop if spamming
+  if (isRateLimited(whatsappId)) {
+    await markAsRead(messageId).catch(() => {});
+    return;
+  }
+
   // Immediately mark as read + show typing (instant feedback)
   await Promise.all([
     markAsRead(messageId).catch(() => {}),

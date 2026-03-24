@@ -39,9 +39,45 @@ app.use(
   })
 );
 
-// Health check
+// Error stats (in-memory, resets on deploy — good enough for beta)
+const errorStats = { gemini: 0, geocode: 0, webhook: 0, total: 0, lastError: null };
+export function trackError(type, message) {
+  errorStats[type] = (errorStats[type] || 0) + 1;
+  errorStats.total++;
+  errorStats.lastError = { type, message, at: new Date().toISOString() };
+}
+
+// Health check with error stats
 app.get('/health', (req, res) => {
-  res.json({ status: 'ok', bot: config.app.botName, uptime: process.uptime() });
+  res.json({
+    status: 'ok',
+    bot: config.app.botName,
+    uptime: process.uptime(),
+    errors: errorStats,
+  });
+});
+
+// Detailed stats endpoint (for monitoring)
+app.get('/stats', async (req, res) => {
+  try {
+    const { query: dbQuery } = await import('./db/connection.js');
+    const users = await dbQuery('SELECT COUNT(*) as count FROM users');
+    const onboarded = await dbQuery('SELECT COUNT(*) as count FROM users WHERE is_onboarded = true');
+    const messages = await dbQuery('SELECT COUNT(*) as count FROM messages');
+    const recentErrors = await dbQuery(
+      "SELECT COUNT(*) as count FROM messages WHERE created_at > NOW() - INTERVAL '1 hour' AND model_used = 'fallback'"
+    );
+    res.json({
+      users: parseInt(users.rows[0].count),
+      onboarded: parseInt(onboarded.rows[0].count),
+      messages: parseInt(messages.rows[0].count),
+      errorsLastHour: parseInt(recentErrors.rows[0].count),
+      errors: errorStats,
+      uptime: process.uptime(),
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
 // WhatsApp webhook
