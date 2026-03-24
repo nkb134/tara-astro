@@ -1,11 +1,20 @@
 export default {
-  welcome_greeting: `Namaskar 🙏 Mu Tara — Vedic Jyotish expert. Kemiti achanti? Kahanti, kie sahajya karibi?`,
+  welcome_greeting: `Namaskar 🙏 Mu Tara — Vedic aau Nadi Jyotish. Kemiti achanti? Kahanti, kie sahajya karibi?`,
   welcome: `Namaskar 🙏 Mu Tara. Haan zaroor sahajya karibi — kundli ru dekhihi taara kie kahuchanti. Aapanka naama aau janma tarikh kahanti?`,
 
   ask_name_career: `Namaskar 🙏 Mu Tara. Career bisayare zaroor sahajya karibi — kundli ru dekhihi. Aapanka naama aau janma tarikh kahanti?`,
   ask_name_marriage: `Namaskar 🙏 Mu Tara. Baha bisayare zaroor sahajya karibi — kundli ru dekhihi. Aapanka naama aau janma tarikh kahanti?`,
   ask_name_general: `Namaskar 🙏 Mu Tara. Haan kundli dekhibi — aapanka naama aau janma tarikh kahanti?`,
   ask_name_default: `Namaskar 🙏 Mu Tara. Haan zaroor sahajya karibi — kundli ru dekhihi. Aapanka naama aau janma tarikh kahanti?`,
+
+  // Post-greeting topic responses (NO re-introduction)
+  ask_topic_career: `Haan career bisayare zaroor sahajya karibi — kundli ru dekhihi. Aapanka naama aau janma tarikh kahanti?`,
+  ask_topic_marriage: `Achha baha bisayare — haan zaroor sahajya karibi. Kundli ru dekhihi. Aapanka naama aau janma tarikh kahanti?`,
+  ask_topic_general: `Haan kundli dekhibi — aapanka naama aau janma tarikh kahanti?`,
+  ask_topic_default: `Haan zaroor sahajya karibi — kundli ru dekhihi. Aapanka naama aau janma tarikh kahanti?`,
+
+  // Casual chat during onboarding
+  casual_chat_response: `Mu bi bhala achhi 😊 Kahanti, kie sahajya karibi — career, baha, na aau kichchhi?`,
 
   ask_dob_after_name: `{name} — janma tarikh kahanti?`,
   ask_time_after_name_dob: `{name} 😊 thik achhi. Janma samaya jananti ki? Na janile kichchhi nahi, samaya bina bi bahut kichchhi kahi paribi`,
@@ -16,7 +25,8 @@ export default {
   invalid_date: `Hmm sei tarikh bujhi parilini... 15/03/1990 ba 15 March 1990 bhabire lekhanti`,
   invalid_time: `Hmm sei samaya bujhi parilini... 2:30 PM bhabire lekhanti, ba "jaaninahi" kahanti`,
 
-  generating_chart: `Hmm... aapanka kundli dekhuchi, etiki thare opekhya karanti`,
+  location_confirmed: `Ok, {place} — ei location anusare kundli nikaaluchi`,
+  generating_chart: `Eka minute...`,
   geocode_failed: `Hmm sei jagaa khoji pailini... pakhare bada kounasi sahara kahanti?`,
   geocode_failed_2: `Sorry, ethi bi pailini. Nikata bada city kahanti — jemiti Bhubaneswar ba Cuttack`,
   chart_failed: `Hmm... eka minute, aau thare try karuchi`,
@@ -36,7 +46,10 @@ export default {
 
   echo_reply: `{name}, aapan kahile: "{message}"\n\n(Testing chalichi — sabu features shighra aasibe 🌟)`,
 
+  post_chart_prompt: `Kie janiba chahuchanti? 👇`,
   hook_frame: `Aapanka kundli dekhili... eka baat mora bahut akarshita karila.\n\n`,
   hook_suffix: `\n\nE thik ki?`,
-  thinking_phrases: ['Hmm...', 'Dekhanti...', 'Eka minute...', 'Interesting...'],
+  thinking_phrases: ['Hmm...', 'Dekhanti...', 'Eka minute...'],
+
+  generic_error: 'Eka minute... kichchhi gadbad hoigala. Aau thare try karanti 🙏',
 };
