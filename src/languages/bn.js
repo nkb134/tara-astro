@@ -7,6 +7,11 @@ export default {
   ask_name_general: `Namaskar 🙏 Ami Tara. Haan kundli dekhi — apnar naam ar jonmo tarik bolun? Tarpor kundli dekhe discuss korbo`,
   ask_name_default: `Namaskar 🙏 Ami Tara. Haan apnake bilkul help korbo — apnar naam ar jonmo tarik bolun? Tarpor kundli dekhe ki korte hobe seta bujhe nebo`,
 
+  ask_topic_career: `Haan career niye zaroor help korbo — kundli dekhe bolbo. Apnar naam ar jonmo tarik bolun?`,
+  ask_topic_marriage: `Achha biye niye — haan zaroor help korbo. Kundli dekhe bolbo. Apnar naam ar jonmo tarik bolun?`,
+  ask_topic_general: `Haan kundli dekhe bolbo — apnar naam ar jonmo tarik bolun?`,
+  ask_topic_default: `Haan zaroor help korbo — kundli dekhe bolbo. Apnar naam ar jonmo tarik bolun?`,
+
   ask_dob_after_name: `{name} — jonmo tarik bolun?`,
   ask_time_after_name_dob: `{name} 😊 thik aache. Jonmo-r somoy jaanen? Na janle kichu nei, somoy chhara-o onek kichu bola jay`,
   ask_time: `Ok... jonmo-r somoy jaanen? Na janle kichu nei, somoy chhara-o onek kichu bola jay`,

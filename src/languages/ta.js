@@ -8,6 +8,11 @@ export default {
   ask_name_general: `Vanakkam 🙏 Naan Tara. Ungalukku naan kandipaaga help pannuven — ungal peru-um pirandha theadhi-yum sollunga? Apporam jathagam paarthu enna pannanum-nu pesalam`,
   ask_name_default: `Vanakkam 🙏 Naan Tara. Ungalukku naan kandipaaga help pannuven — ungal peru-um pirandha theadhi-yum sollunga? Apporam jathagam paarthu enna pannanum-nu pesalam`,
 
+  ask_topic_career: `Haan career-la kandipaaga help pannuven — jathagam paarthu solren. Ungal peru-um pirandha theadhi-yum sollunga?`,
+  ask_topic_marriage: `Achha thirumanam pathi — haan kandipaaga help pannuven. Jathagam paarthu solren. Ungal peru-um pirandha theadhi-yum sollunga?`,
+  ask_topic_general: `Haan jathagam paarthu solren — ungal peru-um pirandha theadhi-yum sollunga?`,
+  ask_topic_default: `Haan kandipaaga help pannuven — jathagam paarthu solren. Ungal peru-um pirandha theadhi-yum sollunga?`,
+
   ask_dob_after_name: `{name} — seri, pirandha theadhi sollunga?`,
   ask_time_after_name_dob: `{name} 😊 seri. Pirandha neram theriyuma? Theriyaati-na paravala, neram illaamalayum niraiya vishayam solla mudiyum`,
   ask_time: `Ok... pirandha neram theriyuma? Theriyaati-na paravala, neram illaamalayum niraiya vishayam solla mudiyum`,

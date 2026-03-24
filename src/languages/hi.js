@@ -9,6 +9,12 @@ export default {
   ask_name_general: `Namaste 🙏 Main Tara hoon. Haan kundli dekh deti hoon — apna naam aur janam tithi bata dijiye?`,
   ask_name_default: `Namaste 🙏 Main Tara hoon. Haan zaroor madad karungi — kundli se dekhungi. Apna naam aur janam tithi bata dijiye?`,
 
+  // Post-greeting topic responses (NO re-introduction — Tara already said who she is)
+  ask_topic_career: `Haan career mein zaroor madad karungi — kundli se dekhungi. Bas apna naam aur janam tithi bata dijiye?`,
+  ask_topic_marriage: `Achha shaadi ke baare mein — haan zaroor madad karungi. Kundli se dekhungi. Apna naam aur janam tithi bata dijiye?`,
+  ask_topic_general: `Haan kundli dekh deti hoon — apna naam aur janam tithi bata dijiye?`,
+  ask_topic_default: `Haan zaroor madad karungi — kundli se dekhungi. Apna naam aur janam tithi bata dijiye?`,
+
   // Bug 7: Warm follow-ups
   ask_dob_after_name: `{name} ji — janam tithi bata dijiye?`,
   ask_time_after_name_dob: `{name} ji 😊 achha. Aur janam ka samay pata hai? Nahi pata toh koi baat nahi, bina samay ke bhi bahut kuch bata sakti hoon`,

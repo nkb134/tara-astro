@@ -7,6 +7,11 @@ export default {
   ask_name_general: `Namaskara 🙏 Naanu Tara. Haan jaataka nodtini — nimma hesaru mattu huttida dinaanka heli? Aameele jataka nodi discuss maadona`,
   ask_name_default: `Namaskara 🙏 Naanu Tara. Haan nimage kanditta help maadtini — nimma hesaru mattu huttida dinaanka heli? Aameele jataka nodi enu maadbekuu anta discuss maadona`,
 
+  ask_topic_career: `Haan career bagge kanditta help maadtini — jataka nodi heltini. Nimma hesaru mattu huttida dinaanka heli?`,
+  ask_topic_marriage: `Achha maduve bagge — haan kanditta help maadtini. Jataka nodi heltini. Nimma hesaru mattu huttida dinaanka heli?`,
+  ask_topic_general: `Haan jataka nodi heltini — nimma hesaru mattu huttida dinaanka heli?`,
+  ask_topic_default: `Haan kanditta help maadtini — jataka nodi heltini. Nimma hesaru mattu huttida dinaanka heli?`,
+
   ask_dob_after_name: `{name} — huttida dinaanka heli?`,
   ask_time_after_name_dob: `{name} 😊 sari. Huttida samaya gottaa? Gottillvendare paravaagilla, samaya illade kooda tumba vishayagalu helballe`,
   ask_time: `Ok... huttida samaya gottaa? Gottillvendare paravaagilla, samaya illade kooda tumba vishayagalu helballe`,

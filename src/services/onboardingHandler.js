@@ -163,7 +163,8 @@ async function handleTopic(user, messageText, lang) {
     return { response: t(lang, 'ask_time_after_name_dob').replace('{name}', parsed.name), messageType: 'onboarding' };
   }
 
-  const intentKey = { career: 'ask_name_career', marriage: 'ask_name_marriage', general: 'ask_name_general' }[intent] || 'ask_name_default';
+  // Use ask_topic_* (no re-introduction) since welcome_greeting already introduced Tara
+  const intentKey = { career: 'ask_topic_career', marriage: 'ask_topic_marriage', general: 'ask_topic_general' }[intent] || 'ask_topic_default';
   await updateUser(user.id, { onboarding_step: 'awaiting_name_dob', preferences: JSON.stringify({ initial_intent: intent }) });
   return { response: t(lang, intentKey), messageType: 'onboarding' };
 }

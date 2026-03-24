@@ -8,6 +8,12 @@ export default {
   ask_name_general: `Namaste 🙏 I'm Tara. Sure, let's look at your chart — share your name and date of birth? We'll figure out the way forward together`,
   ask_name_default: `Namaste 🙏 I'm Tara. Yes absolutely — share your name and date of birth? Then we'll look at your chart together and figure out the way forward`,
 
+  // Post-greeting topic responses (NO re-introduction)
+  ask_topic_career: `Career guidance, sure — share your name and date of birth? Then we'll look at your chart together`,
+  ask_topic_marriage: `Marriage guidance, sure — share your name and date of birth? Then we'll look at your chart together`,
+  ask_topic_general: `Sure, let's look at your chart — share your name and date of birth?`,
+  ask_topic_default: `Yes absolutely — share your name and date of birth? Then we'll look at your chart together`,
+
   ask_dob_after_name: `{name} — and your date of birth?`,
   ask_time_after_name_dob: `{name} 😊 ok. Do you know your birth time? If not, no worries — I can still tell you a lot without it`,
   ask_time: `Ok... do you know your birth time? If not, no worries — I can still tell you a lot without it`,

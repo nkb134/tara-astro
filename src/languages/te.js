@@ -7,6 +7,11 @@ export default {
   ask_name_general: `Namaskaram 🙏 Nenu Tara. Avunu jatakam chustanu — mee peru mattu puttina tariku cheppandi? Tarvata jatakam chusi discuss cheddaam`,
   ask_name_default: `Namaskaram 🙏 Nenu Tara. Avunu mee ki tappakunda help chestanu — mee peru mattu puttina tariku cheppandi? Tarvata mee jatakam chusi emi cheyali ani discuss cheddaam`,
 
+  ask_topic_career: `Avunu career vishayamlo tappakunda help chestanu — jatakam chusi cheptanu. Mee peru mattu puttina tariku cheppandi?`,
+  ask_topic_marriage: `Achha pelli vishayamlo — avunu tappakunda help chestanu. Jatakam chusi cheptanu. Mee peru mattu puttina tariku cheppandi?`,
+  ask_topic_general: `Avunu jatakam chusi cheptanu — mee peru mattu puttina tariku cheppandi?`,
+  ask_topic_default: `Avunu tappakunda help chestanu — jatakam chusi cheptanu. Mee peru mattu puttina tariku cheppandi?`,
+
   ask_dob_after_name: `{name} — puttina tariku cheppandi?`,
   ask_time_after_name_dob: `{name} 😊 sare. Puttina samayam telusaa? Teliyadante parledu, samayam lekunda kuda chala cheppagalanu`,
   ask_time: `Ok... puttina samayam telusaa? Teliyadante parledu, samayam lekunda kuda chala cheppagalanu`,

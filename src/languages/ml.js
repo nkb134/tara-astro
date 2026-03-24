@@ -7,6 +7,11 @@ export default {
   ask_name_general: `Namaskaram 🙏 Njan Tara. Athe jaatakam nokkaam — ningalude perum janma theethiyum parayo? Pinne jathakam nokkiit discuss cheyyaam`,
   ask_name_default: `Namaskaram 🙏 Njan Tara. Athe ningale theerchayayum help cheyyam — ningalude perum janma theethiyum parayo? Pinne jathakam nokkiit enthu cheyyanamaenn namukk samsarikaam`,
 
+  ask_topic_career: `Athe career-ne kurichu theerchayayum help cheyyam — jaatakam nokkiit parayaam. Ningalude perum janma theethiyum parayo?`,
+  ask_topic_marriage: `Achha vivaaham-ne kurichu — athe theerchayayum help cheyyam. Jaatakam nokkiit parayaam. Ningalude perum janma theethiyum parayo?`,
+  ask_topic_general: `Athe jaatakam nokkiit parayaam — ningalude perum janma theethiyum parayo?`,
+  ask_topic_default: `Athe theerchayayum help cheyyam — jaatakam nokkiit parayaam. Ningalude perum janma theethiyum parayo?`,
+
   ask_dob_after_name: `{name} — janana theeyathi parayoo?`,
   ask_time_after_name_dob: `{name} 😊 seri. Janana samayam ariyumo? Ariyillenkil kuzhappamilla, samayam illathe thanne orupaadu kaaryangal parayan kazhiyum`,
   ask_time: `Ok... janana samayam ariyumo? Ariyillenkil kuzhappamilla, samayam illathe thanne orupaadu kaaryangal parayan kazhiyum`,

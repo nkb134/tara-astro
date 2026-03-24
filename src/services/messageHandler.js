@@ -2,8 +2,9 @@ import { findOrCreateUser, updateUser } from '../db/users.js';
 import { sendTextMessage, showTyping, markAsRead } from '../whatsapp/sender.js';
 import { handleOnboarding } from './onboardingHandler.js';
 import { getSessionContext, saveExchange } from './sessionManager.js';
-import { classifyIntent } from '../ai/classifier.js';
-import { generateResponse, generateHook } from '../ai/responder.js';
+import { dispatchToAgent } from '../ai/agents/dispatcher.js';
+import { AGENTS } from '../ai/agents/router.js';
+import { generateHook } from '../ai/responder.js';
 import { calculateDelay, sleep } from '../utils/delay.js';
 import { detectLanguage, isLanguageNeutral, t } from '../languages/index.js';
 import { logger } from '../utils/logger.js';
@@ -249,49 +250,35 @@ async function handleAIConversation(whatsappId, user, messageText, messageId, st
 
   const { conversationId, history } = await getSessionContext(user.id);
 
-  const classification = await classifyIntent(messageText, lang);
-  logger.info({ intent: classification.intent, complexity: classification.complexity }, 'Intent classified');
+  // Multi-agent dispatch — router classifies + selects agent + generates response
+  const result = await dispatchToAgent(messageText, user, history);
+  logger.info({ agent: result.agent, model: result.model, tokenBudget: result.tokenBudget }, 'Agent dispatched');
 
-  // Crisis handling — double-check with keyword guard to prevent false positives
-  const crisisKeywords = /\b(suicide|suicid|marr?na|khatam kar|end.?life|jeena nahi|marna chahta|aatmahatya|die|kill myself|kill me|zindagi khatam|jaan de|khudkhushi)\b/i;
-  if (classification.intent === 'crisis' && !crisisKeywords.test(messageText)) {
-    logger.info({ messageText: '[redacted]' }, 'Crisis downgraded — no crisis keywords found');
-    classification.intent = 'career_reading';
-    classification.complexity = 'complex';
-  }
-
-  if (classification.intent === 'crisis') {
-    const crisisResponses = {
-      hi: 'Main samajh sakti hoon. Kripya apne kareeb kisi se baat karein. Madad ke liye iCall helpline: 9152987821 par call karein. Main aapke saath hoon.',
-      ta: 'Naan purinjukiren. Thayavu seidhu ungal arugil irukkum oruvaridham pesavum. iCall helpline: 9152987821. Naan ungalukku irukkiren.',
-      en: 'I hear you. Please reach out to someone close to you, or call iCall helpline: 9152987821. I\'m here for you.',
-    };
-    const response = crisisResponses[lang] || crisisResponses.en;
-    await sleep(calculateDelay('simple', response.length));
-    await showTyping(whatsappId);
-    await sleep(500);
-    await sendTextMessage(whatsappId, response);
-    await saveExchange(conversationId, user.id, messageText, response, { language: lang, intent: 'crisis' });
+  // Gate/crisis responses — send immediately, no delay
+  if (result.agent === AGENTS.GATE || result.agent === AGENTS.CRISIS) {
+    await sendTextMessage(whatsappId, result.text);
+    await saveExchange(conversationId, user.id, messageText, result.text, {
+      language: lang,
+      intent: result.intent,
+      model: result.model,
+      responseTimeMs: result.responseTimeMs,
+    });
     return;
   }
 
-  // Generate AI response
-  const result = await generateResponse(messageText, user, classification, history);
-
-  // Apply human-like delay
-  const delay = calculateDelay(classification.complexity, result.text.length);
-  logger.info({ delayMs: delay, intent: classification.intent }, 'Applying response delay');
+  // Apply human-like delay based on agent type
+  const isComplex = [AGENTS.READING, AGENTS.REMEDY].includes(result.agent);
+  const delay = calculateDelay(isComplex ? 'complex' : 'simple', result.text.length);
+  logger.info({ delayMs: delay, agent: result.agent }, 'Applying response delay');
   await sleep(delay);
 
-  // Send (with thinking for complex, multi-part splitting for ---)
-  const isComplex = classification.complexity === 'complex' ||
-    ['career_reading', 'relationship_reading', 'remedy_request', 'kundli_overview'].includes(classification.intent);
+  // Send (with thinking for complex readings, multi-part splitting for ---)
   await sendWithThinking(whatsappId, result.text, lang, isComplex);
 
   // Save exchange
   await saveExchange(conversationId, user.id, messageText, result.text, {
     language: lang,
-    intent: classification.intent,
+    intent: result.intent,
     model: result.model,
     responseTimeMs: result.responseTimeMs,
   });
@@ -299,7 +286,7 @@ async function handleAIConversation(whatsappId, user, messageText, messageId, st
   logger.info({
     userId: user.id,
     responseTimeMs: Date.now() - startTime,
-    intent: classification.intent,
+    agent: result.agent,
     model: result.model,
-  }, 'AI message processed');
+  }, 'Agent message processed');
 }
