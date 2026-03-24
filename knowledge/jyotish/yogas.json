@@ -1,0 +1,194 @@
+[
+  {
+    "name": "Gajakesari Yoga",
+    "aliases": ["Gaja Kesari"],
+    "condition": "Jupiter in kendra (1st, 4th, 7th, or 10th) from Moon",
+    "effects": "Intelligence, fame, wealth, respected in society. Person becomes wise and influential. Good for public life, teaching, advisory roles.",
+    "strengthFactors": "Stronger if Jupiter is in own/exalted sign. Weakened if Jupiter is debilitated, combust, or aspected by malefics.",
+    "source": "BPHS Chapter 36"
+  },
+  {
+    "name": "Budhaditya Yoga",
+    "aliases": ["Budh Aditya"],
+    "condition": "Sun and Mercury conjunct in same house",
+    "effects": "Sharp intellect, excellent communication skills, scholarly mind. Good for careers in writing, teaching, consulting, IT, law.",
+    "strengthFactors": "Best when Mercury is not combust (more than 14 degrees from Sun). Strongest in houses 1, 4, 5, 7, 9, 10.",
+    "source": "Phaladeepika"
+  },
+  {
+    "name": "Raj Yoga",
+    "aliases": ["Raja Yoga"],
+    "condition": "Lord of kendra (1/4/7/10) and lord of trikona (1/5/9) conjunct or mutually aspect each other",
+    "effects": "Power, authority, success in career, leadership qualities. Rise in status and wealth. Government connections possible.",
+    "strengthFactors": "Strongest when involving 9th and 10th lords. Multiple Raj Yogas amplify each other.",
+    "source": "BPHS Chapter 41"
+  },
+  {
+    "name": "Dhana Yoga",
+    "aliases": ["Dhan Yoga"],
+    "condition": "Lords of 2nd and 11th houses connected (conjunction, aspect, or exchange). Also 1st lord with 2nd/11th.",
+    "effects": "Wealth accumulation, financial prosperity, multiple income sources. Good for business and investment.",
+    "strengthFactors": "Stronger with benefic planets. Jupiter involvement amplifies. Weakened if lords are debilitated.",
+    "source": "BPHS"
+  },
+  {
+    "name": "Viparita Raja Yoga",
+    "aliases": ["Vipareet Raja Yoga"],
+    "condition": "Lords of 6th, 8th, or 12th houses placed in each other's houses (e.g., 6th lord in 8th, 8th lord in 12th)",
+    "effects": "Success through adversity. Gains from enemies' loss. Unexpected rise after difficulties. Fortune from inheritance or insurance.",
+    "strengthFactors": "Strongest when all three dusthana lords are in each other's houses.",
+    "source": "BPHS Chapter 41"
+  },
+  {
+    "name": "Neechabhanga Raja Yoga",
+    "aliases": ["Neech Bhang Raj Yoga", "NBRY"],
+    "condition": "A debilitated planet gets cancellation of debilitation — e.g., lord of the sign where planet is debilitated is in kendra from Moon/Lagna",
+    "effects": "Initial struggles transform into great success. Person overcomes disadvantage to achieve remarkable heights. Late bloomer.",
+    "strengthFactors": "Multiple cancellation conditions strengthen it further.",
+    "source": "BPHS"
+  },
+  {
+    "name": "Kaal Sarpa Yoga",
+    "aliases": ["Kala Sarpa Dosha", "Kaal Sarp"],
+    "condition": "All seven planets (Sun through Saturn) hemmed between Rahu and Ketu on one side of the axis",
+    "effects": "Obstacles, delays, feeling stuck. Life feels like constant struggle. Karmic debts from past lives. Success comes only after significant effort.",
+    "strengthFactors": "Partial Kaal Sarpa (some planets outside) is milder. Stronger when Rahu-Ketu in 1-7 or 5-11 axis.",
+    "source": "Nadi Jyotish tradition"
+  },
+  {
+    "name": "Manglik Dosha",
+    "aliases": ["Mangal Dosha", "Kuja Dosha", "Chevvai Dosham"],
+    "condition": "Mars in houses 1, 2, 4, 7, 8, or 12 from Lagna, Moon, or Venus",
+    "effects": "Delays in marriage, conflicts in married life, partner health concerns. Intensity in relationships. Strong will and temper.",
+    "strengthFactors": "Cancelled if Mars in own/exalted sign, or partner also has Manglik dosha. Age after 28 naturally reduces intensity.",
+    "source": "BPHS"
+  },
+  {
+    "name": "Chandra-Mangal Yoga",
+    "aliases": ["Moon Mars conjunction"],
+    "condition": "Moon and Mars conjunct in same house",
+    "effects": "Financial gains through own effort. Brave, determined, industrious. Good for real estate, property, maternal inheritance.",
+    "strengthFactors": "Best in houses 2, 4, 10, 11. Weakened in 6, 8, 12.",
+    "source": "Phaladeepika"
+  },
+  {
+    "name": "Hamsa Yoga",
+    "aliases": ["Hamsa Mahapurusha Yoga"],
+    "condition": "Jupiter in own sign (Sagittarius/Pisces) or exalted (Cancer) in kendra from Lagna",
+    "effects": "Highly learned, virtuous, respected by rulers. Wealthy, handsome/beautiful, long-lived. Natural teacher and advisor.",
+    "strengthFactors": "One of the five Pancha Mahapurusha Yogas. Strongest in 1st or 10th house.",
+    "source": "BPHS Chapter 75"
+  },
+  {
+    "name": "Malavya Yoga",
+    "aliases": ["Malavya Mahapurusha Yoga"],
+    "condition": "Venus in own sign (Taurus/Libra) or exalted (Pisces) in kendra from Lagna",
+    "effects": "Beautiful appearance, luxurious lifestyle, artistic talents, happy marriage, wealth through vehicles and property.",
+    "strengthFactors": "One of the five Pancha Mahapurusha Yogas. Strongest in 1st or 7th house.",
+    "source": "BPHS Chapter 75"
+  },
+  {
+    "name": "Ruchaka Yoga",
+    "aliases": ["Ruchaka Mahapurusha Yoga"],
+    "condition": "Mars in own sign (Aries/Scorpio) or exalted (Capricorn) in kendra from Lagna",
+    "effects": "Commander-like personality, brave, athletic, successful in military/police/sports. Sharp features, strong body, leadership.",
+    "strengthFactors": "One of the five Pancha Mahapurusha Yogas. Strongest in 1st or 10th house.",
+    "source": "BPHS Chapter 75"
+  },
+  {
+    "name": "Sasa Yoga",
+    "aliases": ["Shasha Mahapurusha Yoga"],
+    "condition": "Saturn in own sign (Capricorn/Aquarius) or exalted (Libra) in kendra from Lagna",
+    "effects": "Authority over villages/towns, politically powerful, wealth from industry/labor. Disciplined, persistent, respected elder.",
+    "strengthFactors": "One of the five Pancha Mahapurusha Yogas. Strongest in 1st or 10th house.",
+    "source": "BPHS Chapter 75"
+  },
+  {
+    "name": "Bhadra Yoga",
+    "aliases": ["Bhadra Mahapurusha Yoga"],
+    "condition": "Mercury in own sign (Gemini/Virgo) or exalted (Virgo) in kendra from Lagna",
+    "effects": "Intelligent, eloquent speaker, skilled in arts and commerce. Success in business, writing, teaching. Strong analytical mind.",
+    "strengthFactors": "One of the five Pancha Mahapurusha Yogas. Strongest in 1st or 10th house.",
+    "source": "BPHS Chapter 75"
+  },
+  {
+    "name": "Saraswati Yoga",
+    "aliases": [],
+    "condition": "Jupiter, Venus, and Mercury in kendra or trikona, with Jupiter in own/exalted/friend's sign",
+    "effects": "Highly educated, master of arts and sciences, eloquent, poetic ability. Excellence in academics and creative fields.",
+    "strengthFactors": "Rare yoga. All three planets should be strong and unafflicted.",
+    "source": "BPHS"
+  },
+  {
+    "name": "Lakshmi Yoga",
+    "aliases": [],
+    "condition": "Lord of 9th house strong and in kendra, with Lagna lord also strong",
+    "effects": "Great wealth, fortune, luxurious life. Born into or acquires significant prosperity. Blessed by Goddess Lakshmi.",
+    "strengthFactors": "Strongest when 9th lord is in own/exalted sign in 1st or 10th house.",
+    "source": "BPHS"
+  },
+  {
+    "name": "Adhi Yoga",
+    "aliases": [],
+    "condition": "Benefics (Jupiter, Venus, Mercury) in 6th, 7th, and 8th from Moon",
+    "effects": "Polite, trustworthy, healthy, wealthy, able to overcome enemies. Leadership position in profession.",
+    "strengthFactors": "Strongest when all three benefics are present. Even one or two create partial Adhi Yoga.",
+    "source": "Varahamihira's Brihat Jataka"
+  },
+  {
+    "name": "Sunapha Yoga",
+    "aliases": [],
+    "condition": "Any planet (except Sun) in the 2nd house from Moon",
+    "effects": "Self-made wealth, intelligent, good reputation. Earns through own merit, not inheritance.",
+    "strengthFactors": "Results vary based on which planet occupies 2nd from Moon.",
+    "source": "BPHS"
+  },
+  {
+    "name": "Anapha Yoga",
+    "aliases": [],
+    "condition": "Any planet (except Sun) in the 12th house from Moon",
+    "effects": "Strong physique, virtuous, comfortable life, good character. Well-dressed and dignified.",
+    "strengthFactors": "Results vary based on which planet occupies 12th from Moon.",
+    "source": "BPHS"
+  },
+  {
+    "name": "Durudhara Yoga",
+    "aliases": [],
+    "condition": "Planets (except Sun) on both sides of Moon — in 2nd and 12th from Moon",
+    "effects": "Wealthy, generous, enjoys vehicles and comforts. Famous, eloquent, charitable.",
+    "strengthFactors": "Combines benefits of both Sunapha and Anapha yogas.",
+    "source": "BPHS"
+  },
+  {
+    "name": "Amala Yoga",
+    "aliases": [],
+    "condition": "Natural benefic (Jupiter, Venus, Mercury, or full Moon) in 10th from Lagna or Moon",
+    "effects": "Lasting fame, virtuous deeds, respected by society. Clean reputation throughout life.",
+    "strengthFactors": "Jupiter in 10th gives best results. Mercury gives intellectual fame.",
+    "source": "BPHS"
+  },
+  {
+    "name": "Veshi Yoga",
+    "aliases": [],
+    "condition": "Any planet (except Moon) in 2nd house from Sun",
+    "effects": "Truthful, lazy but capable, good memory, balanced temperament.",
+    "strengthFactors": "Benefic in 2nd from Sun gives positive results; malefic gives mixed.",
+    "source": "BPHS"
+  },
+  {
+    "name": "Vosi Yoga",
+    "aliases": [],
+    "condition": "Any planet (except Moon) in 12th house from Sun",
+    "effects": "Skilled, charitable, learned, good stamina.",
+    "strengthFactors": "Benefic in 12th from Sun gives spiritual tendencies; malefic gives material focus.",
+    "source": "BPHS"
+  },
+  {
+    "name": "Parvata Yoga",
+    "aliases": [],
+    "condition": "Benefics in kendras, 6th and 8th houses are either empty or occupied by benefics",
+    "effects": "Wealthy, famous, generous ruler-type personality. Protector of others.",
+    "strengthFactors": "Rare when fully formed. Even partial formation gives good results.",
+    "source": "BPHS"
+  }
+]

@@ -10,6 +10,7 @@
  * - Off-topic: ~200 system tokens = 90% saving
  */
 import { routeMessage, AGENTS, TOKEN_BUDGETS, AGENT_MODELS } from './router.js';
+import { retrieveJyotishContext } from '../rag.js';
 import {
   greetingPrompt, readingPrompt, followupPrompt,
   remedyPrompt, clarifyPrompt, offTopicPrompt,
@@ -74,6 +75,22 @@ export async function dispatchToAgent(userMessage, user, conversationHistory = [
     }
   }
 
+  // Step 3.5: RAG retrieval (only for reading + remedy agents)
+  let ragContext = '';
+  let ragSources = [];
+  if ([AGENTS.READING, AGENTS.REMEDY].includes(route.agent) && chartData) {
+    try {
+      const rag = retrieveJyotishContext(chartData, route.agent, route.topic, lang);
+      ragContext = rag.contextBlock;
+      ragSources = rag.sources;
+      if (ragContext) {
+        logger.info({ sources: ragSources.length, chars: ragContext.length }, 'RAG context retrieved');
+      }
+    } catch (err) {
+      logger.warn({ err: err.message }, 'RAG retrieval failed, continuing without');
+    }
+  }
+
   // Step 4: Build agent-specific prompt
   let systemPrompt;
   switch (route.agent) {
@@ -81,13 +98,13 @@ export async function dispatchToAgent(userMessage, user, conversationHistory = [
       systemPrompt = greetingPrompt(lang, gender, initialIntent, script);
       break;
     case AGENTS.READING:
-      systemPrompt = readingPrompt(lang, gender, chartData, birthTimeStatus, route.topic, initialIntent, script);
+      systemPrompt = readingPrompt(lang, gender, chartData, birthTimeStatus, route.topic, initialIntent, script, ragContext);
       break;
     case AGENTS.FOLLOWUP:
       systemPrompt = followupPrompt(lang, gender, script);
       break;
     case AGENTS.REMEDY:
-      systemPrompt = remedyPrompt(lang, gender, chartData, script);
+      systemPrompt = remedyPrompt(lang, gender, chartData, script, ragContext);
       break;
     case AGENTS.CLARIFY:
       systemPrompt = clarifyPrompt(lang, gender, route.topic, script);
@@ -96,7 +113,7 @@ export async function dispatchToAgent(userMessage, user, conversationHistory = [
       systemPrompt = offTopicPrompt(lang, gender, script);
       break;
     default:
-      systemPrompt = readingPrompt(lang, gender, chartData, birthTimeStatus, route.topic, initialIntent, script);
+      systemPrompt = readingPrompt(lang, gender, chartData, birthTimeStatus, route.topic, initialIntent, script, ragContext);
       route.model = 'pro';
       route.tokenBudget = TOKEN_BUDGETS[AGENTS.READING];
   }
@@ -135,6 +152,7 @@ export async function dispatchToAgent(userMessage, user, conversationHistory = [
       responseTimeMs: Date.now() - startTime,
       language: lang,
       intent: route.topic || route.agent,
+      ragSources,
     };
   } catch (err) {
     logger.error({ err: err.message, agent: route.agent }, 'Agent generation failed');

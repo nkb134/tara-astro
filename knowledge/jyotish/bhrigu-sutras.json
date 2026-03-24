@@ -1,0 +1,866 @@
+[
+  {
+    "planet": "Sun",
+    "house": 1,
+    "interpretation": "The native possesses a commanding personality with natural leadership qualities. There is strong vitality and a dignified bearing, though ego and self-importance can become excessive. Government connections or authority positions come naturally.",
+    "careerEffect": "Success in government service, politics, administration, or any leadership role where authority is exercised.",
+    "relationshipEffect": "Dominating nature in relationships; the native expects respect and can overshadow their partner.",
+    "healthEffect": "Generally strong constitution but prone to bilious disorders, heart issues, and problems with eyesight."
+  },
+  {
+    "planet": "Sun",
+    "house": 2,
+    "interpretation": "Wealth comes through government or authoritative channels, but there can be strain in family relationships due to ego clashes. Speech is authoritative and sometimes harsh. The native earns well but may struggle to save.",
+    "careerEffect": "Income from government contracts, banking, or family business with a connection to authority figures.",
+    "relationshipEffect": "Tensions with family members, especially the father, over financial matters or differences in values.",
+    "healthEffect": "Susceptibility to eye problems, dental issues, and disorders of the face and mouth."
+  },
+  {
+    "planet": "Sun",
+    "house": 3,
+    "interpretation": "The native is courageous and assertive in communication, often taking initiative in all endeavors. Relationship with siblings may be strained due to the native's domineering attitude. Short travels bring recognition.",
+    "careerEffect": "Success in media, publishing, communications, or as a military/police officer requiring courage.",
+    "relationshipEffect": "Difficult relations with younger siblings who may feel overshadowed; the native tends to dominate conversations.",
+    "healthEffect": "Strong arms and chest but prone to respiratory issues and problems related to the right ear."
+  },
+  {
+    "planet": "Sun",
+    "house": 4,
+    "interpretation": "Domestic happiness is disturbed as the native struggles to find inner peace despite outward success. There may be issues with property or conflict with the mother. The native often lives away from birthplace.",
+    "careerEffect": "Career in real estate, agriculture, mining, or government land departments; success comes after struggles at home.",
+    "relationshipEffect": "Strained relationship with mother; the native may feel emotionally unsettled despite material comforts.",
+    "healthEffect": "Heart-related ailments and chest problems; emotional stress affects physical well-being."
+  },
+  {
+    "planet": "Sun",
+    "house": 5,
+    "interpretation": "Strong intellect and creative abilities are indicated. The native has few children or experiences delays in childbirth. There is a natural inclination toward speculation, politics, and advisory roles.",
+    "careerEffect": "Success in education, politics, stock trading, creative arts, or as an advisor to powerful people.",
+    "relationshipEffect": "Proud of children but may be overly controlling in romantic relationships; love affairs bring both joy and ego conflicts.",
+    "healthEffect": "Stomach ailments are possible; children's health may cause concern in early years."
+  },
+  {
+    "planet": "Sun",
+    "house": 6,
+    "interpretation": "Excellent placement for overcoming enemies and competition. The native rises through service and hard work, gaining victory over opponents. Government employment in service-oriented roles is favored.",
+    "careerEffect": "Success in law, medicine, military, police, or any competitive field where defeating opponents is key.",
+    "relationshipEffect": "The native may attract jealous rivals; maternal uncle's relationship is significant.",
+    "healthEffect": "Generally resistant to disease but must watch for digestive issues and inflammatory conditions."
+  },
+  {
+    "planet": "Sun",
+    "house": 7,
+    "interpretation": "Marriage is delayed or brings challenges as the native seeks a partner of high status. The spouse may be proud and independent. Business partnerships with government or authority figures are indicated.",
+    "careerEffect": "Business partnerships with influential people; success in consultancy, diplomacy, or public-facing roles.",
+    "relationshipEffect": "Ego clashes in marriage; the spouse is strong-willed and there can be power struggles in the relationship.",
+    "healthEffect": "The native should guard against urinary tract issues and ailments of the lower abdomen."
+  },
+  {
+    "planet": "Sun",
+    "house": 8,
+    "interpretation": "Longevity may be affected and the native faces transformative life events. Inheritance from father or government sources is possible but comes with complications. Interest in occult sciences and hidden knowledge develops.",
+    "careerEffect": "Career in research, insurance, taxation, occult sciences, or handling other people's resources.",
+    "relationshipEffect": "Secretive nature in relationships; the native may face sudden separations or transformations in partnerships.",
+    "healthEffect": "Vulnerability to chronic diseases, fevers, and eye problems; the native should be cautious about heart health."
+  },
+  {
+    "planet": "Sun",
+    "house": 9,
+    "interpretation": "The native is righteous and follows dharma, gaining blessings from father and guru figures. Fortune rises after the age of the father's influence. Pilgrimages and higher learning bring spiritual growth and worldly recognition.",
+    "careerEffect": "Success in law, teaching, religious institutions, publishing, or international work connected to authority.",
+    "relationshipEffect": "Good relationship with father and teachers; the native commands respect in spiritual and social circles.",
+    "healthEffect": "Generally good health supported by righteous living; hip and thigh areas may need attention."
+  },
+  {
+    "planet": "Sun",
+    "house": 10,
+    "interpretation": "This is one of the strongest placements for worldly success and recognition. The native achieves a position of authority and commands respect in their professional sphere. Fame and government favor are strongly indicated.",
+    "careerEffect": "Exceptional career success in government, politics, administration, or any field requiring leadership and public recognition.",
+    "relationshipEffect": "The native's career ambitions may overshadow personal relationships; spouse must accept the native's public commitments.",
+    "healthEffect": "Strong vitality supports career demands but the native may neglect health due to work pressure, leading to stress-related issues."
+  },
+  {
+    "planet": "Sun",
+    "house": 11,
+    "interpretation": "Gains and income are abundant, especially from government or influential sources. The native has powerful friends and fulfills major desires. Elder siblings may be in positions of authority.",
+    "careerEffect": "Steady income growth through networking with powerful people; success in large organizations and government projects.",
+    "relationshipEffect": "Friendships with influential people benefit the native; elder siblings provide support and connections.",
+    "healthEffect": "Generally good health; the left ear and circulatory system in the legs may need attention."
+  },
+  {
+    "planet": "Sun",
+    "house": 12,
+    "interpretation": "Expenditure exceeds income and the native may face losses through government or authority figures. There is a pull toward spiritual life, foreign lands, and seclusion. The father may live far away or the relationship is distant.",
+    "careerEffect": "Career in foreign lands, hospitals, ashrams, prisons, or spiritual institutions; government posting abroad is possible.",
+    "relationshipEffect": "The native feels isolated in relationships; there is a tendency toward secret affairs or emotional withdrawal.",
+    "healthEffect": "Eye problems, especially the left eye; sleep disturbances and feet-related ailments are common."
+  },
+  {
+    "planet": "Moon",
+    "house": 1,
+    "interpretation": "The native is attractive, emotional, and well-liked by the public. The mind is restless but imaginative, and the personality is nurturing. Fluctuations in life are common as the Moon waxes and wanes.",
+    "careerEffect": "Success in public-facing roles, hospitality, nursing, shipping, or any career involving care and nurturing.",
+    "relationshipEffect": "Deeply emotional in relationships; the native is attached to the mother and seeks emotional security from partners.",
+    "healthEffect": "Sensitive constitution prone to water retention, cold-related ailments, and fluctuating health based on mental state."
+  },
+  {
+    "planet": "Moon",
+    "house": 2,
+    "interpretation": "Wealth fluctuates like the tides but the native has a sweet and persuasive way of speaking. Family life is important and the native is attached to traditions. Earnings come through public dealings or food-related businesses.",
+    "careerEffect": "Income from food industry, dairy, textiles, public relations, or any business catering to the masses.",
+    "relationshipEffect": "Strong family bonds and attachment to mother's family; the native values emotional security through wealth.",
+    "healthEffect": "Dental issues and problems with the face; tendency toward weight gain and water-related ailments."
+  },
+  {
+    "planet": "Moon",
+    "house": 3,
+    "interpretation": "The mind is active and restless, with a talent for writing and communication. Siblings, especially sisters, play an important role. The native is adventurous but mentally changeable, often shifting between projects.",
+    "careerEffect": "Success in writing, journalism, travel industry, sales, or any field requiring constant communication and short travels.",
+    "relationshipEffect": "Close bond with siblings, especially sisters; the native communicates emotionally and may be overly sensitive in exchanges.",
+    "healthEffect": "Nervous tension in arms and shoulders; mental restlessness can manifest as anxiety or insomnia."
+  },
+  {
+    "planet": "Moon",
+    "house": 4,
+    "interpretation": "This is Moon's natural house, bringing domestic happiness, property ownership, and a loving mother. The native is emotionally content and attached to home and homeland. Vehicles and comforts are acquired easily.",
+    "careerEffect": "Success in real estate, agriculture, interior design, dairy farming, or any home-based business.",
+    "relationshipEffect": "Deep attachment to mother and motherland; the native creates a warm, nurturing home environment.",
+    "healthEffect": "Emotional well-being is strong when home life is stable; chest and lung sensitivity during seasonal changes."
+  },
+  {
+    "planet": "Moon",
+    "house": 5,
+    "interpretation": "The native is intelligent with a creative and fertile mind. Children bring happiness, especially daughters. There is success in speculation when following intuition, and the native has a romantic, artistic temperament.",
+    "careerEffect": "Success in entertainment, creative arts, education, childcare, or speculative ventures guided by intuition.",
+    "relationshipEffect": "Romantic and emotionally expressive in love; the native has deep emotional bonds with children.",
+    "healthEffect": "Stomach sensitivity and digestive issues linked to emotional stress; children's health fluctuates in early years."
+  },
+  {
+    "planet": "Moon",
+    "house": 6,
+    "interpretation": "The mind is troubled by enemies, debts, or health anxieties. The native serves others, often in healing or caregiving roles. Emotional fluctuations create vulnerability to stress-related illness and workplace conflicts.",
+    "careerEffect": "Career in healthcare, nursing, social service, veterinary science, or dispute resolution.",
+    "relationshipEffect": "The native may attract emotionally draining people; relationships with maternal relatives can be strained.",
+    "healthEffect": "Prone to digestive disorders, anxiety, and water-borne diseases; emotional stress directly impacts physical health."
+  },
+  {
+    "planet": "Moon",
+    "house": 7,
+    "interpretation": "The spouse is beautiful, nurturing, and emotionally supportive. Marriage brings emotional fulfillment and the partner is often from a good family. Public dealings and business partnerships are successful.",
+    "careerEffect": "Success in partnerships, public relations, hospitality, or any business dealing directly with the public.",
+    "relationshipEffect": "Marriage is emotionally rich; the spouse is caring but the native may become overly dependent on the partner.",
+    "healthEffect": "Reproductive health needs attention; urinary and kidney issues may arise, especially in women."
+  },
+  {
+    "planet": "Moon",
+    "house": 8,
+    "interpretation": "The mind is drawn to mysteries, occult, and hidden knowledge. Emotional turbulence and sudden changes are frequent. Inheritance through mother or maternal family is indicated but may come through difficult circumstances.",
+    "careerEffect": "Career in research, psychology, occult sciences, insurance, or dealing with inheritances and legacies.",
+    "relationshipEffect": "Intense emotional bonds with deep psychological undercurrents; the native fears abandonment and loss.",
+    "healthEffect": "Chronic ailments related to reproductive organs; mental health needs careful attention as depression or anxiety may develop."
+  },
+  {
+    "planet": "Moon",
+    "house": 9,
+    "interpretation": "The native is spiritually inclined with a compassionate and philosophical mind. The mother is religious and influential. Long journeys over water and pilgrimages bring peace and fortune.",
+    "careerEffect": "Success in teaching, spiritual guidance, international travel, shipping, or religious institutions.",
+    "relationshipEffect": "The native respects the mother deeply and seeks a partner with spiritual or philosophical values.",
+    "healthEffect": "Generally good health supported by positive mental attitude; hips and thighs may need attention during travel."
+  },
+  {
+    "planet": "Moon",
+    "house": 10,
+    "interpretation": "The native achieves fame and public recognition, often in fields connected to the masses. Career fluctuations are common but overall trajectory is upward. The mother plays a key role in shaping career ambitions.",
+    "careerEffect": "Prominent career in public service, politics, hospitality, food industry, or any profession serving the masses.",
+    "relationshipEffect": "Professional life may overshadow personal relationships; the native's reputation in public affects family dynamics.",
+    "healthEffect": "Work-related stress affects emotional balance; knee problems and skeletal issues may arise with age."
+  },
+  {
+    "planet": "Moon",
+    "house": 11,
+    "interpretation": "Gains and income come easily, especially through women, public dealings, and creative ventures. The native has many friends and social connections. Desires are fulfilled and elder siblings, especially sisters, are supportive.",
+    "careerEffect": "Income from large organizations, social networks, creative industries, or businesses catering to women and the public.",
+    "relationshipEffect": "Rich social life with many female friends; elder siblings provide emotional and financial support.",
+    "healthEffect": "Good overall health; left ear issues and circulatory problems in the calves may develop."
+  },
+  {
+    "planet": "Moon",
+    "house": 12,
+    "interpretation": "The native is spiritually inclined with a vivid dream life and psychic sensitivity. Expenses on comforts and foreign travel are high. There is a tendency toward isolation and the mind seeks solitude for peace.",
+    "careerEffect": "Career in foreign lands, hospitals, spiritual retreats, or charitable organizations; income from overseas sources.",
+    "relationshipEffect": "The native feels emotionally isolated; secret relationships or hidden emotional life is indicated.",
+    "healthEffect": "Sleep disorders, eye problems especially left eye, and mental fatigue from overthinking and emotional sensitivity."
+  },
+  {
+    "planet": "Mars",
+    "house": 1,
+    "interpretation": "The native is physically strong, courageous, and action-oriented with a fiery temperament. There is a scar or mark on the head or face. The personality is aggressive, competitive, and independent, with natural leadership in physical endeavors.",
+    "careerEffect": "Success in military, police, sports, surgery, engineering, or any field requiring physical courage and initiative.",
+    "relationshipEffect": "Manglik dosha affects marriage; the native is dominating and impatient in relationships, causing frequent arguments.",
+    "healthEffect": "Prone to head injuries, fevers, blood pressure issues, and inflammatory conditions; accidents in early life are common."
+  },
+  {
+    "planet": "Mars",
+    "house": 2,
+    "interpretation": "Speech is harsh and blunt, often causing family conflicts. Wealth is earned through courage and physical effort but is spent impulsively. The native may eat spicy food excessively and has a sharp tongue.",
+    "careerEffect": "Income from real estate, military, surgery, cooking, or any business involving fire, metals, or machinery.",
+    "relationshipEffect": "Family disputes are frequent due to harsh speech; the native's aggressive communication style strains domestic harmony.",
+    "healthEffect": "Dental problems, facial injuries, and eye infections; blood-related disorders and oral health issues need attention."
+  },
+  {
+    "planet": "Mars",
+    "house": 3,
+    "interpretation": "Exceptional courage and adventurous spirit define this native. Younger siblings are either very close or there are conflicts. The native excels in competitive environments and is skilled with hands and tools.",
+    "careerEffect": "Success in sports, military, media production, technical writing, or any career requiring hands-on courage.",
+    "relationshipEffect": "Competitive dynamic with siblings; the native protects loved ones fiercely but can be verbally aggressive.",
+    "healthEffect": "Injuries to arms, shoulders, and hands; respiratory issues from overexertion and nerve-related problems."
+  },
+  {
+    "planet": "Mars",
+    "house": 4,
+    "interpretation": "Domestic peace is disrupted by the native's aggressive nature and property disputes. The mother may suffer due to the native's temperament. Land and property are acquired but often through conflict or litigation.",
+    "careerEffect": "Career in real estate, construction, mining, agriculture with machinery, or land development.",
+    "relationshipEffect": "Strained relationship with mother; domestic arguments are frequent and the native may change residences often.",
+    "healthEffect": "Heart palpitations, chest injuries, and blood pressure issues; emotional agitation disrupts inner peace."
+  },
+  {
+    "planet": "Mars",
+    "house": 5,
+    "interpretation": "The native is sharp-minded but impulsive in decisions. Children may be few, and the firstborn could face health challenges. Speculation is risky and losses through hasty investments are possible.",
+    "careerEffect": "Success in sports coaching, competitive education, stock trading with discipline, or surgical specialization.",
+    "relationshipEffect": "Passionate but short-tempered in romance; love affairs begin intensely and may end abruptly due to ego conflicts.",
+    "healthEffect": "Stomach ulcers, acidity, and digestive inflammation; children's health, especially firstborn, needs extra care."
+  },
+  {
+    "planet": "Mars",
+    "house": 6,
+    "interpretation": "Excellent placement where Mars destroys enemies and overcomes all competition. The native is victorious in legal disputes, excels in service, and has tremendous fighting spirit. Debts are cleared through determined effort.",
+    "careerEffect": "Outstanding success in military, law enforcement, medicine, surgery, competitive sports, or legal practice.",
+    "relationshipEffect": "The native dominates rivals but must guard against creating unnecessary enemies through aggression.",
+    "healthEffect": "Strong immunity and ability to recover from illness; minor injuries and inflammatory conditions are possible but recovery is swift."
+  },
+  {
+    "planet": "Mars",
+    "house": 7,
+    "interpretation": "Marriage is turbulent with frequent disagreements and possible separation. The spouse is energetic and independent but clashes are inevitable. Manglik dosha is strongest here, requiring careful match-making.",
+    "careerEffect": "Business partnerships are contentious; success in independent ventures rather than collaborations.",
+    "relationshipEffect": "Serious marital discord; the spouse may be aggressive or the native's own anger destroys domestic harmony.",
+    "healthEffect": "Reproductive system issues, urinary tract infections, and pelvic region ailments; spouse's health may also suffer."
+  },
+  {
+    "planet": "Mars",
+    "house": 8,
+    "interpretation": "Accidents, surgeries, and sudden transformative events mark the life. The native is drawn to occult practices and tantric knowledge. Inheritance through property or insurance is indicated but comes through painful circumstances.",
+    "careerEffect": "Career in surgery, forensics, mining, insurance investigation, or occult/tantric practices.",
+    "relationshipEffect": "Intense and transformative relationships; the native may experience sudden losses of close ones or dramatic relationship changes.",
+    "healthEffect": "High risk of accidents, surgical procedures, and blood-related disorders; piles, fistula, and reproductive system ailments."
+  },
+  {
+    "planet": "Mars",
+    "house": 9,
+    "interpretation": "The native may clash with father and guru figures due to rebellious nature. Religious views are aggressive or unconventional. Courage in pursuing higher knowledge is strong but methods may be confrontational.",
+    "careerEffect": "Career in defense law, military education, martial arts instruction, or engineering in foreign lands.",
+    "relationshipEffect": "Conflict with father and authority figures; the native challenges traditional beliefs and may strain relationships with elders.",
+    "healthEffect": "Hip and thigh injuries; blood pressure issues during long travels and physical strain on the body from adventure."
+  },
+  {
+    "planet": "Mars",
+    "house": 10,
+    "interpretation": "Powerful placement for career success through action and courage. The native rises to positions of authority through determination and competitive drive. Government and military connections bring professional elevation.",
+    "careerEffect": "Exceptional success in military, police, engineering, surgery, sports, or industrial management at the highest levels.",
+    "relationshipEffect": "Career ambitions dominate personal life; the native expects the family to support professional goals unconditionally.",
+    "healthEffect": "Knee injuries and joint inflammation from overwork; stress-related issues from relentless career drive."
+  },
+  {
+    "planet": "Mars",
+    "house": 11,
+    "interpretation": "Gains come through courage, competition, and property dealings. The native has influential friends in military or government. Desires are fulfilled through determined action and elder siblings may be in uniformed services.",
+    "careerEffect": "High income from real estate, military contracts, sports, engineering projects, or industrial ventures.",
+    "relationshipEffect": "Friendships are based on mutual respect and shared adventures; elder siblings are supportive but competitive.",
+    "healthEffect": "Strong physical constitution; injuries to calves and ankles from physical activities and minor circulatory issues."
+  },
+  {
+    "planet": "Mars",
+    "house": 12,
+    "interpretation": "Energy is wasted on unnecessary expenditures and hidden enemies cause trouble. The native may face hospitalization due to accidents or surgeries. Anger is suppressed, leading to internal frustration and secret conflicts.",
+    "careerEffect": "Career in foreign military service, hospital work, prison administration, or behind-the-scenes technical roles.",
+    "relationshipEffect": "Secret affairs and hidden conflicts in marriage; the native may face separation from spouse due to foreign travel or confinement.",
+    "healthEffect": "Eye problems especially left eye, foot injuries, and sleep disturbances; hospitalization due to accidents or surgery is likely."
+  },
+  {
+    "planet": "Mercury",
+    "house": 1,
+    "interpretation": "The native is intelligent, youthful in appearance, and skilled in communication. Quick wit, humor, and adaptability define the personality. The native excels in learning and has a versatile, multitasking nature.",
+    "careerEffect": "Success in writing, accounting, teaching, business, trading, or any profession requiring intellectual agility.",
+    "relationshipEffect": "Charming and communicative in relationships but may lack emotional depth; the native values intellectual compatibility.",
+    "healthEffect": "Nervous system sensitivity and skin issues; the native may suffer from anxiety due to an overactive mind."
+  },
+  {
+    "planet": "Mercury",
+    "house": 2,
+    "interpretation": "Eloquent speech and financial acumen are hallmarks. The native earns through intellect, trade, and communication skills. Family life is harmonious when the native uses their diplomatic speaking ability.",
+    "careerEffect": "Excellent for banking, accounting, commerce, linguistics, or any field involving money management and communication.",
+    "relationshipEffect": "Sweet and persuasive speech strengthens family bonds; the native values education and learning within the family.",
+    "healthEffect": "Speech impediments in childhood that improve with age; dental issues and nervous eating habits."
+  },
+  {
+    "planet": "Mercury",
+    "house": 3,
+    "interpretation": "Mercury thrives in this house of communication, making the native an exceptional communicator, writer, or media personality. Siblings are intellectual and relationships with them are built on shared ideas. Short travels for business are frequent and profitable.",
+    "careerEffect": "Outstanding success in media, journalism, blogging, sales, marketing, or telecommunications.",
+    "relationshipEffect": "Strong intellectual bond with siblings; the native connects with others primarily through ideas and conversation.",
+    "healthEffect": "Nervous tension in shoulders and arms; respiratory sensitivity and tendency toward overthinking causing headaches."
+  },
+  {
+    "planet": "Mercury",
+    "house": 4,
+    "interpretation": "The native has a well-educated mind and a comfortable home filled with books and learning materials. Property transactions are profitable through clever negotiation. The mother is intelligent and supportive of education.",
+    "careerEffect": "Success in real estate brokerage, education, home-based businesses, IT from home, or architectural design.",
+    "relationshipEffect": "Intellectual environment at home; the mother is educated and the native values mental stimulation in domestic life.",
+    "healthEffect": "Chest congestion and nervous disorders affecting the heart area; stress from property matters affects peace of mind."
+  },
+  {
+    "planet": "Mercury",
+    "house": 5,
+    "interpretation": "Brilliant intellect and exceptional learning ability are indicated. The native excels in education, mathematics, and analytical subjects. Children are intelligent and the native is skilled in speculation through calculated analysis.",
+    "careerEffect": "Success in education, mathematics, astrology, stock analysis, writing, or children's education and entertainment.",
+    "relationshipEffect": "Romantic relationships are intellectual rather than passionate; the native seeks a mentally stimulating partner.",
+    "healthEffect": "Digestive nervousness and stomach issues from worry; children may have speech or learning-related concerns in early years."
+  },
+  {
+    "planet": "Mercury",
+    "house": 6,
+    "interpretation": "The native defeats enemies through intelligence and clever strategy rather than force. Success in competitive examinations and legal disputes through analytical ability. Service in intellectual capacities is favored.",
+    "careerEffect": "Success in law, medicine, auditing, accounting, dispute resolution, or competitive examination coaching.",
+    "relationshipEffect": "The native uses diplomacy to manage conflicts; maternal uncle may be intellectual or connected to business.",
+    "healthEffect": "Nervous disorders, skin problems, and intestinal issues; anxiety about health can become excessive."
+  },
+  {
+    "planet": "Mercury",
+    "house": 7,
+    "interpretation": "The spouse is intelligent, communicative, and possibly younger. Business partnerships are profitable through clever negotiation. Marriage is based on intellectual compatibility and the native excels in trade and commerce.",
+    "careerEffect": "Excellent for business partnerships, consulting, brokerage, matrimonial services, or trade negotiation.",
+    "relationshipEffect": "Marriage is intellectually stimulating; the spouse is communicative and business-minded, creating a practical partnership.",
+    "healthEffect": "Urinary issues and intestinal problems; nervous disorders affecting the lower abdomen."
+  },
+  {
+    "planet": "Mercury",
+    "house": 8,
+    "interpretation": "The native has a probing intellect interested in research, occult sciences, and hidden knowledge. Longevity is good when Mercury is well-placed. Inheritance through clever legal maneuvering is possible.",
+    "careerEffect": "Career in research, forensic accounting, detective work, insurance analysis, or esoteric studies.",
+    "relationshipEffect": "The native is secretive and analytical in relationships; communication about hidden feelings is difficult.",
+    "healthEffect": "Nervous system disorders and skin ailments in hidden body parts; anxiety and mental stress related to secrets."
+  },
+  {
+    "planet": "Mercury",
+    "house": 9,
+    "interpretation": "The native is a lifelong learner with excellent higher education prospects. Teaching, publishing, and philosophical writing are natural talents. Travel for education and business brings both knowledge and profit.",
+    "careerEffect": "Success in academia, publishing, law, international business, translation, or religious scholarship.",
+    "relationshipEffect": "The father is educated and supportive; the native seeks relationships with learned and well-traveled people.",
+    "healthEffect": "Generally good health; hip issues from prolonged sitting and travel-related nervous tension."
+  },
+  {
+    "planet": "Mercury",
+    "house": 10,
+    "interpretation": "The native achieves professional success through intellect, communication, and business acumen. Multiple career paths or dual professions are common. Recognition comes through writing, speaking, or commercial ventures.",
+    "careerEffect": "Success in business management, media, IT, commerce, public speaking, or any career combining intellect with commerce.",
+    "relationshipEffect": "Professional reputation is built on communication skills; the native may prioritize career networking over personal relationships.",
+    "healthEffect": "Work stress affects the nervous system; knee and joint issues from desk-bound work."
+  },
+  {
+    "planet": "Mercury",
+    "house": 11,
+    "interpretation": "Gains through intellectual pursuits, business networks, and clever investments. The native has a wide circle of intelligent friends who provide profitable opportunities. Desires are fulfilled through strategic planning.",
+    "careerEffect": "High income from consulting, IT, financial advisory, network marketing, or intellectual property.",
+    "relationshipEffect": "Friendships are based on mutual intellectual benefit; elder siblings are educated and helpful in business.",
+    "healthEffect": "Left ear sensitivity and circulatory issues in legs; nervous exhaustion from excessive social engagement."
+  },
+  {
+    "planet": "Mercury",
+    "house": 12,
+    "interpretation": "The intellect turns inward toward spiritual knowledge and foreign languages. The native may struggle with practical communication but excels in imaginative and creative thinking. Expenses on education and foreign travel are high.",
+    "careerEffect": "Career in foreign trade, translation, spiritual writing, research in isolation, or work in hospitals and institutions.",
+    "relationshipEffect": "Communication gaps in close relationships; the native may feel misunderstood and retreats into intellectual solitude.",
+    "healthEffect": "Nervous exhaustion, sleep disorders, and foot problems; mental health requires attention as isolation increases anxiety."
+  },
+  {
+    "planet": "Jupiter",
+    "house": 1,
+    "interpretation": "The native is wise, optimistic, and blessed with a generous disposition. Physical appearance is dignified and health is generally robust. Natural inclination toward teaching, counseling, and guiding others brings respect and recognition.",
+    "careerEffect": "Success in teaching, law, finance, religious leadership, counseling, or any advisory role.",
+    "relationshipEffect": "The native is generous and supportive in relationships, attracting loyal and respectful partners.",
+    "healthEffect": "Generally excellent health and strong constitution; tendency toward weight gain and liver-related issues in later years."
+  },
+  {
+    "planet": "Jupiter",
+    "house": 2,
+    "interpretation": "Wealth accumulates steadily and the native has eloquent, truthful speech. Family life is harmonious and prosperous, with strong traditional values. The native is naturally generous and enjoys good food and comforts.",
+    "careerEffect": "Excellent for banking, finance, teaching, food business, gemstone trade, or any wealth-management profession.",
+    "relationshipEffect": "Happy family life with strong bonds; the native is respected for wisdom and speech within the family.",
+    "healthEffect": "Tendency toward obesity and diabetes from rich diet; dental health is generally good but throat issues may arise."
+  },
+  {
+    "planet": "Jupiter",
+    "house": 3,
+    "interpretation": "The native is righteous in communication and courageous in upholding truth. Siblings are well-placed in life and relationships with them are supportive. Writing and publishing on spiritual or educational topics bring recognition.",
+    "careerEffect": "Success in publishing, spiritual teaching, travel writing, or media with an educational or ethical focus.",
+    "relationshipEffect": "Harmonious relationship with siblings who are prosperous; the native is a trusted advisor in their social circle.",
+    "healthEffect": "Strong upper body; occasional shoulder stiffness and respiratory sensitivity from sedentary habits."
+  },
+  {
+    "planet": "Jupiter",
+    "house": 4,
+    "interpretation": "Excellent placement bringing domestic happiness, property wealth, and a virtuous mother. The native enjoys comfortable homes, vehicles, and inner peace. Educational pursuits are completed successfully and land holdings increase.",
+    "careerEffect": "Success in education, real estate, temple/religious property management, agriculture, or home-based spiritual teaching.",
+    "relationshipEffect": "The mother is wise and spiritually inclined; home life is peaceful, prosperous, and filled with learning.",
+    "healthEffect": "Strong heart and emotional well-being; tendency toward chest congestion and weight gain from comfortable living."
+  },
+  {
+    "planet": "Jupiter",
+    "house": 5,
+    "interpretation": "One of Jupiter's best placements, bringing intelligent children, creative wisdom, and success in education. The native is a natural teacher and advisor. Speculation and investments guided by wisdom bring profits.",
+    "careerEffect": "Outstanding success in education, child development, creative arts, stock advisory, or spiritual teaching.",
+    "relationshipEffect": "Children are the native's greatest blessing; romantic relationships are noble and guided by wisdom.",
+    "healthEffect": "Generally robust health; liver and digestive issues may arise from overeating, and first pregnancy may need care."
+  },
+  {
+    "planet": "Jupiter",
+    "house": 6,
+    "interpretation": "Enemies are weak and the native overcomes obstacles through righteousness and divine grace. Success in healing professions and service-oriented work. However, Jupiter's expansive nature may increase debts if not managed wisely.",
+    "careerEffect": "Success in law, medicine, social justice, NGO work, or judicial services.",
+    "relationshipEffect": "The native resolves conflicts through wisdom and fairness; maternal uncle may be prosperous or religiously inclined.",
+    "healthEffect": "Good immune system but tendency toward obesity, diabetes, and liver problems; digestive disorders need dietary discipline."
+  },
+  {
+    "planet": "Jupiter",
+    "house": 7,
+    "interpretation": "Marriage brings a wise, educated, and virtuous spouse who enhances the native's fortune. Business partnerships are ethical and profitable. The native gains social respect through marriage and partnerships.",
+    "careerEffect": "Success in law, consulting, counseling, partnership businesses, or international trade with ethical partners.",
+    "relationshipEffect": "Happy marriage with an educated, cultured spouse; the partner brings wisdom, wealth, and social elevation.",
+    "healthEffect": "Generally good health; weight gain after marriage and potential kidney or lower back issues."
+  },
+  {
+    "planet": "Jupiter",
+    "house": 8,
+    "interpretation": "Long life and inheritance from in-laws or through marriage are indicated. The native has deep interest in occult sciences, philosophy of death, and transformative wisdom. Sudden gains through insurance or legacy are possible.",
+    "careerEffect": "Career in insurance, inheritance law, occult teaching, astrology, or managing trust funds and endowments.",
+    "relationshipEffect": "Deep spiritual bond with spouse; in-laws are wealthy and supportive, bringing financial benefits.",
+    "healthEffect": "Long life is indicated; chronic but manageable health conditions related to liver and thighs may develop."
+  },
+  {
+    "planet": "Jupiter",
+    "house": 9,
+    "interpretation": "This is Jupiter's strongest placement in its own house, bringing supreme fortune, righteousness, and spiritual wisdom. The father is prosperous and spiritually inclined. Long pilgrimages and higher education bring lasting success.",
+    "careerEffect": "Exceptional success in law, teaching, religious leadership, philosophy, international relations, or judicial service.",
+    "relationshipEffect": "Deep respect from father and guru; the native attracts wise and righteous people into their life.",
+    "healthEffect": "Excellent overall health supported by dharmic living; minor hip and thigh issues in old age."
+  },
+  {
+    "planet": "Jupiter",
+    "house": 10,
+    "interpretation": "The native achieves great professional success and high social status through ethical conduct. Government favor, positions of authority in education or law, and public recognition are strongly indicated. The career benefits society at large.",
+    "careerEffect": "Top-level positions in judiciary, education, banking, religious institutions, government advisory, or corporate leadership.",
+    "relationshipEffect": "Professional success brings family pride; the native is respected as a pillar of their community.",
+    "healthEffect": "Good health but knee issues and joint problems from the weight of responsibilities in later years."
+  },
+  {
+    "planet": "Jupiter",
+    "house": 11,
+    "interpretation": "Abundant gains, fulfilled desires, and a vast network of influential and learned friends. Income is steady and grows throughout life. Elder siblings are prosperous and the native benefits from their connections.",
+    "careerEffect": "High and consistent income from multiple sources; success in finance, large organizations, or charitable trusts.",
+    "relationshipEffect": "Wealthy and wise friends support the native's goals; elder siblings are prosperous and generous.",
+    "healthEffect": "Generally strong health; ear problems and circulatory issues in legs may arise in later years."
+  },
+  {
+    "planet": "Jupiter",
+    "house": 12,
+    "interpretation": "Spiritual liberation and foreign residence are indicated. The native spends on charitable and religious causes. This placement favors moksha and the native develops detachment from material life in later years.",
+    "careerEffect": "Career in foreign lands, spiritual institutions, charitable organizations, or international education and law.",
+    "relationshipEffect": "The native may feel spiritually isolated from worldly relationships; residence abroad separates from family.",
+    "healthEffect": "Feet-related problems and sleep issues; tendency toward weight gain from sedentary spiritual practices."
+  },
+  {
+    "planet": "Venus",
+    "house": 1,
+    "interpretation": "The native is attractive, charming, and blessed with artistic sensibilities. Physical beauty and a pleasant personality draw people naturally. Life is marked by luxury, comfort, and aesthetic appreciation.",
+    "careerEffect": "Success in fashion, beauty, entertainment, hospitality, art, or any field requiring charm and aesthetic sense.",
+    "relationshipEffect": "Highly attractive to the opposite sex; the native is romantic, loving, and seeks beauty in relationships.",
+    "healthEffect": "Generally good health with a tendency toward indulgence; reproductive system and kidney areas need attention."
+  },
+  {
+    "planet": "Venus",
+    "house": 2,
+    "interpretation": "Wealth comes through beauty, art, and luxury goods. Speech is sweet, poetic, and persuasive. Family life is comfortable and the native enjoys fine food, jewelry, and beautiful possessions.",
+    "careerEffect": "Income from jewelry, textiles, cosmetics, art dealing, gourmet food, or luxury retail.",
+    "relationshipEffect": "Family life is harmonious and prosperous; the native values beauty and comfort in the home.",
+    "healthEffect": "Dental beauty but sensitivity; throat and voice issues from overuse; tendency toward sugar-related health problems."
+  },
+  {
+    "planet": "Venus",
+    "house": 3,
+    "interpretation": "The native has artistic communication skills and talent in music, dance, or creative writing. Younger sisters are beautiful and supportive. Short travels for pleasure and artistic pursuits are frequent.",
+    "careerEffect": "Success in music, dance, creative writing, advertising, fashion media, or beauty blogging.",
+    "relationshipEffect": "Strong bond with younger siblings especially sisters; the native expresses love through creative and artistic gestures.",
+    "healthEffect": "Sensitivity in arms and throat; the native should guard against overindulgence affecting respiratory health."
+  },
+  {
+    "planet": "Venus",
+    "house": 4,
+    "interpretation": "Luxurious home, beautiful vehicles, and a loving mother bring great domestic happiness. The native enjoys property ownership and decorates their home beautifully. Emotional life is rich and satisfying.",
+    "careerEffect": "Success in interior design, luxury real estate, automobile industry, hospitality, or home-based artistic ventures.",
+    "relationshipEffect": "Deep love for mother and family; the home is a haven of beauty and comfort that strengthens all relationships.",
+    "healthEffect": "Heart health is generally good; tendency toward chest sensitivity and emotional eating affecting weight."
+  },
+  {
+    "planet": "Venus",
+    "house": 5,
+    "interpretation": "Romantic life is rich and children, especially daughters, bring immense joy. The native has strong creative and artistic talents. Love affairs are passionate and the native is drawn to entertainment, drama, and romance.",
+    "careerEffect": "Success in entertainment, film, creative arts, romance writing, children's fashion, or luxury goods for children.",
+    "relationshipEffect": "Deeply romantic and passionate in love; the native attracts beautiful partners and has loving children.",
+    "healthEffect": "Reproductive health needs care; stomach sensitivity from rich food and emotional excesses in romance."
+  },
+  {
+    "planet": "Venus",
+    "house": 6,
+    "interpretation": "Venus is uncomfortable here, bringing challenges in love and luxury being disrupted by conflict or service obligations. The native may work in beauty or health services. Enemies may be female or connected to romantic entanglements.",
+    "careerEffect": "Career in healthcare aesthetics, beauty therapy, veterinary care, or luxury services in challenging environments.",
+    "relationshipEffect": "Romantic relationships face obstacles from enemies or rivals; the native may attract partners with health or debt issues.",
+    "healthEffect": "Reproductive system disorders, urinary infections, and diabetes risk; skin problems and sugar-related ailments."
+  },
+  {
+    "planet": "Venus",
+    "house": 7,
+    "interpretation": "Venus in its own house brings a beautiful, loving, and devoted spouse. Marriage is happy and the partner brings wealth and comfort. Business partnerships are profitable, especially in luxury or creative fields.",
+    "careerEffect": "Success in partnership businesses, fashion, beauty services, luxury trade, or event management.",
+    "relationshipEffect": "Excellent marriage with a beautiful, devoted spouse; the partnership is based on mutual love and aesthetic appreciation.",
+    "healthEffect": "Reproductive and urinary system health needs attention; kidney stones and sugar-related issues possible after marriage."
+  },
+  {
+    "planet": "Venus",
+    "house": 8,
+    "interpretation": "Long life and inheritance through marriage or spouse's family. The native is drawn to tantric knowledge and hidden pleasures. Sudden gains through insurance, lottery, or legacy connected to women are possible.",
+    "careerEffect": "Career in insurance, luxury inheritance management, cosmetic surgery, or esoteric beauty practices.",
+    "relationshipEffect": "Intense and transformative romantic experiences; the spouse brings hidden wealth and deep emotional bonds.",
+    "healthEffect": "Reproductive system ailments and sexually transmitted infections need caution; kidney and urinary tract issues."
+  },
+  {
+    "planet": "Venus",
+    "house": 9,
+    "interpretation": "The native is fortunate in love and luxury, with a cultured and artistic approach to spirituality. The wife or feminine influence in life is spiritually inclined. Foreign travel for pleasure and pilgrimage to beautiful places are indicated.",
+    "careerEffect": "Success in international fashion, luxury tourism, art dealing across cultures, or teaching aesthetics and art.",
+    "relationshipEffect": "Marriage partner may be from a different culture or religion; the native blends love with spiritual growth.",
+    "healthEffect": "Good health supported by balanced lifestyle; hip and thigh issues and overindulgence during travel."
+  },
+  {
+    "planet": "Venus",
+    "house": 10,
+    "interpretation": "Professional success in glamorous or artistic fields with high public visibility. The native achieves status through charm and diplomatic skills. Career is often connected to women, beauty, or luxury industries.",
+    "careerEffect": "Outstanding success in entertainment, fashion, beauty industry, diplomacy, luxury brands, or creative arts management.",
+    "relationshipEffect": "Professional life involves romantic or beautiful environments; the native may marry someone met through career.",
+    "healthEffect": "Stress from maintaining public image; knee issues and weight management challenges from professional entertaining."
+  },
+  {
+    "planet": "Venus",
+    "house": 11,
+    "interpretation": "Gains through women, luxury, art, and social connections are abundant. The native fulfills desires for comfort and beauty easily. Friendships with wealthy and artistic people bring opportunities.",
+    "careerEffect": "High income from creative industries, fashion networks, luxury goods, beauty services, or artistic ventures.",
+    "relationshipEffect": "Rich social life with beautiful and wealthy friends; elder sisters or female friends are especially supportive.",
+    "healthEffect": "Generally good health; ankle and calf sensitivity and overindulgence in social settings affecting weight."
+  },
+  {
+    "planet": "Venus",
+    "house": 12,
+    "interpretation": "Venus enjoys the 12th house, bringing pleasures of the bed, foreign luxury, and spiritual devotion. Expenditure on comfort and beauty is high but satisfying. The native may live abroad in luxurious settings.",
+    "careerEffect": "Career in luxury hospitality abroad, spiritual retreat management, international fashion, or foreign entertainment.",
+    "relationshipEffect": "Secret love affairs and hidden pleasures; the native may find their true love in foreign lands or spiritual settings.",
+    "healthEffect": "Eye strain and feet sensitivity; reproductive health issues and sleep quality affected by indulgent lifestyle."
+  },
+  {
+    "planet": "Saturn",
+    "house": 1,
+    "interpretation": "The native is disciplined, serious, and hardworking but life begins with struggles and delays. Physical appearance may be lean or aged beyond years. Success comes late through persistent effort and the native develops strong character through adversity.",
+    "careerEffect": "Success in administration, labor management, mining, agriculture, law, or any career requiring patience and endurance.",
+    "relationshipEffect": "The native appears cold and distant in relationships; loneliness in early life teaches self-reliance.",
+    "healthEffect": "Weak constitution in childhood improving with age; bone and joint problems, chronic pain, and vata-related disorders."
+  },
+  {
+    "planet": "Saturn",
+    "house": 2,
+    "interpretation": "Wealth accumulation is slow and comes through hard work and savings. Speech is measured, sometimes harsh or pessimistic. Family life faces restrictions and the native may feel financially insecure despite steady earnings.",
+    "careerEffect": "Income from labor-intensive work, mining, iron and steel, agriculture, or government clerical positions.",
+    "relationshipEffect": "Family relationships are strained by financial worries; the native's serious demeanor creates distance with family members.",
+    "healthEffect": "Dental problems, facial skin issues, and speech difficulties; eye diseases and poor diet in early life."
+  },
+  {
+    "planet": "Saturn",
+    "house": 3,
+    "interpretation": "The native is courageous through endurance rather than aggression. Younger siblings may face hardships or the relationship is distant. Communication is careful and deliberate, and the native succeeds through patient, systematic effort.",
+    "careerEffect": "Success in writing serious or technical content, administrative communication, postal services, or manual crafts.",
+    "relationshipEffect": "Distant or strained relationship with younger siblings; the native is a reliable but emotionally reserved communicator.",
+    "healthEffect": "Shoulder and arm stiffness; hearing issues and respiratory problems, especially in cold weather."
+  },
+  {
+    "planet": "Saturn",
+    "house": 4,
+    "interpretation": "Domestic happiness is delayed or denied and the native may live away from home. The mother may suffer health issues or the relationship is burdened. Property is acquired late in life after much struggle.",
+    "careerEffect": "Career in construction, mining, heavy machinery, old buildings restoration, or government land administration.",
+    "relationshipEffect": "Emotional coldness at home; the mother's suffering weighs on the native and creates a sense of duty over joy.",
+    "healthEffect": "Heart heaviness, chronic chest issues, and emotional depression; the native carries a deep inner sadness."
+  },
+  {
+    "planet": "Saturn",
+    "house": 5,
+    "interpretation": "Children are delayed or few, and the native faces obstacles in education and creative expression. Speculation and gambling result in losses. However, deep disciplined study of traditional subjects brings eventual mastery.",
+    "careerEffect": "Success in traditional education, ancient studies, archaeology, serious literature, or disciplined investment after age 35.",
+    "relationshipEffect": "Romantic life is restricted; the native may marry late or find love only after considerable disappointment.",
+    "healthEffect": "Stomach and digestive problems; children's health may cause anxiety, and the native tends toward depression."
+  },
+  {
+    "planet": "Saturn",
+    "house": 6,
+    "interpretation": "Saturn excels in this house of enemies and disease, giving the native victory over all opposition through endurance. The native is an exceptional worker who defeats competitors through sheer persistence. Service-oriented careers bring steady advancement.",
+    "careerEffect": "Outstanding success in labor law, healthcare administration, military logistics, factory management, or government service.",
+    "relationshipEffect": "The native overcomes rivals through patience; relationships with subordinates and service workers are dutiful.",
+    "healthEffect": "Chronic but manageable health conditions; the native develops strong immunity through overcoming illness early in life."
+  },
+  {
+    "planet": "Saturn",
+    "house": 7,
+    "interpretation": "Marriage is delayed and the spouse may be older, serious, or from a lower socioeconomic background. The partnership is based on duty rather than passion. Business partnerships require patience but are eventually stable.",
+    "careerEffect": "Slow but stable success in partnerships; career in law, contracts, labor relations, or elder care services.",
+    "relationshipEffect": "Marriage is practical and duty-bound; the spouse is hardworking but may bring heaviness to the relationship.",
+    "healthEffect": "Lower abdominal issues, urinary problems, and reproductive system slowness; chronic lower back pain."
+  },
+  {
+    "planet": "Saturn",
+    "house": 8,
+    "interpretation": "Long life through endurance is indicated, though chronic diseases may plague the native. Research into death, karma, and occult brings deep wisdom. Inheritance may come through dispute or delay.",
+    "careerEffect": "Career in insurance, mining underground, archaeology, mortuary science, or chronic disease management.",
+    "relationshipEffect": "Deep karmic bonds with partner; the native faces severe transformative experiences that reshape relationships.",
+    "healthEffect": "Chronic diseases of the reproductive system, piles, and bone disorders; slow recovery from illness and surgical complications."
+  },
+  {
+    "planet": "Saturn",
+    "house": 9,
+    "interpretation": "Religious inclination is orthodox and traditional, with devotion to ancient practices. The father may suffer or the relationship is burdened by duty. Fortune comes late but is enduring once established.",
+    "careerEffect": "Success in traditional law, ancient religious studies, government judicial services, or charity administration.",
+    "relationshipEffect": "Relationship with father is burdened by duty or distance; the native respects tradition but may feel restricted by it.",
+    "healthEffect": "Hip and thigh problems; stiffness in joints during travel and chronic conditions worsening with age."
+  },
+  {
+    "planet": "Saturn",
+    "house": 10,
+    "interpretation": "Saturn in its own house brings exceptional career success through hard work and discipline, though recognition comes only after years of effort. The native rises to positions of great authority and power through persistence. Government and administrative careers are especially favored.",
+    "careerEffect": "Highest positions in government, administration, judiciary, mining, construction, or industrial management after prolonged effort.",
+    "relationshipEffect": "Career dominates life; the native may sacrifice personal happiness for professional achievement.",
+    "healthEffect": "Knee problems and bone density issues; chronic work-related stress affecting the skeletal system."
+  },
+  {
+    "planet": "Saturn",
+    "house": 11,
+    "interpretation": "Gains come slowly but surely, building a stable financial foundation over time. The native has few but loyal friends, often older or more experienced. Desires are fulfilled late in life through disciplined effort.",
+    "careerEffect": "Steady income growth through large organizations, government projects, or systematic investment over decades.",
+    "relationshipEffect": "Friendships are few but deep and lasting; elder siblings may face hardships or the relationship is based on duty.",
+    "healthEffect": "Circulatory problems in legs and chronic ankle or calf issues; hearing difficulties may develop with age."
+  },
+  {
+    "planet": "Saturn",
+    "house": 12,
+    "interpretation": "Expenses are heavy and the native may face confinement in hospitals, prisons, or foreign lands. Spiritual detachment comes through suffering and the native develops deep meditative abilities. Sleep is disturbed by worry.",
+    "careerEffect": "Career in foreign lands, prison administration, hospital management, ashram work, or isolated research positions.",
+    "relationshipEffect": "The native feels isolated and burdened in relationships; separation from loved ones due to duty or confinement.",
+    "healthEffect": "Feet problems, insomnia, and chronic pain; hospitalization for chronic conditions and mental health struggles."
+  },
+  {
+    "planet": "Rahu",
+    "house": 1,
+    "interpretation": "The native has an unconventional personality with an obsessive drive for self-transformation. Foreign influences strongly shape identity and the native may appear mysterious or unusual. Ambition is intense but direction may lack clarity.",
+    "careerEffect": "Success in technology, foreign companies, unconventional careers, media, or any field breaking social norms.",
+    "relationshipEffect": "The native attracts unusual partners and may form relationships across cultural or social boundaries.",
+    "healthEffect": "Mysterious or hard-to-diagnose ailments; susceptibility to poisons, allergies, and psychosomatic disorders."
+  },
+  {
+    "planet": "Rahu",
+    "house": 2,
+    "interpretation": "Wealth comes through unconventional means, foreign sources, or deceptive practices. Speech can be manipulative or exaggerated. Family life is disrupted by unusual circumstances and the native's relationship with food may be erratic.",
+    "careerEffect": "Income from foreign trade, technology, cryptocurrency, gambling, or unconventional financial instruments.",
+    "relationshipEffect": "Family dynamics are unusual or disrupted; the native may come from a mixed or unconventional family background.",
+    "healthEffect": "Oral health issues and food-related allergies; speech impediments or unusual vocal qualities; toxin sensitivity."
+  },
+  {
+    "planet": "Rahu",
+    "house": 3,
+    "interpretation": "Tremendous courage and ambition in communication drive the native toward media and technology. The native is a bold communicator who may use unconventional or provocative methods. Siblings may be unconventional or the relationship is complicated.",
+    "careerEffect": "Outstanding success in media, technology, social media, advertising, or unconventional communication platforms.",
+    "relationshipEffect": "Complicated relationship with siblings; the native communicates boldly and sometimes manipulatively.",
+    "healthEffect": "Nerve-related problems in arms and shoulders; anxiety disorders and compulsive communication habits."
+  },
+  {
+    "planet": "Rahu",
+    "house": 4,
+    "interpretation": "Domestic life is unusual or disrupted, with the native possibly living in foreign lands away from homeland. The mother may be unconventional or the relationship is complicated. Property comes through unusual means or foreign connections.",
+    "careerEffect": "Success in foreign real estate, technology companies from home, or unconventional property development.",
+    "relationshipEffect": "Disrupted family life; the native may feel rootless or constantly seeking a place to belong.",
+    "healthEffect": "Heart palpitations from anxiety, chest tightness, and mental restlessness affecting domestic peace."
+  },
+  {
+    "planet": "Rahu",
+    "house": 5,
+    "interpretation": "The native has an obsessive approach to creativity, speculation, and romance. Children may be born under unusual circumstances or the relationship with them is complicated. Intelligence is sharp but unorthodox.",
+    "careerEffect": "Success in speculation, technology startups, film making, gambling, or unconventional creative ventures.",
+    "relationshipEffect": "Intense and obsessive romantic attachments; love affairs with people from different backgrounds or social taboos.",
+    "healthEffect": "Stomach disorders from irregular eating; children's health may have unusual complications; mental obsessions affect well-being."
+  },
+  {
+    "planet": "Rahu",
+    "house": 6,
+    "interpretation": "Rahu thrives in the 6th house, giving victory over enemies through cunning and unconventional strategies. The native excels in competitive environments and defeats powerful opponents. Service in technology or foreign organizations brings success.",
+    "careerEffect": "Excellent for technology, foreign military service, pharmaceutical industry, or unconventional healing practices.",
+    "relationshipEffect": "The native dominates rivals through clever manipulation; enemies are confused and unable to counter the native's strategies.",
+    "healthEffect": "Unusual or hard-to-diagnose diseases; food allergies and sensitivity to environmental toxins, but strong recovery ability."
+  },
+  {
+    "planet": "Rahu",
+    "house": 7,
+    "interpretation": "Marriage partner may be from a foreign culture, different religion, or unconventional background. The relationship is intense and obsessive but may face societal opposition. Business partnerships with foreign entities are profitable but risky.",
+    "careerEffect": "Success in international business partnerships, import-export, diplomatic relations, or cross-cultural consulting.",
+    "relationshipEffect": "Marriage to someone from a different background; relationship is passionate but unconventional, facing social scrutiny.",
+    "healthEffect": "Reproductive system issues and urinary tract problems; partner's health may have unusual complications."
+  },
+  {
+    "planet": "Rahu",
+    "house": 8,
+    "interpretation": "Intense fascination with the occult, death, and hidden knowledge. The native may experience sudden transformative events that completely change life direction. Inheritance comes through unusual or controversial means.",
+    "careerEffect": "Career in research, occult sciences, espionage, forensics, technology R&D, or underground operations.",
+    "relationshipEffect": "Deep obsessive bonds and fear of betrayal; relationships undergo sudden and dramatic transformations.",
+    "healthEffect": "Risk of poisoning, mysterious chronic ailments, and psychological disorders; sudden health crises that are hard to diagnose."
+  },
+  {
+    "planet": "Rahu",
+    "house": 9,
+    "interpretation": "The native rebels against traditional religion and seeks unconventional spiritual paths. The father may be foreign, unconventional, or absent. Fortune comes through foreign connections and breaking away from orthodox beliefs.",
+    "careerEffect": "Success in foreign universities, international law, unconventional religious movements, or technology-driven education.",
+    "relationshipEffect": "Conflict with father over beliefs; the native seeks teachers and gurus outside conventional traditions.",
+    "healthEffect": "Hip and thigh issues during foreign travel; psychological stress from spiritual confusion and identity crisis."
+  },
+  {
+    "planet": "Rahu",
+    "house": 10,
+    "interpretation": "Powerful ambition drives the native to achieve extraordinary career heights through unconventional means. Fame and recognition come through technology, foreign connections, or breaking professional norms. The rise may be sudden and dramatic.",
+    "careerEffect": "Exceptional success in technology, politics, foreign corporations, media, or any field where convention is disrupted.",
+    "relationshipEffect": "Career obsession may overshadow personal life; the native's professional persona may differ greatly from private self.",
+    "healthEffect": "Stress-related disorders from relentless ambition; knee and joint problems from the pressure of maintaining status."
+  },
+  {
+    "planet": "Rahu",
+    "house": 11,
+    "interpretation": "Massive gains through technology, foreign connections, and unconventional networks. The native has influential friends from diverse backgrounds who open doors to unusual opportunities. Desires are fulfilled through clever networking.",
+    "careerEffect": "Very high income from technology, international networks, speculative ventures, or unconventional business models.",
+    "relationshipEffect": "Diverse friend circle from different cultures and backgrounds; relationships with elder siblings may be complicated.",
+    "healthEffect": "Circulation issues in legs and hearing problems; anxiety from excessive desires and fear of losing gained wealth."
+  },
+  {
+    "planet": "Rahu",
+    "house": 12,
+    "interpretation": "Foreign residence and spiritual seeking through unconventional paths are strongly indicated. Expenses are high on foreign travel and hidden pleasures. The native may develop psychic abilities or be drawn to tantric practices.",
+    "careerEffect": "Career in foreign lands, multinational corporations, spiritual tourism, or technology work requiring isolation.",
+    "relationshipEffect": "Secret relationships with people from foreign backgrounds; the native feels emotionally disconnected from immediate surroundings.",
+    "healthEffect": "Sleep disorders and vivid nightmares; eye problems, especially left eye; susceptibility to intoxicants and addictive behaviors."
+  },
+  {
+    "planet": "Ketu",
+    "house": 1,
+    "interpretation": "The native has a detached, spiritual personality with little interest in material self-presentation. Past life wisdom gives an intuitive and mystical aura. The native appears otherworldly and may struggle with identity and self-confidence.",
+    "careerEffect": "Success in spiritual healing, alternative medicine, research, programming, or any field requiring deep introspection.",
+    "relationshipEffect": "The native appears emotionally unavailable; relationships suffer from the native's detachment and lack of worldly ambition.",
+    "healthEffect": "Mysterious ailments that resist conventional treatment; skin disorders, allergies, and vulnerability to psychosomatic illness."
+  },
+  {
+    "planet": "Ketu",
+    "house": 2,
+    "interpretation": "Detachment from wealth and family traditions marks this placement. Speech may be unconventional, cryptic, or spiritually profound. The native cares little for accumulation and may give away wealth impulsively.",
+    "careerEffect": "Income from spiritual services, alternative healing, antique dealing, or work involving past knowledge and traditions.",
+    "relationshipEffect": "Detachment from family creates emotional distance; the native may feel like an outsider in their own family.",
+    "healthEffect": "Dental problems and speech issues; food sensitivities and tendency toward fasting or irregular eating patterns."
+  },
+  {
+    "planet": "Ketu",
+    "house": 3,
+    "interpretation": "Communication style is unusual, cryptic, or spiritually oriented. The native has past-life skills in writing or arts that emerge naturally. Younger siblings may be spiritually inclined or the relationship is marked by karmic patterns.",
+    "careerEffect": "Success in spiritual writing, coding, abstract research, alternative media, or mystical arts.",
+    "relationshipEffect": "Karmic relationship with siblings; communication is intuitive rather than logical, sometimes creating misunderstandings.",
+    "healthEffect": "Nerve issues in arms and hands; hearing problems and a tendency toward mental withdrawal from communication."
+  },
+  {
+    "planet": "Ketu",
+    "house": 4,
+    "interpretation": "The native is emotionally detached from home and homeland, often feeling like a wanderer. The mother may be spiritually inclined or there is karmic separation from her. Inner peace comes through spiritual practice rather than material comfort.",
+    "careerEffect": "Career involving spiritual properties, ashram management, remote work, or positions disconnected from homeland.",
+    "relationshipEffect": "Emotional detachment from home life; the native seeks spiritual peace rather than domestic comfort.",
+    "healthEffect": "Heart irregularities and chest discomfort from spiritual practices; emotional emptiness masking as physical symptoms."
+  },
+  {
+    "planet": "Ketu",
+    "house": 5,
+    "interpretation": "The native possesses intuitive intelligence and past-life wisdom in creative or spiritual matters. Children may be karmically significant or there are complications with childbirth. Speculation is guided by intuition rather than analysis.",
+    "careerEffect": "Success in spiritual teaching, intuitive arts, alternative education, mantra healing, or mystical creative expression.",
+    "relationshipEffect": "Past-life karmic connections in romance; the native may feel detached from romantic pursuits and focuses on spiritual love.",
+    "healthEffect": "Stomach and digestive issues from irregular habits; children's health may present unusual patterns requiring alternative care."
+  },
+  {
+    "planet": "Ketu",
+    "house": 6,
+    "interpretation": "Ketu excels in destroying enemies and disease through spiritual means. The native has natural healing abilities and overcomes obstacles through detachment and surrender. Past-life merit protects from enemies.",
+    "careerEffect": "Success in alternative medicine, spiritual healing, energy work, veterinary homeopathy, or service to the spiritually inclined.",
+    "relationshipEffect": "Enemies dissolve on their own; the native's detachment neutralizes opposition without direct confrontation.",
+    "healthEffect": "Strong immunity through spiritual practices; unusual healing abilities but susceptibility to mysterious infections."
+  },
+  {
+    "planet": "Ketu",
+    "house": 7,
+    "interpretation": "Marriage may be delayed, unconventional, or spiritually oriented. The native seeks a partner with spiritual depth rather than worldly success. Past-life karmic debts play out through the marriage partner.",
+    "careerEffect": "Business partnerships based on spiritual or karmic connections rather than commercial logic.",
+    "relationshipEffect": "Deeply karmic marriage; the spouse may be spiritually inclined or the relationship involves completing past-life patterns.",
+    "healthEffect": "Lower abdominal and reproductive system issues; the native may adopt alternative approaches to marital and physical intimacy."
+  },
+  {
+    "planet": "Ketu",
+    "house": 8,
+    "interpretation": "Powerful placement for spiritual transformation and occult mastery. The native has natural ability in tantra, healing, and understanding death. Past-life spiritual accomplishments give deep intuitive wisdom about hidden realms.",
+    "careerEffect": "Success in spiritual research, tantric healing, past-life regression therapy, hospice care, or energy medicine.",
+    "relationshipEffect": "Intense spiritual bonds with deep karmic significance; the native may experience sudden spiritual awakenings through relationships.",
+    "healthEffect": "Mysterious chronic conditions that respond to alternative treatment; spiritual crises manifesting as physical symptoms."
+  },
+  {
+    "planet": "Ketu",
+    "house": 9,
+    "interpretation": "The native has deep past-life spiritual wisdom and may be drawn to ancient traditions. Formal religion feels restrictive and the native seeks direct spiritual experience. The father may be spiritually inclined or absent.",
+    "careerEffect": "Success in spiritual teaching, ancient scripture research, pilgrimage guiding, or past-life karmic counseling.",
+    "relationshipEffect": "Complicated relationship with father and conventional gurus; the native's spiritual path is solitary and self-directed.",
+    "healthEffect": "Hip and lower back problems from meditation postures; spiritual practices may trigger past-life physical memories."
+  },
+  {
+    "planet": "Ketu",
+    "house": 10,
+    "interpretation": "The native is detached from career ambitions and worldly status. Professional life may seem directionless from a worldly perspective, but the native follows a deeper karmic calling. Sudden changes in career direction are common.",
+    "careerEffect": "Career in spiritual organizations, alternative healing practices, research, or roles that serve a higher purpose beyond material gain.",
+    "relationshipEffect": "Professional detachment may frustrate family members who expect worldly ambition; the native follows an inner compass.",
+    "healthEffect": "Knee and joint issues; the native may neglect physical health while pursuing spiritual or abstract goals."
+  },
+  {
+    "planet": "Ketu",
+    "house": 11,
+    "interpretation": "Detachment from material gains and social networks. The native has few friends but those connections are deeply spiritual. Desires are minimal as the native seeks liberation rather than worldly fulfillment.",
+    "careerEffect": "Income from spiritual services, donations, alternative networks, or work that prioritizes purpose over profit.",
+    "relationshipEffect": "Few but spiritually significant friendships; elder siblings may be spiritual or the relationship involves karmic completion.",
+    "healthEffect": "Circulation problems in legs and hearing sensitivity; the native may develop health issues from excessive detachment from material self-care."
+  },
+  {
+    "planet": "Ketu",
+    "house": 12,
+    "interpretation": "This is Ketu's most powerful placement for spiritual liberation and moksha. The native naturally gravitates toward meditation, seclusion, and transcendence. Past-life spiritual accomplishments culminate in this lifetime's quest for final liberation.",
+    "careerEffect": "Career in ashrams, monasteries, spiritual retreat centers, meditation teaching, or charitable institutions serving the destitute.",
+    "relationshipEffect": "Deep detachment from worldly relationships; the native may choose renunciation or find that worldly bonds dissolve naturally.",
+    "healthEffect": "Feet problems and sleep disturbances; the native may heal through spiritual means but neglects conventional medical care."
+  }
+]

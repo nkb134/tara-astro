@@ -1,0 +1,110 @@
+[
+  {
+    "planet": "Sun",
+    "planetHi": "Surya",
+    "afflictions": ["debilitated", "combust", "weak"],
+    "mantra": { "text": "Om Hraam Hreem Hraum Sah Suryaya Namaha", "count": 108, "day": "Sunday", "time": "sunrise" },
+    "gemstone": { "primary": "Ruby (Manikam)", "budgetAlt": "Red Garnet (Tamra)", "finger": "Ring finger", "metal": "Gold/Copper" },
+    "fasting": { "day": "Sunday", "food": "Wheat, jaggery, saffron" },
+    "donation": { "items": "Wheat, jaggery, copper vessel, red flowers", "day": "Sunday", "to": "Temple or elderly person" },
+    "color": "Red, saffron, orange",
+    "deity": "Lord Surya, Lord Rama",
+    "rudraksham": "1 Mukhi or 12 Mukhi"
+  },
+  {
+    "planet": "Moon",
+    "planetHi": "Chandra",
+    "afflictions": ["debilitated", "weak", "afflicted by Rahu/Ketu"],
+    "mantra": { "text": "Om Shraam Shreem Shraum Sah Chandraya Namaha", "count": 108, "day": "Monday", "time": "evening" },
+    "gemstone": { "primary": "Pearl (Muthu/Moti)", "budgetAlt": "Moonstone (Chandrakantam)", "finger": "Little finger", "metal": "Silver" },
+    "fasting": { "day": "Monday", "food": "Rice, milk, white items" },
+    "donation": { "items": "Rice, white cloth, silver, milk, curd", "day": "Monday", "to": "Women or Shiva temple" },
+    "color": "White, cream, silver",
+    "deity": "Lord Shiva, Goddess Parvati",
+    "rudraksham": "2 Mukhi"
+  },
+  {
+    "planet": "Mars",
+    "planetHi": "Mangal",
+    "afflictions": ["debilitated", "manglik dosha", "weak"],
+    "mantra": { "text": "Om Kraam Kreem Kraum Sah Bhaumaya Namaha", "count": 108, "day": "Tuesday", "time": "morning" },
+    "gemstone": { "primary": "Red Coral (Pavazham/Moonga)", "budgetAlt": "Carnelian", "finger": "Ring finger", "metal": "Gold/Copper" },
+    "fasting": { "day": "Tuesday", "food": "Masoor dal (red lentils), jaggery" },
+    "donation": { "items": "Red lentils, jaggery, red cloth, copper", "day": "Tuesday", "to": "Hanuman temple" },
+    "color": "Red, coral, scarlet",
+    "deity": "Lord Hanuman, Lord Kartikeya/Murugan",
+    "rudraksham": "3 Mukhi"
+  },
+  {
+    "planet": "Mercury",
+    "planetHi": "Budh",
+    "afflictions": ["debilitated", "combust", "weak"],
+    "mantra": { "text": "Om Braam Breem Braum Sah Budhaya Namaha", "count": 108, "day": "Wednesday", "time": "morning" },
+    "gemstone": { "primary": "Emerald (Marakatham/Panna)", "budgetAlt": "Green Tourmaline / Peridot", "finger": "Little finger", "metal": "Gold" },
+    "fasting": { "day": "Wednesday", "food": "Green moong dal, green vegetables" },
+    "donation": { "items": "Green moong dal, green cloth, bronze vessels, fruits", "day": "Wednesday", "to": "Students or educational institution" },
+    "color": "Green",
+    "deity": "Lord Vishnu, Lord Ganesha",
+    "rudraksham": "4 Mukhi"
+  },
+  {
+    "planet": "Jupiter",
+    "planetHi": "Guru",
+    "afflictions": ["debilitated", "retrograde", "weak"],
+    "mantra": { "text": "Om Graam Greem Graum Sah Gurave Namaha", "count": 108, "day": "Thursday", "time": "morning" },
+    "gemstone": { "primary": "Yellow Sapphire (Pushparagam/Pukhraj)", "budgetAlt": "Citrine / Yellow Topaz", "finger": "Index finger", "metal": "Gold" },
+    "fasting": { "day": "Thursday", "food": "Chana dal, banana, turmeric rice" },
+    "donation": { "items": "Yellow cloth, turmeric, chana dal, bananas, gold", "day": "Thursday", "to": "Brahmins, teachers, or Vishnu temple" },
+    "color": "Yellow, golden, saffron",
+    "deity": "Lord Vishnu, Dakshinamoorthy, Lord Brihaspati",
+    "rudraksham": "5 Mukhi"
+  },
+  {
+    "planet": "Venus",
+    "planetHi": "Shukra",
+    "afflictions": ["debilitated", "combust", "weak"],
+    "mantra": { "text": "Om Draam Dreem Draum Sah Shukraya Namaha", "count": 108, "day": "Friday", "time": "morning" },
+    "gemstone": { "primary": "Diamond (Vairam/Heera)", "budgetAlt": "White Sapphire / Zircon", "finger": "Middle or ring finger", "metal": "Silver/Platinum" },
+    "fasting": { "day": "Friday", "food": "Kheer, white rice, sugar items" },
+    "donation": { "items": "White rice, sugar, white cloth, perfume, silver", "day": "Friday", "to": "Women, Lakshmi/Devi temple" },
+    "color": "White, cream, pastel shades",
+    "deity": "Goddess Lakshmi, Goddess Mahalakshmi",
+    "rudraksham": "6 Mukhi"
+  },
+  {
+    "planet": "Saturn",
+    "planetHi": "Shani",
+    "afflictions": ["sade sati", "dhaiya", "debilitated", "weak"],
+    "mantra": { "text": "Om Praam Preem Praum Sah Shanaischaraya Namaha", "count": 108, "day": "Saturday", "time": "evening" },
+    "gemstone": { "primary": "Blue Sapphire (Neelam)", "budgetAlt": "Amethyst / Iolite", "finger": "Middle finger", "metal": "Iron/Silver" },
+    "fasting": { "day": "Saturday", "food": "Sesame (til), black urad dal, mustard oil" },
+    "donation": { "items": "Sesame oil, black cloth, iron items, mustard oil, blanket", "day": "Saturday", "to": "Elderly, disabled, or laborers" },
+    "color": "Black, dark blue, navy",
+    "deity": "Lord Hanuman, Shani Dev, Lord Bhairava",
+    "rudraksham": "7 Mukhi or 14 Mukhi"
+  },
+  {
+    "planet": "Rahu",
+    "planetHi": "Rahu",
+    "afflictions": ["in 1st/7th/8th house", "conjunct Moon", "Kaal Sarpa"],
+    "mantra": { "text": "Om Bhram Bhreem Bhraum Sah Rahave Namaha", "count": 108, "day": "Saturday or Wednesday", "time": "during Rahu Kalam" },
+    "gemstone": { "primary": "Hessonite Garnet (Gomedh/Gomed)", "budgetAlt": "Spessartite Garnet", "finger": "Middle finger", "metal": "Silver (mixed with panch-dhatu)" },
+    "fasting": { "day": "Saturday", "food": "Coconut water, radish" },
+    "donation": { "items": "Blue cloth, coconut, mustard seeds, radish, iron", "day": "Saturday", "to": "Sweepers or underprivileged" },
+    "color": "Blue, smoky, electric blue",
+    "deity": "Goddess Durga, Sarpa (snake) deity",
+    "rudraksham": "8 Mukhi"
+  },
+  {
+    "planet": "Ketu",
+    "planetHi": "Ketu",
+    "afflictions": ["in 1st/4th/7th house", "conjunct Moon", "Kaal Sarpa"],
+    "mantra": { "text": "Om Sraam Sreem Sraum Sah Ketave Namaha", "count": 108, "day": "Tuesday or Saturday", "time": "evening" },
+    "gemstone": { "primary": "Cat's Eye (Vaiduryam/Lehsunia)", "budgetAlt": "Tiger's Eye", "finger": "Ring finger", "metal": "Silver (mixed with panch-dhatu)" },
+    "fasting": { "day": "Tuesday", "food": "Seven grains (sapta dhanya)" },
+    "donation": { "items": "Blanket, grey cloth, mixed grains, dog food", "day": "Tuesday or Saturday", "to": "Spiritual institution or ashram" },
+    "color": "Grey, brown, smoky",
+    "deity": "Lord Ganesha, Chitragupta",
+    "rudraksham": "9 Mukhi"
+  }
+]

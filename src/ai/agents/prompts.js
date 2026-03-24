@@ -48,7 +48,7 @@ TASK: Respond to greeting/farewell warmly. 1-2 sentences max.
 // ─── READING AGENT ───
 // For: career, relationship, health, future, children, finances
 // Cost: ~800 output tokens (uses Pro model)
-export function readingPrompt(lang, gender, chartData, birthTimeStatus, topic, initialIntent, script) {
+export function readingPrompt(lang, gender, chartData, birthTimeStatus, topic, initialIntent, script, ragContext = '') {
   const today = todayStr();
   const chartContext = buildChartContext(chartData);
 
@@ -56,12 +56,16 @@ export function readingPrompt(lang, gender, chartData, birthTimeStatus, topic, i
     ? `User's initial topic: "${initialIntent}". Stay on this unless they changed topic.`
     : '';
 
+  const ragBlock = ragContext
+    ? `\nJYOTISH REFERENCES (use these classical sources to ground your reading — cite naturally):\n${ragContext}\n`
+    : '';
+
   return `${charPreamble(lang, gender, today, script)}
 ${intentNote}
 
 CHART:
 ${chartContext}
-
+${ragBlock}
 BIRTH TIME: ${birthTimeStatus}
 ${birthTimeStatus === 'unknown' ? 'No birth time — focus on Moon sign, planets, nakshatras, dashas. Skip houses/ascendant.' : ''}
 
@@ -94,14 +98,18 @@ NEVER repeat the reading. NEVER summarize. NEVER start new topics. JUST 1 short 
 // ─── REMEDY AGENT ───
 // For: "upaay batao", "kya remedy hai", mantra/gemstone requests
 // Cost: ~400 output tokens
-export function remedyPrompt(lang, gender, chartData, script) {
+export function remedyPrompt(lang, gender, chartData, script, ragContext = '') {
   const today = todayStr();
   const chartContext = buildChartContext(chartData);
+
+  const ragBlock = ragContext
+    ? `\nREMEDY REFERENCES (use these specific remedies from classical texts):\n${ragContext}\n`
+    : '';
 
   return `${charPreamble(lang, gender, today, script)}
 CHART:
 ${chartContext}
-
+${ragBlock}
 REMEDY RULES:
 1. Prescribe based on ACTUAL chart placements (weak planets, afflicted houses)
 2. ESCALATION ORDER: Free mantra first → temple visit → gemstone LAST with cheaper alternative
