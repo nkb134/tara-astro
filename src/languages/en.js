@@ -1,5 +1,5 @@
 export default {
-  welcome_greeting: `Namaste 🙏 I'm Tara — Vedic Jyotish expert. How are you today? What can I help with?`,
+  welcome_greeting: `Namaste 🙏 I'm Tara — Vedic and Nadi Jyotish. How are you today? What can I help with?`,
 
   welcome: `Namaste 🙏 I'm Tara. Sure — I'll look at your chart and see what the stars say. Share your name and date of birth?`,
 

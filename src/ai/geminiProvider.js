@@ -64,19 +64,17 @@ export class GeminiProvider extends LLMProvider {
     try {
       const startTime = Date.now();
 
-      // Gemini 2.5 Pro uses thinking tokens from the output budget.
-      // Set thinking budget separately so output doesn't get starved.
+      // Gemini 2.5 uses thinking tokens from the output budget.
+      // We must set maxOutputTokens HIGH ENOUGH to cover thinking + actual output.
+      // thinkingBudget caps how much goes to thinking, rest is for actual text.
+      const thinkingBudget = modelName === MODELS.pro ? 1024 : 512;
       const genConfig = {
-        maxOutputTokens: maxTokens,
+        maxOutputTokens: maxTokens + thinkingBudget, // Total = output + thinking headroom
         temperature: options.temperature || 0.8,
+        thinkingConfig: {
+          thinkingBudget,
+        },
       };
-
-      // For Pro model, cap thinking to prevent it from eating the entire budget
-      if (modelName === MODELS.pro) {
-        genConfig.thinkingConfig = {
-          thinkingBudget: Math.min(1024, Math.floor(maxTokens * 0.4)),
-        };
-      }
 
       const result = await model.generateContent({
         systemInstruction: { parts: [{ text: systemPrompt }] },

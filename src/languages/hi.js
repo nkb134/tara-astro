@@ -1,6 +1,6 @@
 export default {
   // Just greeting (hi/hello/namaste) — chat first, don't ask data yet
-  welcome_greeting: `Namaste 🙏 Main Tara hoon — Vedic Jyotish mein expert. Kaise hain aap aaj? Bataiye kisme madad karun?`,
+  welcome_greeting: `Namaste 🙏 Main Tara hoon — Vedic aur Nadi Jyotish. Kaise hain aap aaj? Bataiye kisme madad karun?`,
 
   // Topic-specific intros — ask for data
   welcome: `Namaste 🙏 Main Tara hoon. Haan zaroor madad karungi — main kundli se dekhungi ki stars kya keh rahe hain. Bas apna naam aur janam tithi bata dijiye?`,

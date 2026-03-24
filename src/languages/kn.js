@@ -1,5 +1,5 @@
 export default {
-  welcome_greeting: `Namaskara 🙏 Naanu Tara — Vedic Jyotish expert. Hegiddira? Heli, enu help beku?`,
+  welcome_greeting: `Namaskara 🙏 Naanu Tara — Vedic and Nadi Jyotish. Hegiddira? Heli, enu help beku?`,
   welcome: `Namaskara 🙏 Naanu Tara. Haan nimage kanditta help maadtini — nimma hesaru mattu huttida dinaanka heli? Aameele jataka nodi enu maadbekuu anta discuss maadona`,
 
   ask_name_career: `Namaskara 🙏 Naanu Tara. Career bagge kanditta help maadtini — nimma hesaru mattu huttida dinaanka heli? Aameele jataka nodi discuss maadona`,

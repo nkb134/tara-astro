@@ -1,5 +1,5 @@
 export default {
-  welcome_greeting: `Vanakkam 🙏 Naan Tara — Vedic Jyotish expert. Eppadi irukkeenga? Sollunga, enna help venum?`,
+  welcome_greeting: `Vanakkam 🙏 Naan Tara — Vedic and Nadi Jyotish. Eppadi irukkeenga? Sollunga, enna help venum?`,
 
   welcome: `Vanakkam 🙏 Naan Tara. Kandipaaga help pannuven — jathagam paarthu paarkiren. Ungal peru-um pirandha theadhi-yum sollunga?`,
 

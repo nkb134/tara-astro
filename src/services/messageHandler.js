@@ -164,10 +164,17 @@ async function processMessage(whatsappId, displayName, messageText, messageId) {
       }
     }
 
-    // Route to handler
-    if (!user.is_onboarded) {
+    // Route to handler — NEVER re-enter onboarding if user has chart data
+    if (!user.is_onboarded && !user.chart_data) {
       await handleOnboardingFlow(whatsappId, user, messageText, messageId, startTime);
       return;
+    }
+
+    // Safety: if user has chart_data but is_onboarded is somehow false, fix it
+    if (!user.is_onboarded && user.chart_data) {
+      await updateUser(user.id, { is_onboarded: true, onboarding_step: 'onboarded' }).catch(() => {});
+      user.is_onboarded = true;
+      logger.warn({ userId: user.id }, 'Fixed inconsistent onboarding state — had chart_data but is_onboarded=false');
     }
 
     if (user.is_onboarded && !user.chart_summary && user.chart_data) {

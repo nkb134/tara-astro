@@ -13,6 +13,7 @@ export const AGENTS = {
   FOLLOWUP: 'followup',       // "okay", "achha", short acknowledgments — flash, minimal
   REMEDY: 'remedy',           // Specific remedy request — flash, prescriptive
   CLARIFY: 'clarify',         // Need more info from user — flash, short
+  DEFLECT: 'deflect',         // "aap bot ho?", "AI hai kya", meta-questions about Tara — flash, witty
   CRISIS: 'crisis',           // Self-harm/suicide — NO LLM, hardcoded response
   GATE: 'gate',               // Free tier exceeded — redirect to payment
   OFF_TOPIC: 'off_topic',     // Non-astrology — flash, gentle redirect
@@ -21,12 +22,13 @@ export const AGENTS = {
 // Token budgets per agent (maxOutputTokens)
 export const TOKEN_BUDGETS = {
   [AGENTS.GREETING]: 200,
-  [AGENTS.READING]: 1500,     // Was 800 — truncating readings mid-sentence
+  [AGENTS.READING]: 1500,
   [AGENTS.FOLLOWUP]: 150,
-  [AGENTS.REMEDY]: 600,       // Was 400 — need room for specific remedies
+  [AGENTS.REMEDY]: 600,
   [AGENTS.CLARIFY]: 200,
-  [AGENTS.CRISIS]: 0,         // No LLM
-  [AGENTS.GATE]: 0,           // No LLM
+  [AGENTS.DEFLECT]: 200,      // Witty bot-denial
+  [AGENTS.CRISIS]: 0,
+  [AGENTS.GATE]: 0,
   [AGENTS.OFF_TOPIC]: 200,
 };
 
@@ -37,6 +39,7 @@ export const AGENT_MODELS = {
   [AGENTS.FOLLOWUP]: 'flash',
   [AGENTS.REMEDY]: 'flash',
   [AGENTS.CLARIFY]: 'flash',
+  [AGENTS.DEFLECT]: 'flash',
   [AGENTS.OFF_TOPIC]: 'flash',
 };
 
@@ -49,14 +52,18 @@ AGENTS:
 - followup: short acknowledgments like "ok", "achha", "hmm", "samjha", "theek hai", "got it" — these need a brief warm response, NOT a new reading
 - remedy: asking for specific remedies, mantras, gemstones, temple visits, upaay
 - clarify: user's message is ambiguous or you need more info to give a reading
+- deflect: user questioning if Tara is a bot/AI, asking about master prompt, asking how she types so fast, meta-questions about Tara herself
 - crisis: ONLY explicit suicide/self-harm ("marna chahta", "kill myself", "jaan de doon")
-- off_topic: completely unrelated to astrology or life guidance
+- off_topic: completely unrelated to astrology or life guidance (politics, cricket, weather, tech support)
 
 CRITICAL RULES:
 - "ok" / "achha" / "theek hai" after a reading = followup (NOT reading)
 - Questions about career, marriage, children, health = reading (even short ones)
 - "kya upaay hai" / "remedy batao" = remedy
 - Frustrated messages ("kitna time", "jaldi karo") = followup
+- "bot ho kya", "AI hai", "itna fast kaise", "typing nahi dikhta" = deflect (NOT off_topic)
+- User complaining about Tara's responses = followup (NOT off_topic)
+- NEVER classify a message as off_topic if the user is talking about their life/relationships/problems
 
 Return ONLY JSON:
 {"agent":"<agent_type>","language":"<hi|ta|en|te|bn|ml|kn>","topic":"<1-3 word topic>","needs_chart":true/false}`;
@@ -65,12 +72,12 @@ export async function routeMessage(messageText, conversationHistory = []) {
   try {
     const provider = getProvider();
 
-    // Include last 2 messages for context (helps distinguish followup from new topic)
+    // Include last 6 messages for context (prevents topic drift + helps followup detection)
     let contextHint = '';
     if (conversationHistory.length > 0) {
-      const recent = conversationHistory.slice(-2);
-      contextHint = '\n\nRecent context:\n' + recent.map(m =>
-        `${m.role === 'user' ? 'User' : 'Tara'}: ${m.content.substring(0, 100)}`
+      const recent = conversationHistory.slice(-6);
+      contextHint = '\n\nConversation context (last few messages):\n' + recent.map(m =>
+        `${m.role === 'user' ? 'User' : 'Tara'}: ${m.content.substring(0, 150)}`
       ).join('\n');
     }
 

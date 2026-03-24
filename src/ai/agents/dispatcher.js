@@ -13,7 +13,7 @@ import { routeMessage, AGENTS, TOKEN_BUDGETS, AGENT_MODELS } from './router.js';
 import { retrieveJyotishContext } from '../rag.js';
 import {
   greetingPrompt, readingPrompt, followupPrompt,
-  remedyPrompt, clarifyPrompt, offTopicPrompt,
+  remedyPrompt, clarifyPrompt, deflectPrompt, offTopicPrompt,
   CRISIS_RESPONSES, gateResponse,
 } from './prompts.js';
 import { getProvider } from '../geminiProvider.js';
@@ -108,6 +108,9 @@ export async function dispatchToAgent(userMessage, user, conversationHistory = [
       break;
     case AGENTS.CLARIFY:
       systemPrompt = clarifyPrompt(lang, gender, route.topic, script);
+      break;
+    case AGENTS.DEFLECT:
+      systemPrompt = deflectPrompt(lang, gender, script, route.topic);
       break;
     case AGENTS.OFF_TOPIC:
       systemPrompt = offTopicPrompt(lang, gender, script);

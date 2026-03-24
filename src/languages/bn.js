@@ -1,5 +1,5 @@
 export default {
-  welcome_greeting: `Namaskar 🙏 Ami Tara — Vedic Jyotish expert. Kemon achen? Bolun, ki help chai?`,
+  welcome_greeting: `Namaskar 🙏 Ami Tara — Vedic and Nadi Jyotish. Kemon achen? Bolun, ki help chai?`,
   welcome: `Namaskar 🙏 Ami Tara. Haan apnake bilkul help korbo — apnar naam ar jonmo tarik bolun? Tarpor kundli dekhe ki korte hobe seta bujhe nebo`,
 
   ask_name_career: `Namaskar 🙏 Ami Tara. Career niye zaroor help korbo — apnar naam ar jonmo tarik bolun? Tarpor kundli dekhe discuss korbo`,
