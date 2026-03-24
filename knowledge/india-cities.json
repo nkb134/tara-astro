@@ -1,718 +1,4310 @@
 {
-  "delhi": {"lat": 28.6139, "lng": 77.209, "state": "Delhi", "tz": "Asia/Kolkata"},
-  "new delhi": {"lat": 28.6139, "lng": 77.209, "state": "Delhi", "tz": "Asia/Kolkata"},
-  "mumbai": {"lat": 19.076, "lng": 72.8777, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "bombay": {"lat": 19.076, "lng": 72.8777, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "chennai": {"lat": 13.0827, "lng": 80.2707, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "madras": {"lat": 13.0827, "lng": 80.2707, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "kolkata": {"lat": 22.5726, "lng": 88.3639, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "calcutta": {"lat": 22.5726, "lng": 88.3639, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "bengaluru": {"lat": 12.9716, "lng": 77.5946, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "bangalore": {"lat": 12.9716, "lng": 77.5946, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "hyderabad": {"lat": 17.385, "lng": 78.4867, "state": "Telangana", "tz": "Asia/Kolkata"},
-  "ahmedabad": {"lat": 23.0225, "lng": 72.5714, "state": "Gujarat", "tz": "Asia/Kolkata"},
-  "pune": {"lat": 18.5204, "lng": 73.8567, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "poona": {"lat": 18.5204, "lng": 73.8567, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "jaipur": {"lat": 26.9124, "lng": 75.7873, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "lucknow": {"lat": 26.8467, "lng": 80.9462, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "kanpur": {"lat": 26.4499, "lng": 80.3319, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "cawnpore": {"lat": 26.4499, "lng": 80.3319, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "nagpur": {"lat": 21.1458, "lng": 79.0882, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "indore": {"lat": 22.7196, "lng": 75.8577, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "thane": {"lat": 19.2183, "lng": 72.9781, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "bhopal": {"lat": 23.2599, "lng": 77.4126, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "visakhapatnam": {"lat": 17.6868, "lng": 83.2185, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "vizag": {"lat": 17.6868, "lng": 83.2185, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "pimpri-chinchwad": {"lat": 18.6298, "lng": 73.7997, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "patna": {"lat": 25.6093, "lng": 85.1376, "state": "Bihar", "tz": "Asia/Kolkata"},
-  "vadodara": {"lat": 22.3072, "lng": 73.1812, "state": "Gujarat", "tz": "Asia/Kolkata"},
-  "baroda": {"lat": 22.3072, "lng": 73.1812, "state": "Gujarat", "tz": "Asia/Kolkata"},
-  "ghaziabad": {"lat": 28.6692, "lng": 77.4538, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "ludhiana": {"lat": 30.901, "lng": 75.8573, "state": "Punjab", "tz": "Asia/Kolkata"},
-  "agra": {"lat": 27.1767, "lng": 78.0081, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "nashik": {"lat": 19.9975, "lng": 73.7898, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "faridabad": {"lat": 28.4089, "lng": 77.3178, "state": "Haryana", "tz": "Asia/Kolkata"},
-  "meerut": {"lat": 28.9845, "lng": 77.7064, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "rajkot": {"lat": 22.3039, "lng": 70.8022, "state": "Gujarat", "tz": "Asia/Kolkata"},
-  "varanasi": {"lat": 25.3176, "lng": 82.9739, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "benares": {"lat": 25.3176, "lng": 82.9739, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "banaras": {"lat": 25.3176, "lng": 82.9739, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "kashi": {"lat": 25.3176, "lng": 82.9739, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "srinagar": {"lat": 34.0837, "lng": 74.7973, "state": "Jammu & Kashmir", "tz": "Asia/Kolkata"},
-  "aurangabad": {"lat": 19.8762, "lng": 75.3433, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "dhanbad": {"lat": 23.7957, "lng": 86.4304, "state": "Jharkhand", "tz": "Asia/Kolkata"},
-  "amritsar": {"lat": 31.634, "lng": 74.8723, "state": "Punjab", "tz": "Asia/Kolkata"},
-  "navi mumbai": {"lat": 19.033, "lng": 73.0297, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "allahabad": {"lat": 25.4358, "lng": 81.8463, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "prayagraj": {"lat": 25.4358, "lng": 81.8463, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "ranchi": {"lat": 23.3441, "lng": 85.3096, "state": "Jharkhand", "tz": "Asia/Kolkata"},
-  "howrah": {"lat": 22.5958, "lng": 88.2636, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "coimbatore": {"lat": 11.0168, "lng": 76.9558, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "kovai": {"lat": 11.0168, "lng": 76.9558, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "jabalpur": {"lat": 23.1815, "lng": 79.9864, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "gwalior": {"lat": 26.2183, "lng": 78.1828, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "vijayawada": {"lat": 16.5062, "lng": 80.648, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "jodhpur": {"lat": 26.2389, "lng": 73.0243, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "madurai": {"lat": 9.9252, "lng": 78.1198, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "raipur": {"lat": 21.2514, "lng": 81.6296, "state": "Chhattisgarh", "tz": "Asia/Kolkata"},
-  "kota": {"lat": 25.2138, "lng": 75.8648, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "guwahati": {"lat": 26.1445, "lng": 91.7362, "state": "Assam", "tz": "Asia/Kolkata"},
-  "chandigarh": {"lat": 30.7333, "lng": 76.7794, "state": "Chandigarh", "tz": "Asia/Kolkata"},
-  "solapur": {"lat": 17.6599, "lng": 75.9064, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "hubli": {"lat": 15.3647, "lng": 75.124, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "dharwad": {"lat": 15.4589, "lng": 75.0078, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "hubli-dharwad": {"lat": 15.3647, "lng": 75.124, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "bareilly": {"lat": 28.367, "lng": 79.4304, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "moradabad": {"lat": 28.8386, "lng": 78.7733, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "mysuru": {"lat": 12.2958, "lng": 76.6394, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "mysore": {"lat": 12.2958, "lng": 76.6394, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "gurgaon": {"lat": 28.4595, "lng": 77.0266, "state": "Haryana", "tz": "Asia/Kolkata"},
-  "gurugram": {"lat": 28.4595, "lng": 77.0266, "state": "Haryana", "tz": "Asia/Kolkata"},
-  "aligarh": {"lat": 27.8974, "lng": 78.088, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "jalandhar": {"lat": 31.326, "lng": 75.5762, "state": "Punjab", "tz": "Asia/Kolkata"},
-  "tiruchirappalli": {"lat": 10.7905, "lng": 78.7047, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "trichy": {"lat": 10.7905, "lng": 78.7047, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "bhubaneswar": {"lat": 20.2961, "lng": 85.8245, "state": "Odisha", "tz": "Asia/Kolkata"},
-  "salem": {"lat": 11.6643, "lng": 78.146, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "thiruvananthapuram": {"lat": 8.5241, "lng": 76.9366, "state": "Kerala", "tz": "Asia/Kolkata"},
-  "trivandrum": {"lat": 8.5241, "lng": 76.9366, "state": "Kerala", "tz": "Asia/Kolkata"},
-  "warangal": {"lat": 17.9784, "lng": 79.5941, "state": "Telangana", "tz": "Asia/Kolkata"},
-  "guntur": {"lat": 16.3067, "lng": 80.4365, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "bhiwandi": {"lat": 19.2967, "lng": 73.0631, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "saharanpur": {"lat": 29.964, "lng": 77.5461, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "gorakhpur": {"lat": 26.7606, "lng": 83.3732, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "bikaner": {"lat": 28.0229, "lng": 73.3119, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "amravati": {"lat": 20.932, "lng": 77.7523, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "noida": {"lat": 28.5355, "lng": 77.391, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "jamshedpur": {"lat": 22.8046, "lng": 86.2029, "state": "Jharkhand", "tz": "Asia/Kolkata"},
-  "bhilai": {"lat": 21.2094, "lng": 81.3784, "state": "Chhattisgarh", "tz": "Asia/Kolkata"},
-  "cuttack": {"lat": 20.4625, "lng": 85.8828, "state": "Odisha", "tz": "Asia/Kolkata"},
-  "firozabad": {"lat": 27.1591, "lng": 78.3957, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "kochi": {"lat": 9.9312, "lng": 76.2673, "state": "Kerala", "tz": "Asia/Kolkata"},
-  "cochin": {"lat": 9.9312, "lng": 76.2673, "state": "Kerala", "tz": "Asia/Kolkata"},
-  "nellore": {"lat": 14.4426, "lng": 79.9865, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "bhavnagar": {"lat": 21.7645, "lng": 72.1519, "state": "Gujarat", "tz": "Asia/Kolkata"},
-  "dehradun": {"lat": 30.3165, "lng": 78.0322, "state": "Uttarakhand", "tz": "Asia/Kolkata"},
-  "durgapur": {"lat": 23.5204, "lng": 87.3119, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "asansol": {"lat": 23.6889, "lng": 86.9661, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "rourkela": {"lat": 22.2604, "lng": 84.8536, "state": "Odisha", "tz": "Asia/Kolkata"},
-  "nanded": {"lat": 19.1383, "lng": 77.321, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "kolhapur": {"lat": 16.705, "lng": 74.2433, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "ajmer": {"lat": 26.4499, "lng": 74.6399, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "akola": {"lat": 20.707, "lng": 77.0021, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "gulbarga": {"lat": 17.3297, "lng": 76.8343, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "kalaburagi": {"lat": 17.3297, "lng": 76.8343, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "jamnagar": {"lat": 22.4707, "lng": 70.0577, "state": "Gujarat", "tz": "Asia/Kolkata"},
-  "ujjain": {"lat": 23.1765, "lng": 75.7885, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "loni": {"lat": 28.7515, "lng": 77.2869, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "siliguri": {"lat": 26.7271, "lng": 88.3953, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "jhansi": {"lat": 25.4484, "lng": 78.5685, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "ulhasnagar": {"lat": 19.2215, "lng": 73.1645, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "jammu": {"lat": 32.7266, "lng": 74.857, "state": "Jammu & Kashmir", "tz": "Asia/Kolkata"},
-  "sangli": {"lat": 16.8524, "lng": 74.5815, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "mangaluru": {"lat": 12.9141, "lng": 74.856, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "mangalore": {"lat": 12.9141, "lng": 74.856, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "erode": {"lat": 11.341, "lng": 77.7172, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "belgaum": {"lat": 15.8497, "lng": 74.4977, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "belagavi": {"lat": 15.8497, "lng": 74.4977, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "ambattur": {"lat": 13.1143, "lng": 80.1548, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "tirunelveli": {"lat": 8.7139, "lng": 77.7567, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "malegaon": {"lat": 20.5548, "lng": 74.5247, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "gaya": {"lat": 24.7955, "lng": 84.9994, "state": "Bihar", "tz": "Asia/Kolkata"},
-  "udaipur": {"lat": 24.5854, "lng": 73.7125, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "kakinada": {"lat": 16.9891, "lng": 82.2475, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "davanagere": {"lat": 14.4644, "lng": 75.9218, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "kozhikode": {"lat": 11.2588, "lng": 75.7804, "state": "Kerala", "tz": "Asia/Kolkata"},
-  "calicut": {"lat": 11.2588, "lng": 75.7804, "state": "Kerala", "tz": "Asia/Kolkata"},
-  "tiruppur": {"lat": 11.1085, "lng": 77.3411, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "bokaro": {"lat": 23.6693, "lng": 86.1511, "state": "Jharkhand", "tz": "Asia/Kolkata"},
-  "rajahmundry": {"lat": 17.0005, "lng": 81.8041, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "bellary": {"lat": 15.1394, "lng": 76.9214, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "ballari": {"lat": 15.1394, "lng": 76.9214, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "patiala": {"lat": 30.34, "lng": 76.3869, "state": "Punjab", "tz": "Asia/Kolkata"},
-  "agartala": {"lat": 23.8315, "lng": 91.2868, "state": "Tripura", "tz": "Asia/Kolkata"},
-  "bhagalpur": {"lat": 25.2425, "lng": 86.9842, "state": "Bihar", "tz": "Asia/Kolkata"},
-  "muzaffarnagar": {"lat": 29.4727, "lng": 77.7085, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "bhatpara": {"lat": 22.8664, "lng": 88.4076, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "panihati": {"lat": 22.6933, "lng": 88.3701, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "latur": {"lat": 18.4088, "lng": 76.5604, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "dhule": {"lat": 20.9042, "lng": 74.7749, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "tirupati": {"lat": 13.6288, "lng": 79.4192, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "rohtak": {"lat": 28.8955, "lng": 76.6066, "state": "Haryana", "tz": "Asia/Kolkata"},
-  "korba": {"lat": 22.3595, "lng": 82.7501, "state": "Chhattisgarh", "tz": "Asia/Kolkata"},
-  "sagar": {"lat": 23.8388, "lng": 78.7378, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "bilaspur": {"lat": 22.0797, "lng": 82.1409, "state": "Chhattisgarh", "tz": "Asia/Kolkata"},
-  "shimla": {"lat": 31.1048, "lng": 77.1734, "state": "Himachal Pradesh", "tz": "Asia/Kolkata"},
-  "simla": {"lat": 31.1048, "lng": 77.1734, "state": "Himachal Pradesh", "tz": "Asia/Kolkata"},
-  "thanjavur": {"lat": 10.787, "lng": 79.1378, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "vellore": {"lat": 12.9165, "lng": 79.1325, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "dindigul": {"lat": 10.3624, "lng": 77.9695, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "anantapur": {"lat": 14.6819, "lng": 77.6006, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "kurnool": {"lat": 15.8281, "lng": 78.0373, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "mathura": {"lat": 27.4924, "lng": 77.6737, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "vrindavan": {"lat": 27.5946, "lng": 77.7012, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "haridwar": {"lat": 29.9457, "lng": 78.1642, "state": "Uttarakhand", "tz": "Asia/Kolkata"},
-  "rishikesh": {"lat": 30.0869, "lng": 78.2676, "state": "Uttarakhand", "tz": "Asia/Kolkata"},
-  "rameswaram": {"lat": 9.2876, "lng": 79.3129, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "puri": {"lat": 19.8135, "lng": 85.8312, "state": "Odisha", "tz": "Asia/Kolkata"},
-  "shirdi": {"lat": 19.7661, "lng": 74.4764, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "bodh gaya": {"lat": 24.6961, "lng": 84.9869, "state": "Bihar", "tz": "Asia/Kolkata"},
-  "dwarka": {"lat": 22.2394, "lng": 68.9678, "state": "Gujarat", "tz": "Asia/Kolkata"},
-  "somnath": {"lat": 20.8884, "lng": 70.4015, "state": "Gujarat", "tz": "Asia/Kolkata"},
-  "kanchipuram": {"lat": 12.8342, "lng": 79.7036, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "chidambaram": {"lat": 11.399, "lng": 79.6912, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "kumbakonam": {"lat": 10.9617, "lng": 79.3881, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "palani": {"lat": 10.4506, "lng": 77.5161, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "puducherry": {"lat": 11.9416, "lng": 79.8083, "state": "Puducherry", "tz": "Asia/Kolkata"},
-  "pondicherry": {"lat": 11.9416, "lng": 79.8083, "state": "Puducherry", "tz": "Asia/Kolkata"},
-  "pondy": {"lat": 11.9416, "lng": 79.8083, "state": "Puducherry", "tz": "Asia/Kolkata"},
-  "ooty": {"lat": 11.4102, "lng": 76.695, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "udhagamandalam": {"lat": 11.4102, "lng": 76.695, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "surat": {"lat": 21.1702, "lng": 72.8311, "state": "Gujarat", "tz": "Asia/Kolkata"},
-  "durg": {"lat": 21.1904, "lng": 81.2849, "state": "Chhattisgarh", "tz": "Asia/Kolkata"},
-  "rajnandgaon": {"lat": 21.0972, "lng": 81.028, "state": "Chhattisgarh", "tz": "Asia/Kolkata"},
-  "jagdalpur": {"lat": 19.0784, "lng": 82.0198, "state": "Chhattisgarh", "tz": "Asia/Kolkata"},
-  "ambikapur": {"lat": 23.1185, "lng": 83.1962, "state": "Chhattisgarh", "tz": "Asia/Kolkata"},
-  "raigarh": {"lat": 21.8974, "lng": 83.395, "state": "Chhattisgarh", "tz": "Asia/Kolkata"},
-  "dhamtari": {"lat": 20.7075, "lng": 81.5499, "state": "Chhattisgarh", "tz": "Asia/Kolkata"},
-  "mahasamund": {"lat": 21.1103, "lng": 82.0975, "state": "Chhattisgarh", "tz": "Asia/Kolkata"},
-  "kanker": {"lat": 20.272, "lng": 81.4913, "state": "Chhattisgarh", "tz": "Asia/Kolkata"},
-  "kondagaon": {"lat": 19.5965, "lng": 81.6647, "state": "Chhattisgarh", "tz": "Asia/Kolkata"},
-  "sukma": {"lat": 18.3879, "lng": 81.6605, "state": "Chhattisgarh", "tz": "Asia/Kolkata"},
-  "bastar": {"lat": 19.1072, "lng": 81.9535, "state": "Chhattisgarh", "tz": "Asia/Kolkata"},
-  "janjgir": {"lat": 21.8174, "lng": 82.5748, "state": "Chhattisgarh", "tz": "Asia/Kolkata"},
-  "hazaribagh": {"lat": 23.9921, "lng": 85.3637, "state": "Jharkhand", "tz": "Asia/Kolkata"},
-  "deoghar": {"lat": 24.4764, "lng": 86.6944, "state": "Jharkhand", "tz": "Asia/Kolkata"},
-  "giridih": {"lat": 24.1851, "lng": 86.3005, "state": "Jharkhand", "tz": "Asia/Kolkata"},
-  "dumka": {"lat": 24.2686, "lng": 87.2497, "state": "Jharkhand", "tz": "Asia/Kolkata"},
-  "chaibasa": {"lat": 22.5572, "lng": 85.8026, "state": "Jharkhand", "tz": "Asia/Kolkata"},
-  "suryanar kovil": {"lat": 11.0023, "lng": 79.3859, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "thingaloor": {"lat": 10.9873, "lng": 79.3956, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "vaitheeswaran koil": {"lat": 11.2349, "lng": 79.6469, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "thiruvenkadu": {"lat": 11.2361, "lng": 79.6397, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "alangudi": {"lat": 10.5267, "lng": 79.3267, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "kanjanoor": {"lat": 10.9591, "lng": 79.4029, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "thirunallar": {"lat": 10.8707, "lng": 79.6522, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "keezhperumpallam": {"lat": 11.2457, "lng": 79.7264, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "thennangur": {"lat": 12.3023, "lng": 79.4767, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "amaravati": {"lat": 16.5062, "lng": 80.648, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "panaji": {"lat": 15.4909, "lng": 73.8278, "state": "Goa", "tz": "Asia/Kolkata"},
-  "gandhinagar": {"lat": 23.2156, "lng": 72.6369, "state": "Gujarat", "tz": "Asia/Kolkata"},
-  "dispur": {"lat": 26.1408, "lng": 91.7898, "state": "Assam", "tz": "Asia/Kolkata"},
-  "imphal": {"lat": 24.817, "lng": 93.9368, "state": "Manipur", "tz": "Asia/Kolkata"},
-  "shillong": {"lat": 25.5788, "lng": 91.8933, "state": "Meghalaya", "tz": "Asia/Kolkata"},
-  "aizawl": {"lat": 23.7271, "lng": 92.7176, "state": "Mizoram", "tz": "Asia/Kolkata"},
-  "kohima": {"lat": 25.6751, "lng": 94.1086, "state": "Nagaland", "tz": "Asia/Kolkata"},
-  "gangtok": {"lat": 27.3389, "lng": 88.6065, "state": "Sikkim", "tz": "Asia/Kolkata"},
-  "itanagar": {"lat": 27.0844, "lng": 93.6053, "state": "Arunachal Pradesh", "tz": "Asia/Kolkata"},
-  "port blair": {"lat": 11.6234, "lng": 92.7265, "state": "Andaman & Nicobar", "tz": "Asia/Kolkata"},
-  "kavaratti": {"lat": 10.5626, "lng": 72.6369, "state": "Lakshadweep", "tz": "Asia/Kolkata"},
-  "daman": {"lat": 20.397, "lng": 72.8328, "state": "Dadra & Nagar Haveli and Daman & Diu", "tz": "Asia/Kolkata"},
-  "silvassa": {"lat": 20.2766, "lng": 73.0164, "state": "Dadra & Nagar Haveli and Daman & Diu", "tz": "Asia/Kolkata"},
-  "leh": {"lat": 34.1526, "lng": 77.5771, "state": "Ladakh", "tz": "Asia/Kolkata"},
-  "kargil": {"lat": 34.556, "lng": 76.1349, "state": "Ladakh", "tz": "Asia/Kolkata"},
-  "muzaffarpur": {"lat": 26.1209, "lng": 85.3647, "state": "Bihar", "tz": "Asia/Kolkata"},
-  "darbhanga": {"lat": 26.1542, "lng": 85.8918, "state": "Bihar", "tz": "Asia/Kolkata"},
-  "purnia": {"lat": 25.7771, "lng": 87.4753, "state": "Bihar", "tz": "Asia/Kolkata"},
-  "arrah": {"lat": 25.5541, "lng": 84.6636, "state": "Bihar", "tz": "Asia/Kolkata"},
-  "begusarai": {"lat": 25.4182, "lng": 86.1272, "state": "Bihar", "tz": "Asia/Kolkata"},
-  "chapra": {"lat": 25.7839, "lng": 84.7474, "state": "Bihar", "tz": "Asia/Kolkata"},
-  "katihar": {"lat": 25.5392, "lng": 87.5719, "state": "Bihar", "tz": "Asia/Kolkata"},
-  "munger": {"lat": 25.3708, "lng": 86.4734, "state": "Bihar", "tz": "Asia/Kolkata"},
-  "saharsa": {"lat": 25.8783, "lng": 86.5947, "state": "Bihar", "tz": "Asia/Kolkata"},
-  "sasaram": {"lat": 24.947, "lng": 84.0314, "state": "Bihar", "tz": "Asia/Kolkata"},
-  "hajipur": {"lat": 25.6879, "lng": 85.2136, "state": "Bihar", "tz": "Asia/Kolkata"},
-  "buxar": {"lat": 25.5644, "lng": 83.978, "state": "Bihar", "tz": "Asia/Kolkata"},
-  "jehanabad": {"lat": 25.2133, "lng": 84.9862, "state": "Bihar", "tz": "Asia/Kolkata"},
-  "siwan": {"lat": 26.2221, "lng": 84.3574, "state": "Bihar", "tz": "Asia/Kolkata"},
-  "motihari": {"lat": 26.655, "lng": 84.9221, "state": "Bihar", "tz": "Asia/Kolkata"},
-  "bettiah": {"lat": 26.8026, "lng": 84.5171, "state": "Bihar", "tz": "Asia/Kolkata"},
-  "nawada": {"lat": 24.8861, "lng": 85.5422, "state": "Bihar", "tz": "Asia/Kolkata"},
-  "kishanganj": {"lat": 26.094, "lng": 87.9493, "state": "Bihar", "tz": "Asia/Kolkata"},
-  "madhubani": {"lat": 26.3483, "lng": 86.0715, "state": "Bihar", "tz": "Asia/Kolkata"},
-  "sitamarhi": {"lat": 26.5926, "lng": 85.4899, "state": "Bihar", "tz": "Asia/Kolkata"},
-  "supaul": {"lat": 26.1241, "lng": 86.6033, "state": "Bihar", "tz": "Asia/Kolkata"},
-  "vaishali": {"lat": 25.6884, "lng": 85.205, "state": "Bihar", "tz": "Asia/Kolkata"},
-  "aurangabad bihar": {"lat": 24.7536, "lng": 84.3742, "state": "Bihar", "tz": "Asia/Kolkata"},
-  "nalanda": {"lat": 25.1357, "lng": 85.4432, "state": "Bihar", "tz": "Asia/Kolkata"},
-  "udhampur": {"lat": 32.916, "lng": 75.1322, "state": "Jammu & Kashmir", "tz": "Asia/Kolkata"},
-  "anantnag": {"lat": 33.7311, "lng": 75.1545, "state": "Jammu & Kashmir", "tz": "Asia/Kolkata"},
-  "baramulla": {"lat": 34.2095, "lng": 74.3436, "state": "Jammu & Kashmir", "tz": "Asia/Kolkata"},
-  "sopore": {"lat": 34.3, "lng": 74.47, "state": "Jammu & Kashmir", "tz": "Asia/Kolkata"},
-  "kathua": {"lat": 32.3866, "lng": 75.5142, "state": "Jammu & Kashmir", "tz": "Asia/Kolkata"},
-  "alwar": {"lat": 27.5529, "lng": 76.6346, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "bharatpur": {"lat": 27.2152, "lng": 77.503, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "bhilwara": {"lat": 25.3407, "lng": 74.6313, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "chittorgarh": {"lat": 24.8887, "lng": 74.6269, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "churu": {"lat": 28.3254, "lng": 74.9684, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "dausa": {"lat": 26.8838, "lng": 76.3388, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "dholpur": {"lat": 26.702, "lng": 77.8893, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "dungarpur": {"lat": 23.8437, "lng": 73.7145, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "hanumangarh": {"lat": 29.5816, "lng": 74.3294, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "jaisalmer": {"lat": 26.9157, "lng": 70.9083, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "jalore": {"lat": 25.3456, "lng": 72.6168, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "jhalawar": {"lat": 24.5972, "lng": 76.1655, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "jhunjhunu": {"lat": 28.1289, "lng": 75.3987, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "karauli": {"lat": 26.4953, "lng": 77.0237, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "nagaur": {"lat": 27.2024, "lng": 73.735, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "pali": {"lat": 25.7711, "lng": 73.3234, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "pratapgarh rajasthan": {"lat": 24.0318, "lng": 74.7788, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "rajsamand": {"lat": 25.0716, "lng": 73.8805, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "sawai madhopur": {"lat": 26.0238, "lng": 76.3466, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "sikar": {"lat": 27.6094, "lng": 75.1399, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "sirohi": {"lat": 24.8849, "lng": 72.8578, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "sri ganganagar": {"lat": 29.9094, "lng": 73.8748, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "tonk": {"lat": 26.1664, "lng": 75.7885, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "banswara": {"lat": 23.5452, "lng": 74.4397, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "baran": {"lat": 25.0991, "lng": 76.5132, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "barmer": {"lat": 25.7532, "lng": 71.3967, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "bundi": {"lat": 25.4305, "lng": 75.6499, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "mount abu": {"lat": 24.5926, "lng": 72.7156, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "pushkar": {"lat": 26.49, "lng": 74.5542, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "nathdwara": {"lat": 24.9385, "lng": 73.8232, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "beawar": {"lat": 26.1011, "lng": 74.3188, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "kishangarh": {"lat": 26.5918, "lng": 74.8541, "state": "Rajasthan", "tz": "Asia/Kolkata"},
-  "varanasi up": {"lat": 25.3176, "lng": 82.9739, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "ayodhya": {"lat": 26.7922, "lng": 82.1998, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "azamgarh": {"lat": 26.0735, "lng": 83.1862, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "bahraich": {"lat": 27.5752, "lng": 81.5959, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "ballia": {"lat": 25.7583, "lng": 84.1487, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "banda": {"lat": 25.4754, "lng": 80.3358, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "barabanki": {"lat": 26.926, "lng": 81.1847, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "basti": {"lat": 26.8015, "lng": 82.7284, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "bijnor": {"lat": 29.3724, "lng": 78.1367, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "budaun": {"lat": 28.0419, "lng": 79.1256, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "bulandshahr": {"lat": 28.407, "lng": 77.8498, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "deoria": {"lat": 26.504, "lng": 83.7791, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "etah": {"lat": 27.5582, "lng": 78.6616, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "etawah": {"lat": 26.7859, "lng": 79.0212, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "faizabad": {"lat": 26.7735, "lng": 82.1447, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "farrukhabad": {"lat": 27.3906, "lng": 79.5777, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "fatehpur": {"lat": 25.9273, "lng": 80.8148, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "gonda": {"lat": 27.1342, "lng": 81.9619, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "hamirpur up": {"lat": 25.9541, "lng": 80.1474, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "hardoi": {"lat": 27.3953, "lng": 80.1313, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "jaunpur": {"lat": 25.7464, "lng": 82.6836, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "lakhimpur kheri": {"lat": 27.9462, "lng": 80.7801, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "mainpuri": {"lat": 27.2348, "lng": 79.0215, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "mirzapur": {"lat": 25.146, "lng": 82.5689, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "muzaffarnagar up": {"lat": 29.4727, "lng": 77.7085, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "orai": {"lat": 25.9879, "lng": 79.4508, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "pilibhit": {"lat": 28.6378, "lng": 79.8058, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "pratapgarh": {"lat": 25.8955, "lng": 81.9392, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "rae bareli": {"lat": 26.2345, "lng": 81.2326, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "rampur": {"lat": 28.793, "lng": 79.027, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "shahjahanpur": {"lat": 27.881, "lng": 79.9066, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "sitapur": {"lat": 27.5697, "lng": 80.6828, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "sultanpur": {"lat": 26.2641, "lng": 82.0722, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "unnao": {"lat": 26.5393, "lng": 80.4878, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "sambhal": {"lat": 28.5851, "lng": 78.5647, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "hathras": {"lat": 27.5963, "lng": 78.0519, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "amroha": {"lat": 28.9044, "lng": 78.4673, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "mau": {"lat": 25.9419, "lng": 83.5614, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "sonbhadra": {"lat": 24.6882, "lng": 83.068, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "chandauli": {"lat": 25.2676, "lng": 83.2685, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "ambedkar nagar": {"lat": 26.4001, "lng": 82.5523, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "greater noida": {"lat": 28.4744, "lng": 77.504, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "mathura up": {"lat": 27.4924, "lng": 77.6737, "state": "Uttar Pradesh", "tz": "Asia/Kolkata"},
-  "nagpur maharashtra": {"lat": 21.1458, "lng": 79.0882, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "ahmednagar": {"lat": 19.0948, "lng": 74.7496, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "jalgaon": {"lat": 21.0077, "lng": 75.5626, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "chandrapur": {"lat": 19.9504, "lng": 79.2961, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "parbhani": {"lat": 19.2665, "lng": 76.7745, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "jalna": {"lat": 19.8347, "lng": 75.8816, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "beed": {"lat": 18.9891, "lng": 75.7604, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "satara": {"lat": 17.6805, "lng": 74.0183, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "ratnagiri": {"lat": 16.9902, "lng": 73.3, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "sindhudurg": {"lat": 16.3491, "lng": 73.552, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "osmanabad": {"lat": 18.186, "lng": 76.044, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "hingoli": {"lat": 19.7169, "lng": 77.1502, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "washim": {"lat": 20.1054, "lng": 77.1326, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "gondia": {"lat": 21.4624, "lng": 80.2181, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "wardha": {"lat": 20.7453, "lng": 78.6022, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "bhandara": {"lat": 21.1669, "lng": 79.6508, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "gadchiroli": {"lat": 20.1809, "lng": 80.0013, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "yavatmal": {"lat": 20.3899, "lng": 78.1307, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "buldhana": {"lat": 20.5293, "lng": 76.1842, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "ichalkaranji": {"lat": 16.6916, "lng": 74.4618, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "panvel": {"lat": 18.9894, "lng": 73.1175, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "kalyan": {"lat": 19.2437, "lng": 73.1355, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "dombivli": {"lat": 19.2183, "lng": 73.0867, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "vasai-virar": {"lat": 19.3919, "lng": 72.8397, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "mira-bhayandar": {"lat": 19.2952, "lng": 72.8544, "state": "Maharashtra", "tz": "Asia/Kolkata"},
-  "tumkur": {"lat": 13.3379, "lng": 77.1173, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "shimoga": {"lat": 13.9299, "lng": 75.5681, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "shivamogga": {"lat": 13.9299, "lng": 75.5681, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "raichur": {"lat": 16.2076, "lng": 77.356, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "bijapur": {"lat": 16.8302, "lng": 75.7169, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "vijayapura": {"lat": 16.8302, "lng": 75.7169, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "bidar": {"lat": 17.9132, "lng": 77.5199, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "mandya": {"lat": 12.5222, "lng": 76.8952, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "hassan": {"lat": 13.0072, "lng": 76.0996, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "chitradurga": {"lat": 14.2226, "lng": 76.3984, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "udupi": {"lat": 13.3409, "lng": 74.7421, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "chikmagalur": {"lat": 13.3161, "lng": 75.7739, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "gadag": {"lat": 15.4317, "lng": 75.6266, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "yadgir": {"lat": 16.77, "lng": 77.1383, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "chamarajanagar": {"lat": 11.9236, "lng": 76.9398, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "kodagu": {"lat": 12.4244, "lng": 75.7382, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "koppal": {"lat": 15.3507, "lng": 76.155, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "bagalkot": {"lat": 16.1691, "lng": 75.6615, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "haveri": {"lat": 14.7951, "lng": 75.3989, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "kolar": {"lat": 13.1361, "lng": 78.1292, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "ramanagara": {"lat": 12.7119, "lng": 77.2814, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "chikballapur": {"lat": 13.4355, "lng": 77.7315, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "karwar": {"lat": 14.8173, "lng": 74.1289, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "hospet": {"lat": 15.2689, "lng": 76.3909, "state": "Karnataka", "tz": "Asia/Kolkata"},
-  "alappuzha": {"lat": 9.4981, "lng": 76.3388, "state": "Kerala", "tz": "Asia/Kolkata"},
-  "alleppey": {"lat": 9.4981, "lng": 76.3388, "state": "Kerala", "tz": "Asia/Kolkata"},
-  "thrissur": {"lat": 10.5276, "lng": 76.2144, "state": "Kerala", "tz": "Asia/Kolkata"},
-  "trichur": {"lat": 10.5276, "lng": 76.2144, "state": "Kerala", "tz": "Asia/Kolkata"},
-  "kollam": {"lat": 8.8932, "lng": 76.6141, "state": "Kerala", "tz": "Asia/Kolkata"},
-  "quilon": {"lat": 8.8932, "lng": 76.6141, "state": "Kerala", "tz": "Asia/Kolkata"},
-  "palakkad": {"lat": 10.7867, "lng": 76.6548, "state": "Kerala", "tz": "Asia/Kolkata"},
-  "palghat": {"lat": 10.7867, "lng": 76.6548, "state": "Kerala", "tz": "Asia/Kolkata"},
-  "kannur": {"lat": 11.8745, "lng": 75.3704, "state": "Kerala", "tz": "Asia/Kolkata"},
-  "cannanore": {"lat": 11.8745, "lng": 75.3704, "state": "Kerala", "tz": "Asia/Kolkata"},
-  "malappuram": {"lat": 11.0411, "lng": 76.0816, "state": "Kerala", "tz": "Asia/Kolkata"},
-  "kottayam": {"lat": 9.5916, "lng": 76.5222, "state": "Kerala", "tz": "Asia/Kolkata"},
-  "idukki": {"lat": 9.8494, "lng": 76.9714, "state": "Kerala", "tz": "Asia/Kolkata"},
-  "kasaragod": {"lat": 12.4996, "lng": 74.9869, "state": "Kerala", "tz": "Asia/Kolkata"},
-  "wayanad": {"lat": 11.6854, "lng": 76.132, "state": "Kerala", "tz": "Asia/Kolkata"},
-  "pathanamthitta": {"lat": 9.2648, "lng": 76.787, "state": "Kerala", "tz": "Asia/Kolkata"},
-  "ernakulam": {"lat": 9.9816, "lng": 76.2999, "state": "Kerala", "tz": "Asia/Kolkata"},
-  "munnar": {"lat": 10.0889, "lng": 77.0595, "state": "Kerala", "tz": "Asia/Kolkata"},
-  "guruvayoor": {"lat": 10.5943, "lng": 76.0413, "state": "Kerala", "tz": "Asia/Kolkata"},
-  "thodupuzha": {"lat": 9.8946, "lng": 76.7178, "state": "Kerala", "tz": "Asia/Kolkata"},
-  "tirupur": {"lat": 11.1085, "lng": 77.3411, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "nagercoil": {"lat": 8.1833, "lng": 77.4119, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "cuddalore": {"lat": 11.748, "lng": 79.7714, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "karur": {"lat": 10.9601, "lng": 78.0766, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "ramanathapuram": {"lat": 9.3639, "lng": 78.8395, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "sivaganga": {"lat": 10.0269, "lng": 78.4757, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "virudhunagar": {"lat": 9.585, "lng": 77.9624, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "nagapattinam": {"lat": 10.7672, "lng": 79.8449, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "namakkal": {"lat": 11.2189, "lng": 78.1674, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "perambalur": {"lat": 11.2333, "lng": 78.8833, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "pudukkottai": {"lat": 10.3833, "lng": 78.8001, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "ariyalur": {"lat": 11.14, "lng": 79.08, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "theni": {"lat": 10.0104, "lng": 77.4768, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "krishnagiri": {"lat": 12.5186, "lng": 78.2138, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "dharmapuri": {"lat": 12.1211, "lng": 78.1582, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "tiruvannamalai": {"lat": 12.2253, "lng": 79.0747, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "villupuram": {"lat": 11.9395, "lng": 79.4924, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "thoothukudi": {"lat": 8.7642, "lng": 78.1348, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "tuticorin": {"lat": 8.7642, "lng": 78.1348, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "kanyakumari": {"lat": 8.0883, "lng": 77.5385, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "hosur": {"lat": 12.7409, "lng": 77.8253, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "sivakasi": {"lat": 9.4533, "lng": 77.7981, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "pollachi": {"lat": 10.6609, "lng": 77.0085, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "kodaikanal": {"lat": 10.2381, "lng": 77.4892, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "srirangam": {"lat": 10.8568, "lng": 78.6898, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "mayiladuthurai": {"lat": 11.1036, "lng": 79.6553, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "tiruvarur": {"lat": 10.7664, "lng": 79.6369, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "tenkasi": {"lat": 8.9594, "lng": 77.3161, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "ranipet": {"lat": 12.9298, "lng": 79.3324, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "chengalpattu": {"lat": 12.6819, "lng": 79.9888, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "tirupathur": {"lat": 12.4953, "lng": 78.5731, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "kallakurichi": {"lat": 11.739, "lng": 78.9618, "state": "Tamil Nadu", "tz": "Asia/Kolkata"},
-  "nizamabad": {"lat": 18.6725, "lng": 78.094, "state": "Telangana", "tz": "Asia/Kolkata"},
-  "karimnagar": {"lat": 18.4386, "lng": 79.1288, "state": "Telangana", "tz": "Asia/Kolkata"},
-  "khammam": {"lat": 17.2473, "lng": 80.1514, "state": "Telangana", "tz": "Asia/Kolkata"},
-  "mahbubnagar": {"lat": 16.7488, "lng": 77.9855, "state": "Telangana", "tz": "Asia/Kolkata"},
-  "nalgonda": {"lat": 17.0575, "lng": 79.2671, "state": "Telangana", "tz": "Asia/Kolkata"},
-  "adilabad": {"lat": 19.6641, "lng": 78.5320, "state": "Telangana", "tz": "Asia/Kolkata"},
-  "medak": {"lat": 18.0479, "lng": 78.2605, "state": "Telangana", "tz": "Asia/Kolkata"},
-  "siddipet": {"lat": 18.1019, "lng": 78.852, "state": "Telangana", "tz": "Asia/Kolkata"},
-  "mancherial": {"lat": 18.8681, "lng": 79.4439, "state": "Telangana", "tz": "Asia/Kolkata"},
-  "suryapet": {"lat": 17.1408, "lng": 79.6286, "state": "Telangana", "tz": "Asia/Kolkata"},
-  "sangareddy": {"lat": 17.6197, "lng": 78.0867, "state": "Telangana", "tz": "Asia/Kolkata"},
-  "secunderabad": {"lat": 17.4399, "lng": 78.4983, "state": "Telangana", "tz": "Asia/Kolkata"},
-  "eluru": {"lat": 16.7107, "lng": 81.0952, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "ongole": {"lat": 15.5057, "lng": 80.0499, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "srikakulam": {"lat": 18.2949, "lng": 83.8938, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "vizianagaram": {"lat": 18.1066, "lng": 83.3956, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "kadapa": {"lat": 14.4674, "lng": 78.8241, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "chittoor": {"lat": 13.2172, "lng": 79.1003, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "machilipatnam": {"lat": 16.1875, "lng": 81.1389, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "proddatur": {"lat": 14.7502, "lng": 78.5481, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "tenali": {"lat": 16.2379, "lng": 80.6400, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "adoni": {"lat": 15.6275, "lng": 77.2748, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "hindupur": {"lat": 13.8288, "lng": 77.4912, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "tadepalligudem": {"lat": 16.8148, "lng": 81.5269, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "madanapalle": {"lat": 13.5504, "lng": 78.5033, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "kharagpur": {"lat": 22.346, "lng": 87.232, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "haldia": {"lat": 22.0257, "lng": 88.0583, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "baharampur": {"lat": 24.1052, "lng": 88.2505, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "raiganj": {"lat": 25.6162, "lng": 88.1235, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "english bazar": {"lat": 25.0041, "lng": 88.1397, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "malda": {"lat": 25.0041, "lng": 88.1397, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "balurghat": {"lat": 25.2271, "lng": 88.7685, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "bankura": {"lat": 23.2324, "lng": 87.0746, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "purulia": {"lat": 23.3321, "lng": 86.365, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "medinipur": {"lat": 22.4222, "lng": 87.3199, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "midnapore": {"lat": 22.4222, "lng": 87.3199, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "tamluk": {"lat": 22.2878, "lng": 87.9215, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "cooch behar": {"lat": 26.3227, "lng": 89.4403, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "jalpaiguri": {"lat": 26.5237, "lng": 88.7195, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "alipurduar": {"lat": 26.4893, "lng": 89.5232, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "darjeeling": {"lat": 27.0360, "lng": 88.2627, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "krishnanagar": {"lat": 23.4013, "lng": 88.4883, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "nabadwip": {"lat": 23.4074, "lng": 88.3659, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "hooghly": {"lat": 22.9089, "lng": 88.3967, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "chinsurah": {"lat": 22.8989, "lng": 88.3928, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "barrackpore": {"lat": 22.7658, "lng": 88.3772, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "baranagar": {"lat": 22.6388, "lng": 88.3707, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "serampore": {"lat": 22.7518, "lng": 88.3439, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "kalyani": {"lat": 22.975, "lng": 88.4345, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "shantiniketan": {"lat": 23.6786, "lng": 87.6852, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "bolpur": {"lat": 23.6693, "lng": 87.6873, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "diamond harbour": {"lat": 22.1912, "lng": 88.1862, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "contai": {"lat": 21.7786, "lng": 87.7476, "state": "West Bengal", "tz": "Asia/Kolkata"},
-  "sambalpur": {"lat": 21.4669, "lng": 83.9812, "state": "Odisha", "tz": "Asia/Kolkata"},
-  "berhampur": {"lat": 19.3149, "lng": 84.7941, "state": "Odisha", "tz": "Asia/Kolkata"},
-  "balasore": {"lat": 21.4934, "lng": 86.9337, "state": "Odisha", "tz": "Asia/Kolkata"},
-  "baripada": {"lat": 21.9322, "lng": 86.7251, "state": "Odisha", "tz": "Asia/Kolkata"},
-  "angul": {"lat": 20.8408, "lng": 85.1003, "state": "Odisha", "tz": "Asia/Kolkata"},
-  "dhenkanal": {"lat": 20.6514, "lng": 85.5988, "state": "Odisha", "tz": "Asia/Kolkata"},
-  "jeypore": {"lat": 18.8563, "lng": 82.5716, "state": "Odisha", "tz": "Asia/Kolkata"},
-  "koraput": {"lat": 18.8108, "lng": 82.7126, "state": "Odisha", "tz": "Asia/Kolkata"},
-  "bhawanipatna": {"lat": 19.907, "lng": 83.1628, "state": "Odisha", "tz": "Asia/Kolkata"},
-  "kendrapara": {"lat": 20.5024, "lng": 86.4196, "state": "Odisha", "tz": "Asia/Kolkata"},
-  "jajpur": {"lat": 20.8377, "lng": 86.3287, "state": "Odisha", "tz": "Asia/Kolkata"},
-  "jharsuguda": {"lat": 21.8554, "lng": 84.0066, "state": "Odisha", "tz": "Asia/Kolkata"},
-  "sundargarh": {"lat": 22.1196, "lng": 84.0432, "state": "Odisha", "tz": "Asia/Kolkata"},
-  "phulbani": {"lat": 20.4732, "lng": 84.2302, "state": "Odisha", "tz": "Asia/Kolkata"},
-  "konark": {"lat": 19.8876, "lng": 86.0946, "state": "Odisha", "tz": "Asia/Kolkata"},
-  "paradip": {"lat": 20.3164, "lng": 86.6085, "state": "Odisha", "tz": "Asia/Kolkata"},
-  "boudh": {"lat": 20.8378, "lng": 84.3190, "state": "Odisha", "tz": "Asia/Kolkata"},
-  "nayagarh": {"lat": 20.1294, "lng": 85.0969, "state": "Odisha", "tz": "Asia/Kolkata"},
-  "rayagada": {"lat": 19.1712, "lng": 83.4155, "state": "Odisha", "tz": "Asia/Kolkata"},
-  "jagatsinghpur": {"lat": 20.2551, "lng": 86.1711, "state": "Odisha", "tz": "Asia/Kolkata"},
-  "amritsar punjab": {"lat": 31.634, "lng": 74.8723, "state": "Punjab", "tz": "Asia/Kolkata"},
-  "bathinda": {"lat": 30.2110, "lng": 74.9455, "state": "Punjab", "tz": "Asia/Kolkata"},
-  "pathankot": {"lat": 32.2643, "lng": 75.6421, "state": "Punjab", "tz": "Asia/Kolkata"},
-  "moga": {"lat": 30.8162, "lng": 75.1741, "state": "Punjab", "tz": "Asia/Kolkata"},
-  "abohar": {"lat": 30.1453, "lng": 74.1955, "state": "Punjab", "tz": "Asia/Kolkata"},
-  "malerkotla": {"lat": 30.5266, "lng": 75.8802, "state": "Punjab", "tz": "Asia/Kolkata"},
-  "khanna": {"lat": 30.6979, "lng": 76.2117, "state": "Punjab", "tz": "Asia/Kolkata"},
-  "barnala": {"lat": 30.3814, "lng": 75.5485, "state": "Punjab", "tz": "Asia/Kolkata"},
-  "hoshiarpur": {"lat": 31.5143, "lng": 75.9115, "state": "Punjab", "tz": "Asia/Kolkata"},
-  "kapurthala": {"lat": 31.3809, "lng": 75.3808, "state": "Punjab", "tz": "Asia/Kolkata"},
-  "firozpur": {"lat": 30.9215, "lng": 74.6132, "state": "Punjab", "tz": "Asia/Kolkata"},
-  "muktsar": {"lat": 30.4769, "lng": 74.5118, "state": "Punjab", "tz": "Asia/Kolkata"},
-  "sangrur": {"lat": 30.2422, "lng": 75.8422, "state": "Punjab", "tz": "Asia/Kolkata"},
-  "faridkot": {"lat": 30.6747, "lng": 74.7584, "state": "Punjab", "tz": "Asia/Kolkata"},
-  "mansa": {"lat": 29.9930, "lng": 75.3905, "state": "Punjab", "tz": "Asia/Kolkata"},
-  "rupnagar": {"lat": 30.9660, "lng": 76.5260, "state": "Punjab", "tz": "Asia/Kolkata"},
-  "nawanshahr": {"lat": 31.1256, "lng": 76.1164, "state": "Punjab", "tz": "Asia/Kolkata"},
-  "phagwara": {"lat": 31.2240, "lng": 75.7708, "state": "Punjab", "tz": "Asia/Kolkata"},
-  "ambala": {"lat": 30.3752, "lng": 76.7821, "state": "Haryana", "tz": "Asia/Kolkata"},
-  "hisar": {"lat": 29.1492, "lng": 75.7217, "state": "Haryana", "tz": "Asia/Kolkata"},
-  "karnal": {"lat": 29.6857, "lng": 76.9905, "state": "Haryana", "tz": "Asia/Kolkata"},
-  "panipat": {"lat": 29.3909, "lng": 76.9635, "state": "Haryana", "tz": "Asia/Kolkata"},
-  "sonipat": {"lat": 28.9286, "lng": 77.0914, "state": "Haryana", "tz": "Asia/Kolkata"},
-  "yamunanagar": {"lat": 30.129, "lng": 77.2674, "state": "Haryana", "tz": "Asia/Kolkata"},
-  "panchkula": {"lat": 30.6942, "lng": 76.8606, "state": "Haryana", "tz": "Asia/Kolkata"},
-  "bhiwani": {"lat": 28.7929, "lng": 76.1315, "state": "Haryana", "tz": "Asia/Kolkata"},
-  "jind": {"lat": 29.3159, "lng": 76.3143, "state": "Haryana", "tz": "Asia/Kolkata"},
-  "kaithal": {"lat": 29.8015, "lng": 76.3998, "state": "Haryana", "tz": "Asia/Kolkata"},
-  "kurukshetra": {"lat": 29.9695, "lng": 76.8783, "state": "Haryana", "tz": "Asia/Kolkata"},
-  "rewari": {"lat": 28.1970, "lng": 76.6128, "state": "Haryana", "tz": "Asia/Kolkata"},
-  "mahendragarh": {"lat": 28.2795, "lng": 76.1518, "state": "Haryana", "tz": "Asia/Kolkata"},
-  "fatehabad": {"lat": 29.5135, "lng": 75.4547, "state": "Haryana", "tz": "Asia/Kolkata"},
-  "sirsa": {"lat": 29.5349, "lng": 75.0254, "state": "Haryana", "tz": "Asia/Kolkata"},
-  "nuh": {"lat": 28.1029, "lng": 77.0027, "state": "Haryana", "tz": "Asia/Kolkata"},
-  "palwal": {"lat": 28.1487, "lng": 77.3320, "state": "Haryana", "tz": "Asia/Kolkata"},
-  "silchar": {"lat": 24.8333, "lng": 92.7789, "state": "Assam", "tz": "Asia/Kolkata"},
-  "dibrugarh": {"lat": 27.4728, "lng": 94.9120, "state": "Assam", "tz": "Asia/Kolkata"},
-  "jorhat": {"lat": 26.7509, "lng": 94.2037, "state": "Assam", "tz": "Asia/Kolkata"},
-  "nagaon": {"lat": 26.3505, "lng": 92.6927, "state": "Assam", "tz": "Asia/Kolkata"},
-  "tinsukia": {"lat": 27.4922, "lng": 95.355, "state": "Assam", "tz": "Asia/Kolkata"},
-  "tezpur": {"lat": 26.6338, "lng": 92.7926, "state": "Assam", "tz": "Asia/Kolkata"},
-  "bongaigaon": {"lat": 26.4756, "lng": 90.5584, "state": "Assam", "tz": "Asia/Kolkata"},
-  "karimganj": {"lat": 24.8649, "lng": 92.3555, "state": "Assam", "tz": "Asia/Kolkata"},
-  "goalpara": {"lat": 26.1640, "lng": 90.6260, "state": "Assam", "tz": "Asia/Kolkata"},
-  "dhubri": {"lat": 26.0227, "lng": 89.9803, "state": "Assam", "tz": "Asia/Kolkata"},
-  "kokrajhar": {"lat": 26.3964, "lng": 90.2715, "state": "Assam", "tz": "Asia/Kolkata"},
-  "nalbari": {"lat": 26.4449, "lng": 91.4387, "state": "Assam", "tz": "Asia/Kolkata"},
-  "barpeta": {"lat": 26.3215, "lng": 91.0049, "state": "Assam", "tz": "Asia/Kolkata"},
-  "sibsagar": {"lat": 26.9840, "lng": 94.6380, "state": "Assam", "tz": "Asia/Kolkata"},
-  "sivasagar": {"lat": 26.9840, "lng": 94.6380, "state": "Assam", "tz": "Asia/Kolkata"},
-  "golaghat": {"lat": 26.5181, "lng": 93.9608, "state": "Assam", "tz": "Asia/Kolkata"},
-  "lakhimpur": {"lat": 27.2352, "lng": 94.1047, "state": "Assam", "tz": "Asia/Kolkata"},
-  "darrang": {"lat": 26.4468, "lng": 92.0287, "state": "Assam", "tz": "Asia/Kolkata"},
-  "mangaldoi": {"lat": 26.4402, "lng": 92.0310, "state": "Assam", "tz": "Asia/Kolkata"},
-  "junagadh": {"lat": 21.5222, "lng": 70.4579, "state": "Gujarat", "tz": "Asia/Kolkata"},
-  "gandhidham": {"lat": 23.0753, "lng": 70.1337, "state": "Gujarat", "tz": "Asia/Kolkata"},
-  "nadiad": {"lat": 22.6916, "lng": 72.8634, "state": "Gujarat", "tz": "Asia/Kolkata"},
-  "anand": {"lat": 22.5645, "lng": 72.9289, "state": "Gujarat", "tz": "Asia/Kolkata"},
-  "morbi": {"lat": 22.8173, "lng": 70.8370, "state": "Gujarat", "tz": "Asia/Kolkata"},
-  "surendranagar": {"lat": 22.7281, "lng": 71.6489, "state": "Gujarat", "tz": "Asia/Kolkata"},
-  "bharuch": {"lat": 21.7051, "lng": 72.9959, "state": "Gujarat", "tz": "Asia/Kolkata"},
-  "mehsana": {"lat": 23.5880, "lng": 72.3693, "state": "Gujarat", "tz": "Asia/Kolkata"},
-  "porbandar": {"lat": 21.6417, "lng": 69.6293, "state": "Gujarat", "tz": "Asia/Kolkata"},
-  "godhra": {"lat": 22.7788, "lng": 73.6143, "state": "Gujarat", "tz": "Asia/Kolkata"},
-  "vapi": {"lat": 20.3714, "lng": 72.9044, "state": "Gujarat", "tz": "Asia/Kolkata"},
-  "navsari": {"lat": 20.9467, "lng": 72.952, "state": "Gujarat", "tz": "Asia/Kolkata"},
-  "veraval": {"lat": 20.9069, "lng": 70.3676, "state": "Gujarat", "tz": "Asia/Kolkata"},
-  "bhuj": {"lat": 23.2420, "lng": 69.6669, "state": "Gujarat", "tz": "Asia/Kolkata"},
-  "palanpur": {"lat": 24.1725, "lng": 72.4381, "state": "Gujarat", "tz": "Asia/Kolkata"},
-  "valsad": {"lat": 20.5992, "lng": 72.9342, "state": "Gujarat", "tz": "Asia/Kolkata"},
-  "patan": {"lat": 23.8493, "lng": 72.1266, "state": "Gujarat", "tz": "Asia/Kolkata"},
-  "dahod": {"lat": 22.8359, "lng": 74.2532, "state": "Gujarat", "tz": "Asia/Kolkata"},
-  "amreli": {"lat": 21.5994, "lng": 71.2243, "state": "Gujarat", "tz": "Asia/Kolkata"},
-  "botad": {"lat": 22.1719, "lng": 71.6689, "state": "Gujarat", "tz": "Asia/Kolkata"},
-  "deesa": {"lat": 24.2585, "lng": 72.1904, "state": "Gujarat", "tz": "Asia/Kolkata"},
-  "satna": {"lat": 24.5979, "lng": 80.832, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "rewa": {"lat": 24.5373, "lng": 81.2960, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "dewas": {"lat": 22.9676, "lng": 76.0534, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "ratlam": {"lat": 23.3315, "lng": 75.0367, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "chhindwara": {"lat": 22.0574, "lng": 78.9382, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "murwara": {"lat": 23.8350, "lng": 80.3920, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "katni": {"lat": 23.8350, "lng": 80.3920, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "singrauli": {"lat": 24.1997, "lng": 82.6749, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "burhanpur": {"lat": 21.3104, "lng": 76.2282, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "khandwa": {"lat": 21.8244, "lng": 76.3527, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "morena": {"lat": 26.4972, "lng": 77.9930, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "bhind": {"lat": 26.5633, "lng": 78.7867, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "shivpuri": {"lat": 25.4284, "lng": 77.6580, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "vidisha": {"lat": 23.5251, "lng": 77.8081, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "damoh": {"lat": 23.8364, "lng": 79.4416, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "mandsaur": {"lat": 24.0717, "lng": 75.0693, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "neemuch": {"lat": 24.4612, "lng": 74.8720, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "hoshangabad": {"lat": 22.7467, "lng": 77.7262, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "narmadapuram": {"lat": 22.7467, "lng": 77.7262, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "itarsi": {"lat": 22.6145, "lng": 77.7614, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "betul": {"lat": 21.9110, "lng": 77.9007, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "seoni": {"lat": 22.0853, "lng": 79.5488, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "datia": {"lat": 25.6694, "lng": 78.4580, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "tikamgarh": {"lat": 24.7436, "lng": 78.8309, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "shahdol": {"lat": 23.2828, "lng": 81.3567, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "dhar": {"lat": 22.6012, "lng": 75.3025, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "khargone": {"lat": 21.8234, "lng": 75.6145, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "barwani": {"lat": 22.0364, "lng": 74.9000, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "jhabua": {"lat": 22.7689, "lng": 74.5910, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "mandla": {"lat": 22.5988, "lng": 80.3719, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "balaghat": {"lat": 21.8120, "lng": 80.1863, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "panna": {"lat": 24.7272, "lng": 80.1828, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "chhatarpur": {"lat": 24.9178, "lng": 79.5880, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "harda": {"lat": 22.3425, "lng": 77.0946, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "raisen": {"lat": 23.3315, "lng": 77.7874, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "sehore": {"lat": 23.2000, "lng": 77.0833, "state": "Madhya Pradesh", "tz": "Asia/Kolkata"},
-  "nainital": {"lat": 29.3919, "lng": 79.4542, "state": "Uttarakhand", "tz": "Asia/Kolkata"},
-  "mussoorie": {"lat": 30.4598, "lng": 78.0644, "state": "Uttarakhand", "tz": "Asia/Kolkata"},
-  "haldwani": {"lat": 29.2183, "lng": 79.5130, "state": "Uttarakhand", "tz": "Asia/Kolkata"},
-  "roorkee": {"lat": 29.8543, "lng": 77.8880, "state": "Uttarakhand", "tz": "Asia/Kolkata"},
-  "kashipur": {"lat": 29.2104, "lng": 78.9615, "state": "Uttarakhand", "tz": "Asia/Kolkata"},
-  "rudrapur": {"lat": 28.9758, "lng": 79.3997, "state": "Uttarakhand", "tz": "Asia/Kolkata"},
-  "almora": {"lat": 29.5971, "lng": 79.6591, "state": "Uttarakhand", "tz": "Asia/Kolkata"},
-  "pithoragarh": {"lat": 29.5829, "lng": 80.2181, "state": "Uttarakhand", "tz": "Asia/Kolkata"},
-  "bageshwar": {"lat": 29.8380, "lng": 79.7710, "state": "Uttarakhand", "tz": "Asia/Kolkata"},
-  "chamoli": {"lat": 30.4039, "lng": 79.3215, "state": "Uttarakhand", "tz": "Asia/Kolkata"},
-  "uttarkashi": {"lat": 30.7268, "lng": 78.4354, "state": "Uttarakhand", "tz": "Asia/Kolkata"},
-  "tehri": {"lat": 30.3932, "lng": 78.4328, "state": "Uttarakhand", "tz": "Asia/Kolkata"},
-  "pauri": {"lat": 30.1509, "lng": 78.7733, "state": "Uttarakhand", "tz": "Asia/Kolkata"},
-  "champawat": {"lat": 29.3360, "lng": 80.0912, "state": "Uttarakhand", "tz": "Asia/Kolkata"},
-  "rudraprayag": {"lat": 30.2840, "lng": 78.9831, "state": "Uttarakhand", "tz": "Asia/Kolkata"},
-  "badrinath": {"lat": 30.7433, "lng": 79.4938, "state": "Uttarakhand", "tz": "Asia/Kolkata"},
-  "kedarnath": {"lat": 30.7346, "lng": 79.0669, "state": "Uttarakhand", "tz": "Asia/Kolkata"},
-  "dharamsala": {"lat": 32.2190, "lng": 76.3234, "state": "Himachal Pradesh", "tz": "Asia/Kolkata"},
-  "manali": {"lat": 32.2396, "lng": 77.1887, "state": "Himachal Pradesh", "tz": "Asia/Kolkata"},
-  "kullu": {"lat": 31.9576, "lng": 77.1095, "state": "Himachal Pradesh", "tz": "Asia/Kolkata"},
-  "mandi": {"lat": 31.7084, "lng": 76.9318, "state": "Himachal Pradesh", "tz": "Asia/Kolkata"},
-  "solan": {"lat": 30.9045, "lng": 77.0967, "state": "Himachal Pradesh", "tz": "Asia/Kolkata"},
-  "bilaspur hp": {"lat": 31.3396, "lng": 76.7566, "state": "Himachal Pradesh", "tz": "Asia/Kolkata"},
-  "hamirpur hp": {"lat": 31.6862, "lng": 76.5213, "state": "Himachal Pradesh", "tz": "Asia/Kolkata"},
-  "una": {"lat": 31.4685, "lng": 76.2688, "state": "Himachal Pradesh", "tz": "Asia/Kolkata"},
-  "chamba": {"lat": 32.5534, "lng": 76.1258, "state": "Himachal Pradesh", "tz": "Asia/Kolkata"},
-  "kangra": {"lat": 32.0998, "lng": 76.2691, "state": "Himachal Pradesh", "tz": "Asia/Kolkata"},
-  "nahan": {"lat": 30.5596, "lng": 77.2960, "state": "Himachal Pradesh", "tz": "Asia/Kolkata"},
-  "palampur": {"lat": 32.1109, "lng": 76.5363, "state": "Himachal Pradesh", "tz": "Asia/Kolkata"},
-  "keylong": {"lat": 32.5714, "lng": 77.0397, "state": "Himachal Pradesh", "tz": "Asia/Kolkata"},
-  "reckong peo": {"lat": 31.5440, "lng": 78.2710, "state": "Himachal Pradesh", "tz": "Asia/Kolkata"},
-  "margao": {"lat": 15.2832, "lng": 73.9862, "state": "Goa", "tz": "Asia/Kolkata"},
-  "vasco da gama": {"lat": 15.3982, "lng": 73.8113, "state": "Goa", "tz": "Asia/Kolkata"},
-  "mapusa": {"lat": 15.5920, "lng": 73.8085, "state": "Goa", "tz": "Asia/Kolkata"},
-  "ponda": {"lat": 15.4034, "lng": 74.0100, "state": "Goa", "tz": "Asia/Kolkata"},
-  "dimapur": {"lat": 25.7070, "lng": 93.7276, "state": "Nagaland", "tz": "Asia/Kolkata"},
-  "mokokchung": {"lat": 26.3230, "lng": 94.5200, "state": "Nagaland", "tz": "Asia/Kolkata"},
-  "tuensang": {"lat": 26.2748, "lng": 94.8260, "state": "Nagaland", "tz": "Asia/Kolkata"},
-  "lunglei": {"lat": 22.8814, "lng": 92.7228, "state": "Mizoram", "tz": "Asia/Kolkata"},
-  "tura": {"lat": 25.5147, "lng": 90.2101, "state": "Meghalaya", "tz": "Asia/Kolkata"},
-  "nongstoin": {"lat": 25.5223, "lng": 91.2654, "state": "Meghalaya", "tz": "Asia/Kolkata"},
-  "jowai": {"lat": 25.4519, "lng": 92.2053, "state": "Meghalaya", "tz": "Asia/Kolkata"},
-  "churachandpur": {"lat": 24.3350, "lng": 93.6833, "state": "Manipur", "tz": "Asia/Kolkata"},
-  "thoubal": {"lat": 24.6283, "lng": 94.0161, "state": "Manipur", "tz": "Asia/Kolkata"},
-  "bishnupur manipur": {"lat": 24.6073, "lng": 93.7600, "state": "Manipur", "tz": "Asia/Kolkata"},
-  "namchi": {"lat": 27.1667, "lng": 88.3500, "state": "Sikkim", "tz": "Asia/Kolkata"},
-  "mangan": {"lat": 27.5093, "lng": 88.5315, "state": "Sikkim", "tz": "Asia/Kolkata"},
-  "gyalshing": {"lat": 27.2882, "lng": 88.2579, "state": "Sikkim", "tz": "Asia/Kolkata"},
-  "tawang": {"lat": 27.5861, "lng": 91.8697, "state": "Arunachal Pradesh", "tz": "Asia/Kolkata"},
-  "pasighat": {"lat": 28.0668, "lng": 95.3263, "state": "Arunachal Pradesh", "tz": "Asia/Kolkata"},
-  "bomdila": {"lat": 27.2645, "lng": 92.4159, "state": "Arunachal Pradesh", "tz": "Asia/Kolkata"},
-  "along": {"lat": 28.1680, "lng": 94.7680, "state": "Arunachal Pradesh", "tz": "Asia/Kolkata"},
-  "ziro": {"lat": 27.5383, "lng": 93.8235, "state": "Arunachal Pradesh", "tz": "Asia/Kolkata"},
-  "tezu": {"lat": 27.9172, "lng": 96.1637, "state": "Arunachal Pradesh", "tz": "Asia/Kolkata"},
-  "naharlagun": {"lat": 27.1054, "lng": 93.6935, "state": "Arunachal Pradesh", "tz": "Asia/Kolkata"},
-  "diu": {"lat": 20.7141, "lng": 70.9875, "state": "Dadra & Nagar Haveli and Daman & Diu", "tz": "Asia/Kolkata"},
-  "nellore ap": {"lat": 14.4426, "lng": 79.9865, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "tadpatri": {"lat": 15.0377, "lng": 78.0100, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "guntakal": {"lat": 15.1714, "lng": 77.3777, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "kavali": {"lat": 14.9133, "lng": 79.9939, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "narasaraopet": {"lat": 16.2347, "lng": 80.0448, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "chilakaluripet": {"lat": 16.0892, "lng": 80.1672, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "anakapalle": {"lat": 17.6910, "lng": 83.0037, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "dharmavaram": {"lat": 14.4145, "lng": 77.7202, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "gudivada": {"lat": 16.4407, "lng": 81.1034, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "srikakulam ap": {"lat": 18.2949, "lng": 83.8938, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "bhimavaram": {"lat": 16.5449, "lng": 81.5212, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "amalapuram": {"lat": 16.5789, "lng": 82.0057, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "palasa": {"lat": 18.7700, "lng": 84.4100, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "pithapuram": {"lat": 17.1167, "lng": 82.2500, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "ramachandrapuram": {"lat": 16.8367, "lng": 82.0269, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "mangalagiri": {"lat": 16.4319, "lng": 80.5550, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "chirala": {"lat": 15.8245, "lng": 80.3522, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "markapur": {"lat": 15.7333, "lng": 79.2667, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "nandyal": {"lat": 15.4779, "lng": 78.4837, "state": "Andhra Pradesh", "tz": "Asia/Kolkata"},
-  "wanaparthy": {"lat": 16.3615, "lng": 78.0649, "state": "Telangana", "tz": "Asia/Kolkata"},
-  "kamareddy": {"lat": 18.3226, "lng": 78.3410, "state": "Telangana", "tz": "Asia/Kolkata"},
-  "jagtial": {"lat": 18.7946, "lng": 78.9131, "state": "Telangana", "tz": "Asia/Kolkata"},
-  "bodhan": {"lat": 18.6729, "lng": 77.8890, "state": "Telangana", "tz": "Asia/Kolkata"},
-  "miryalaguda": {"lat": 16.8738, "lng": 79.5625, "state": "Telangana", "tz": "Asia/Kolkata"},
-  "bhongir": {"lat": 17.5087, "lng": 78.8855, "state": "Telangana", "tz": "Asia/Kolkata"},
-  "zahirabad": {"lat": 17.6816, "lng": 77.6074, "state": "Telangana", "tz": "Asia/Kolkata"},
-  "ramagundam": {"lat": 18.7557, "lng": 79.4747, "state": "Telangana", "tz": "Asia/Kolkata"},
-  "gadwal": {"lat": 16.2352, "lng": 77.8053, "state": "Telangana", "tz": "Asia/Kolkata"},
-  "medchal": {"lat": 17.6297, "lng": 78.4816, "state": "Telangana", "tz": "Asia/Kolkata"},
-  "jogulamba gadwal": {"lat": 16.2352, "lng": 77.8053, "state": "Telangana", "tz": "Asia/Kolkata"},
-  "palamu": {"lat": 23.9971, "lng": 84.0774, "state": "Jharkhand", "tz": "Asia/Kolkata"},
-  "daltonganj": {"lat": 24.0298, "lng": 84.0679, "state": "Jharkhand", "tz": "Asia/Kolkata"},
-  "ramgarh": {"lat": 23.6305, "lng": 85.5611, "state": "Jharkhand", "tz": "Asia/Kolkata"},
-  "koderma": {"lat": 24.4673, "lng": 85.5946, "state": "Jharkhand", "tz": "Asia/Kolkata"},
-  "chatra": {"lat": 24.2068, "lng": 84.8709, "state": "Jharkhand", "tz": "Asia/Kolkata"},
-  "lohardaga": {"lat": 23.4359, "lng": 84.6845, "state": "Jharkhand", "tz": "Asia/Kolkata"},
-  "gumla": {"lat": 23.0445, "lng": 84.5416, "state": "Jharkhand", "tz": "Asia/Kolkata"},
-  "simdega": {"lat": 22.6175, "lng": 84.5104, "state": "Jharkhand", "tz": "Asia/Kolkata"},
-  "pakur": {"lat": 24.6363, "lng": 87.8405, "state": "Jharkhand", "tz": "Asia/Kolkata"},
-  "godda": {"lat": 24.8271, "lng": 87.2127, "state": "Jharkhand", "tz": "Asia/Kolkata"},
-  "sahibganj": {"lat": 25.2445, "lng": 87.6356, "state": "Jharkhand", "tz": "Asia/Kolkata"},
-  "jamtara": {"lat": 23.9548, "lng": 86.8028, "state": "Jharkhand", "tz": "Asia/Kolkata"},
-  "seraikela": {"lat": 22.6089, "lng": 85.9748, "state": "Jharkhand", "tz": "Asia/Kolkata"},
-  "east singhbhum": {"lat": 22.8046, "lng": 86.2029, "state": "Jharkhand", "tz": "Asia/Kolkata"},
-  "west singhbhum": {"lat": 22.5572, "lng": 85.8026, "state": "Jharkhand", "tz": "Asia/Kolkata"},
-  "khunti": {"lat": 23.0747, "lng": 85.2786, "state": "Jharkhand", "tz": "Asia/Kolkata"},
-  "kawardha": {"lat": 22.0097, "lng": 81.2303, "state": "Chhattisgarh", "tz": "Asia/Kolkata"},
-  "dongargarh": {"lat": 21.1889, "lng": 80.7568, "state": "Chhattisgarh", "tz": "Asia/Kolkata"},
-  "kirandul": {"lat": 18.6368, "lng": 81.2507, "state": "Chhattisgarh", "tz": "Asia/Kolkata"},
-  "mungeli": {"lat": 22.0675, "lng": 81.6885, "state": "Chhattisgarh", "tz": "Asia/Kolkata"},
-  "jashpur": {"lat": 22.8886, "lng": 84.1390, "state": "Chhattisgarh", "tz": "Asia/Kolkata"},
-  "surajpur": {"lat": 23.2138, "lng": 82.8697, "state": "Chhattisgarh", "tz": "Asia/Kolkata"},
-  "balod": {"lat": 20.7309, "lng": 81.2039, "state": "Chhattisgarh", "tz": "Asia/Kolkata"},
-  "bemetara": {"lat": 21.7154, "lng": 81.5348, "state": "Chhattisgarh", "tz": "Asia/Kolkata"},
-  "gariaband": {"lat": 20.6348, "lng": 82.0651, "state": "Chhattisgarh", "tz": "Asia/Kolkata"},
-  "baloda bazar": {"lat": 21.6594, "lng": 82.1593, "state": "Chhattisgarh", "tz": "Asia/Kolkata"},
-  "narayanpur": {"lat": 19.7223, "lng": 81.2502, "state": "Chhattisgarh", "tz": "Asia/Kolkata"},
-  "bijapur cg": {"lat": 18.8476, "lng": 80.7763, "state": "Chhattisgarh", "tz": "Asia/Kolkata"},
-  "dantewada": {"lat": 18.8976, "lng": 81.3477, "state": "Chhattisgarh", "tz": "Asia/Kolkata"}
+  "delhi": {
+    "lat": 28.6139,
+    "lng": 77.209,
+    "state": "Delhi",
+    "tz": "Asia/Kolkata"
+  },
+  "new delhi": {
+    "lat": 28.6139,
+    "lng": 77.209,
+    "state": "Delhi",
+    "tz": "Asia/Kolkata"
+  },
+  "mumbai": {
+    "lat": 19.076,
+    "lng": 72.8777,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "bombay": {
+    "lat": 19.076,
+    "lng": 72.8777,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "chennai": {
+    "lat": 13.0827,
+    "lng": 80.2707,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "madras": {
+    "lat": 13.0827,
+    "lng": 80.2707,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "kolkata": {
+    "lat": 22.5726,
+    "lng": 88.3639,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "calcutta": {
+    "lat": 22.5726,
+    "lng": 88.3639,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "bengaluru": {
+    "lat": 12.9716,
+    "lng": 77.5946,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "bangalore": {
+    "lat": 12.9716,
+    "lng": 77.5946,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "hyderabad": {
+    "lat": 17.385,
+    "lng": 78.4867,
+    "state": "Telangana",
+    "tz": "Asia/Kolkata"
+  },
+  "ahmedabad": {
+    "lat": 23.0225,
+    "lng": 72.5714,
+    "state": "Gujarat",
+    "tz": "Asia/Kolkata"
+  },
+  "pune": {
+    "lat": 18.5204,
+    "lng": 73.8567,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "poona": {
+    "lat": 18.5204,
+    "lng": 73.8567,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "jaipur": {
+    "lat": 26.9124,
+    "lng": 75.7873,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "lucknow": {
+    "lat": 26.8467,
+    "lng": 80.9462,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "kanpur": {
+    "lat": 26.4499,
+    "lng": 80.3319,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "cawnpore": {
+    "lat": 26.4499,
+    "lng": 80.3319,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "nagpur": {
+    "lat": 21.1458,
+    "lng": 79.0882,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "indore": {
+    "lat": 22.7196,
+    "lng": 75.8577,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "thane": {
+    "lat": 19.2183,
+    "lng": 72.9781,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "bhopal": {
+    "lat": 23.2599,
+    "lng": 77.4126,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "visakhapatnam": {
+    "lat": 17.6868,
+    "lng": 83.2185,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "vizag": {
+    "lat": 17.6868,
+    "lng": 83.2185,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "pimpri-chinchwad": {
+    "lat": 18.6298,
+    "lng": 73.7997,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "patna": {
+    "lat": 25.6093,
+    "lng": 85.1376,
+    "state": "Bihar",
+    "tz": "Asia/Kolkata"
+  },
+  "vadodara": {
+    "lat": 22.3072,
+    "lng": 73.1812,
+    "state": "Gujarat",
+    "tz": "Asia/Kolkata"
+  },
+  "baroda": {
+    "lat": 22.3072,
+    "lng": 73.1812,
+    "state": "Gujarat",
+    "tz": "Asia/Kolkata"
+  },
+  "ghaziabad": {
+    "lat": 28.6692,
+    "lng": 77.4538,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "ludhiana": {
+    "lat": 30.901,
+    "lng": 75.8573,
+    "state": "Punjab",
+    "tz": "Asia/Kolkata"
+  },
+  "agra": {
+    "lat": 27.1767,
+    "lng": 78.0081,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "nashik": {
+    "lat": 19.9975,
+    "lng": 73.7898,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "faridabad": {
+    "lat": 28.4089,
+    "lng": 77.3178,
+    "state": "Haryana",
+    "tz": "Asia/Kolkata"
+  },
+  "meerut": {
+    "lat": 28.9845,
+    "lng": 77.7064,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "rajkot": {
+    "lat": 22.3039,
+    "lng": 70.8022,
+    "state": "Gujarat",
+    "tz": "Asia/Kolkata"
+  },
+  "varanasi": {
+    "lat": 25.3176,
+    "lng": 82.9739,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "benares": {
+    "lat": 25.3176,
+    "lng": 82.9739,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "banaras": {
+    "lat": 25.3176,
+    "lng": 82.9739,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "kashi": {
+    "lat": 25.3176,
+    "lng": 82.9739,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "srinagar": {
+    "lat": 34.0837,
+    "lng": 74.7973,
+    "state": "Jammu & Kashmir",
+    "tz": "Asia/Kolkata"
+  },
+  "aurangabad": {
+    "lat": 19.8762,
+    "lng": 75.3433,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "dhanbad": {
+    "lat": 23.7957,
+    "lng": 86.4304,
+    "state": "Jharkhand",
+    "tz": "Asia/Kolkata"
+  },
+  "amritsar": {
+    "lat": 31.634,
+    "lng": 74.8723,
+    "state": "Punjab",
+    "tz": "Asia/Kolkata"
+  },
+  "navi mumbai": {
+    "lat": 19.033,
+    "lng": 73.0297,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "allahabad": {
+    "lat": 25.4358,
+    "lng": 81.8463,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "prayagraj": {
+    "lat": 25.4358,
+    "lng": 81.8463,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "ranchi": {
+    "lat": 23.3441,
+    "lng": 85.3096,
+    "state": "Jharkhand",
+    "tz": "Asia/Kolkata"
+  },
+  "howrah": {
+    "lat": 22.5958,
+    "lng": 88.2636,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "coimbatore": {
+    "lat": 11.0168,
+    "lng": 76.9558,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "kovai": {
+    "lat": 11.0168,
+    "lng": 76.9558,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "jabalpur": {
+    "lat": 23.1815,
+    "lng": 79.9864,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "gwalior": {
+    "lat": 26.2183,
+    "lng": 78.1828,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "vijayawada": {
+    "lat": 16.5062,
+    "lng": 80.648,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "jodhpur": {
+    "lat": 26.2389,
+    "lng": 73.0243,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "madurai": {
+    "lat": 9.9252,
+    "lng": 78.1198,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "raipur": {
+    "lat": 21.2514,
+    "lng": 81.6296,
+    "state": "Chhattisgarh",
+    "tz": "Asia/Kolkata"
+  },
+  "kota": {
+    "lat": 25.2138,
+    "lng": 75.8648,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "guwahati": {
+    "lat": 26.1445,
+    "lng": 91.7362,
+    "state": "Assam",
+    "tz": "Asia/Kolkata"
+  },
+  "chandigarh": {
+    "lat": 30.7333,
+    "lng": 76.7794,
+    "state": "Chandigarh",
+    "tz": "Asia/Kolkata"
+  },
+  "solapur": {
+    "lat": 17.6599,
+    "lng": 75.9064,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "hubli": {
+    "lat": 15.3647,
+    "lng": 75.124,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "dharwad": {
+    "lat": 15.4589,
+    "lng": 75.0078,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "hubli-dharwad": {
+    "lat": 15.3647,
+    "lng": 75.124,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "bareilly": {
+    "lat": 28.367,
+    "lng": 79.4304,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "moradabad": {
+    "lat": 28.8386,
+    "lng": 78.7733,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "mysuru": {
+    "lat": 12.2958,
+    "lng": 76.6394,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "mysore": {
+    "lat": 12.2958,
+    "lng": 76.6394,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "gurgaon": {
+    "lat": 28.4595,
+    "lng": 77.0266,
+    "state": "Haryana",
+    "tz": "Asia/Kolkata"
+  },
+  "gurugram": {
+    "lat": 28.4595,
+    "lng": 77.0266,
+    "state": "Haryana",
+    "tz": "Asia/Kolkata"
+  },
+  "aligarh": {
+    "lat": 27.8974,
+    "lng": 78.088,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "jalandhar": {
+    "lat": 31.326,
+    "lng": 75.5762,
+    "state": "Punjab",
+    "tz": "Asia/Kolkata"
+  },
+  "tiruchirappalli": {
+    "lat": 10.7905,
+    "lng": 78.7047,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "trichy": {
+    "lat": 10.7905,
+    "lng": 78.7047,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "bhubaneswar": {
+    "lat": 20.2961,
+    "lng": 85.8245,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "salem": {
+    "lat": 11.6643,
+    "lng": 78.146,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "thiruvananthapuram": {
+    "lat": 8.5241,
+    "lng": 76.9366,
+    "state": "Kerala",
+    "tz": "Asia/Kolkata"
+  },
+  "trivandrum": {
+    "lat": 8.5241,
+    "lng": 76.9366,
+    "state": "Kerala",
+    "tz": "Asia/Kolkata"
+  },
+  "warangal": {
+    "lat": 17.9784,
+    "lng": 79.5941,
+    "state": "Telangana",
+    "tz": "Asia/Kolkata"
+  },
+  "guntur": {
+    "lat": 16.3067,
+    "lng": 80.4365,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "bhiwandi": {
+    "lat": 19.2967,
+    "lng": 73.0631,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "saharanpur": {
+    "lat": 29.964,
+    "lng": 77.5461,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "gorakhpur": {
+    "lat": 26.7606,
+    "lng": 83.3732,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "bikaner": {
+    "lat": 28.0229,
+    "lng": 73.3119,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "amravati": {
+    "lat": 20.932,
+    "lng": 77.7523,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "noida": {
+    "lat": 28.5355,
+    "lng": 77.391,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "jamshedpur": {
+    "lat": 22.8046,
+    "lng": 86.2029,
+    "state": "Jharkhand",
+    "tz": "Asia/Kolkata"
+  },
+  "bhilai": {
+    "lat": 21.2094,
+    "lng": 81.3784,
+    "state": "Chhattisgarh",
+    "tz": "Asia/Kolkata"
+  },
+  "cuttack": {
+    "lat": 20.4625,
+    "lng": 85.8828,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "firozabad": {
+    "lat": 27.1591,
+    "lng": 78.3957,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "kochi": {
+    "lat": 9.9312,
+    "lng": 76.2673,
+    "state": "Kerala",
+    "tz": "Asia/Kolkata"
+  },
+  "cochin": {
+    "lat": 9.9312,
+    "lng": 76.2673,
+    "state": "Kerala",
+    "tz": "Asia/Kolkata"
+  },
+  "nellore": {
+    "lat": 14.4426,
+    "lng": 79.9865,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "bhavnagar": {
+    "lat": 21.7645,
+    "lng": 72.1519,
+    "state": "Gujarat",
+    "tz": "Asia/Kolkata"
+  },
+  "dehradun": {
+    "lat": 30.3165,
+    "lng": 78.0322,
+    "state": "Uttarakhand",
+    "tz": "Asia/Kolkata"
+  },
+  "durgapur": {
+    "lat": 23.5204,
+    "lng": 87.3119,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "asansol": {
+    "lat": 23.6889,
+    "lng": 86.9661,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "rourkela": {
+    "lat": 22.2604,
+    "lng": 84.8536,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "nanded": {
+    "lat": 19.1383,
+    "lng": 77.321,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "kolhapur": {
+    "lat": 16.705,
+    "lng": 74.2433,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "ajmer": {
+    "lat": 26.4499,
+    "lng": 74.6399,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "akola": {
+    "lat": 20.707,
+    "lng": 77.0021,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "gulbarga": {
+    "lat": 17.3297,
+    "lng": 76.8343,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "kalaburagi": {
+    "lat": 17.3297,
+    "lng": 76.8343,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "jamnagar": {
+    "lat": 22.4707,
+    "lng": 70.0577,
+    "state": "Gujarat",
+    "tz": "Asia/Kolkata"
+  },
+  "ujjain": {
+    "lat": 23.1765,
+    "lng": 75.7885,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "loni": {
+    "lat": 28.7515,
+    "lng": 77.2869,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "siliguri": {
+    "lat": 26.7271,
+    "lng": 88.3953,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "jhansi": {
+    "lat": 25.4484,
+    "lng": 78.5685,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "ulhasnagar": {
+    "lat": 19.2215,
+    "lng": 73.1645,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "jammu": {
+    "lat": 32.7266,
+    "lng": 74.857,
+    "state": "Jammu & Kashmir",
+    "tz": "Asia/Kolkata"
+  },
+  "sangli": {
+    "lat": 16.8524,
+    "lng": 74.5815,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "mangaluru": {
+    "lat": 12.9141,
+    "lng": 74.856,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "mangalore": {
+    "lat": 12.9141,
+    "lng": 74.856,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "erode": {
+    "lat": 11.341,
+    "lng": 77.7172,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "belgaum": {
+    "lat": 15.8497,
+    "lng": 74.4977,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "belagavi": {
+    "lat": 15.8497,
+    "lng": 74.4977,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "ambattur": {
+    "lat": 13.1143,
+    "lng": 80.1548,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "tirunelveli": {
+    "lat": 8.7139,
+    "lng": 77.7567,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "malegaon": {
+    "lat": 20.5548,
+    "lng": 74.5247,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "gaya": {
+    "lat": 24.7955,
+    "lng": 84.9994,
+    "state": "Bihar",
+    "tz": "Asia/Kolkata"
+  },
+  "udaipur": {
+    "lat": 24.5854,
+    "lng": 73.7125,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "kakinada": {
+    "lat": 16.9891,
+    "lng": 82.2475,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "davanagere": {
+    "lat": 14.4644,
+    "lng": 75.9218,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "kozhikode": {
+    "lat": 11.2588,
+    "lng": 75.7804,
+    "state": "Kerala",
+    "tz": "Asia/Kolkata"
+  },
+  "calicut": {
+    "lat": 11.2588,
+    "lng": 75.7804,
+    "state": "Kerala",
+    "tz": "Asia/Kolkata"
+  },
+  "tiruppur": {
+    "lat": 11.1085,
+    "lng": 77.3411,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "bokaro": {
+    "lat": 23.6693,
+    "lng": 86.1511,
+    "state": "Jharkhand",
+    "tz": "Asia/Kolkata"
+  },
+  "rajahmundry": {
+    "lat": 17.0005,
+    "lng": 81.8041,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "bellary": {
+    "lat": 15.1394,
+    "lng": 76.9214,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "ballari": {
+    "lat": 15.1394,
+    "lng": 76.9214,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "patiala": {
+    "lat": 30.34,
+    "lng": 76.3869,
+    "state": "Punjab",
+    "tz": "Asia/Kolkata"
+  },
+  "agartala": {
+    "lat": 23.8315,
+    "lng": 91.2868,
+    "state": "Tripura",
+    "tz": "Asia/Kolkata"
+  },
+  "bhagalpur": {
+    "lat": 25.2425,
+    "lng": 86.9842,
+    "state": "Bihar",
+    "tz": "Asia/Kolkata"
+  },
+  "muzaffarnagar": {
+    "lat": 29.4727,
+    "lng": 77.7085,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "bhatpara": {
+    "lat": 22.8664,
+    "lng": 88.4076,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "panihati": {
+    "lat": 22.6933,
+    "lng": 88.3701,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "latur": {
+    "lat": 18.4088,
+    "lng": 76.5604,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "dhule": {
+    "lat": 20.9042,
+    "lng": 74.7749,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "tirupati": {
+    "lat": 13.6288,
+    "lng": 79.4192,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "rohtak": {
+    "lat": 28.8955,
+    "lng": 76.6066,
+    "state": "Haryana",
+    "tz": "Asia/Kolkata"
+  },
+  "korba": {
+    "lat": 22.3595,
+    "lng": 82.7501,
+    "state": "Chhattisgarh",
+    "tz": "Asia/Kolkata"
+  },
+  "sagar": {
+    "lat": 23.8388,
+    "lng": 78.7378,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "bilaspur": {
+    "lat": 22.0797,
+    "lng": 82.1409,
+    "state": "Chhattisgarh",
+    "tz": "Asia/Kolkata"
+  },
+  "shimla": {
+    "lat": 31.1048,
+    "lng": 77.1734,
+    "state": "Himachal Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "simla": {
+    "lat": 31.1048,
+    "lng": 77.1734,
+    "state": "Himachal Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "thanjavur": {
+    "lat": 10.787,
+    "lng": 79.1378,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "vellore": {
+    "lat": 12.9165,
+    "lng": 79.1325,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "dindigul": {
+    "lat": 10.3624,
+    "lng": 77.9695,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "anantapur": {
+    "lat": 14.6819,
+    "lng": 77.6006,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "kurnool": {
+    "lat": 15.8281,
+    "lng": 78.0373,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "mathura": {
+    "lat": 27.4924,
+    "lng": 77.6737,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "vrindavan": {
+    "lat": 27.5946,
+    "lng": 77.7012,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "haridwar": {
+    "lat": 29.9457,
+    "lng": 78.1642,
+    "state": "Uttarakhand",
+    "tz": "Asia/Kolkata"
+  },
+  "rishikesh": {
+    "lat": 30.0869,
+    "lng": 78.2676,
+    "state": "Uttarakhand",
+    "tz": "Asia/Kolkata"
+  },
+  "rameswaram": {
+    "lat": 9.2876,
+    "lng": 79.3129,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "puri": {
+    "lat": 19.8135,
+    "lng": 85.8312,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "shirdi": {
+    "lat": 19.7661,
+    "lng": 74.4764,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "bodh gaya": {
+    "lat": 24.6961,
+    "lng": 84.9869,
+    "state": "Bihar",
+    "tz": "Asia/Kolkata"
+  },
+  "dwarka": {
+    "lat": 22.2394,
+    "lng": 68.9678,
+    "state": "Gujarat",
+    "tz": "Asia/Kolkata"
+  },
+  "somnath": {
+    "lat": 20.8884,
+    "lng": 70.4015,
+    "state": "Gujarat",
+    "tz": "Asia/Kolkata"
+  },
+  "kanchipuram": {
+    "lat": 12.8342,
+    "lng": 79.7036,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "chidambaram": {
+    "lat": 11.399,
+    "lng": 79.6912,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "kumbakonam": {
+    "lat": 10.9617,
+    "lng": 79.3881,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "palani": {
+    "lat": 10.4506,
+    "lng": 77.5161,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "puducherry": {
+    "lat": 11.9416,
+    "lng": 79.8083,
+    "state": "Puducherry",
+    "tz": "Asia/Kolkata"
+  },
+  "pondicherry": {
+    "lat": 11.9416,
+    "lng": 79.8083,
+    "state": "Puducherry",
+    "tz": "Asia/Kolkata"
+  },
+  "pondy": {
+    "lat": 11.9416,
+    "lng": 79.8083,
+    "state": "Puducherry",
+    "tz": "Asia/Kolkata"
+  },
+  "ooty": {
+    "lat": 11.4102,
+    "lng": 76.695,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "udhagamandalam": {
+    "lat": 11.4102,
+    "lng": 76.695,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "surat": {
+    "lat": 21.1702,
+    "lng": 72.8311,
+    "state": "Gujarat",
+    "tz": "Asia/Kolkata"
+  },
+  "durg": {
+    "lat": 21.1904,
+    "lng": 81.2849,
+    "state": "Chhattisgarh",
+    "tz": "Asia/Kolkata"
+  },
+  "rajnandgaon": {
+    "lat": 21.0972,
+    "lng": 81.028,
+    "state": "Chhattisgarh",
+    "tz": "Asia/Kolkata"
+  },
+  "jagdalpur": {
+    "lat": 19.0784,
+    "lng": 82.0198,
+    "state": "Chhattisgarh",
+    "tz": "Asia/Kolkata"
+  },
+  "ambikapur": {
+    "lat": 23.1185,
+    "lng": 83.1962,
+    "state": "Chhattisgarh",
+    "tz": "Asia/Kolkata"
+  },
+  "raigarh": {
+    "lat": 21.8974,
+    "lng": 83.395,
+    "state": "Chhattisgarh",
+    "tz": "Asia/Kolkata"
+  },
+  "dhamtari": {
+    "lat": 20.7075,
+    "lng": 81.5499,
+    "state": "Chhattisgarh",
+    "tz": "Asia/Kolkata"
+  },
+  "mahasamund": {
+    "lat": 21.1103,
+    "lng": 82.0975,
+    "state": "Chhattisgarh",
+    "tz": "Asia/Kolkata"
+  },
+  "kanker": {
+    "lat": 20.272,
+    "lng": 81.4913,
+    "state": "Chhattisgarh",
+    "tz": "Asia/Kolkata"
+  },
+  "kondagaon": {
+    "lat": 19.5965,
+    "lng": 81.6647,
+    "state": "Chhattisgarh",
+    "tz": "Asia/Kolkata"
+  },
+  "sukma": {
+    "lat": 18.3879,
+    "lng": 81.6605,
+    "state": "Chhattisgarh",
+    "tz": "Asia/Kolkata"
+  },
+  "bastar": {
+    "lat": 19.1072,
+    "lng": 81.9535,
+    "state": "Chhattisgarh",
+    "tz": "Asia/Kolkata"
+  },
+  "janjgir": {
+    "lat": 21.8174,
+    "lng": 82.5748,
+    "state": "Chhattisgarh",
+    "tz": "Asia/Kolkata"
+  },
+  "hazaribagh": {
+    "lat": 23.9921,
+    "lng": 85.3637,
+    "state": "Jharkhand",
+    "tz": "Asia/Kolkata"
+  },
+  "deoghar": {
+    "lat": 24.4764,
+    "lng": 86.6944,
+    "state": "Jharkhand",
+    "tz": "Asia/Kolkata"
+  },
+  "giridih": {
+    "lat": 24.1851,
+    "lng": 86.3005,
+    "state": "Jharkhand",
+    "tz": "Asia/Kolkata"
+  },
+  "dumka": {
+    "lat": 24.2686,
+    "lng": 87.2497,
+    "state": "Jharkhand",
+    "tz": "Asia/Kolkata"
+  },
+  "chaibasa": {
+    "lat": 22.5572,
+    "lng": 85.8026,
+    "state": "Jharkhand",
+    "tz": "Asia/Kolkata"
+  },
+  "suryanar kovil": {
+    "lat": 11.0023,
+    "lng": 79.3859,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "thingaloor": {
+    "lat": 10.9873,
+    "lng": 79.3956,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "vaitheeswaran koil": {
+    "lat": 11.2349,
+    "lng": 79.6469,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "thiruvenkadu": {
+    "lat": 11.2361,
+    "lng": 79.6397,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "alangudi": {
+    "lat": 10.5267,
+    "lng": 79.3267,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "kanjanoor": {
+    "lat": 10.9591,
+    "lng": 79.4029,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "thirunallar": {
+    "lat": 10.8707,
+    "lng": 79.6522,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "keezhperumpallam": {
+    "lat": 11.2457,
+    "lng": 79.7264,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "thennangur": {
+    "lat": 12.3023,
+    "lng": 79.4767,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "amaravati": {
+    "lat": 16.5062,
+    "lng": 80.648,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "panaji": {
+    "lat": 15.4909,
+    "lng": 73.8278,
+    "state": "Goa",
+    "tz": "Asia/Kolkata"
+  },
+  "gandhinagar": {
+    "lat": 23.2156,
+    "lng": 72.6369,
+    "state": "Gujarat",
+    "tz": "Asia/Kolkata"
+  },
+  "dispur": {
+    "lat": 26.1408,
+    "lng": 91.7898,
+    "state": "Assam",
+    "tz": "Asia/Kolkata"
+  },
+  "imphal": {
+    "lat": 24.817,
+    "lng": 93.9368,
+    "state": "Manipur",
+    "tz": "Asia/Kolkata"
+  },
+  "shillong": {
+    "lat": 25.5788,
+    "lng": 91.8933,
+    "state": "Meghalaya",
+    "tz": "Asia/Kolkata"
+  },
+  "aizawl": {
+    "lat": 23.7271,
+    "lng": 92.7176,
+    "state": "Mizoram",
+    "tz": "Asia/Kolkata"
+  },
+  "kohima": {
+    "lat": 25.6751,
+    "lng": 94.1086,
+    "state": "Nagaland",
+    "tz": "Asia/Kolkata"
+  },
+  "gangtok": {
+    "lat": 27.3389,
+    "lng": 88.6065,
+    "state": "Sikkim",
+    "tz": "Asia/Kolkata"
+  },
+  "itanagar": {
+    "lat": 27.0844,
+    "lng": 93.6053,
+    "state": "Arunachal Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "port blair": {
+    "lat": 11.6234,
+    "lng": 92.7265,
+    "state": "Andaman & Nicobar",
+    "tz": "Asia/Kolkata"
+  },
+  "kavaratti": {
+    "lat": 10.5626,
+    "lng": 72.6369,
+    "state": "Lakshadweep",
+    "tz": "Asia/Kolkata"
+  },
+  "daman": {
+    "lat": 20.397,
+    "lng": 72.8328,
+    "state": "Dadra & Nagar Haveli and Daman & Diu",
+    "tz": "Asia/Kolkata"
+  },
+  "silvassa": {
+    "lat": 20.2766,
+    "lng": 73.0164,
+    "state": "Dadra & Nagar Haveli and Daman & Diu",
+    "tz": "Asia/Kolkata"
+  },
+  "leh": {
+    "lat": 34.1526,
+    "lng": 77.5771,
+    "state": "Ladakh",
+    "tz": "Asia/Kolkata"
+  },
+  "kargil": {
+    "lat": 34.556,
+    "lng": 76.1349,
+    "state": "Ladakh",
+    "tz": "Asia/Kolkata"
+  },
+  "muzaffarpur": {
+    "lat": 26.1209,
+    "lng": 85.3647,
+    "state": "Bihar",
+    "tz": "Asia/Kolkata"
+  },
+  "darbhanga": {
+    "lat": 26.1542,
+    "lng": 85.8918,
+    "state": "Bihar",
+    "tz": "Asia/Kolkata"
+  },
+  "purnia": {
+    "lat": 25.7771,
+    "lng": 87.4753,
+    "state": "Bihar",
+    "tz": "Asia/Kolkata"
+  },
+  "arrah": {
+    "lat": 25.5541,
+    "lng": 84.6636,
+    "state": "Bihar",
+    "tz": "Asia/Kolkata"
+  },
+  "begusarai": {
+    "lat": 25.4182,
+    "lng": 86.1272,
+    "state": "Bihar",
+    "tz": "Asia/Kolkata"
+  },
+  "chapra": {
+    "lat": 25.7839,
+    "lng": 84.7474,
+    "state": "Bihar",
+    "tz": "Asia/Kolkata"
+  },
+  "katihar": {
+    "lat": 25.5392,
+    "lng": 87.5719,
+    "state": "Bihar",
+    "tz": "Asia/Kolkata"
+  },
+  "munger": {
+    "lat": 25.3708,
+    "lng": 86.4734,
+    "state": "Bihar",
+    "tz": "Asia/Kolkata"
+  },
+  "saharsa": {
+    "lat": 25.8783,
+    "lng": 86.5947,
+    "state": "Bihar",
+    "tz": "Asia/Kolkata"
+  },
+  "sasaram": {
+    "lat": 24.947,
+    "lng": 84.0314,
+    "state": "Bihar",
+    "tz": "Asia/Kolkata"
+  },
+  "hajipur": {
+    "lat": 25.6879,
+    "lng": 85.2136,
+    "state": "Bihar",
+    "tz": "Asia/Kolkata"
+  },
+  "buxar": {
+    "lat": 25.5644,
+    "lng": 83.978,
+    "state": "Bihar",
+    "tz": "Asia/Kolkata"
+  },
+  "jehanabad": {
+    "lat": 25.2133,
+    "lng": 84.9862,
+    "state": "Bihar",
+    "tz": "Asia/Kolkata"
+  },
+  "siwan": {
+    "lat": 26.2221,
+    "lng": 84.3574,
+    "state": "Bihar",
+    "tz": "Asia/Kolkata"
+  },
+  "motihari": {
+    "lat": 26.655,
+    "lng": 84.9221,
+    "state": "Bihar",
+    "tz": "Asia/Kolkata"
+  },
+  "bettiah": {
+    "lat": 26.8026,
+    "lng": 84.5171,
+    "state": "Bihar",
+    "tz": "Asia/Kolkata"
+  },
+  "nawada": {
+    "lat": 24.8861,
+    "lng": 85.5422,
+    "state": "Bihar",
+    "tz": "Asia/Kolkata"
+  },
+  "kishanganj": {
+    "lat": 26.094,
+    "lng": 87.9493,
+    "state": "Bihar",
+    "tz": "Asia/Kolkata"
+  },
+  "madhubani": {
+    "lat": 26.3483,
+    "lng": 86.0715,
+    "state": "Bihar",
+    "tz": "Asia/Kolkata"
+  },
+  "sitamarhi": {
+    "lat": 26.5926,
+    "lng": 85.4899,
+    "state": "Bihar",
+    "tz": "Asia/Kolkata"
+  },
+  "supaul": {
+    "lat": 26.1241,
+    "lng": 86.6033,
+    "state": "Bihar",
+    "tz": "Asia/Kolkata"
+  },
+  "vaishali": {
+    "lat": 25.6884,
+    "lng": 85.205,
+    "state": "Bihar",
+    "tz": "Asia/Kolkata"
+  },
+  "aurangabad bihar": {
+    "lat": 24.7536,
+    "lng": 84.3742,
+    "state": "Bihar",
+    "tz": "Asia/Kolkata"
+  },
+  "nalanda": {
+    "lat": 25.1357,
+    "lng": 85.4432,
+    "state": "Bihar",
+    "tz": "Asia/Kolkata"
+  },
+  "udhampur": {
+    "lat": 32.916,
+    "lng": 75.1322,
+    "state": "Jammu & Kashmir",
+    "tz": "Asia/Kolkata"
+  },
+  "anantnag": {
+    "lat": 33.7311,
+    "lng": 75.1545,
+    "state": "Jammu & Kashmir",
+    "tz": "Asia/Kolkata"
+  },
+  "baramulla": {
+    "lat": 34.2095,
+    "lng": 74.3436,
+    "state": "Jammu & Kashmir",
+    "tz": "Asia/Kolkata"
+  },
+  "sopore": {
+    "lat": 34.3,
+    "lng": 74.47,
+    "state": "Jammu & Kashmir",
+    "tz": "Asia/Kolkata"
+  },
+  "kathua": {
+    "lat": 32.3866,
+    "lng": 75.5142,
+    "state": "Jammu & Kashmir",
+    "tz": "Asia/Kolkata"
+  },
+  "alwar": {
+    "lat": 27.5529,
+    "lng": 76.6346,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "bharatpur": {
+    "lat": 27.2152,
+    "lng": 77.503,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "bhilwara": {
+    "lat": 25.3407,
+    "lng": 74.6313,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "chittorgarh": {
+    "lat": 24.8887,
+    "lng": 74.6269,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "churu": {
+    "lat": 28.3254,
+    "lng": 74.9684,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "dausa": {
+    "lat": 26.8838,
+    "lng": 76.3388,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "dholpur": {
+    "lat": 26.702,
+    "lng": 77.8893,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "dungarpur": {
+    "lat": 23.8437,
+    "lng": 73.7145,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "hanumangarh": {
+    "lat": 29.5816,
+    "lng": 74.3294,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "jaisalmer": {
+    "lat": 26.9157,
+    "lng": 70.9083,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "jalore": {
+    "lat": 25.3456,
+    "lng": 72.6168,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "jhalawar": {
+    "lat": 24.5972,
+    "lng": 76.1655,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "jhunjhunu": {
+    "lat": 28.1289,
+    "lng": 75.3987,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "karauli": {
+    "lat": 26.4953,
+    "lng": 77.0237,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "nagaur": {
+    "lat": 27.2024,
+    "lng": 73.735,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "pali": {
+    "lat": 25.7711,
+    "lng": 73.3234,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "pratapgarh rajasthan": {
+    "lat": 24.0318,
+    "lng": 74.7788,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "rajsamand": {
+    "lat": 25.0716,
+    "lng": 73.8805,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "sawai madhopur": {
+    "lat": 26.0238,
+    "lng": 76.3466,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "sikar": {
+    "lat": 27.6094,
+    "lng": 75.1399,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "sirohi": {
+    "lat": 24.8849,
+    "lng": 72.8578,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "sri ganganagar": {
+    "lat": 29.9094,
+    "lng": 73.8748,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "tonk": {
+    "lat": 26.1664,
+    "lng": 75.7885,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "banswara": {
+    "lat": 23.5452,
+    "lng": 74.4397,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "baran": {
+    "lat": 25.0991,
+    "lng": 76.5132,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "barmer": {
+    "lat": 25.7532,
+    "lng": 71.3967,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "bundi": {
+    "lat": 25.4305,
+    "lng": 75.6499,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "mount abu": {
+    "lat": 24.5926,
+    "lng": 72.7156,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "pushkar": {
+    "lat": 26.49,
+    "lng": 74.5542,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "nathdwara": {
+    "lat": 24.9385,
+    "lng": 73.8232,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "beawar": {
+    "lat": 26.1011,
+    "lng": 74.3188,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "kishangarh": {
+    "lat": 26.5918,
+    "lng": 74.8541,
+    "state": "Rajasthan",
+    "tz": "Asia/Kolkata"
+  },
+  "varanasi up": {
+    "lat": 25.3176,
+    "lng": 82.9739,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "ayodhya": {
+    "lat": 26.7922,
+    "lng": 82.1998,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "azamgarh": {
+    "lat": 26.0735,
+    "lng": 83.1862,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "bahraich": {
+    "lat": 27.5752,
+    "lng": 81.5959,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "ballia": {
+    "lat": 25.7583,
+    "lng": 84.1487,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "banda": {
+    "lat": 25.4754,
+    "lng": 80.3358,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "barabanki": {
+    "lat": 26.926,
+    "lng": 81.1847,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "basti": {
+    "lat": 26.8015,
+    "lng": 82.7284,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "bijnor": {
+    "lat": 29.3724,
+    "lng": 78.1367,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "budaun": {
+    "lat": 28.0419,
+    "lng": 79.1256,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "bulandshahr": {
+    "lat": 28.407,
+    "lng": 77.8498,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "deoria": {
+    "lat": 26.504,
+    "lng": 83.7791,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "etah": {
+    "lat": 27.5582,
+    "lng": 78.6616,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "etawah": {
+    "lat": 26.7859,
+    "lng": 79.0212,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "faizabad": {
+    "lat": 26.7735,
+    "lng": 82.1447,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "farrukhabad": {
+    "lat": 27.3906,
+    "lng": 79.5777,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "fatehpur": {
+    "lat": 25.9273,
+    "lng": 80.8148,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "gonda": {
+    "lat": 27.1342,
+    "lng": 81.9619,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "hamirpur up": {
+    "lat": 25.9541,
+    "lng": 80.1474,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "hardoi": {
+    "lat": 27.3953,
+    "lng": 80.1313,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "jaunpur": {
+    "lat": 25.7464,
+    "lng": 82.6836,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "lakhimpur kheri": {
+    "lat": 27.9462,
+    "lng": 80.7801,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "mainpuri": {
+    "lat": 27.2348,
+    "lng": 79.0215,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "mirzapur": {
+    "lat": 25.146,
+    "lng": 82.5689,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "muzaffarnagar up": {
+    "lat": 29.4727,
+    "lng": 77.7085,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "orai": {
+    "lat": 25.9879,
+    "lng": 79.4508,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "pilibhit": {
+    "lat": 28.6378,
+    "lng": 79.8058,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "pratapgarh": {
+    "lat": 25.8955,
+    "lng": 81.9392,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "rae bareli": {
+    "lat": 26.2345,
+    "lng": 81.2326,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "rampur": {
+    "lat": 28.793,
+    "lng": 79.027,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "shahjahanpur": {
+    "lat": 27.881,
+    "lng": 79.9066,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "sitapur": {
+    "lat": 27.5697,
+    "lng": 80.6828,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "sultanpur": {
+    "lat": 26.2641,
+    "lng": 82.0722,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "unnao": {
+    "lat": 26.5393,
+    "lng": 80.4878,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "sambhal": {
+    "lat": 28.5851,
+    "lng": 78.5647,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "hathras": {
+    "lat": 27.5963,
+    "lng": 78.0519,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "amroha": {
+    "lat": 28.9044,
+    "lng": 78.4673,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "mau": {
+    "lat": 25.9419,
+    "lng": 83.5614,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "sonbhadra": {
+    "lat": 24.6882,
+    "lng": 83.068,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "chandauli": {
+    "lat": 25.2676,
+    "lng": 83.2685,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "ambedkar nagar": {
+    "lat": 26.4001,
+    "lng": 82.5523,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "greater noida": {
+    "lat": 28.4744,
+    "lng": 77.504,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "mathura up": {
+    "lat": 27.4924,
+    "lng": 77.6737,
+    "state": "Uttar Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "nagpur maharashtra": {
+    "lat": 21.1458,
+    "lng": 79.0882,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "ahmednagar": {
+    "lat": 19.0948,
+    "lng": 74.7496,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "jalgaon": {
+    "lat": 21.0077,
+    "lng": 75.5626,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "chandrapur": {
+    "lat": 19.9504,
+    "lng": 79.2961,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "parbhani": {
+    "lat": 19.2665,
+    "lng": 76.7745,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "jalna": {
+    "lat": 19.8347,
+    "lng": 75.8816,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "beed": {
+    "lat": 18.9891,
+    "lng": 75.7604,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "satara": {
+    "lat": 17.6805,
+    "lng": 74.0183,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "ratnagiri": {
+    "lat": 16.9902,
+    "lng": 73.3,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "sindhudurg": {
+    "lat": 16.3491,
+    "lng": 73.552,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "osmanabad": {
+    "lat": 18.186,
+    "lng": 76.044,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "hingoli": {
+    "lat": 19.7169,
+    "lng": 77.1502,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "washim": {
+    "lat": 20.1054,
+    "lng": 77.1326,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "gondia": {
+    "lat": 21.4624,
+    "lng": 80.2181,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "wardha": {
+    "lat": 20.7453,
+    "lng": 78.6022,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "bhandara": {
+    "lat": 21.1669,
+    "lng": 79.6508,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "gadchiroli": {
+    "lat": 20.1809,
+    "lng": 80.0013,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "yavatmal": {
+    "lat": 20.3899,
+    "lng": 78.1307,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "buldhana": {
+    "lat": 20.5293,
+    "lng": 76.1842,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "ichalkaranji": {
+    "lat": 16.6916,
+    "lng": 74.4618,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "panvel": {
+    "lat": 18.9894,
+    "lng": 73.1175,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "kalyan": {
+    "lat": 19.2437,
+    "lng": 73.1355,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "dombivli": {
+    "lat": 19.2183,
+    "lng": 73.0867,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "vasai-virar": {
+    "lat": 19.3919,
+    "lng": 72.8397,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "mira-bhayandar": {
+    "lat": 19.2952,
+    "lng": 72.8544,
+    "state": "Maharashtra",
+    "tz": "Asia/Kolkata"
+  },
+  "tumkur": {
+    "lat": 13.3379,
+    "lng": 77.1173,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "shimoga": {
+    "lat": 13.9299,
+    "lng": 75.5681,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "shivamogga": {
+    "lat": 13.9299,
+    "lng": 75.5681,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "raichur": {
+    "lat": 16.2076,
+    "lng": 77.356,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "bijapur": {
+    "lat": 16.8302,
+    "lng": 75.7169,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "vijayapura": {
+    "lat": 16.8302,
+    "lng": 75.7169,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "bidar": {
+    "lat": 17.9132,
+    "lng": 77.5199,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "mandya": {
+    "lat": 12.5222,
+    "lng": 76.8952,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "hassan": {
+    "lat": 13.0072,
+    "lng": 76.0996,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "chitradurga": {
+    "lat": 14.2226,
+    "lng": 76.3984,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "udupi": {
+    "lat": 13.3409,
+    "lng": 74.7421,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "chikmagalur": {
+    "lat": 13.3161,
+    "lng": 75.7739,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "gadag": {
+    "lat": 15.4317,
+    "lng": 75.6266,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "yadgir": {
+    "lat": 16.77,
+    "lng": 77.1383,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "chamarajanagar": {
+    "lat": 11.9236,
+    "lng": 76.9398,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "kodagu": {
+    "lat": 12.4244,
+    "lng": 75.7382,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "koppal": {
+    "lat": 15.3507,
+    "lng": 76.155,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "bagalkot": {
+    "lat": 16.1691,
+    "lng": 75.6615,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "haveri": {
+    "lat": 14.7951,
+    "lng": 75.3989,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "kolar": {
+    "lat": 13.1361,
+    "lng": 78.1292,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "ramanagara": {
+    "lat": 12.7119,
+    "lng": 77.2814,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "chikballapur": {
+    "lat": 13.4355,
+    "lng": 77.7315,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "karwar": {
+    "lat": 14.8173,
+    "lng": 74.1289,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "hospet": {
+    "lat": 15.2689,
+    "lng": 76.3909,
+    "state": "Karnataka",
+    "tz": "Asia/Kolkata"
+  },
+  "alappuzha": {
+    "lat": 9.4981,
+    "lng": 76.3388,
+    "state": "Kerala",
+    "tz": "Asia/Kolkata"
+  },
+  "alleppey": {
+    "lat": 9.4981,
+    "lng": 76.3388,
+    "state": "Kerala",
+    "tz": "Asia/Kolkata"
+  },
+  "thrissur": {
+    "lat": 10.5276,
+    "lng": 76.2144,
+    "state": "Kerala",
+    "tz": "Asia/Kolkata"
+  },
+  "trichur": {
+    "lat": 10.5276,
+    "lng": 76.2144,
+    "state": "Kerala",
+    "tz": "Asia/Kolkata"
+  },
+  "kollam": {
+    "lat": 8.8932,
+    "lng": 76.6141,
+    "state": "Kerala",
+    "tz": "Asia/Kolkata"
+  },
+  "quilon": {
+    "lat": 8.8932,
+    "lng": 76.6141,
+    "state": "Kerala",
+    "tz": "Asia/Kolkata"
+  },
+  "palakkad": {
+    "lat": 10.7867,
+    "lng": 76.6548,
+    "state": "Kerala",
+    "tz": "Asia/Kolkata"
+  },
+  "palghat": {
+    "lat": 10.7867,
+    "lng": 76.6548,
+    "state": "Kerala",
+    "tz": "Asia/Kolkata"
+  },
+  "kannur": {
+    "lat": 11.8745,
+    "lng": 75.3704,
+    "state": "Kerala",
+    "tz": "Asia/Kolkata"
+  },
+  "cannanore": {
+    "lat": 11.8745,
+    "lng": 75.3704,
+    "state": "Kerala",
+    "tz": "Asia/Kolkata"
+  },
+  "malappuram": {
+    "lat": 11.0411,
+    "lng": 76.0816,
+    "state": "Kerala",
+    "tz": "Asia/Kolkata"
+  },
+  "kottayam": {
+    "lat": 9.5916,
+    "lng": 76.5222,
+    "state": "Kerala",
+    "tz": "Asia/Kolkata"
+  },
+  "idukki": {
+    "lat": 9.8494,
+    "lng": 76.9714,
+    "state": "Kerala",
+    "tz": "Asia/Kolkata"
+  },
+  "kasaragod": {
+    "lat": 12.4996,
+    "lng": 74.9869,
+    "state": "Kerala",
+    "tz": "Asia/Kolkata"
+  },
+  "wayanad": {
+    "lat": 11.6854,
+    "lng": 76.132,
+    "state": "Kerala",
+    "tz": "Asia/Kolkata"
+  },
+  "pathanamthitta": {
+    "lat": 9.2648,
+    "lng": 76.787,
+    "state": "Kerala",
+    "tz": "Asia/Kolkata"
+  },
+  "ernakulam": {
+    "lat": 9.9816,
+    "lng": 76.2999,
+    "state": "Kerala",
+    "tz": "Asia/Kolkata"
+  },
+  "munnar": {
+    "lat": 10.0889,
+    "lng": 77.0595,
+    "state": "Kerala",
+    "tz": "Asia/Kolkata"
+  },
+  "guruvayoor": {
+    "lat": 10.5943,
+    "lng": 76.0413,
+    "state": "Kerala",
+    "tz": "Asia/Kolkata"
+  },
+  "thodupuzha": {
+    "lat": 9.8946,
+    "lng": 76.7178,
+    "state": "Kerala",
+    "tz": "Asia/Kolkata"
+  },
+  "tirupur": {
+    "lat": 11.1085,
+    "lng": 77.3411,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "nagercoil": {
+    "lat": 8.1833,
+    "lng": 77.4119,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "cuddalore": {
+    "lat": 11.748,
+    "lng": 79.7714,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "karur": {
+    "lat": 10.9601,
+    "lng": 78.0766,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "ramanathapuram": {
+    "lat": 9.3639,
+    "lng": 78.8395,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "sivaganga": {
+    "lat": 10.0269,
+    "lng": 78.4757,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "virudhunagar": {
+    "lat": 9.585,
+    "lng": 77.9624,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "nagapattinam": {
+    "lat": 10.7672,
+    "lng": 79.8449,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "namakkal": {
+    "lat": 11.2189,
+    "lng": 78.1674,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "perambalur": {
+    "lat": 11.2333,
+    "lng": 78.8833,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "pudukkottai": {
+    "lat": 10.3833,
+    "lng": 78.8001,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "ariyalur": {
+    "lat": 11.14,
+    "lng": 79.08,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "theni": {
+    "lat": 10.0104,
+    "lng": 77.4768,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "krishnagiri": {
+    "lat": 12.5186,
+    "lng": 78.2138,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "dharmapuri": {
+    "lat": 12.1211,
+    "lng": 78.1582,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "tiruvannamalai": {
+    "lat": 12.2253,
+    "lng": 79.0747,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "villupuram": {
+    "lat": 11.9395,
+    "lng": 79.4924,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "thoothukudi": {
+    "lat": 8.7642,
+    "lng": 78.1348,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "tuticorin": {
+    "lat": 8.7642,
+    "lng": 78.1348,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "kanyakumari": {
+    "lat": 8.0883,
+    "lng": 77.5385,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "hosur": {
+    "lat": 12.7409,
+    "lng": 77.8253,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "sivakasi": {
+    "lat": 9.4533,
+    "lng": 77.7981,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "pollachi": {
+    "lat": 10.6609,
+    "lng": 77.0085,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "kodaikanal": {
+    "lat": 10.2381,
+    "lng": 77.4892,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "srirangam": {
+    "lat": 10.8568,
+    "lng": 78.6898,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "mayiladuthurai": {
+    "lat": 11.1036,
+    "lng": 79.6553,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "tiruvarur": {
+    "lat": 10.7664,
+    "lng": 79.6369,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "tenkasi": {
+    "lat": 8.9594,
+    "lng": 77.3161,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "ranipet": {
+    "lat": 12.9298,
+    "lng": 79.3324,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "chengalpattu": {
+    "lat": 12.6819,
+    "lng": 79.9888,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "tirupathur": {
+    "lat": 12.4953,
+    "lng": 78.5731,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "kallakurichi": {
+    "lat": 11.739,
+    "lng": 78.9618,
+    "state": "Tamil Nadu",
+    "tz": "Asia/Kolkata"
+  },
+  "nizamabad": {
+    "lat": 18.6725,
+    "lng": 78.094,
+    "state": "Telangana",
+    "tz": "Asia/Kolkata"
+  },
+  "karimnagar": {
+    "lat": 18.4386,
+    "lng": 79.1288,
+    "state": "Telangana",
+    "tz": "Asia/Kolkata"
+  },
+  "khammam": {
+    "lat": 17.2473,
+    "lng": 80.1514,
+    "state": "Telangana",
+    "tz": "Asia/Kolkata"
+  },
+  "mahbubnagar": {
+    "lat": 16.7488,
+    "lng": 77.9855,
+    "state": "Telangana",
+    "tz": "Asia/Kolkata"
+  },
+  "nalgonda": {
+    "lat": 17.0575,
+    "lng": 79.2671,
+    "state": "Telangana",
+    "tz": "Asia/Kolkata"
+  },
+  "adilabad": {
+    "lat": 19.6641,
+    "lng": 78.532,
+    "state": "Telangana",
+    "tz": "Asia/Kolkata"
+  },
+  "medak": {
+    "lat": 18.0479,
+    "lng": 78.2605,
+    "state": "Telangana",
+    "tz": "Asia/Kolkata"
+  },
+  "siddipet": {
+    "lat": 18.1019,
+    "lng": 78.852,
+    "state": "Telangana",
+    "tz": "Asia/Kolkata"
+  },
+  "mancherial": {
+    "lat": 18.8681,
+    "lng": 79.4439,
+    "state": "Telangana",
+    "tz": "Asia/Kolkata"
+  },
+  "suryapet": {
+    "lat": 17.1408,
+    "lng": 79.6286,
+    "state": "Telangana",
+    "tz": "Asia/Kolkata"
+  },
+  "sangareddy": {
+    "lat": 17.6197,
+    "lng": 78.0867,
+    "state": "Telangana",
+    "tz": "Asia/Kolkata"
+  },
+  "secunderabad": {
+    "lat": 17.4399,
+    "lng": 78.4983,
+    "state": "Telangana",
+    "tz": "Asia/Kolkata"
+  },
+  "eluru": {
+    "lat": 16.7107,
+    "lng": 81.0952,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "ongole": {
+    "lat": 15.5057,
+    "lng": 80.0499,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "srikakulam": {
+    "lat": 18.2949,
+    "lng": 83.8938,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "vizianagaram": {
+    "lat": 18.1066,
+    "lng": 83.3956,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "kadapa": {
+    "lat": 14.4674,
+    "lng": 78.8241,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "chittoor": {
+    "lat": 13.2172,
+    "lng": 79.1003,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "machilipatnam": {
+    "lat": 16.1875,
+    "lng": 81.1389,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "proddatur": {
+    "lat": 14.7502,
+    "lng": 78.5481,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "tenali": {
+    "lat": 16.2379,
+    "lng": 80.64,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "adoni": {
+    "lat": 15.6275,
+    "lng": 77.2748,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "hindupur": {
+    "lat": 13.8288,
+    "lng": 77.4912,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "tadepalligudem": {
+    "lat": 16.8148,
+    "lng": 81.5269,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "madanapalle": {
+    "lat": 13.5504,
+    "lng": 78.5033,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "kharagpur": {
+    "lat": 22.346,
+    "lng": 87.232,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "haldia": {
+    "lat": 22.0257,
+    "lng": 88.0583,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "baharampur": {
+    "lat": 24.1052,
+    "lng": 88.2505,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "raiganj": {
+    "lat": 25.6162,
+    "lng": 88.1235,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "english bazar": {
+    "lat": 25.0041,
+    "lng": 88.1397,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "malda": {
+    "lat": 25.0041,
+    "lng": 88.1397,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "balurghat": {
+    "lat": 25.2271,
+    "lng": 88.7685,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "bankura": {
+    "lat": 23.2324,
+    "lng": 87.0746,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "purulia": {
+    "lat": 23.3321,
+    "lng": 86.365,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "medinipur": {
+    "lat": 22.4222,
+    "lng": 87.3199,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "midnapore": {
+    "lat": 22.4222,
+    "lng": 87.3199,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "tamluk": {
+    "lat": 22.2878,
+    "lng": 87.9215,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "cooch behar": {
+    "lat": 26.3227,
+    "lng": 89.4403,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "jalpaiguri": {
+    "lat": 26.5237,
+    "lng": 88.7195,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "alipurduar": {
+    "lat": 26.4893,
+    "lng": 89.5232,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "darjeeling": {
+    "lat": 27.036,
+    "lng": 88.2627,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "krishnanagar": {
+    "lat": 23.4013,
+    "lng": 88.4883,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "nabadwip": {
+    "lat": 23.4074,
+    "lng": 88.3659,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "hooghly": {
+    "lat": 22.9089,
+    "lng": 88.3967,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "chinsurah": {
+    "lat": 22.8989,
+    "lng": 88.3928,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "barrackpore": {
+    "lat": 22.7658,
+    "lng": 88.3772,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "baranagar": {
+    "lat": 22.6388,
+    "lng": 88.3707,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "serampore": {
+    "lat": 22.7518,
+    "lng": 88.3439,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "kalyani": {
+    "lat": 22.975,
+    "lng": 88.4345,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "shantiniketan": {
+    "lat": 23.6786,
+    "lng": 87.6852,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "bolpur": {
+    "lat": 23.6693,
+    "lng": 87.6873,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "diamond harbour": {
+    "lat": 22.1912,
+    "lng": 88.1862,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "contai": {
+    "lat": 21.7786,
+    "lng": 87.7476,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "sambalpur": {
+    "lat": 21.4669,
+    "lng": 83.9812,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "berhampur": {
+    "lat": 19.3149,
+    "lng": 84.7941,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "balasore": {
+    "lat": 21.4934,
+    "lng": 86.9337,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "baripada": {
+    "lat": 21.9322,
+    "lng": 86.7251,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "angul": {
+    "lat": 20.8408,
+    "lng": 85.1003,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "dhenkanal": {
+    "lat": 20.6514,
+    "lng": 85.5988,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "jeypore": {
+    "lat": 18.8563,
+    "lng": 82.5716,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "koraput": {
+    "lat": 18.8108,
+    "lng": 82.7126,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "bhawanipatna": {
+    "lat": 19.907,
+    "lng": 83.1628,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "kendrapara": {
+    "lat": 20.5024,
+    "lng": 86.4196,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "jajpur": {
+    "lat": 20.8377,
+    "lng": 86.3287,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "jharsuguda": {
+    "lat": 21.8554,
+    "lng": 84.0066,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "sundargarh": {
+    "lat": 22.1196,
+    "lng": 84.0432,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "phulbani": {
+    "lat": 20.4732,
+    "lng": 84.2302,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "konark": {
+    "lat": 19.8876,
+    "lng": 86.0946,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "paradip": {
+    "lat": 20.3164,
+    "lng": 86.6085,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "boudh": {
+    "lat": 20.8378,
+    "lng": 84.319,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "nayagarh": {
+    "lat": 20.1294,
+    "lng": 85.0969,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "rayagada": {
+    "lat": 19.1712,
+    "lng": 83.4155,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "jagatsinghpur": {
+    "lat": 20.2551,
+    "lng": 86.1711,
+    "state": "Odisha",
+    "tz": "Asia/Kolkata"
+  },
+  "amritsar punjab": {
+    "lat": 31.634,
+    "lng": 74.8723,
+    "state": "Punjab",
+    "tz": "Asia/Kolkata"
+  },
+  "bathinda": {
+    "lat": 30.211,
+    "lng": 74.9455,
+    "state": "Punjab",
+    "tz": "Asia/Kolkata"
+  },
+  "pathankot": {
+    "lat": 32.2643,
+    "lng": 75.6421,
+    "state": "Punjab",
+    "tz": "Asia/Kolkata"
+  },
+  "moga": {
+    "lat": 30.8162,
+    "lng": 75.1741,
+    "state": "Punjab",
+    "tz": "Asia/Kolkata"
+  },
+  "abohar": {
+    "lat": 30.1453,
+    "lng": 74.1955,
+    "state": "Punjab",
+    "tz": "Asia/Kolkata"
+  },
+  "malerkotla": {
+    "lat": 30.5266,
+    "lng": 75.8802,
+    "state": "Punjab",
+    "tz": "Asia/Kolkata"
+  },
+  "khanna": {
+    "lat": 30.6979,
+    "lng": 76.2117,
+    "state": "Punjab",
+    "tz": "Asia/Kolkata"
+  },
+  "barnala": {
+    "lat": 30.3814,
+    "lng": 75.5485,
+    "state": "Punjab",
+    "tz": "Asia/Kolkata"
+  },
+  "hoshiarpur": {
+    "lat": 31.5143,
+    "lng": 75.9115,
+    "state": "Punjab",
+    "tz": "Asia/Kolkata"
+  },
+  "kapurthala": {
+    "lat": 31.3809,
+    "lng": 75.3808,
+    "state": "Punjab",
+    "tz": "Asia/Kolkata"
+  },
+  "firozpur": {
+    "lat": 30.9215,
+    "lng": 74.6132,
+    "state": "Punjab",
+    "tz": "Asia/Kolkata"
+  },
+  "muktsar": {
+    "lat": 30.4769,
+    "lng": 74.5118,
+    "state": "Punjab",
+    "tz": "Asia/Kolkata"
+  },
+  "sangrur": {
+    "lat": 30.2422,
+    "lng": 75.8422,
+    "state": "Punjab",
+    "tz": "Asia/Kolkata"
+  },
+  "faridkot": {
+    "lat": 30.6747,
+    "lng": 74.7584,
+    "state": "Punjab",
+    "tz": "Asia/Kolkata"
+  },
+  "mansa": {
+    "lat": 29.993,
+    "lng": 75.3905,
+    "state": "Punjab",
+    "tz": "Asia/Kolkata"
+  },
+  "rupnagar": {
+    "lat": 30.966,
+    "lng": 76.526,
+    "state": "Punjab",
+    "tz": "Asia/Kolkata"
+  },
+  "nawanshahr": {
+    "lat": 31.1256,
+    "lng": 76.1164,
+    "state": "Punjab",
+    "tz": "Asia/Kolkata"
+  },
+  "phagwara": {
+    "lat": 31.224,
+    "lng": 75.7708,
+    "state": "Punjab",
+    "tz": "Asia/Kolkata"
+  },
+  "ambala": {
+    "lat": 30.3752,
+    "lng": 76.7821,
+    "state": "Haryana",
+    "tz": "Asia/Kolkata"
+  },
+  "hisar": {
+    "lat": 29.1492,
+    "lng": 75.7217,
+    "state": "Haryana",
+    "tz": "Asia/Kolkata"
+  },
+  "karnal": {
+    "lat": 29.6857,
+    "lng": 76.9905,
+    "state": "Haryana",
+    "tz": "Asia/Kolkata"
+  },
+  "panipat": {
+    "lat": 29.3909,
+    "lng": 76.9635,
+    "state": "Haryana",
+    "tz": "Asia/Kolkata"
+  },
+  "sonipat": {
+    "lat": 28.9286,
+    "lng": 77.0914,
+    "state": "Haryana",
+    "tz": "Asia/Kolkata"
+  },
+  "yamunanagar": {
+    "lat": 30.129,
+    "lng": 77.2674,
+    "state": "Haryana",
+    "tz": "Asia/Kolkata"
+  },
+  "panchkula": {
+    "lat": 30.6942,
+    "lng": 76.8606,
+    "state": "Haryana",
+    "tz": "Asia/Kolkata"
+  },
+  "bhiwani": {
+    "lat": 28.7929,
+    "lng": 76.1315,
+    "state": "Haryana",
+    "tz": "Asia/Kolkata"
+  },
+  "jind": {
+    "lat": 29.3159,
+    "lng": 76.3143,
+    "state": "Haryana",
+    "tz": "Asia/Kolkata"
+  },
+  "kaithal": {
+    "lat": 29.8015,
+    "lng": 76.3998,
+    "state": "Haryana",
+    "tz": "Asia/Kolkata"
+  },
+  "kurukshetra": {
+    "lat": 29.9695,
+    "lng": 76.8783,
+    "state": "Haryana",
+    "tz": "Asia/Kolkata"
+  },
+  "rewari": {
+    "lat": 28.197,
+    "lng": 76.6128,
+    "state": "Haryana",
+    "tz": "Asia/Kolkata"
+  },
+  "mahendragarh": {
+    "lat": 28.2795,
+    "lng": 76.1518,
+    "state": "Haryana",
+    "tz": "Asia/Kolkata"
+  },
+  "fatehabad": {
+    "lat": 29.5135,
+    "lng": 75.4547,
+    "state": "Haryana",
+    "tz": "Asia/Kolkata"
+  },
+  "sirsa": {
+    "lat": 29.5349,
+    "lng": 75.0254,
+    "state": "Haryana",
+    "tz": "Asia/Kolkata"
+  },
+  "nuh": {
+    "lat": 28.1029,
+    "lng": 77.0027,
+    "state": "Haryana",
+    "tz": "Asia/Kolkata"
+  },
+  "palwal": {
+    "lat": 28.1487,
+    "lng": 77.332,
+    "state": "Haryana",
+    "tz": "Asia/Kolkata"
+  },
+  "silchar": {
+    "lat": 24.8333,
+    "lng": 92.7789,
+    "state": "Assam",
+    "tz": "Asia/Kolkata"
+  },
+  "dibrugarh": {
+    "lat": 27.4728,
+    "lng": 94.912,
+    "state": "Assam",
+    "tz": "Asia/Kolkata"
+  },
+  "jorhat": {
+    "lat": 26.7509,
+    "lng": 94.2037,
+    "state": "Assam",
+    "tz": "Asia/Kolkata"
+  },
+  "nagaon": {
+    "lat": 26.3505,
+    "lng": 92.6927,
+    "state": "Assam",
+    "tz": "Asia/Kolkata"
+  },
+  "tinsukia": {
+    "lat": 27.4922,
+    "lng": 95.355,
+    "state": "Assam",
+    "tz": "Asia/Kolkata"
+  },
+  "tezpur": {
+    "lat": 26.6338,
+    "lng": 92.7926,
+    "state": "Assam",
+    "tz": "Asia/Kolkata"
+  },
+  "bongaigaon": {
+    "lat": 26.4756,
+    "lng": 90.5584,
+    "state": "Assam",
+    "tz": "Asia/Kolkata"
+  },
+  "karimganj": {
+    "lat": 24.8649,
+    "lng": 92.3555,
+    "state": "Assam",
+    "tz": "Asia/Kolkata"
+  },
+  "goalpara": {
+    "lat": 26.164,
+    "lng": 90.626,
+    "state": "Assam",
+    "tz": "Asia/Kolkata"
+  },
+  "dhubri": {
+    "lat": 26.0227,
+    "lng": 89.9803,
+    "state": "Assam",
+    "tz": "Asia/Kolkata"
+  },
+  "kokrajhar": {
+    "lat": 26.3964,
+    "lng": 90.2715,
+    "state": "Assam",
+    "tz": "Asia/Kolkata"
+  },
+  "nalbari": {
+    "lat": 26.4449,
+    "lng": 91.4387,
+    "state": "Assam",
+    "tz": "Asia/Kolkata"
+  },
+  "barpeta": {
+    "lat": 26.3215,
+    "lng": 91.0049,
+    "state": "Assam",
+    "tz": "Asia/Kolkata"
+  },
+  "sibsagar": {
+    "lat": 26.984,
+    "lng": 94.638,
+    "state": "Assam",
+    "tz": "Asia/Kolkata"
+  },
+  "sivasagar": {
+    "lat": 26.984,
+    "lng": 94.638,
+    "state": "Assam",
+    "tz": "Asia/Kolkata"
+  },
+  "golaghat": {
+    "lat": 26.5181,
+    "lng": 93.9608,
+    "state": "Assam",
+    "tz": "Asia/Kolkata"
+  },
+  "lakhimpur": {
+    "lat": 27.2352,
+    "lng": 94.1047,
+    "state": "Assam",
+    "tz": "Asia/Kolkata"
+  },
+  "darrang": {
+    "lat": 26.4468,
+    "lng": 92.0287,
+    "state": "Assam",
+    "tz": "Asia/Kolkata"
+  },
+  "mangaldoi": {
+    "lat": 26.4402,
+    "lng": 92.031,
+    "state": "Assam",
+    "tz": "Asia/Kolkata"
+  },
+  "junagadh": {
+    "lat": 21.5222,
+    "lng": 70.4579,
+    "state": "Gujarat",
+    "tz": "Asia/Kolkata"
+  },
+  "gandhidham": {
+    "lat": 23.0753,
+    "lng": 70.1337,
+    "state": "Gujarat",
+    "tz": "Asia/Kolkata"
+  },
+  "nadiad": {
+    "lat": 22.6916,
+    "lng": 72.8634,
+    "state": "Gujarat",
+    "tz": "Asia/Kolkata"
+  },
+  "anand": {
+    "lat": 22.5645,
+    "lng": 72.9289,
+    "state": "Gujarat",
+    "tz": "Asia/Kolkata"
+  },
+  "morbi": {
+    "lat": 22.8173,
+    "lng": 70.837,
+    "state": "Gujarat",
+    "tz": "Asia/Kolkata"
+  },
+  "surendranagar": {
+    "lat": 22.7281,
+    "lng": 71.6489,
+    "state": "Gujarat",
+    "tz": "Asia/Kolkata"
+  },
+  "bharuch": {
+    "lat": 21.7051,
+    "lng": 72.9959,
+    "state": "Gujarat",
+    "tz": "Asia/Kolkata"
+  },
+  "mehsana": {
+    "lat": 23.588,
+    "lng": 72.3693,
+    "state": "Gujarat",
+    "tz": "Asia/Kolkata"
+  },
+  "porbandar": {
+    "lat": 21.6417,
+    "lng": 69.6293,
+    "state": "Gujarat",
+    "tz": "Asia/Kolkata"
+  },
+  "godhra": {
+    "lat": 22.7788,
+    "lng": 73.6143,
+    "state": "Gujarat",
+    "tz": "Asia/Kolkata"
+  },
+  "vapi": {
+    "lat": 20.3714,
+    "lng": 72.9044,
+    "state": "Gujarat",
+    "tz": "Asia/Kolkata"
+  },
+  "navsari": {
+    "lat": 20.9467,
+    "lng": 72.952,
+    "state": "Gujarat",
+    "tz": "Asia/Kolkata"
+  },
+  "veraval": {
+    "lat": 20.9069,
+    "lng": 70.3676,
+    "state": "Gujarat",
+    "tz": "Asia/Kolkata"
+  },
+  "bhuj": {
+    "lat": 23.242,
+    "lng": 69.6669,
+    "state": "Gujarat",
+    "tz": "Asia/Kolkata"
+  },
+  "palanpur": {
+    "lat": 24.1725,
+    "lng": 72.4381,
+    "state": "Gujarat",
+    "tz": "Asia/Kolkata"
+  },
+  "valsad": {
+    "lat": 20.5992,
+    "lng": 72.9342,
+    "state": "Gujarat",
+    "tz": "Asia/Kolkata"
+  },
+  "patan": {
+    "lat": 23.8493,
+    "lng": 72.1266,
+    "state": "Gujarat",
+    "tz": "Asia/Kolkata"
+  },
+  "dahod": {
+    "lat": 22.8359,
+    "lng": 74.2532,
+    "state": "Gujarat",
+    "tz": "Asia/Kolkata"
+  },
+  "amreli": {
+    "lat": 21.5994,
+    "lng": 71.2243,
+    "state": "Gujarat",
+    "tz": "Asia/Kolkata"
+  },
+  "botad": {
+    "lat": 22.1719,
+    "lng": 71.6689,
+    "state": "Gujarat",
+    "tz": "Asia/Kolkata"
+  },
+  "deesa": {
+    "lat": 24.2585,
+    "lng": 72.1904,
+    "state": "Gujarat",
+    "tz": "Asia/Kolkata"
+  },
+  "satna": {
+    "lat": 24.5979,
+    "lng": 80.832,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "rewa": {
+    "lat": 24.5373,
+    "lng": 81.296,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "dewas": {
+    "lat": 22.9676,
+    "lng": 76.0534,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "ratlam": {
+    "lat": 23.3315,
+    "lng": 75.0367,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "chhindwara": {
+    "lat": 22.0574,
+    "lng": 78.9382,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "murwara": {
+    "lat": 23.835,
+    "lng": 80.392,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "katni": {
+    "lat": 23.835,
+    "lng": 80.392,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "singrauli": {
+    "lat": 24.1997,
+    "lng": 82.6749,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "burhanpur": {
+    "lat": 21.3104,
+    "lng": 76.2282,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "khandwa": {
+    "lat": 21.8244,
+    "lng": 76.3527,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "morena": {
+    "lat": 26.4972,
+    "lng": 77.993,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "bhind": {
+    "lat": 26.5633,
+    "lng": 78.7867,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "shivpuri": {
+    "lat": 25.4284,
+    "lng": 77.658,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "vidisha": {
+    "lat": 23.5251,
+    "lng": 77.8081,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "damoh": {
+    "lat": 23.8364,
+    "lng": 79.4416,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "mandsaur": {
+    "lat": 24.0717,
+    "lng": 75.0693,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "neemuch": {
+    "lat": 24.4612,
+    "lng": 74.872,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "hoshangabad": {
+    "lat": 22.7467,
+    "lng": 77.7262,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "narmadapuram": {
+    "lat": 22.7467,
+    "lng": 77.7262,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "itarsi": {
+    "lat": 22.6145,
+    "lng": 77.7614,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "betul": {
+    "lat": 21.911,
+    "lng": 77.9007,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "seoni": {
+    "lat": 22.0853,
+    "lng": 79.5488,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "datia": {
+    "lat": 25.6694,
+    "lng": 78.458,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "tikamgarh": {
+    "lat": 24.7436,
+    "lng": 78.8309,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "shahdol": {
+    "lat": 23.2828,
+    "lng": 81.3567,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "dhar": {
+    "lat": 22.6012,
+    "lng": 75.3025,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "khargone": {
+    "lat": 21.8234,
+    "lng": 75.6145,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "barwani": {
+    "lat": 22.0364,
+    "lng": 74.9,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "jhabua": {
+    "lat": 22.7689,
+    "lng": 74.591,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "mandla": {
+    "lat": 22.5988,
+    "lng": 80.3719,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "balaghat": {
+    "lat": 21.812,
+    "lng": 80.1863,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "panna": {
+    "lat": 24.7272,
+    "lng": 80.1828,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "chhatarpur": {
+    "lat": 24.9178,
+    "lng": 79.588,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "harda": {
+    "lat": 22.3425,
+    "lng": 77.0946,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "raisen": {
+    "lat": 23.3315,
+    "lng": 77.7874,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "sehore": {
+    "lat": 23.2,
+    "lng": 77.0833,
+    "state": "Madhya Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "nainital": {
+    "lat": 29.3919,
+    "lng": 79.4542,
+    "state": "Uttarakhand",
+    "tz": "Asia/Kolkata"
+  },
+  "mussoorie": {
+    "lat": 30.4598,
+    "lng": 78.0644,
+    "state": "Uttarakhand",
+    "tz": "Asia/Kolkata"
+  },
+  "haldwani": {
+    "lat": 29.2183,
+    "lng": 79.513,
+    "state": "Uttarakhand",
+    "tz": "Asia/Kolkata"
+  },
+  "roorkee": {
+    "lat": 29.8543,
+    "lng": 77.888,
+    "state": "Uttarakhand",
+    "tz": "Asia/Kolkata"
+  },
+  "kashipur": {
+    "lat": 29.2104,
+    "lng": 78.9615,
+    "state": "Uttarakhand",
+    "tz": "Asia/Kolkata"
+  },
+  "rudrapur": {
+    "lat": 28.9758,
+    "lng": 79.3997,
+    "state": "Uttarakhand",
+    "tz": "Asia/Kolkata"
+  },
+  "almora": {
+    "lat": 29.5971,
+    "lng": 79.6591,
+    "state": "Uttarakhand",
+    "tz": "Asia/Kolkata"
+  },
+  "pithoragarh": {
+    "lat": 29.5829,
+    "lng": 80.2181,
+    "state": "Uttarakhand",
+    "tz": "Asia/Kolkata"
+  },
+  "bageshwar": {
+    "lat": 29.838,
+    "lng": 79.771,
+    "state": "Uttarakhand",
+    "tz": "Asia/Kolkata"
+  },
+  "chamoli": {
+    "lat": 30.4039,
+    "lng": 79.3215,
+    "state": "Uttarakhand",
+    "tz": "Asia/Kolkata"
+  },
+  "uttarkashi": {
+    "lat": 30.7268,
+    "lng": 78.4354,
+    "state": "Uttarakhand",
+    "tz": "Asia/Kolkata"
+  },
+  "tehri": {
+    "lat": 30.3932,
+    "lng": 78.4328,
+    "state": "Uttarakhand",
+    "tz": "Asia/Kolkata"
+  },
+  "pauri": {
+    "lat": 30.1509,
+    "lng": 78.7733,
+    "state": "Uttarakhand",
+    "tz": "Asia/Kolkata"
+  },
+  "champawat": {
+    "lat": 29.336,
+    "lng": 80.0912,
+    "state": "Uttarakhand",
+    "tz": "Asia/Kolkata"
+  },
+  "rudraprayag": {
+    "lat": 30.284,
+    "lng": 78.9831,
+    "state": "Uttarakhand",
+    "tz": "Asia/Kolkata"
+  },
+  "badrinath": {
+    "lat": 30.7433,
+    "lng": 79.4938,
+    "state": "Uttarakhand",
+    "tz": "Asia/Kolkata"
+  },
+  "kedarnath": {
+    "lat": 30.7346,
+    "lng": 79.0669,
+    "state": "Uttarakhand",
+    "tz": "Asia/Kolkata"
+  },
+  "dharamsala": {
+    "lat": 32.219,
+    "lng": 76.3234,
+    "state": "Himachal Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "manali": {
+    "lat": 32.2396,
+    "lng": 77.1887,
+    "state": "Himachal Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "kullu": {
+    "lat": 31.9576,
+    "lng": 77.1095,
+    "state": "Himachal Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "mandi": {
+    "lat": 31.7084,
+    "lng": 76.9318,
+    "state": "Himachal Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "solan": {
+    "lat": 30.9045,
+    "lng": 77.0967,
+    "state": "Himachal Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "bilaspur hp": {
+    "lat": 31.3396,
+    "lng": 76.7566,
+    "state": "Himachal Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "hamirpur hp": {
+    "lat": 31.6862,
+    "lng": 76.5213,
+    "state": "Himachal Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "una": {
+    "lat": 31.4685,
+    "lng": 76.2688,
+    "state": "Himachal Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "chamba": {
+    "lat": 32.5534,
+    "lng": 76.1258,
+    "state": "Himachal Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "kangra": {
+    "lat": 32.0998,
+    "lng": 76.2691,
+    "state": "Himachal Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "nahan": {
+    "lat": 30.5596,
+    "lng": 77.296,
+    "state": "Himachal Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "palampur": {
+    "lat": 32.1109,
+    "lng": 76.5363,
+    "state": "Himachal Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "keylong": {
+    "lat": 32.5714,
+    "lng": 77.0397,
+    "state": "Himachal Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "reckong peo": {
+    "lat": 31.544,
+    "lng": 78.271,
+    "state": "Himachal Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "margao": {
+    "lat": 15.2832,
+    "lng": 73.9862,
+    "state": "Goa",
+    "tz": "Asia/Kolkata"
+  },
+  "vasco da gama": {
+    "lat": 15.3982,
+    "lng": 73.8113,
+    "state": "Goa",
+    "tz": "Asia/Kolkata"
+  },
+  "mapusa": {
+    "lat": 15.592,
+    "lng": 73.8085,
+    "state": "Goa",
+    "tz": "Asia/Kolkata"
+  },
+  "ponda": {
+    "lat": 15.4034,
+    "lng": 74.01,
+    "state": "Goa",
+    "tz": "Asia/Kolkata"
+  },
+  "dimapur": {
+    "lat": 25.707,
+    "lng": 93.7276,
+    "state": "Nagaland",
+    "tz": "Asia/Kolkata"
+  },
+  "mokokchung": {
+    "lat": 26.323,
+    "lng": 94.52,
+    "state": "Nagaland",
+    "tz": "Asia/Kolkata"
+  },
+  "tuensang": {
+    "lat": 26.2748,
+    "lng": 94.826,
+    "state": "Nagaland",
+    "tz": "Asia/Kolkata"
+  },
+  "lunglei": {
+    "lat": 22.8814,
+    "lng": 92.7228,
+    "state": "Mizoram",
+    "tz": "Asia/Kolkata"
+  },
+  "tura": {
+    "lat": 25.5147,
+    "lng": 90.2101,
+    "state": "Meghalaya",
+    "tz": "Asia/Kolkata"
+  },
+  "nongstoin": {
+    "lat": 25.5223,
+    "lng": 91.2654,
+    "state": "Meghalaya",
+    "tz": "Asia/Kolkata"
+  },
+  "jowai": {
+    "lat": 25.4519,
+    "lng": 92.2053,
+    "state": "Meghalaya",
+    "tz": "Asia/Kolkata"
+  },
+  "churachandpur": {
+    "lat": 24.335,
+    "lng": 93.6833,
+    "state": "Manipur",
+    "tz": "Asia/Kolkata"
+  },
+  "thoubal": {
+    "lat": 24.6283,
+    "lng": 94.0161,
+    "state": "Manipur",
+    "tz": "Asia/Kolkata"
+  },
+  "bishnupur manipur": {
+    "lat": 24.6073,
+    "lng": 93.76,
+    "state": "Manipur",
+    "tz": "Asia/Kolkata"
+  },
+  "namchi": {
+    "lat": 27.1667,
+    "lng": 88.35,
+    "state": "Sikkim",
+    "tz": "Asia/Kolkata"
+  },
+  "mangan": {
+    "lat": 27.5093,
+    "lng": 88.5315,
+    "state": "Sikkim",
+    "tz": "Asia/Kolkata"
+  },
+  "gyalshing": {
+    "lat": 27.2882,
+    "lng": 88.2579,
+    "state": "Sikkim",
+    "tz": "Asia/Kolkata"
+  },
+  "tawang": {
+    "lat": 27.5861,
+    "lng": 91.8697,
+    "state": "Arunachal Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "pasighat": {
+    "lat": 28.0668,
+    "lng": 95.3263,
+    "state": "Arunachal Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "bomdila": {
+    "lat": 27.2645,
+    "lng": 92.4159,
+    "state": "Arunachal Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "along": {
+    "lat": 28.168,
+    "lng": 94.768,
+    "state": "Arunachal Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "ziro": {
+    "lat": 27.5383,
+    "lng": 93.8235,
+    "state": "Arunachal Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "tezu": {
+    "lat": 27.9172,
+    "lng": 96.1637,
+    "state": "Arunachal Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "naharlagun": {
+    "lat": 27.1054,
+    "lng": 93.6935,
+    "state": "Arunachal Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "diu": {
+    "lat": 20.7141,
+    "lng": 70.9875,
+    "state": "Dadra & Nagar Haveli and Daman & Diu",
+    "tz": "Asia/Kolkata"
+  },
+  "nellore ap": {
+    "lat": 14.4426,
+    "lng": 79.9865,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "tadpatri": {
+    "lat": 15.0377,
+    "lng": 78.01,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "guntakal": {
+    "lat": 15.1714,
+    "lng": 77.3777,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "kavali": {
+    "lat": 14.9133,
+    "lng": 79.9939,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "narasaraopet": {
+    "lat": 16.2347,
+    "lng": 80.0448,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "chilakaluripet": {
+    "lat": 16.0892,
+    "lng": 80.1672,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "anakapalle": {
+    "lat": 17.691,
+    "lng": 83.0037,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "dharmavaram": {
+    "lat": 14.4145,
+    "lng": 77.7202,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "gudivada": {
+    "lat": 16.4407,
+    "lng": 81.1034,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "srikakulam ap": {
+    "lat": 18.2949,
+    "lng": 83.8938,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "bhimavaram": {
+    "lat": 16.5449,
+    "lng": 81.5212,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "amalapuram": {
+    "lat": 16.5789,
+    "lng": 82.0057,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "palasa": {
+    "lat": 18.77,
+    "lng": 84.41,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "pithapuram": {
+    "lat": 17.1167,
+    "lng": 82.25,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "ramachandrapuram": {
+    "lat": 16.8367,
+    "lng": 82.0269,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "mangalagiri": {
+    "lat": 16.4319,
+    "lng": 80.555,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "chirala": {
+    "lat": 15.8245,
+    "lng": 80.3522,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "markapur": {
+    "lat": 15.7333,
+    "lng": 79.2667,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "nandyal": {
+    "lat": 15.4779,
+    "lng": 78.4837,
+    "state": "Andhra Pradesh",
+    "tz": "Asia/Kolkata"
+  },
+  "wanaparthy": {
+    "lat": 16.3615,
+    "lng": 78.0649,
+    "state": "Telangana",
+    "tz": "Asia/Kolkata"
+  },
+  "kamareddy": {
+    "lat": 18.3226,
+    "lng": 78.341,
+    "state": "Telangana",
+    "tz": "Asia/Kolkata"
+  },
+  "jagtial": {
+    "lat": 18.7946,
+    "lng": 78.9131,
+    "state": "Telangana",
+    "tz": "Asia/Kolkata"
+  },
+  "bodhan": {
+    "lat": 18.6729,
+    "lng": 77.889,
+    "state": "Telangana",
+    "tz": "Asia/Kolkata"
+  },
+  "miryalaguda": {
+    "lat": 16.8738,
+    "lng": 79.5625,
+    "state": "Telangana",
+    "tz": "Asia/Kolkata"
+  },
+  "bhongir": {
+    "lat": 17.5087,
+    "lng": 78.8855,
+    "state": "Telangana",
+    "tz": "Asia/Kolkata"
+  },
+  "zahirabad": {
+    "lat": 17.6816,
+    "lng": 77.6074,
+    "state": "Telangana",
+    "tz": "Asia/Kolkata"
+  },
+  "ramagundam": {
+    "lat": 18.7557,
+    "lng": 79.4747,
+    "state": "Telangana",
+    "tz": "Asia/Kolkata"
+  },
+  "gadwal": {
+    "lat": 16.2352,
+    "lng": 77.8053,
+    "state": "Telangana",
+    "tz": "Asia/Kolkata"
+  },
+  "medchal": {
+    "lat": 17.6297,
+    "lng": 78.4816,
+    "state": "Telangana",
+    "tz": "Asia/Kolkata"
+  },
+  "jogulamba gadwal": {
+    "lat": 16.2352,
+    "lng": 77.8053,
+    "state": "Telangana",
+    "tz": "Asia/Kolkata"
+  },
+  "palamu": {
+    "lat": 23.9971,
+    "lng": 84.0774,
+    "state": "Jharkhand",
+    "tz": "Asia/Kolkata"
+  },
+  "daltonganj": {
+    "lat": 24.0298,
+    "lng": 84.0679,
+    "state": "Jharkhand",
+    "tz": "Asia/Kolkata"
+  },
+  "ramgarh": {
+    "lat": 23.6305,
+    "lng": 85.5611,
+    "state": "Jharkhand",
+    "tz": "Asia/Kolkata"
+  },
+  "koderma": {
+    "lat": 24.4673,
+    "lng": 85.5946,
+    "state": "Jharkhand",
+    "tz": "Asia/Kolkata"
+  },
+  "chatra": {
+    "lat": 24.2068,
+    "lng": 84.8709,
+    "state": "Jharkhand",
+    "tz": "Asia/Kolkata"
+  },
+  "lohardaga": {
+    "lat": 23.4359,
+    "lng": 84.6845,
+    "state": "Jharkhand",
+    "tz": "Asia/Kolkata"
+  },
+  "gumla": {
+    "lat": 23.0445,
+    "lng": 84.5416,
+    "state": "Jharkhand",
+    "tz": "Asia/Kolkata"
+  },
+  "simdega": {
+    "lat": 22.6175,
+    "lng": 84.5104,
+    "state": "Jharkhand",
+    "tz": "Asia/Kolkata"
+  },
+  "pakur": {
+    "lat": 24.6363,
+    "lng": 87.8405,
+    "state": "Jharkhand",
+    "tz": "Asia/Kolkata"
+  },
+  "godda": {
+    "lat": 24.8271,
+    "lng": 87.2127,
+    "state": "Jharkhand",
+    "tz": "Asia/Kolkata"
+  },
+  "sahibganj": {
+    "lat": 25.2445,
+    "lng": 87.6356,
+    "state": "Jharkhand",
+    "tz": "Asia/Kolkata"
+  },
+  "jamtara": {
+    "lat": 23.9548,
+    "lng": 86.8028,
+    "state": "Jharkhand",
+    "tz": "Asia/Kolkata"
+  },
+  "seraikela": {
+    "lat": 22.6089,
+    "lng": 85.9748,
+    "state": "Jharkhand",
+    "tz": "Asia/Kolkata"
+  },
+  "east singhbhum": {
+    "lat": 22.8046,
+    "lng": 86.2029,
+    "state": "Jharkhand",
+    "tz": "Asia/Kolkata"
+  },
+  "west singhbhum": {
+    "lat": 22.5572,
+    "lng": 85.8026,
+    "state": "Jharkhand",
+    "tz": "Asia/Kolkata"
+  },
+  "khunti": {
+    "lat": 23.0747,
+    "lng": 85.2786,
+    "state": "Jharkhand",
+    "tz": "Asia/Kolkata"
+  },
+  "kawardha": {
+    "lat": 22.0097,
+    "lng": 81.2303,
+    "state": "Chhattisgarh",
+    "tz": "Asia/Kolkata"
+  },
+  "dongargarh": {
+    "lat": 21.1889,
+    "lng": 80.7568,
+    "state": "Chhattisgarh",
+    "tz": "Asia/Kolkata"
+  },
+  "kirandul": {
+    "lat": 18.6368,
+    "lng": 81.2507,
+    "state": "Chhattisgarh",
+    "tz": "Asia/Kolkata"
+  },
+  "mungeli": {
+    "lat": 22.0675,
+    "lng": 81.6885,
+    "state": "Chhattisgarh",
+    "tz": "Asia/Kolkata"
+  },
+  "jashpur": {
+    "lat": 22.8886,
+    "lng": 84.139,
+    "state": "Chhattisgarh",
+    "tz": "Asia/Kolkata"
+  },
+  "surajpur": {
+    "lat": 23.2138,
+    "lng": 82.8697,
+    "state": "Chhattisgarh",
+    "tz": "Asia/Kolkata"
+  },
+  "balod": {
+    "lat": 20.7309,
+    "lng": 81.2039,
+    "state": "Chhattisgarh",
+    "tz": "Asia/Kolkata"
+  },
+  "bemetara": {
+    "lat": 21.7154,
+    "lng": 81.5348,
+    "state": "Chhattisgarh",
+    "tz": "Asia/Kolkata"
+  },
+  "gariaband": {
+    "lat": 20.6348,
+    "lng": 82.0651,
+    "state": "Chhattisgarh",
+    "tz": "Asia/Kolkata"
+  },
+  "baloda bazar": {
+    "lat": 21.6594,
+    "lng": 82.1593,
+    "state": "Chhattisgarh",
+    "tz": "Asia/Kolkata"
+  },
+  "narayanpur": {
+    "lat": 19.7223,
+    "lng": 81.2502,
+    "state": "Chhattisgarh",
+    "tz": "Asia/Kolkata"
+  },
+  "bijapur cg": {
+    "lat": 18.8476,
+    "lng": 80.7763,
+    "state": "Chhattisgarh",
+    "tz": "Asia/Kolkata"
+  },
+  "dantewada": {
+    "lat": 18.8976,
+    "lng": 81.3477,
+    "state": "Chhattisgarh",
+    "tz": "Asia/Kolkata"
+  },
+  "katwa": {
+    "lat": 23.64558,
+    "lng": 88.13258,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  },
+  "burdwan": {
+    "lat": 23.2333,
+    "lng": 87.8667,
+    "state": "West Bengal",
+    "tz": "Asia/Kolkata"
+  }
 }

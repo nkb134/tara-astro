@@ -7897,5 +7897,29 @@
     "source": "opencage",
     "hits": 1,
     "added": "2026-03-24"
+  },
+  "katwa": {
+    "lat": 23.64558,
+    "lng": 88.13258,
+    "state": "West Bengal",
+    "timezone": "Asia/Kolkata",
+    "formatted": "Katwa, West Bengal",
+    "population": 78408,
+    "geonameId": 1267457,
+    "source": "geonames",
+    "hits": 1,
+    "added": "2026-03-24"
+  },
+  "katwa burdwan": {
+    "lat": 23.64558,
+    "lng": 88.13258,
+    "state": "West Bengal",
+    "timezone": "Asia/Kolkata",
+    "formatted": "Katwa, West Bengal",
+    "population": 78408,
+    "geonameId": 1267457,
+    "source": "geonames",
+    "hits": 1,
+    "added": "2026-03-24"
   }
 }
