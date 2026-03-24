@@ -528,7 +528,7 @@ export function generateBirthChart(birthDate, birthTime, lat, lng, timezone, pla
       }
       data.housesOwned = ownedHouses.join(', ');
 
-      houses[`House${houseNumber}`].planetsInHouse.push(name);
+      houses[`House${bhavaHouse}`].planetsInHouse.push(name);
     }
 
     // Detect conjunctions
