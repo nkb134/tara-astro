@@ -666,7 +666,8 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 
 function extractDate(text) {
-  // Strip ordinal suffixes: "10th" → "10", "1st" → "1", "2nd" → "2", "3rd" → "3"
+  // Match the ORIGINAL text with ordinals first, so we can strip correctly from remaining
+  // Pattern: "10th June 1990", "10 June 1990", "June 10, 1990", "10/06/1990"
   const cleaned = text.replace(/(\d+)(?:st|nd|rd|th)\b/gi, '$1');
 
   const slashMatch = cleaned.match(/(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{4})/);
@@ -674,7 +675,9 @@ function extractDate(text) {
     const [full, day, month, year] = slashMatch;
     const d = new Date(year, month - 1, day);
     if (isValidDate(d, day, month, year)) {
-      return { date: formatDate(d), remaining: text.replace(full, '') };
+      // Remove from ORIGINAL text — match with optional ordinal suffix
+      const origPattern = new RegExp(`\\d{1,2}(?:st|nd|rd|th)?[\\s\\/\\-.]\\d{1,2}[\\s\\/\\-.]\\d{4}`, 'i');
+      return { date: formatDate(d), remaining: text.replace(origPattern, '').trim() };
     }
   }
 
@@ -685,13 +688,14 @@ function extractDate(text) {
     nov: 11, november: 11, dec: 12, december: 12,
   };
 
-  const patterns = [
-    /(\d{1,2})\s+(jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:tember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)\s+(\d{4})/i,
-    /(jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:tember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)\s+(\d{1,2}),?\s+(\d{4})/i,
+  // Match ORIGINAL text with ordinals to get correct remaining
+  const origPatterns = [
+    /(\d{1,2})(?:st|nd|rd|th)?\s+(jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:tember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)\s+(\d{4})/i,
+    /(jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:tember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)\s+(\d{1,2})(?:st|nd|rd|th)?,?\s+(\d{4})/i,
   ];
 
-  for (const pattern of patterns) {
-    const match = cleaned.match(pattern);
+  for (const pattern of origPatterns) {
+    const match = text.match(pattern);
     if (match) {
       let day, monthStr, year;
       if (/^\d/.test(match[1])) {

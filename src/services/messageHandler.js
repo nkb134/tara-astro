@@ -205,13 +205,11 @@ async function handleOnboardingFlow(whatsappId, user, messageText, messageId, st
   const response = result.response;
   const messageType = result.messageType;
 
-  // React to user's message based on context
+  // React sparingly — only on first greeting and chart generation
   const step = user.onboarding_step || 'new';
   if (step === 'new') {
     reactToMessage(whatsappId, messageId, '🙏').catch(() => {});
-  } else if (['awaiting_name_dob', 'awaiting_dob'].includes(step) && result.messageType !== 'simple') {
-    reactToMessage(whatsappId, messageId, '✨').catch(() => {});
-  } else if (step === 'awaiting_place' && result.messageType === 'reading') {
+  } else if (result.messageType === 'reading') {
     reactToMessage(whatsappId, messageId, '🌟').catch(() => {});
   }
 
@@ -290,13 +288,6 @@ async function handleAIConversation(whatsappId, user, messageText, messageId, st
   // Multi-agent dispatch
   const result = await dispatchToAgent(messageText, user, history);
   logger.info({ agent: result.agent, model: result.model, tokenBudget: result.tokenBudget }, 'Agent dispatched');
-
-  // React to emotional/grateful messages
-  if (result.agent === AGENTS.GREETING) {
-    reactToMessage(whatsappId, messageId, '🙏').catch(() => {});
-  } else if (result.agent === AGENTS.FOLLOWUP) {
-    reactToMessage(whatsappId, messageId, '👍').catch(() => {});
-  }
 
   // Gate/crisis responses — send immediately
   if (result.agent === AGENTS.GATE || result.agent === AGENTS.CRISIS) {
