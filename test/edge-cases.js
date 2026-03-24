@@ -199,6 +199,72 @@ const CASES = [
     expect: { place_contains: 'Delhi' },
   },
 
+  // ═══ From Nissar/Rampur (beta user) ═══
+  {
+    name: 'Nissar: "nhi up nhi" is NOT a place — its a correction/denial',
+    input: 'nhi up nhi',
+    step: 'awaiting_place',
+    expect: { place: null },
+  },
+  {
+    name: 'Nissar: "nepal, palpa district" international place',
+    input: 'nepal, palpa district',
+    step: 'awaiting_place',
+    expect: { place_contains: 'palpa' },
+  },
+  {
+    name: 'Nissar: "wait mere birth time galat bata diya" is NOT data',
+    input: 'wait mere birth time galat bata diya',
+    step: 'awaiting_place',
+    expect: { place: null, name: null },
+  },
+  {
+    name: 'Nissar: "woh 10:45AM hai" time correction',
+    input: 'woh 10:45AM hai',
+    step: 'awaiting_time',
+    expect: { time: '10:45' },
+  },
+  {
+    name: 'Nissar: "thoda details toh dijiye general overview" merged rapid messages',
+    input: 'thoda details toh dijiye\ngeneral overview toh dijiye\nyeh kya h',
+    step: 'awaiting_place',
+    expect: { place: null, name: null },
+  },
+
+  // ═══ International places ═══
+  {
+    name: 'International: "Kathmandu, Nepal"',
+    input: 'Kathmandu, Nepal',
+    step: 'awaiting_place',
+    expect: { place_contains: 'Kathmandu' },
+  },
+  {
+    name: 'International: "Dubai"',
+    input: 'Dubai',
+    step: 'awaiting_place',
+    expect: { place_contains: 'Dubai' },
+  },
+
+  // ═══ Denial/correction phrases that are NOT places ═══
+  {
+    name: 'Denial: "nahi yeh nahi hai"',
+    input: 'nahi yeh nahi hai',
+    step: 'awaiting_place',
+    expect: { place: null },
+  },
+  {
+    name: 'Denial: "no thats wrong"',
+    input: 'no thats wrong',
+    step: 'awaiting_place',
+    expect: { place: null },
+  },
+  {
+    name: 'Denial: "galat hai yeh"',
+    input: 'galat hai yeh',
+    step: 'awaiting_place',
+    expect: { place: null },
+  },
+
   // ═══ Date format variations ═══
   {
     name: 'Date: DD/MM/YYYY',

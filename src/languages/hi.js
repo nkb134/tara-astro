@@ -6,12 +6,14 @@ export default {
   welcome: `Namaste 🙏 Main Tara hoon. Haan zaroor madad karungi — main kundli se dekhungi ki stars kya keh rahe hain. Bas apna naam aur janam tithi bata dijiye?`,
   ask_name_career: `Namaste 🙏 Main Tara hoon. Haan career mein zaroor madad karungi — kundli se dekhungi ki stars kya keh rahe hain. Apna naam aur janam tithi bata dijiye?`,
   ask_name_marriage: `Namaste 🙏 Main Tara hoon. Achha shaadi ke baare mein — haan zaroor madad karungi. Kundli se dekhungi. Apna naam aur janam tithi bata dijiye?`,
+  ask_name_health: `Namaste 🙏 Main Tara hoon. Haan health ke baare mein zaroor bataungi — kundli se dekhungi. Apna naam aur janam tithi bata dijiye?`,
   ask_name_general: `Namaste 🙏 Main Tara hoon. Haan kundli dekh deti hoon — apna naam aur janam tithi bata dijiye?`,
   ask_name_default: `Namaste 🙏 Main Tara hoon. Haan zaroor madad karungi — kundli se dekhungi. Apna naam aur janam tithi bata dijiye?`,
 
   // Post-greeting topic responses (NO re-introduction — Tara already said who she is)
   ask_topic_career: `Haan career mein zaroor madad karungi — kundli se dekhungi. Bas apna naam aur janam tithi bata dijiye?`,
   ask_topic_marriage: `Achha shaadi ke baare mein — haan zaroor madad karungi. Kundli se dekhungi. Apna naam aur janam tithi bata dijiye?`,
+  ask_topic_health: `Haan health ke baare mein zaroor bataungi — bas apna naam aur janam tithi bata dijiye?`,
   ask_topic_general: `Haan kundli dekh deti hoon — apna naam aur janam tithi bata dijiye?`,
   ask_topic_default: `Haan zaroor madad karungi — kundli se dekhungi. Apna naam aur janam tithi bata dijiye?`,
 
@@ -34,6 +36,7 @@ export default {
 
   location_confirmed: `Ok, {place} — iss location ke hisaab se kundli nikal rahi hoon`,
   generating_chart: `Ek minute dijiye...`,
+  place_correction_prompt: `Achha, toh sahi jagah bata dijiye — kahan paida hue the?`,
   geocode_failed: `Hmm yeh jagah nahi mili... koi paas ka bada shehar batao?`,
   geocode_failed_2: `Sorry, phir se nahi mila. Nearest big city ka naam batao — jaise Raipur ya Nagpur`,
   chart_failed: `Hmm... ek minute, phir try karti hoon`,

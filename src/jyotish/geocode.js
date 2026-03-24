@@ -236,15 +236,26 @@ async function callGeoNames(query, parts, userLang) {
   }
 
   try {
+    // Don't restrict to India — users born in Nepal, Dubai, etc.
+    // Prioritize India results via bias but don't exclude others
+    const params = {
+      q: query,
+      maxRows: 8,
+      fuzzy: 0.8,
+      featureClass: 'P',
+      username,
+    };
+    // If query contains India-specific state names, limit to India
+    const indiaHints = ['india', 'uttar pradesh', 'maharashtra', 'karnataka', 'tamil nadu', 'telangana', 'kerala', 'odisha', 'rajasthan', 'gujarat', 'bihar', 'jharkhand', 'chhattisgarh', 'madhya pradesh', 'punjab', 'haryana', 'west bengal', 'assam'];
+    const queryLower = query.toLowerCase();
+    if (indiaHints.some(h => queryLower.includes(h))) {
+      params.country = 'IN';
+    }
+    // For South Asian subcontinent, include nearby countries
+    // (most users are Indian, but some are Nepali, Sri Lankan, Bangladeshi)
+
     const response = await axios.get('http://api.geonames.org/searchJSON', {
-      params: {
-        q: query,
-        country: 'IN',
-        maxRows: 5,
-        fuzzy: 0.8,
-        featureClass: 'P',
-        username,
-      },
+      params,
       timeout: 10000,
     });
 

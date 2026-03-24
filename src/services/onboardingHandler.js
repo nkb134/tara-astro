@@ -200,7 +200,7 @@ async function handleTopic(user, messageText, lang) {
   }
 
   // Use ask_topic_* (no re-introduction) since welcome_greeting already introduced Tara
-  const intentKey = { career: 'ask_topic_career', marriage: 'ask_topic_marriage', general: 'ask_topic_general' }[intent] || 'ask_topic_default';
+  const intentKey = { career: 'ask_topic_career', marriage: 'ask_topic_marriage', health: 'ask_topic_health', general: 'ask_topic_general' }[intent] || 'ask_topic_default';
   await updateUser(user.id, { onboarding_step: 'awaiting_name_dob', preferences: JSON.stringify({ initial_intent: intent }) });
   return { response: t(lang, intentKey), messageType: 'onboarding' };
 }
@@ -226,6 +226,7 @@ async function handleNewUser(user, messageText, lang) {
   const intentKey = {
     career: 'ask_name_career',
     marriage: 'ask_name_marriage',
+    health: 'ask_name_health',
     general: 'ask_name_general',
   }[intent] || 'ask_name_default';
 
@@ -323,7 +324,7 @@ async function handleNameDob(user, messageText, lang) {
     const prefs = typeof user.preferences === 'string' ? JSON.parse(user.preferences || '{}') : (user.preferences || {});
     await updateUser(user.id, { preferences: JSON.stringify({ ...prefs, initial_intent: intent }) });
     // Acknowledge their concern and ask for data
-    const intentKey = { career: 'ask_topic_career', marriage: 'ask_topic_marriage', general: 'ask_topic_general' }[intent] || 'ask_topic_default';
+    const intentKey = { career: 'ask_topic_career', marriage: 'ask_topic_marriage', health: 'ask_topic_health', general: 'ask_topic_general' }[intent] || 'ask_topic_default';
     return { response: t(lang, intentKey), messageType: 'onboarding' };
   }
 
@@ -445,6 +446,28 @@ const NON_PLACE_TOKENS = new Set([
   'bolo', 'batao', 'bata', 'tell', 'me',
 ]);
 
+function isDenialOrCorrection(text) {
+  const lower = text.toLowerCase().trim();
+  const denialPatterns = [
+    /\b(nhi|nahi|nahin|no|nope|wrong|galat|sahi nahi|theek nahi|correct nahi)\b/i,
+    /\b(up nhi|nhi.*nhi|not.*right|thats wrong|that's wrong)\b/i,
+    /\b(galat hai|yeh nahi|ye nahi|woh nahi|wait|ruko|rukiye)\b/i,
+    /\b(change|badlo|badliye|correction|sudhar)\b/i,
+  ];
+  // Must be short (< 8 words) AND match a denial pattern
+  const words = lower.split(/\s+/);
+  if (words.length > 8) return false;
+  return denialPatterns.some(p => p.test(lower));
+}
+
+function isQuestion(text) {
+  const lower = text.toLowerCase().trim();
+  // Ends with ? or starts with question words
+  if (lower.endsWith('?')) return true;
+  const questionStarts = /^(what|when|where|why|how|kya|kab|kahan|kyun|kaise|kitna|kaun|which)/i;
+  return questionStarts.test(lower);
+}
+
 function isNonPlaceInput(text) {
   const lower = text.toLowerCase().replace(/[?!.,]+/g, '').trim();
   // Every word must be a non-place token
@@ -459,6 +482,16 @@ async function handlePlace(user, messageText, lang) {
 
   // Filter out non-place responses (acknowledgments, questions, etc.)
   if (isNonPlaceInput(place)) {
+    return { response: t(lang, 'ask_place'), messageType: 'simple' };
+  }
+
+  // Filter out denial/correction phrases — "nhi up nhi", "no thats wrong", "galat hai"
+  if (isDenialOrCorrection(place)) {
+    return { response: t(lang, 'place_correction_prompt'), messageType: 'simple' };
+  }
+
+  // Filter out questions — "what's the date?", "kitna time lagega?"
+  if (isQuestion(place)) {
     return { response: t(lang, 'ask_place'), messageType: 'simple' };
   }
 
@@ -885,13 +918,13 @@ function parseTime(text) {
 // Interactive button helpers
 function getTopicButtons(lang) {
   const labels = {
-    hi: [{ id: 'topic_career', title: 'Career' }, { id: 'topic_marriage', title: 'Shaadi / Rishte' }, { id: 'topic_general', title: 'General' }],
-    en: [{ id: 'topic_career', title: 'Career' }, { id: 'topic_marriage', title: 'Marriage' }, { id: 'topic_general', title: 'General Reading' }],
-    ta: [{ id: 'topic_career', title: 'Career' }, { id: 'topic_marriage', title: 'Thirumanam' }, { id: 'topic_general', title: 'Podhuvaaga' }],
-    te: [{ id: 'topic_career', title: 'Career' }, { id: 'topic_marriage', title: 'Pelli' }, { id: 'topic_general', title: 'General' }],
-    bn: [{ id: 'topic_career', title: 'Career' }, { id: 'topic_marriage', title: 'Biye' }, { id: 'topic_general', title: 'General' }],
-    ml: [{ id: 'topic_career', title: 'Career' }, { id: 'topic_marriage', title: 'Vivaaham' }, { id: 'topic_general', title: 'General' }],
-    kn: [{ id: 'topic_career', title: 'Career' }, { id: 'topic_marriage', title: 'Maduve' }, { id: 'topic_general', title: 'General' }],
+    hi: [{ id: 'topic_career', title: 'Career' }, { id: 'topic_marriage', title: 'Shaadi / Rishte' }, { id: 'topic_health', title: 'Health' }],
+    en: [{ id: 'topic_career', title: 'Career' }, { id: 'topic_marriage', title: 'Marriage' }, { id: 'topic_health', title: 'Health' }],
+    ta: [{ id: 'topic_career', title: 'Career' }, { id: 'topic_marriage', title: 'Thirumanam' }, { id: 'topic_health', title: 'Udal Nalam' }],
+    te: [{ id: 'topic_career', title: 'Career' }, { id: 'topic_marriage', title: 'Pelli' }, { id: 'topic_health', title: 'Aarogyam' }],
+    bn: [{ id: 'topic_career', title: 'Career' }, { id: 'topic_marriage', title: 'Biye' }, { id: 'topic_health', title: 'Swasthya' }],
+    ml: [{ id: 'topic_career', title: 'Career' }, { id: 'topic_marriage', title: 'Vivaaham' }, { id: 'topic_health', title: 'Aarogyam' }],
+    kn: [{ id: 'topic_career', title: 'Career' }, { id: 'topic_marriage', title: 'Maduve' }, { id: 'topic_health', title: 'Aarogya' }],
   };
   return labels[lang] || labels.en;
 }
@@ -951,9 +984,11 @@ function isJustGreeting(text) {
 function classifyIntent(text) {
   const lower = text.toLowerCase();
   const careerWords = ['career', 'job', 'work', 'business', 'money', 'finance', 'salary', 'promotion', 'naukri', 'paisa', 'velai', 'thozhil', 'udyogam', 'chakri'];
-  const marriageWords = ['marriage', 'love', 'relationship', 'partner', 'husband', 'wife', 'wedding', 'shaadi', 'shaadhi', 'pyar', 'thirumanam', 'kalyanam', 'pelli', 'biye', 'vivah'];
+  const marriageWords = ['marriage', 'love', 'relationship', 'partner', 'husband', 'wife', 'wedding', 'shaadi', 'shaadhi', 'pyar', 'thirumanam', 'kalyanam', 'pelli', 'biye', 'vivah', 'rishte', 'rishta'];
+  const healthWords = ['health', 'sehat', 'swasthya', 'bimari', 'disease', 'udal', 'aarogya', 'tabiyat', 'doctor', 'medical', 'pet', 'sir dard', 'neend'];
   if (careerWords.some(w => lower.includes(w))) return 'career';
   if (marriageWords.some(w => lower.includes(w))) return 'marriage';
+  if (healthWords.some(w => lower.includes(w))) return 'health';
   return 'general';
 }
 

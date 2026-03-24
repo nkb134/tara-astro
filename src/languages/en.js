@@ -5,12 +5,14 @@ export default {
 
   ask_name_career: `Namaste 🙏 I'm Tara. Career guidance, sure — share your name and date of birth? Then we'll look at your chart together`,
   ask_name_marriage: `Namaste 🙏 I'm Tara. Marriage guidance, sure — share your name and date of birth? Then we'll look at your chart together`,
+  ask_name_health: `Namaste 🙏 I'm Tara. Health guidance, sure — share your name and date of birth? I'll check what your chart says`,
   ask_name_general: `Namaste 🙏 I'm Tara. Sure, let's look at your chart — share your name and date of birth? We'll figure out the way forward together`,
   ask_name_default: `Namaste 🙏 I'm Tara. Yes absolutely — share your name and date of birth? Then we'll look at your chart together and figure out the way forward`,
 
   // Post-greeting topic responses (NO re-introduction)
   ask_topic_career: `Career guidance, sure — share your name and date of birth? Then we'll look at your chart together`,
   ask_topic_marriage: `Marriage guidance, sure — share your name and date of birth? Then we'll look at your chart together`,
+  ask_topic_health: `Health guidance, sure — share your name and date of birth? I'll check your chart`,
   ask_topic_general: `Sure, let's look at your chart — share your name and date of birth?`,
   ask_topic_default: `Yes absolutely — share your name and date of birth? Then we'll look at your chart together`,
 
@@ -30,6 +32,7 @@ export default {
 
   location_confirmed: `Ok, {place} — generating your chart based on this location`,
   generating_chart: `Give me a moment...`,
+  place_correction_prompt: `Ok, what's the correct place? Just the city name`,
   geocode_failed: `Hmm can't find that place... what's the nearest big city?`,
   geocode_failed_2: `Sorry, still can't find it. Try a major city nearby — like the state capital`,
   chart_failed: `Hmm... one sec, let me try again`,
