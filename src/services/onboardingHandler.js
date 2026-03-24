@@ -860,6 +860,30 @@ function classifyIntent(text) {
   return 'general';
 }
 
+// Common English/Hindi words that should NEVER be treated as names
+const NOT_NAMES = new Set([
+  // English verbs/phrases
+  'have', 'has', 'had', 'quit', 'left', 'want', 'need', 'like', 'know', 'think',
+  'feel', 'looking', 'seeking', 'help', 'please', 'tell', 'give', 'show', 'find',
+  'can', 'could', 'would', 'should', 'will', 'shall', 'may', 'might', 'must',
+  'been', 'being', 'doing', 'going', 'having', 'getting', 'making', 'taking',
+  'about', 'after', 'before', 'between', 'from', 'into', 'with', 'without',
+  'very', 'much', 'more', 'most', 'some', 'any', 'many', 'few', 'all', 'every',
+  'the', 'this', 'that', 'these', 'those', 'what', 'which', 'who', 'whom',
+  'just', 'really', 'actually', 'currently', 'recently', 'already', 'still',
+  'not', 'don', 'didn', 'doesn', 'won', 'can', 'isn', 'aren', 'wasn', 'weren',
+  'job', 'work', 'career', 'marriage', 'shaadi', 'health', 'money', 'life',
+  'stressed', 'worried', 'confused', 'lost', 'stuck', 'depressed', 'anxious',
+  // Hindi verbs/common words
+  'kya', 'hai', 'hain', 'tha', 'thi', 'the', 'hoon', 'hun', 'raha', 'rahi',
+  'karna', 'chahiye', 'chahte', 'chahti', 'karein', 'karo', 'batao', 'bataiye',
+  'mujhe', 'mera', 'meri', 'mere', 'apna', 'apni', 'apne', 'aap', 'aapka',
+  'bahut', 'bohot', 'kaafi', 'thoda', 'zyada', 'kuch', 'sab', 'bilkul',
+  'abhi', 'pehle', 'baad', 'jaldi', 'dheere', 'phir', 'wapas',
+  'nahi', 'nahin', 'nhi', 'mat', 'sirf', 'bas',
+  'chhodh', 'chhod', 'chhodi', 'chhoda', 'quit', 'left', 'resigned',
+]);
+
 function extractName(text) {
   let name = text.trim()
     .replace(/^(my name is|i am|i'm|naam hai|mera naam|en peyar|naa peru|amar naam)\s*/i, '')
@@ -870,8 +894,19 @@ function extractName(text) {
   name = name.replace(/\b\d{1,2}(?:st|nd|rd|th)?\b\.?/gi, '').trim();
   // Remove common filler words that aren't names
   name = name.replace(/^(and|aur|or)\s+/i, '').trim();
-  const words = name.split(/\s+/).filter(w => w.length > 1).slice(0, 2);
-  name = words.map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ');
+
+  const words = name.split(/\s+/).filter(w => w.length > 1).slice(0, 3);
+
+  // Filter out words that are clearly not names
+  const nameWords = words.filter(w => !NOT_NAMES.has(w.toLowerCase()));
+
+  // If ALL words were filtered out, this isn't a name — it's a sentence
+  if (nameWords.length === 0) return null;
+
+  // Take max 2 words for the name
+  name = nameWords.slice(0, 2)
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+    .join(' ');
   return name || null;
 }
 

@@ -295,6 +295,19 @@ async function handleOnboardingFlow(whatsappId, user, messageText, messageId, st
     await sendTextMessage(whatsappId, response);
   }
 
+  // Save onboarding exchanges for debugging and dashboard
+  try {
+    const { conversationId } = await getSessionContext(user.id);
+    await saveExchange(conversationId, user.id, messageText, response, {
+      language: user.language || 'en',
+      intent: 'onboarding_' + (user.onboarding_step || 'new'),
+      model: 'none',
+      responseTimeMs: Date.now() - startTime,
+    });
+  } catch (err) {
+    logger.warn({ err: err.message }, 'Failed to save onboarding exchange');
+  }
+
   // If chart was just generated, generate and send hook
   if (result.messageType === 'reading') {
     await sleep(2000);
