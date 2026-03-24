@@ -48,7 +48,21 @@ app.get('/health', (req, res) => {
 app.get('/webhook', verifyWebhook);
 app.post('/webhook', webhookLimiter, receiveMessage);
 
+// Optional: reset DB on startup (for dev/testing)
+async function maybeResetDb() {
+  if (process.env.RESET_DB_ON_START !== 'true') return;
+  try {
+    const { query } = await import('./db/connection.js');
+    await query('TRUNCATE users, conversations, messages RESTART IDENTITY CASCADE');
+    logger.info('DB reset on startup (RESET_DB_ON_START=true)');
+  } catch (err) {
+    logger.error({ err: err.message }, 'DB reset failed — continuing anyway');
+  }
+}
+
 // Start server
-app.listen(config.app.port, () => {
-  logger.info({ port: config.app.port, env: config.app.nodeEnv }, `${config.app.botName} bot is running`);
+maybeResetDb().then(() => {
+  app.listen(config.app.port, () => {
+    logger.info({ port: config.app.port, env: config.app.nodeEnv }, `${config.app.botName} bot is running`);
+  });
 });
