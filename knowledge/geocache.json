@@ -7910,5 +7910,148 @@
     "source": "geonames",
     "hits": 1,
     "added": "2026-03-24"
+  },
+  "bhadrak": {
+    "lat": 21.05447,
+    "lng": 86.5156,
+    "state": "Odisha",
+    "timezone": "Asia/Kolkata",
+    "formatted": "Bhadrak, Odisha",
+    "population": 0,
+    "source": "seed",
+    "hits": 0,
+    "added": "2026-03-24"
+  },
+  "bhanjanagar": {
+    "lat": 19.92719,
+    "lng": 84.58201,
+    "state": "Odisha",
+    "timezone": "Asia/Kolkata",
+    "formatted": "Bhanjanagar, Odisha",
+    "population": 0,
+    "source": "seed",
+    "hits": 0,
+    "added": "2026-03-24"
+  },
+  "bhajanagar": {
+    "lat": 19.92719,
+    "lng": 84.58201,
+    "state": "Odisha",
+    "timezone": "Asia/Kolkata",
+    "formatted": "Bhajanagar, Odisha",
+    "population": 0,
+    "source": "seed",
+    "hits": 0,
+    "added": "2026-03-24"
+  },
+  "khordha": {
+    "lat": 20.18268,
+    "lng": 85.61629,
+    "state": "Odisha",
+    "timezone": "Asia/Kolkata",
+    "formatted": "Khordha, Odisha",
+    "population": 0,
+    "source": "seed",
+    "hits": 0,
+    "added": "2026-03-24"
+  },
+  "bargarh": {
+    "lat": 21.33348,
+    "lng": 83.61905,
+    "state": "Odisha",
+    "timezone": "Asia/Kolkata",
+    "formatted": "Bargarh, Odisha",
+    "population": 0,
+    "source": "seed",
+    "hits": 0,
+    "added": "2026-03-24"
+  },
+  "bolangir": {
+    "lat": 20.70419,
+    "lng": 83.49029,
+    "state": "Odisha",
+    "timezone": "Asia/Kolkata",
+    "formatted": "Bolangir, Odisha",
+    "population": 0,
+    "source": "seed",
+    "hits": 0,
+    "added": "2026-03-24"
+  },
+  "balangir": {
+    "lat": 20.70419,
+    "lng": 83.49029,
+    "state": "Odisha",
+    "timezone": "Asia/Kolkata",
+    "formatted": "Balangir, Odisha",
+    "population": 0,
+    "source": "seed",
+    "hits": 0,
+    "added": "2026-03-24"
+  },
+  "sonepur": {
+    "lat": 20.83333,
+    "lng": 83.91667,
+    "state": "Odisha",
+    "timezone": "Asia/Kolkata",
+    "formatted": "Sonepur, Odisha",
+    "population": 0,
+    "source": "seed",
+    "hits": 0,
+    "added": "2026-03-24"
+  },
+  "nuapada": {
+    "lat": 20.8167,
+    "lng": 82.5333,
+    "state": "Odisha",
+    "timezone": "Asia/Kolkata",
+    "formatted": "Nuapada, Odisha",
+    "population": 0,
+    "source": "seed",
+    "hits": 0,
+    "added": "2026-03-24"
+  },
+  "titlagarh": {
+    "lat": 20.28961,
+    "lng": 83.15233,
+    "state": "Odisha",
+    "timezone": "Asia/Kolkata",
+    "formatted": "Titlagarh, Odisha",
+    "population": 0,
+    "source": "seed",
+    "hits": 0,
+    "added": "2026-03-24"
+  },
+  "talcher": {
+    "lat": 20.94927,
+    "lng": 85.23354,
+    "state": "Odisha",
+    "timezone": "Asia/Kolkata",
+    "formatted": "Talcher, Odisha",
+    "population": 0,
+    "source": "seed",
+    "hits": 0,
+    "added": "2026-03-24"
+  },
+  "barbil": {
+    "lat": 22.10194,
+    "lng": 85.37752,
+    "state": "Odisha",
+    "timezone": "Asia/Kolkata",
+    "formatted": "Barbil, Odisha",
+    "population": 0,
+    "source": "seed",
+    "hits": 0,
+    "added": "2026-03-24"
+  },
+  "keonjhar": {
+    "lat": 21.6318,
+    "lng": 85.59686,
+    "state": "Odisha",
+    "timezone": "Asia/Kolkata",
+    "formatted": "Keonjhar, Odisha",
+    "population": 0,
+    "source": "seed",
+    "hits": 0,
+    "added": "2026-03-24"
   }
 }

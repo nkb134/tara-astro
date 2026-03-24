@@ -5,8 +5,9 @@ import te from './te.js';
 import bn from './bn.js';
 import ml from './ml.js';
 import kn from './kn.js';
+import or_ from './or.js';
 
-const languages = { ta, en, hi, te, bn, ml, kn };
+const languages = { ta, en, hi, te, bn, ml, kn, or: or_ };
 
 export function t(lang, key) {
   const strings = languages[lang] || languages.en;
@@ -40,6 +41,7 @@ export function detectLanguage(text) {
   if (/[\u0900-\u097F]/.test(text)) return 'hi';
   if (/[\u0C00-\u0C7F]/.test(text)) return 'te';
   if (/[\u0980-\u09FF]/.test(text)) return 'bn';
+  if (/[\u0B00-\u0B7F]/.test(text)) return 'or';
   if (/[\u0D00-\u0D7F]/.test(text)) return 'ml';
   if (/[\u0C80-\u0CFF]/.test(text)) return 'kn';
 
@@ -77,12 +79,18 @@ export function detectLanguage(text) {
     'jonmo', 'tarik', 'somoy', 'kothay', 'biye', 'chakri', 'kundli',
     'dekhi', 'dekhchi', 'jaanen', 'jani', 'bhalo', 'kemon', 'hobe'];
 
+  const odiaWords = ['mu', 'mora', 'mote', 'aapanka', 'kemiti', 'achhi', 'achanti',
+    'kahanti', 'janma', 'tarikh', 'samaya', 'kouthi', 'baha', 'chakiri', 'kundli',
+    'dekhihi', 'dekhuchi', 'jananti', 'jaanena', 'bhala', 'sahajya', 'karibi',
+    'namaskar', 'kahi', 'paribi', 'hoisathila', 'jagaa', 'graha', 'rashi'];
+
   const hindiScore = words.filter(w => hindiWords.includes(w)).length;
   const tamilScore = words.filter(w => tamilWords.includes(w)).length;
   const teluguScore = words.filter(w => teluguWords.includes(w)).length;
   const bengaliScore = words.filter(w => bengaliWords.includes(w)).length;
+  const odiaScore = words.filter(w => odiaWords.includes(w)).length;
 
-  const scores = { hi: hindiScore, ta: tamilScore, te: teluguScore, bn: bengaliScore };
+  const scores = { hi: hindiScore, ta: tamilScore, te: teluguScore, bn: bengaliScore, or: odiaScore };
   const maxLang = Object.entries(scores).sort((a, b) => b[1] - a[1])[0];
 
   if (maxLang[1] >= 2) return maxLang[0];
