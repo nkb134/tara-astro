@@ -22,6 +22,7 @@ let _yogas = null;
 let _dashas = null;
 let _remedies = null;
 let _temples = null;
+let _nadi = null;
 
 function loadJSON(filename) {
   try {
@@ -56,6 +57,11 @@ function getRemedies() {
 function getTemples() {
   if (!_temples) _temples = loadJSON('navagraha-temples.json');
   return _temples;
+}
+
+function getNadi() {
+  if (!_nadi) _nadi = loadJSON('nadi-principles.json');
+  return _nadi;
 }
 
 // House groups by topic
@@ -138,7 +144,17 @@ export function retrieveJyotishContext(chartData, intent, topic, lang) {
       }
     }
 
-    // 5. Tamil temple recommendations (only for Tamil users)
+    // 5. Nadi principles — planet-pair combinations + karmic + timing
+    const nadiDB = getNadi();
+    if (nadiDB.length > 0) {
+      const nadiChunks = findNadiPrinciples(nadiDB, planets, dasha, topicKey);
+      for (const n of nadiChunks.slice(0, 2)) { // Max 2 Nadi entries
+        chunks.push(n.text);
+        sources.push(n.source);
+      }
+    }
+
+    // 6. Tamil temple recommendations (only for Tamil users)
     if (lang === 'ta' && (intent === 'remedy' || topicKey === 'general')) {
       const temples = getTemples();
       if (temples.length > 0) {
@@ -312,6 +328,83 @@ function findTempleRecommendations(temples, afflicted, currentDasha) {
     }
   }
 
+  return results;
+}
+
+function findNadiPrinciples(nadiDB, planets, dasha, topicKey) {
+  const results = [];
+  const planetNames = Object.keys(planets).map(p => p.toLowerCase());
+
+  // Find conjunctions (planets in same house)
+  const houseOccupants = {};
+  for (const [name, data] of Object.entries(planets)) {
+    if (!data.house) continue;
+    if (!houseOccupants[data.house]) houseOccupants[data.house] = [];
+    houseOccupants[data.house].push(name);
+  }
+
+  // 1. Match planet-pair combinations from conjunctions
+  for (const entry of nadiDB) {
+    if (entry.type !== 'planet_pair' || !entry.planets || entry.planets.length < 2) continue;
+
+    const p1 = entry.planets[0].toLowerCase();
+    const p2 = entry.planets[1].toLowerCase();
+
+    // Check if both planets exist in the chart
+    if (!planetNames.includes(p1) || !planetNames.includes(p2)) continue;
+
+    // Check if they're conjunct (same house) or if entry doesn't require conjunction
+    const p1House = planets[Object.keys(planets).find(k => k.toLowerCase() === p1)]?.house;
+    const p2House = planets[Object.keys(planets).find(k => k.toLowerCase() === p2)]?.house;
+
+    if (p1House === p2House) {
+      // Conjunct — high relevance
+      const topicField = entry[topicKey + 'Effect'] || entry.careerEffect || '';
+      let text = `[Nadi — ${entry.source}] ${entry.planets.join('-')} conjunction: ${entry.principle}`;
+      if (topicField) text += ` ${topicField}`;
+      results.push({ text, source: `nadi:${entry.planets.join('-')}`, score: 10 });
+    }
+  }
+
+  // 2. Match karmic indicators (Rahu-Ketu axis, retrograde)
+  for (const entry of nadiDB) {
+    if (entry.type !== 'karmic') continue;
+
+    // Check if entry's planets match chart
+    if (entry.planets) {
+      const allPresent = entry.planets.every(p => planetNames.includes(p.toLowerCase()));
+      if (!allPresent) continue;
+    }
+
+    // Check house match
+    if (entry.houses && entry.houses.length > 0) {
+      const rahuHouse = planets.Rahu?.house;
+      const ketuHouse = planets.Ketu?.house;
+      if (rahuHouse && entry.houses.includes(rahuHouse)) {
+        let text = `[Nadi Karmic — ${entry.source}] ${entry.principle}`;
+        results.push({ text, source: `nadi-karmic:${entry.planets?.join('-') || 'axis'}`, score: 7 });
+      }
+    } else {
+      // General karmic principle — always relevant
+      let text = `[Nadi — ${entry.source}] ${entry.principle}`;
+      results.push({ text, source: `nadi:${entry.type}`, score: 3 });
+    }
+  }
+
+  // 3. Match timing principles (based on dasha planet)
+  const dashaLord = (dasha.mahadasha || '').replace(/\s+mahadasha/i, '').trim().toLowerCase();
+  for (const entry of nadiDB) {
+    if (entry.type !== 'timing') continue;
+
+    if (entry.planets?.some(p => p.toLowerCase() === dashaLord)) {
+      let text = `[Nadi Timing — ${entry.source}] ${entry.principle}`;
+      if (entry.timingNote) text += ` ${entry.timingNote}`;
+      results.push({ text, source: `nadi-timing:${entry.planets?.join('-')}`, score: 5 });
+    }
+  }
+
+  // Sort by relevance score
+  results.sort((a, b) => (b.score || 0) - (a.score || 0));
   return results;
 }
 

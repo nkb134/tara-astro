@@ -1,0 +1,268 @@
+[
+  {
+    "type": "planet_pair",
+    "planets": ["Saturn", "Jupiter"],
+    "principle": "Saturn-Jupiter conjunction or mutual aspect creates a push-pull between discipline and expansion. The native oscillates between ambition and caution, often achieving success later in life after sustained effort. This combination delays rewards but makes them lasting once they arrive.",
+    "careerEffect": "Career in law, banking, administration, or academia; promotions come after age 35.",
+    "relationshipEffect": "Partner may be older or more mature; marriage stabilizes over time rather than starting with passion.",
+    "timingNote": "Activates strongly during Saturn or Jupiter dasha, and when transiting Jupiter aspects natal Saturn.",
+    "source": "Nadi Jyotish"
+  },
+  {
+    "type": "planet_pair",
+    "planets": ["Saturn", "Rahu"],
+    "principle": "Saturn-Rahu conjunction produces obsessive focus on material security or status. The native may develop compulsive habits around work, control, or accumulation. Foreign connections and unconventional career paths are strongly indicated, often involving technology or petroleum-related industries.",
+    "careerEffect": "Success in foreign lands, technology, mining, oil, or research requiring deep persistence.",
+    "relationshipEffect": "Attracts partners from different cultural backgrounds; fear of abandonment can create possessiveness.",
+    "timingNote": "Most intense during Rahu-Saturn or Saturn-Rahu antardasha; Saturn return with Rahu transit brings major life restructuring.",
+    "source": "Bhrigu Nandi Nadi"
+  },
+  {
+    "type": "planet_pair",
+    "planets": ["Jupiter", "Rahu"],
+    "principle": "Jupiter-Rahu conjunction forms Guru Chandala Yoga, indicating unorthodox wisdom and unconventional spiritual beliefs. The native questions established religious traditions and may follow a non-traditional guru or foreign philosophy. Intelligence is sharp but can be misdirected toward manipulation if other malefics aspect.",
+    "careerEffect": "Success in foreign education, technology, research, or roles that challenge established norms.",
+    "relationshipEffect": "May marry outside community or religion; attracts relationships through intellectual or philosophical connection.",
+    "timingNote": "Jupiter-Rahu dasha periods bring sudden expansion followed by disillusionment; clarity comes after age 36.",
+    "source": "Bhrigu Nandi Nadi"
+  },
+  {
+    "type": "planet_pair",
+    "planets": ["Mars", "Saturn"],
+    "principle": "Mars-Saturn conjunction creates intense friction between impulsive action and forced restraint. The native experiences frustration, delayed initiatives, and periods of suppressed anger. However, this combination produces extraordinary endurance and the ability to work under harsh conditions when channeled positively.",
+    "careerEffect": "Engineering, construction, surgery, military, or industrial work; success through physically demanding professions.",
+    "relationshipEffect": "Conflicts with authority figures and partners; must learn patience in intimate relationships to avoid recurring arguments.",
+    "timingNote": "Accident-prone periods when transiting Mars activates natal Saturn; Mars-Saturn dasha requires extra caution with machinery and vehicles.",
+    "source": "Nadi Jyotish"
+  },
+  {
+    "type": "planet_pair",
+    "planets": ["Venus", "Saturn"],
+    "principle": "Venus-Saturn conjunction delays romantic fulfillment and often indicates marriage after 28. The native experiences loneliness or unrequited love in youth but develops deep, lasting bonds in maturity. Age-gap relationships are common, with the native either significantly older or younger than their partner.",
+    "careerEffect": "Talent in arts requiring discipline — classical music, sculpture, architecture, or luxury goods with heritage value.",
+    "relationshipEffect": "Late marriage but loyal and enduring; partner may come from a different economic background.",
+    "timingNote": "Marriage most likely during Venus dasha after Saturn return (post-30), or when transiting Jupiter aspects natal Venus.",
+    "source": "Bhrigu Nandi Nadi"
+  },
+  {
+    "type": "planet_pair",
+    "planets": ["Sun", "Saturn"],
+    "principle": "Sun-Saturn conjunction or opposition signals a difficult relationship with the father or authority figures. The native struggles with self-confidence early in life and may face humiliation from superiors. True authority and leadership emerge only after the native stops seeking external validation and builds inner discipline.",
+    "careerEffect": "Government or bureaucratic career with initial setbacks; eventual rise to authority through perseverance rather than patronage.",
+    "relationshipEffect": "Difficulty trusting male authority figures; must resolve father-related patterns before healthy partnerships form.",
+    "timingNote": "Most challenging during Saturn transit over natal Sun; career recognition comes during Sun dasha if Saturn is well-placed.",
+    "source": "Nadi Jyotish"
+  },
+  {
+    "type": "planet_pair",
+    "planets": ["Moon", "Rahu"],
+    "principle": "Moon-Rahu conjunction (Grahan Yoga on Moon) creates mental restlessness, anxiety, and obsessive thought patterns. The native's mind is pulled toward worst-case scenarios and may experience disturbed sleep. Mother's health or the relationship with mother carries complications. However, this combination gives extraordinary imagination and intuitive ability when channeled creatively.",
+    "careerEffect": "Success in psychology, film, advertising, or any field requiring deep understanding of public emotions and mass appeal.",
+    "relationshipEffect": "Emotional dependency in relationships; attracts partners who mirror unresolved maternal patterns.",
+    "timingNote": "Mental health most vulnerable during Rahu-Moon or Moon-Rahu dasha; eclipses on natal Moon trigger emotional crises.",
+    "source": "Bhrigu Nandi Nadi"
+  },
+  {
+    "type": "planet_pair",
+    "planets": ["Moon", "Ketu"],
+    "principle": "Moon-Ketu conjunction detaches the native from emotional needs, creating a naturally ascetic or spiritually inclined temperament. The native may feel emotionally numb or disconnected from family bonds. Past-life spiritual practice is indicated, and the native possesses strong intuition that operates below conscious awareness.",
+    "careerEffect": "Drawn to healing, spiritual counseling, research, or solitary creative work; struggles with conventional 9-to-5 environments.",
+    "relationshipEffect": "Emotional unavailability can frustrate partners; needs significant alone time within relationships.",
+    "timingNote": "Spiritual awakening most likely during Ketu dasha or when transiting Ketu conjuncts natal Moon; ages 18-19 and 37-38 are pivotal.",
+    "source": "Nadi Jyotish"
+  },
+  {
+    "type": "planet_pair",
+    "planets": ["Mars", "Rahu"],
+    "principle": "Mars-Rahu conjunction (Angarak Yoga) produces explosive, restless energy that demands an outlet. The native is drawn to cutting-edge technology, surgery, or dangerous activities. Fearlessness borders on recklessness. This is one of the most powerful combinations for engineering, military strategy, or surgical precision when disciplined.",
+    "careerEffect": "Engineering, surgery, military, competitive sports, or technology startups; thrives under pressure and high-stakes environments.",
+    "relationshipEffect": "Aggressive in pursuit of partners; relationships can be intense and short-lived unless Mars is tempered by Jupiter's aspect.",
+    "timingNote": "Most volatile during Mars-Rahu dasha; risk of accidents, conflicts, or surgery peaks when transiting Mars conjuncts natal Rahu.",
+    "source": "Bhrigu Nandi Nadi"
+  },
+  {
+    "type": "planet_pair",
+    "planets": ["Venus", "Rahu"],
+    "principle": "Venus-Rahu conjunction creates intense desire for unconventional beauty, luxury, and relationships. The native is attracted to foreign partners, cross-cultural romances, or relationships that break social norms. Artistic taste is eclectic and avant-garde. Material desires can become obsessive if unchecked.",
+    "careerEffect": "Fashion, film, international trade, cosmetics, or digital arts; success in industries that blend glamour with technology.",
+    "relationshipEffect": "Foreign spouse or partner from different community strongly indicated; unconventional romantic arrangements.",
+    "timingNote": "Marriage or significant relationship during Venus-Rahu or Rahu-Venus dasha; Venus return with Rahu transit triggers romantic turning points.",
+    "source": "Bhrigu Nandi Nadi"
+  },
+  {
+    "type": "planet_pair",
+    "planets": ["Jupiter", "Saturn"],
+    "principle": "When Jupiter and Saturn mutually aspect each other (typically from opposite houses), the native experiences a lifelong tension between faith and doubt, optimism and realism. This opposition creates philosophical depth and practical wisdom. The native becomes an effective teacher, advisor, or leader who balances vision with execution.",
+    "careerEffect": "Success in education administration, financial planning, law, or policy-making where both vision and structure are needed.",
+    "relationshipEffect": "Seeks partners who complement their worldview; marriage works best when one partner is the dreamer and the other the planner.",
+    "timingNote": "Jupiter-Saturn conjunction transits every 20 years mark major life-direction shifts for these natives.",
+    "source": "Nadi Jyotish"
+  },
+  {
+    "type": "planet_pair",
+    "planets": ["Mercury", "Jupiter"],
+    "principle": "Mercury-Jupiter conjunction or mutual aspect produces exceptional intellectual ability and teaching talent. The native absorbs knowledge rapidly and communicates complex ideas with clarity. This is the classic combination for scholars, writers, and educators. Financial acumen is also strong, as both planets govern commerce and wisdom.",
+    "careerEffect": "Teaching, writing, publishing, financial advising, chartered accountancy, or intellectual consulting.",
+    "relationshipEffect": "Attracts partners through wit and knowledge; communication is the strongest pillar of their relationships.",
+    "timingNote": "Peak intellectual output during Mercury-Jupiter or Jupiter-Mercury dasha; publishing or teaching breakthroughs around Jupiter return years.",
+    "source": "B.V. Raman"
+  },
+  {
+    "type": "planet_pair",
+    "planets": ["Sun", "Rahu"],
+    "principle": "Sun-Rahu conjunction inflates the ego and creates intense political or leadership ambition. The native desires recognition and power but may use unconventional or manipulative means to achieve it. Father may have been absent, controversial, or from a different background. When positively channeled, this combination produces charismatic leaders who challenge the status quo.",
+    "careerEffect": "Politics, diplomacy, foreign service, or executive leadership; success in roles requiring bold public presence.",
+    "relationshipEffect": "Dominance issues in partnerships; must learn to share power and credit with partners.",
+    "timingNote": "Sun-Rahu dasha brings sudden rise or fall in public standing; solar eclipses near natal Sun-Rahu trigger identity transformations.",
+    "source": "Bhrigu Nandi Nadi"
+  },
+  {
+    "type": "planet_pair",
+    "planets": ["Mars", "Venus"],
+    "principle": "Mars-Venus conjunction produces passionate creativity and strong romantic desire. The native possesses magnetic physical appeal and artistic fire. Sexual energy is high and seeks expression through creative or romantic channels. This combination excels in performance arts, design, and any field where beauty meets action.",
+    "careerEffect": "Dance, athletics, fashion design, culinary arts, or any profession combining physical skill with aesthetic sense.",
+    "relationshipEffect": "Highly romantic and physically affectionate; relationships are intense but may burn out if emotional depth is lacking.",
+    "timingNote": "Romantic milestones during Mars-Venus or Venus-Mars dasha; creative peak when transiting Venus conjuncts natal Mars.",
+    "source": "Nadi Jyotish"
+  },
+  {
+    "type": "planet_pair",
+    "planets": ["Mercury", "Saturn"],
+    "principle": "Mercury-Saturn conjunction creates a methodical, analytical mind that thinks slowly but with tremendous depth. The native excels at research, data analysis, and systematic problem-solving. Early education may be disrupted or difficult, but intellectual mastery comes through persistent study. Speech may be measured and deliberate.",
+    "careerEffect": "Research, data science, accounting, engineering design, or any field requiring meticulous analysis and patience.",
+    "relationshipEffect": "Communication in relationships is careful but can feel cold; must consciously express warmth alongside logic.",
+    "timingNote": "Academic or intellectual breakthroughs during Mercury-Saturn dasha; Saturn return period brings career-defining publications or projects.",
+    "source": "B.V. Raman"
+  },
+  {
+    "type": "karmic",
+    "planets": ["Rahu", "Ketu"],
+    "houses": [1, 7],
+    "principle": "Rahu in 1st house and Ketu in 7th indicates a karmic journey from self-sacrifice toward healthy self-assertion. In past lives, the native over-invested in partnerships and lost their identity. This life demands building personal identity and independence, even if it creates tension in relationships.",
+    "relationshipEffect": "Partnerships feel karmically fated but require the native to maintain individuality; co-dependency is the trap to avoid.",
+    "timingNote": "Relationship karmas activate during Rahu or Ketu dasha and when transiting nodes cross the 1-7 axis.",
+    "source": "Nadi Jyotish"
+  },
+  {
+    "type": "karmic",
+    "planets": ["Rahu", "Ketu"],
+    "houses": [2, 8],
+    "principle": "Rahu in 2nd and Ketu in 8th indicates karmic lessons around material security versus transformation. The native is driven to accumulate wealth and establish family stability, while past-life comfort with crisis and upheaval must be released. Inheritance or sudden financial changes are common themes.",
+    "careerEffect": "Finance, insurance, inheritance management, or crisis consulting; earns through managing others' resources.",
+    "timingNote": "Financial turning points during nodal dasha periods; ages 18-19 and 37-38 bring wealth-related karmic events.",
+    "source": "Nadi Jyotish"
+  },
+  {
+    "type": "karmic",
+    "planets": ["Rahu", "Ketu"],
+    "houses": [3, 9],
+    "principle": "Rahu in 3rd and Ketu in 9th pushes the native toward practical skills, communication, and self-made effort over inherited beliefs and formal education. Past-life reliance on religious authority or philosophical dogma must give way to direct experience and hands-on learning.",
+    "careerEffect": "Media, journalism, sales, entrepreneurship, or skill-based professions; self-taught expertise outperforms formal credentials.",
+    "timingNote": "Career shifts toward self-employment during Rahu dasha; spiritual questioning intensifies at nodal return ages.",
+    "source": "Nadi Jyotish"
+  },
+  {
+    "type": "karmic",
+    "planets": ["Rahu", "Ketu"],
+    "houses": [4, 10],
+    "principle": "Rahu in 4th and Ketu in 10th creates tension between domestic security and public ambition. The native's karmic path moves toward building a stable home and emotional foundation, releasing past-life attachment to career status and public recognition. Property matters carry karmic significance.",
+    "careerEffect": "May sacrifice career advancement for family needs; real estate, agriculture, or home-based work suits this axis.",
+    "relationshipEffect": "Family life takes priority over professional networking; partner must support the native's need for domestic peace.",
+    "timingNote": "Home purchases or family milestones during Rahu dasha; career re-evaluation at nodal returns.",
+    "source": "Nadi Jyotish"
+  },
+  {
+    "type": "karmic",
+    "planets": ["Rahu", "Ketu"],
+    "houses": [5, 11],
+    "principle": "Rahu in 5th and Ketu in 11th directs the native toward creative self-expression, romance, and children, away from past-life comfort with group identity and social networks. Individual creative output matters more than collective goals. Speculative gains and children carry karmic weight.",
+    "careerEffect": "Creative industries, entertainment, speculation, or education; individual brilliance outshines teamwork in career.",
+    "relationshipEffect": "Romantic relationships feel destined; children bring important karmic lessons and transformation.",
+    "timingNote": "Creative breakthroughs and romantic milestones during Rahu dasha in 5th; group dynamics shift at nodal returns.",
+    "source": "Nadi Jyotish"
+  },
+  {
+    "type": "karmic",
+    "planets": ["Rahu", "Ketu"],
+    "houses": [6, 12],
+    "principle": "Rahu in 6th and Ketu in 12th pushes the native toward service, health management, and practical problem-solving, releasing past-life tendencies toward isolation, escapism, or spiritual withdrawal. Daily discipline and serving others becomes the path of growth. Foreign residence or hospitalization may feature in the life story.",
+    "careerEffect": "Healthcare, legal services, social work, or dispute resolution; thrives in service-oriented competitive environments.",
+    "timingNote": "Health or legal matters activate during Rahu dasha; spiritual retreats or foreign travel during Ketu periods.",
+    "source": "Nadi Jyotish"
+  },
+  {
+    "type": "karmic",
+    "planets": [],
+    "principle": "Any retrograde planet in the birth chart indicates unfinished karmic business related to that planet's significations. The native must revisit and master the retrograde planet's themes with extra effort. Retrograde benefics (Jupiter, Venus) delay their gifts but deliver them with greater depth. Retrograde malefics (Saturn, Mars) intensify karmic lessons through repeated challenges.",
+    "careerEffect": "Retrograde Saturn delays career success but builds unshakeable professional foundation; retrograde Mercury requires revisiting communication skills.",
+    "timingNote": "Dasha of a retrograde planet brings re-examination of past decisions; results manifest in the second half of the dasha period.",
+    "source": "Nadi Jyotish"
+  },
+  {
+    "type": "karmic",
+    "planets": [],
+    "principle": "The Atmakaraka (planet at the highest degree in any sign) represents the soul's deepest desire and its primary karmic lesson. The house placement of Atmakaraka in the Navamsha chart (Karakamsha) reveals the native's spiritual purpose. Mastering the Atmakaraka's lesson is the central task of the lifetime, and its dasha period brings the most spiritually significant events.",
+    "careerEffect": "Career fulfillment comes through work aligned with Atmakaraka's significations — Sun for leadership, Moon for nurturing, Mars for courage.",
+    "timingNote": "Atmakaraka dasha is the most transformative period; transits to Atmakaraka trigger soul-level decisions.",
+    "source": "Nadi Jyotish"
+  },
+  {
+    "type": "timing",
+    "planets": ["Saturn"],
+    "principle": "Saturn return (ages 28-30 and 57-60) forces the native to confront whether their life structure — career, relationships, responsibilities — is authentic. The first return dismantles false foundations built in youth and demands the native build something real. Career crystallization happens when the native accepts Saturn's demand for discipline and accountability.",
+    "careerEffect": "Career direction solidifies permanently during first Saturn return; those in wrong careers experience forced exits or restructuring.",
+    "timingNote": "First return (28-30) sets career foundation; second return (57-60) brings retirement planning or legacy building.",
+    "source": "Nadi Jyotish"
+  },
+  {
+    "type": "timing",
+    "planets": ["Jupiter"],
+    "principle": "Jupiter returns to its natal position every 12 years (ages 12, 24, 36, 48, 60), marking cycles of expansion, opportunity, and philosophical growth. Each return opens a window for education, travel, marriage, or spiritual deepening. The native should initiate major life ventures within one year of Jupiter return for maximum benefic support.",
+    "careerEffect": "Promotions, business expansion, or new educational pursuits align with Jupiter return years.",
+    "relationshipEffect": "Marriage, childbirth, or deepening of committed relationships often coincide with Jupiter return periods.",
+    "timingNote": "The 12-month window around Jupiter return is the most auspicious for launching new ventures aligned with Jupiter's natal house.",
+    "source": "B.V. Raman"
+  },
+  {
+    "type": "timing",
+    "planets": ["Rahu", "Ketu"],
+    "principle": "When transiting Rahu or Ketu cross over the natal Moon, the native experiences 18 months of emotional upheaval, mental restlessness, and disruption of comfort zones. Rahu over Moon amplifies desires, anxiety, and obsessive thinking. Ketu over Moon creates emotional detachment, spiritual insights, and sometimes depression. This transit forces emotional evolution.",
+    "relationshipEffect": "Relationships undergo trust crises during Rahu-Moon transit; emotional bonds dissolve or transform during Ketu-Moon transit.",
+    "timingNote": "Effects begin 3 months before exact conjunction and last until the node moves 5 degrees past natal Moon.",
+    "source": "Nadi Jyotish"
+  },
+  {
+    "type": "timing",
+    "planets": ["Saturn"],
+    "principle": "Saturn transiting over the natal Sun (conjunction or opposition) brings a 2.5-year period of authority challenges, reduced vitality, and confrontation with ego-based limitations. The native may face conflicts with father, boss, or government. Health issues related to bones, joints, or heart require attention. Those who accept humility during this transit emerge with authentic authority.",
+    "careerEffect": "Leadership is tested; promotions are blocked until the native demonstrates genuine competence over ambition.",
+    "timingNote": "Most intense when Saturn is within 5 degrees of natal Sun; effects linger for 6 months after exact conjunction.",
+    "source": "Nadi Jyotish"
+  },
+  {
+    "type": "timing",
+    "planets": ["Jupiter"],
+    "houses": [7],
+    "principle": "Jupiter transiting the 7th house from natal Ascendant or Moon opens a powerful marriage window lasting approximately 12 months. For unmarried natives, this is the most favorable transit for meeting a life partner or formalizing a commitment. For married natives, it brings expansion and renewal in the existing partnership.",
+    "relationshipEffect": "Highest probability of marriage or engagement when Jupiter transits 7th house, especially if natal 7th lord dasha is also active.",
+    "timingNote": "Window is strongest when Jupiter is direct (not retrograde) and unafflicted by malefic aspects during the transit.",
+    "source": "B.V. Raman"
+  },
+  {
+    "type": "timing",
+    "planets": ["Saturn"],
+    "principle": "Sade Sati (Saturn transiting 12th, 1st, and 2nd from natal Moon) spans 7.5 years and unfolds in three phases. The rising phase (12th from Moon) brings financial pressure and hidden anxieties. The peak phase (over natal Moon) delivers the heaviest emotional and physical challenges. The setting phase (2nd from Moon) tests finances and family harmony but begins to release pressure.",
+    "careerEffect": "Career restructuring during peak phase; financial discipline enforced during rising and setting phases.",
+    "relationshipEffect": "Family relationships strained during all three phases; emotional maturity deepens through the experience.",
+    "timingNote": "Peak phase is the most transformative 2.5-year window; natives who accept responsibility during Sade Sati build lasting life structures.",
+    "source": "Nadi Jyotish"
+  },
+  {
+    "type": "timing",
+    "planets": ["Rahu", "Ketu"],
+    "principle": "Nodal returns occur approximately every 18.6 years (ages 18-19, 37-38, 56-57). These are destiny activation points where the native's karmic path realigns. The first return (18-19) marks the transition from inherited identity to chosen path. The second return (37-38) triggers a midlife karmic reckoning and often brings the most significant life changes — career shifts, relocations, or spiritual awakenings.",
+    "careerEffect": "Career pivots are most successful when initiated near nodal return ages, as they align with the native's deeper karmic trajectory.",
+    "timingNote": "Effects are felt within a 1-year orb of exact return; concurrent dasha of Rahu or Ketu amplifies the intensity dramatically.",
+    "source": "Nadi Jyotish"
+  }
+]
