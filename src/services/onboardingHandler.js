@@ -3,6 +3,7 @@ import { updateUser } from '../db/users.js';
 import { geocodeBirthPlace } from '../jyotish/geocode.js';
 import { generateBirthChart } from '../jyotish/calculator.js';
 import { formatChartOverview } from '../jyotish/chartFormatter.js';
+import { generateReviewToken } from './chartReview.js';
 import { logger } from '../utils/logger.js';
 
 // Convert birth_date (may be Date object from PostgreSQL or string) to YYYY-MM-DD
@@ -127,7 +128,7 @@ async function handleFrustratedRetry(user, messageText, lang, parsed, currentSte
       user.birth_time = parsed.time.time;
     }
     const result = await generateChartFromPlace(user, parsed.place, lang);
-    return { response: apology + '\n\n' + result.response, messageType: result.messageType };
+    return { response: apology + '\n\n' + result.response, messageType: result.messageType, reviewToken: result.reviewToken };
   }
 
   if (parsed.time && currentStep === 'awaiting_time') {
@@ -468,9 +469,17 @@ async function generateChartFromGeo(user, geoData, lang) {
       onboarding_step: 'onboarded', is_onboarded: true,
     });
 
+    // Generate review token for chart review page
+    let reviewToken = null;
+    try {
+      reviewToken = await generateReviewToken(user.id);
+    } catch (err) {
+      logger.warn({ err: err.message, userId: user.id }, 'Failed to generate review token');
+    }
+
     const locationConfirm = t(lang, 'location_confirmed').replace('{place}', geoData.formatted);
     const generating = t(lang, 'generating_chart');
-    return { response: `${locationConfirm}\n\n${generating}`, messageType: 'reading', chartData };
+    return { response: `${locationConfirm}\n\n${generating}`, messageType: 'reading', chartData, reviewToken };
   } catch (err) {
     logger.error({ err: err.message }, 'Chart generation failed');
     return { response: t(lang, 'chart_failed'), messageType: 'simple' };
@@ -527,10 +536,18 @@ async function generateChartFromPlace(user, place, lang) {
       onboarding_step: 'onboarded', is_onboarded: true,
     });
 
+    // Generate review token for chart review page
+    let reviewToken = null;
+    try {
+      reviewToken = await generateReviewToken(user.id);
+    } catch (err) {
+      logger.warn({ err: err.message, userId: user.id }, 'Failed to generate review token');
+    }
+
     // Confirm location + generating message
     const locationConfirm = t(lang, 'location_confirmed').replace('{place}', geo.formattedPlace);
     const generating = t(lang, 'generating_chart');
-    return { response: `${locationConfirm}\n\n${generating}`, messageType: 'reading', chartData };
+    return { response: `${locationConfirm}\n\n${generating}`, messageType: 'reading', chartData, reviewToken };
   } catch (err) {
     logger.error({ err: err.message, userId: user.id }, 'Chart generation failed');
     const errorCount = trackError(user.id, 'chart');

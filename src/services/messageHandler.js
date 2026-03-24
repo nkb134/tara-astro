@@ -340,6 +340,24 @@ async function handleOnboardingFlow(whatsappId, user, messageText, messageId, st
 
         await updateUser(freshUser?.id || user.id, { chart_summary: hook });
 
+        // Send chart review link if token was generated
+        if (result.reviewToken) {
+          await sleep(1000);
+          const baseUrl = process.env.APP_URL || 'https://tara-astro-production.up.railway.app';
+          const chartUrl = `${baseUrl}/chart/${result.reviewToken}`;
+          const chartLinkTexts = {
+            hi: `Aapki poori kundli yahan dekhiye \uD83D\uDC47\n${chartUrl}`,
+            ta: `Ungal muzhuma jaadhagam ingae paarunga \uD83D\uDC47\n${chartUrl}`,
+            te: `Mee purthee kundali ikkada choodandi \uD83D\uDC47\n${chartUrl}`,
+            bn: `Apnar purno kundali ekhane dekhun \uD83D\uDC47\n${chartUrl}`,
+            ml: `Ningalude poorna jathakam ividey kaanuka \uD83D\uDC47\n${chartUrl}`,
+            kn: `Nimma purna kundali illi noodi \uD83D\uDC47\n${chartUrl}`,
+            en: `View your full birth chart here \uD83D\uDC47\n${chartUrl}`,
+          };
+          const chartLinkMsg = chartLinkTexts[lang] || chartLinkTexts.hi;
+          await sendTextMessage(whatsappId, chartLinkMsg);
+        }
+
         // Send topic buttons after hook
         await sleep(1500);
         const postButtons = getPostChartButtons(lang);

@@ -16,6 +16,12 @@ import {
   getAllFeedback,
   getKnowledgeStats,
 } from './services/expertService.js';
+import {
+  getUserByToken,
+  getReadingsForUser,
+  submitChartValidation,
+  submitReadingFeedback,
+} from './services/chartReview.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -194,6 +200,78 @@ app.get('/api/expert/knowledge', async (req, res) => {
   } catch (err) {
     logger.error({ err: err.message }, 'Expert knowledge API failed');
     res.status(500).json({ error: 'Failed to load knowledge stats', message: err.message });
+  }
+});
+
+// ── Chart Review Panel (token-based access) ──────────────────────────
+
+app.get('/chart/:token', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'public', 'chart-review.html'));
+});
+
+app.get('/api/chart/:token', async (req, res) => {
+  try {
+    const user = await getUserByToken(req.params.token);
+    if (!user) {
+      return res.status(404).json({ error: 'Chart not found or link expired' });
+    }
+
+    const chartData = typeof user.chart_data === 'string'
+      ? JSON.parse(user.chart_data) : user.chart_data;
+
+    if (!chartData) {
+      return res.status(404).json({ error: 'No chart data available' });
+    }
+
+    const readings = await getReadingsForUser(user.id);
+
+    res.json({
+      user: {
+        displayName: user.display_name,
+        birthDate: user.birth_date,
+        birthTime: user.birth_time,
+        birthTimeKnown: user.birth_time_known,
+        birthPlace: user.birth_place,
+        language: user.language,
+      },
+      chartData,
+      readings,
+    });
+  } catch (err) {
+    logger.error({ err: err.message }, 'Chart review API failed');
+    res.status(500).json({ error: 'Failed to load chart', message: err.message });
+  }
+});
+
+app.post('/api/chart/:token/validate', async (req, res) => {
+  try {
+    const user = await getUserByToken(req.params.token);
+    if (!user) {
+      return res.status(404).json({ error: 'Chart not found' });
+    }
+    const result = await submitChartValidation(user.id, req.body);
+    res.json({ success: true, validation: result });
+  } catch (err) {
+    logger.error({ err: err.message }, 'Chart validation submission failed');
+    res.status(500).json({ error: 'Failed to submit validation', message: err.message });
+  }
+});
+
+app.post('/api/chart/:token/feedback', async (req, res) => {
+  try {
+    const user = await getUserByToken(req.params.token);
+    if (!user) {
+      return res.status(404).json({ error: 'Chart not found' });
+    }
+    const { messageId, ...feedback } = req.body;
+    if (!messageId) {
+      return res.status(400).json({ error: 'messageId is required' });
+    }
+    const result = await submitReadingFeedback(messageId, feedback);
+    res.json({ success: true, feedback: result });
+  } catch (err) {
+    logger.error({ err: err.message }, 'Chart reading feedback failed');
+    res.status(500).json({ error: 'Failed to submit feedback', message: err.message });
   }
 });
 

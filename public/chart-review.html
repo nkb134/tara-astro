@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tara — Kundli Review</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            cosmic: {
+              950: '#0c0a1d',
+              900: '#130f2e',
+              800: '#1a1440',
+              700: '#251d5e',
+              600: '#322a7a',
+              500: '#4a3f9f',
+              400: '#6b5fc7',
+              300: '#9188db',
+              200: '#b8b0ea',
+              100: '#ddd9f5',
+            },
+            star: {
+              gold: '#fbbf24',
+              warm: '#f59e0b',
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: linear-gradient(135deg, #0c0a1d 0%, #130f2e 40%, #1a1440 100%);
+      min-height: 100vh;
+    }
+    .glass {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.3s ease;
+    }
+    .glass-card:hover {
+      background: rgba(255, 255, 255, 0.07);
+      border-color: rgba(255, 255, 255, 0.12);
+    }
+
+    /* South Indian Chart Grid */
+    .chart-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(251, 191, 36, 0.3);
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 1;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .chart-cell {
+      background: rgba(13, 10, 30, 0.9);
+      padding: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .chart-cell .sign-label {
+      font-size: 0.6rem;
+      color: rgba(255, 255, 255, 0.35);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 2px;
+      white-space: nowrap;
+    }
+    .chart-cell .sign-number {
+      position: absolute;
+      top: 2px;
+      left: 4px;
+      font-size: 0.55rem;
+      color: rgba(251, 191, 36, 0.4);
+      font-weight: 600;
+    }
+    .chart-center {
+      background: rgba(13, 10, 30, 0.95);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      border: 1px solid rgba(251, 191, 36, 0.2);
+    }
+    .planet-tag {
+      display: inline-block;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      line-height: 1.4;
+      margin: 1px;
+      white-space: nowrap;
+    }
+    .planet-tag.exalted { color: #4ade80; }
+    .planet-tag.debilitated { color: #f87171; }
+    .planet-tag.own-sign { color: #60a5fa; }
+    .planet-tag.retrograde { color: #fb923c; }
+    .planet-tag.combust { text-decoration: line-through; }
+    .planet-tag.neutral { color: rgba(255, 255, 255, 0.8); }
+
+    .asc-marker {
+      color: #fbbf24;
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+
+    /* Star rating */
+    .star-rating {
+      display: inline-flex;
+      gap: 2px;
+    }
+    .star-rating .star {
+      cursor: pointer;
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.2);
+      transition: color 0.15s;
+      user-select: none;
+    }
+    .star-rating .star.active {
+      color: #fbbf24;
+    }
+    .star-rating .star:hover,
+    .star-rating .star:hover ~ .star {
+      color: rgba(251, 191, 36, 0.5);
+    }
+
+    /* Validation icons */
+    .val-btn {
+      cursor: pointer;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      transition: all 0.15s;
+      border: 1px solid transparent;
+    }
+    .val-btn:hover { background: rgba(255,255,255,0.1); }
+    .val-btn.selected-correct {
+      background: rgba(74, 222, 128, 0.15);
+      border-color: rgba(74, 222, 128, 0.4);
+    }
+    .val-btn.selected-incorrect {
+      background: rgba(248, 113, 113, 0.15);
+      border-color: rgba(248, 113, 113, 0.4);
+    }
+
+    .reading-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 12px;
+      transition: all 0.3s;
+    }
+    .reading-card:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #4ade80;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.5s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive chart */
+    @media (max-width: 640px) {
+      .chart-grid {
+        max-width: 100%;
+      }
+      .chart-cell .sign-label {
+        font-size: 0.5rem;
+      }
+      .planet-tag {
+        font-size: 0.55rem;
+        padding: 0px 2px;
+      }
+      .chart-center {
+        padding: 6px;
+      }
+    }
+  </style>
+</head>
+<body class="text-white">
+
+  <!-- Loading state -->
+  <div id="loading" class="min-h-screen flex items-center justify-center">
+    <div class="text-center">
+      <div class="text-4xl mb-4">&#x2728;</div>
+      <p class="text-cosmic-300 text-lg">Loading kundli...</p>
+    </div>
+  </div>
+
+  <!-- Error state -->
+  <div id="error" class="min-h-screen flex items-center justify-center hidden">
+    <div class="text-center glass-card rounded-xl p-8 max-w-md mx-4">
+      <div class="text-4xl mb-4">&#x1F6AB;</div>
+      <h2 class="text-xl font-semibold text-red-400 mb-2">Chart Not Found</h2>
+      <p class="text-cosmic-300" id="error-message">This link may have expired or is invalid.</p>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <div id="main" class="hidden">
+    <!-- Header -->
+    <header class="glass border-b border-white/5 sticky top-0 z-50">
+      <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <span class="text-xl">&#x2728;</span>
+          <h1 class="text-lg font-semibold text-white">Tara Kundli Review</h1>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="pulse-dot"></div>
+          <span class="text-xs text-cosmic-300" id="refresh-status">Live</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-6 space-y-8">
+
+      <!-- ── CHART VISUALIZATION ────────────────────────────────── -->
+      <section class="fade-in">
+        <h2 class="text-lg font-semibold text-star-gold mb-4 flex items-center gap-2">
+          <span>&#x1F30C;</span> Birth Chart (South Indian)
+        </h2>
+        <div class="chart-grid" id="chart-grid">
+          <!-- Filled by JS -->
+        </div>
+      </section>
+
+      <!-- ── CHART DETAILS PANEL ────────────────────────────────── -->
+      <section class="fade-in space-y-6">
+        <!-- Birth Data -->
+        <div class="glass-card rounded-xl p-5">
+          <h3 class="text-sm font-semibold text-cosmic-200 uppercase tracking-wider mb-3">Birth Details</h3>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm" id="birth-details">
+            <!-- Filled by JS -->
+          </div>
+        </div>
+
+        <!-- Planet Table -->
+        <div class="glass-card rounded-xl p-5 overflow-x-auto">
+          <h3 class="text-sm font-semibold text-cosmic-200 uppercase tracking-wider mb-3">Planet Positions</h3>
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="text-cosmic-300 border-b border-white/10">
+                <th class="text-left py-2 px-2">Planet</th>
+                <th class="text-left py-2 px-2">Sign</th>
+                <th class="text-left py-2 px-2">House</th>
+                <th class="text-left py-2 px-2">Nakshatra</th>
+                <th class="text-left py-2 px-2">Dignity</th>
+                <th class="text-center py-2 px-2">Power%</th>
+                <th class="text-center py-2 px-2">R</th>
+                <th class="text-center py-2 px-2">Combust</th>
+              </tr>
+            </thead>
+            <tbody id="planet-table">
+              <!-- Filled by JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Dasha Table -->
+        <div class="glass-card rounded-xl p-5">
+          <h3 class="text-sm font-semibold text-cosmic-200 uppercase tracking-wider mb-3">Vimshottari Dasha</h3>
+          <div id="dasha-section">
+            <!-- Filled by JS -->
+          </div>
+        </div>
+
+        <!-- Yogas -->
+        <div class="glass-card rounded-xl p-5">
+          <h3 class="text-sm font-semibold text-cosmic-200 uppercase tracking-wider mb-3">Yogas Detected</h3>
+          <div id="yogas-section" class="space-y-2">
+            <!-- Filled by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ── CHART VALIDATION ───────────────────────────────────── -->
+      <section class="fade-in">
+        <h2 class="text-lg font-semibold text-star-gold mb-4 flex items-center gap-2">
+          <span>&#x2705;</span> Chart Validation
+        </h2>
+        <div class="glass-card rounded-xl p-5 space-y-4">
+          <p class="text-sm text-cosmic-300">Mark each planet placement as correct or incorrect. If incorrect, note the expected placement.</p>
+
+          <div id="validation-grid" class="space-y-2">
+            <!-- Filled by JS -->
+          </div>
+
+          <div class="border-t border-white/10 pt-4 mt-4">
+            <label class="text-sm text-cosmic-200 block mb-2">Overall Chart Accuracy</label>
+            <div class="star-rating" id="chart-stars" data-rating="0">
+              <span class="star" data-val="1">&#9733;</span>
+              <span class="star" data-val="2">&#9733;</span>
+              <span class="star" data-val="3">&#9733;</span>
+              <span class="star" data-val="4">&#9733;</span>
+              <span class="star" data-val="5">&#9733;</span>
+            </div>
+          </div>
+
+          <div>
+            <label class="text-sm text-cosmic-200 block mb-1">Notes</label>
+            <textarea id="validation-notes" rows="2"
+              class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-star-gold/40"
+              placeholder="Any observations about chart accuracy..."></textarea>
+          </div>
+
+          <button id="submit-validation"
+            class="px-5 py-2 bg-star-gold/20 text-star-gold border border-star-gold/30 rounded-lg text-sm font-medium hover:bg-star-gold/30 transition-all">
+            Submit Chart Validation
+          </button>
+          <span id="validation-status" class="text-xs text-cosmic-300 ml-3"></span>
+        </div>
+      </section>
+
+      <!-- ── LIVE READINGS FEED ──────────────────────────────────── -->
+      <section class="fade-in">
+        <h2 class="text-lg font-semibold text-star-gold mb-4 flex items-center gap-2">
+          <span>&#x1F4AC;</span> Live Readings Feed
+          <span class="text-xs text-cosmic-400 font-normal ml-2">(auto-refreshes every 10s)</span>
+        </h2>
+        <div id="readings-feed" class="space-y-3">
+          <p class="text-cosmic-400 text-sm">No readings yet. They will appear here as the conversation progresses.</p>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-cosmic-500 text-xs">
+      Tara Vedic Jyotish Companion &mdash; Chart Review Panel
+    </footer>
+  </div>
+
+  <script>
+    // ── Global state ──────────────────────────────────────────────
+    let chartData = null;
+    let userData = null;
+    let readings = [];
+    let validationState = {}; // { planetName: { correct: bool, note: string } }
+    let refreshTimer = null;
+
+    const TOKEN = window.location.pathname.split('/chart/')[1] || '';
+
+    // ── Planet abbreviations ─────────────────────────────────────
+    const ABBR = {
+      Sun: 'Su', Moon: 'Mo', Mars: 'Ma', Mercury: 'Me',
+      Jupiter: 'Ju', Venus: 'Ve', Saturn: 'Sa', Rahu: 'Ra', Ketu: 'Ke'
+    };
+
+    // ── South Indian chart: signs are FIXED in position ──────────
+    // Grid layout (row, col) -> sign number (1-indexed)
+    // Row 0: Pisces(12), Aries(1), Taurus(2), Gemini(3)
+    // Row 1: Aquarius(11), CENTER, CENTER, Cancer(4)
+    // Row 2: Capricorn(10), CENTER, CENTER, Leo(5)
+    // Row 3: Sagittarius(9), Scorpio(8), Libra(7), Virgo(6)
+    const SIGN_GRID = [
+      [12, 1,  2,  3],
+      [11, 0,  0,  4],
+      [10, 0,  0,  5],
+      [ 9, 8,  7,  6],
+    ];
+
+    const SIGN_NAMES = [
+      '', 'Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo',
+      'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'
+    ];
+
+    const SIGN_SHORT = [
+      '', 'Ari', 'Tau', 'Gem', 'Can', 'Leo', 'Vir',
+      'Lib', 'Sco', 'Sag', 'Cap', 'Aqu', 'Pis'
+    ];
+
+    // ── Fetch chart data ─────────────────────────────────────────
+
+    async function loadChart() {
+      try {
+        const resp = await fetch('/api/chart/' + encodeURIComponent(TOKEN));
+        if (!resp.ok) {
+          throw new Error('Chart not found');
+        }
+        const data = await resp.json();
+        chartData = data.chartData;
+        userData = data.user;
+        readings = data.readings || [];
+
+        document.getElementById('loading').classList.add('hidden');
+        document.getElementById('main').classList.remove('hidden');
+
+        renderChart();
+        renderBirthDetails();
+        renderPlanetTable();
+        renderDasha();
+        renderYogas();
+        renderValidationGrid();
+        renderReadings();
+
+        // Start auto-refresh
+        refreshTimer = setInterval(refreshReadings, 10000);
+      } catch (err) {
+        document.getElementById('loading').classList.add('hidden');
+        document.getElementById('error').classList.remove('hidden');
+        const errMsg = document.getElementById('error-message');
+        errMsg.textContent = 'This link may have expired or is invalid.';
+      }
+    }
+
+    // ── Render South Indian Chart ────────────────────────────────
+
+    function renderChart() {
+      const grid = document.getElementById('chart-grid');
+      grid.textContent = '';
+
+      if (!chartData || !chartData.planets) return;
+
+      const planets = chartData.planets;
+      const ascSign = chartData.ascendant;
+
+      // Map: signName -> [planet objects]
+      const signPlanets = {};
+      for (const [name, data] of Object.entries(planets)) {
+        const sign = data.sign;
+        if (!signPlanets[sign]) signPlanets[sign] = [];
+        signPlanets[sign].push({ name, ...data });
+      }
+
+      // Build all 16 cells with explicit grid positions
+      for (let row = 0; row < 4; row++) {
+        for (let col = 0; col < 4; col++) {
+          const signNum = SIGN_GRID[row][col];
+
+          // Center cells: only create the spanning element at (1,1), skip others
+          if (signNum === 0) {
+            if (row === 1 && col === 1) {
+              const center = document.createElement('div');
+              center.className = 'chart-center';
+              center.style.gridColumn = '2 / 4';
+              center.style.gridRow = '2 / 4';
+              renderCenterInfo(center);
+              grid.appendChild(center);
+            }
+            // Other center cells (1,2), (2,1), (2,2) are covered by the span
+            continue;
+          }
+
+          const cell = document.createElement('div');
+          cell.className = 'chart-cell';
+          // Explicit grid placement to avoid auto-flow issues
+          cell.style.gridColumn = (col + 1).toString();
+          cell.style.gridRow = (row + 1).toString();
+
+          const signName = SIGN_NAMES[signNum];
+
+          // Sign number
+          const numEl = document.createElement('span');
+          numEl.className = 'sign-number';
+          numEl.textContent = signNum;
+          cell.appendChild(numEl);
+
+          // Sign label
+          const labelEl = document.createElement('span');
+          labelEl.className = 'sign-label';
+          labelEl.textContent = SIGN_SHORT[signNum];
+          cell.appendChild(labelEl);
+
+          // Ascendant marker
+          if (signName === ascSign) {
+            const ascEl = document.createElement('span');
+            ascEl.className = 'asc-marker';
+            ascEl.textContent = '\u25B2 Asc';
+            cell.appendChild(ascEl);
+          }
+
+          // Planets in this sign
+          const planetsHere = signPlanets[signName] || [];
+          const planetsContainer = document.createElement('div');
+          planetsContainer.className = 'flex flex-wrap justify-center gap-0.5 mt-1';
+
+          for (const p of planetsHere) {
+            const tag = document.createElement('span');
+            let classes = 'planet-tag';
+
+            if (p.exalted) classes += ' exalted';
+            else if (p.debilitated) classes += ' debilitated';
+            else if (p.dignity === 'own') classes += ' own-sign';
+            else classes += ' neutral';
+
+            if (p.retrograde && p.name !== 'Rahu' && p.name !== 'Ketu') classes += ' retrograde';
+            if (p.combust) classes += ' combust';
+
+            tag.className = classes;
+
+            const abbr = ABBR[p.name] || p.name.slice(0, 2);
+            const deg = (typeof p.signDegrees === 'number') ? p.signDegrees.toFixed(1) : '';
+            const retro = (p.retrograde && p.name !== 'Rahu' && p.name !== 'Ketu') ? '(R)' : '';
+
+            tag.textContent = abbr + ' ' + deg + '\u00B0' + retro;
+            planetsContainer.appendChild(tag);
+          }
+
+          cell.appendChild(planetsContainer);
+          grid.appendChild(cell);
+        }
+      }
+    }
+
+    function renderCenterInfo(container) {
+      const name = userData?.displayName || userData?.display_name || 'User';
+      const asc = chartData.ascendant || '-';
+      const moonSign = chartData.moonSign || '-';
+      const sunSign = chartData.sunSign || '-';
+      const dasha = chartData.dasha?.current;
+      const dashaStr = dasha?.mahadasha && dasha.mahadasha !== 'Unknown'
+        ? dasha.mahadasha + ' / ' + dasha.antardasha
+        : '-';
+
+      const lines = [
+        { label: '', value: name, cls: 'text-base font-semibold text-white mb-1' },
+        { label: 'Asc', value: asc, cls: 'text-star-gold' },
+        { label: 'Moon', value: moonSign, cls: 'text-cosmic-200' },
+        { label: 'Sun', value: sunSign, cls: 'text-cosmic-200' },
+        { label: 'Dasha', value: dashaStr, cls: 'text-cosmic-300 text-xs' },
+      ];
+
+      for (const line of lines) {
+        const el = document.createElement('div');
+        el.className = 'text-center ' + (line.cls || '');
+        if (line.label) {
+          const lbl = document.createElement('span');
+          lbl.className = 'text-cosmic-400 text-xs mr-1';
+          lbl.textContent = line.label + ':';
+          el.appendChild(lbl);
+        }
+        const val = document.createElement('span');
+        val.className = 'text-xs';
+        val.textContent = line.value;
+        el.appendChild(val);
+        container.appendChild(el);
+      }
+    }
+
+    // ── Birth Details ────────────────────────────────────────────
+
+    function renderBirthDetails() {
+      const el = document.getElementById('birth-details');
+      el.textContent = '';
+
+      const items = [
+        { label: 'Name', value: userData?.displayName || userData?.display_name || '-' },
+        { label: 'Date of Birth', value: formatDate(userData?.birthDate || userData?.birth_date) },
+        { label: 'Time of Birth', value: userData?.birthTime || userData?.birth_time || 'Unknown' },
+        { label: 'Place', value: userData?.birthPlace || userData?.birth_place || '-' },
+      ];
+
+      for (const item of items) {
+        const div = document.createElement('div');
+        const lbl = document.createElement('div');
+        lbl.className = 'text-cosmic-400 text-xs';
+        lbl.textContent = item.label;
+        const val = document.createElement('div');
+        val.className = 'text-white font-medium';
+        val.textContent = item.value;
+        div.appendChild(lbl);
+        div.appendChild(val);
+        el.appendChild(div);
+      }
+    }
+
+    function formatDate(d) {
+      if (!d) return '-';
+      try {
+        const date = new Date(d);
+        return date.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+      } catch {
+        return d;
+      }
+    }
+
+    // ── Planet Table ─────────────────────────────────────────────
+
+    function renderPlanetTable() {
+      const tbody = document.getElementById('planet-table');
+      tbody.textContent = '';
+
+      if (!chartData || !chartData.planets) return;
+
+      const order = ['Sun', 'Moon', 'Mars', 'Mercury', 'Jupiter', 'Venus', 'Saturn', 'Rahu', 'Ketu'];
+
+      for (const name of order) {
+        const p = chartData.planets[name];
+        if (!p) continue;
+
+        const tr = document.createElement('tr');
+        tr.className = 'border-b border-white/5 hover:bg-white/5 transition-colors';
+
+        const cells = [
+          { text: name, cls: getDignityColor(p) + ' font-medium' },
+          { text: p.sign + ' ' + (typeof p.signDegrees === 'number' ? p.signDegrees.toFixed(1) + '\u00B0' : ''), cls: '' },
+          { text: p.houseNumber ? 'H' + p.houseNumber : '-', cls: 'text-center' },
+          { text: p.nakshatra?.name ? p.nakshatra.name + ' P' + p.nakshatra.pada : p.constellation || '-', cls: '' },
+          { text: capitalize(p.dignity || 'neutral'), cls: getDignityColor(p) },
+          { text: (p.powerPercentage || 0) + '%', cls: 'text-center ' + getPowerColor(p.powerPercentage) },
+          { text: (p.retrograde && name !== 'Rahu' && name !== 'Ketu') ? 'R' : '-', cls: 'text-center ' + (p.retrograde && name !== 'Rahu' && name !== 'Ketu' ? 'text-orange-400' : 'text-cosmic-500') },
+          { text: p.combust ? 'Yes' : '-', cls: 'text-center ' + (p.combust ? 'text-red-400' : 'text-cosmic-500') },
+        ];
+
+        for (const c of cells) {
+          const td = document.createElement('td');
+          td.className = 'py-2 px-2 text-sm ' + c.cls;
+          td.textContent = c.text;
+          tr.appendChild(td);
+        }
+
+        tbody.appendChild(tr);
+      }
+    }
+
+    function getDignityColor(p) {
+      if (p.exalted) return 'text-green-400';
+      if (p.debilitated) return 'text-red-400';
+      if (p.dignity === 'own') return 'text-blue-400';
+      if (p.dignity === 'friend') return 'text-cyan-300';
+      if (p.dignity === 'enemy') return 'text-rose-300';
+      return 'text-white';
+    }
+
+    function getPowerColor(pct) {
+      if (pct >= 75) return 'text-green-400';
+      if (pct >= 50) return 'text-yellow-400';
+      if (pct >= 30) return 'text-orange-400';
+      return 'text-red-400';
+    }
+
+    function capitalize(s) {
+      return s ? s.charAt(0).toUpperCase() + s.slice(1) : '';
+    }
+
+    // ── Dasha Section ────────────────────────────────────────────
+
+    function renderDasha() {
+      const section = document.getElementById('dasha-section');
+      section.textContent = '';
+
+      const dasha = chartData?.dasha;
+      if (!dasha) {
+        section.textContent = 'Dasha data not available.';
+        return;
+      }
+
+      const current = dasha.current;
+      if (current && current.mahadasha !== 'Unknown') {
+        const div = document.createElement('div');
+        div.className = 'grid grid-cols-1 sm:grid-cols-2 gap-4';
+
+        const maha = document.createElement('div');
+        maha.className = 'bg-white/5 rounded-lg p-3';
+        const mahaTitle = document.createElement('div');
+        mahaTitle.className = 'text-cosmic-400 text-xs mb-1';
+        mahaTitle.textContent = 'Current Mahadasha';
+        const mahaVal = document.createElement('div');
+        mahaVal.className = 'text-white font-semibold text-lg';
+        mahaVal.textContent = current.mahadasha;
+        const mahaDates = document.createElement('div');
+        mahaDates.className = 'text-cosmic-400 text-xs mt-1';
+        mahaDates.textContent = formatDate(current.mahadashaStart) + ' \u2014 ' + formatDate(current.mahadashaEnd);
+        maha.appendChild(mahaTitle);
+        maha.appendChild(mahaVal);
+        maha.appendChild(mahaDates);
+
+        const antar = document.createElement('div');
+        antar.className = 'bg-white/5 rounded-lg p-3';
+        const antarTitle = document.createElement('div');
+        antarTitle.className = 'text-cosmic-400 text-xs mb-1';
+        antarTitle.textContent = 'Current Antardasha';
+        const antarVal = document.createElement('div');
+        antarVal.className = 'text-white font-semibold text-lg';
+        antarVal.textContent = current.antardasha;
+        const antarDates = document.createElement('div');
+        antarDates.className = 'text-cosmic-400 text-xs mt-1';
+        antarDates.textContent = formatDate(current.antardashaStart) + ' \u2014 ' + formatDate(current.antardashaEnd);
+        antar.appendChild(antarTitle);
+        antar.appendChild(antarVal);
+        antar.appendChild(antarDates);
+
+        div.appendChild(maha);
+        div.appendChild(antar);
+        section.appendChild(div);
+      }
+
+      // Full dasha sequence
+      if (dasha.sequence && dasha.sequence.length > 0) {
+        const seqTitle = document.createElement('h4');
+        seqTitle.className = 'text-xs text-cosmic-400 uppercase tracking-wider mt-4 mb-2';
+        seqTitle.textContent = 'Full Dasha Sequence';
+        section.appendChild(seqTitle);
+
+        const table = document.createElement('div');
+        table.className = 'space-y-1';
+
+        for (const d of dasha.sequence) {
+          const row = document.createElement('div');
+          row.className = 'flex items-center gap-3 text-sm py-1';
+
+          const isCurrent = d.lord === current?.mahadasha;
+
+          const lordEl = document.createElement('span');
+          lordEl.className = 'w-16 font-medium ' + (isCurrent ? 'text-star-gold' : 'text-cosmic-200');
+          lordEl.textContent = d.lord;
+
+          const barContainer = document.createElement('div');
+          barContainer.className = 'flex-1 h-2 bg-white/5 rounded-full overflow-hidden';
+          const bar = document.createElement('div');
+          const now = new Date();
+          const start = new Date(d.startDate);
+          const end = new Date(d.endDate);
+          let pct = 0;
+          if (now >= end) pct = 100;
+          else if (now > start) pct = ((now - start) / (end - start)) * 100;
+          bar.className = 'h-full rounded-full ' + (isCurrent ? 'bg-star-gold' : 'bg-cosmic-600');
+          bar.style.width = pct + '%';
+          barContainer.appendChild(bar);
+
+          const dates = document.createElement('span');
+          dates.className = 'text-cosmic-400 text-xs w-40 text-right';
+          dates.textContent = d.startDate?.slice(0, 4) + ' \u2013 ' + d.endDate?.slice(0, 4);
+
+          row.appendChild(lordEl);
+          row.appendChild(barContainer);
+          row.appendChild(dates);
+          table.appendChild(row);
+        }
+        section.appendChild(table);
+      }
+    }
+
+    // ── Yogas ────────────────────────────────────────────────────
+
+    function renderYogas() {
+      const section = document.getElementById('yogas-section');
+      section.textContent = '';
+
+      const yogas = chartData?.yogas || [];
+      if (yogas.length === 0) {
+        const p = document.createElement('p');
+        p.className = 'text-cosmic-400 text-sm';
+        p.textContent = 'No major yogas detected.';
+        section.appendChild(p);
+        return;
+      }
+
+      for (const yoga of yogas) {
+        const div = document.createElement('div');
+        div.className = 'bg-white/5 rounded-lg p-3 flex items-start gap-3';
+
+        const icon = document.createElement('span');
+        icon.className = 'text-star-gold text-sm mt-0.5';
+        icon.textContent = '\u2B50';
+
+        const content = document.createElement('div');
+        const nameEl = document.createElement('div');
+        nameEl.className = 'text-white font-medium text-sm';
+        nameEl.textContent = yoga.name + (yoga.cancelled ? ' (Cancelled)' : '');
+        const descEl = document.createElement('div');
+        descEl.className = 'text-cosmic-300 text-xs mt-0.5';
+        descEl.textContent = yoga.description || '';
+        const planetsEl = document.createElement('div');
+        planetsEl.className = 'text-cosmic-400 text-xs mt-1';
+        planetsEl.textContent = 'Planets: ' + (yoga.planets || []).join(', ');
+
+        content.appendChild(nameEl);
+        content.appendChild(descEl);
+        content.appendChild(planetsEl);
+
+        div.appendChild(icon);
+        div.appendChild(content);
+        section.appendChild(div);
+      }
+    }
+
+    // ── Validation Grid ──────────────────────────────────────────
+
+    function renderValidationGrid() {
+      const grid = document.getElementById('validation-grid');
+      grid.textContent = '';
+
+      if (!chartData || !chartData.planets) return;
+
+      const order = ['Sun', 'Moon', 'Mars', 'Mercury', 'Jupiter', 'Venus', 'Saturn', 'Rahu', 'Ketu'];
+
+      for (const name of order) {
+        const p = chartData.planets[name];
+        if (!p) continue;
+
+        const row = document.createElement('div');
+        row.className = 'flex items-center gap-3 py-2 border-b border-white/5';
+
+        const label = document.createElement('div');
+        label.className = 'w-24 text-sm font-medium text-cosmic-200';
+        label.textContent = name;
+
+        const placement = document.createElement('div');
+        placement.className = 'flex-1 text-sm text-cosmic-300';
+        placement.textContent = p.sign + ' ' + (typeof p.signDegrees === 'number' ? p.signDegrees.toFixed(1) + '\u00B0' : '') + ', H' + (p.houseNumber || '?');
+
+        const btnCorrect = document.createElement('button');
+        btnCorrect.className = 'val-btn';
+        btnCorrect.textContent = '\u2705';
+        btnCorrect.dataset.planet = name;
+        btnCorrect.dataset.action = 'correct';
+
+        const btnIncorrect = document.createElement('button');
+        btnIncorrect.className = 'val-btn';
+        btnIncorrect.textContent = '\u274C';
+        btnIncorrect.dataset.planet = name;
+        btnIncorrect.dataset.action = 'incorrect';
+
+        const noteInput = document.createElement('input');
+        noteInput.type = 'text';
+        noteInput.placeholder = 'Correct placement...';
+        noteInput.className = 'hidden bg-white/5 border border-white/10 rounded px-2 py-1 text-xs text-white w-40 focus:outline-none focus:border-star-gold/40';
+        noteInput.dataset.planet = name;
+
+        // Click handlers
+        btnCorrect.addEventListener('click', () => {
+          validationState[name] = { correct: true, note: '' };
+          btnCorrect.className = 'val-btn selected-correct';
+          btnIncorrect.className = 'val-btn';
+          noteInput.classList.add('hidden');
+        });
+
+        btnIncorrect.addEventListener('click', () => {
+          validationState[name] = { correct: false, note: '' };
+          btnIncorrect.className = 'val-btn selected-incorrect';
+          btnCorrect.className = 'val-btn';
+          noteInput.classList.remove('hidden');
+          noteInput.focus();
+        });
+
+        noteInput.addEventListener('input', () => {
+          if (validationState[name]) {
+            validationState[name].note = noteInput.value;
+          }
+        });
+
+        row.appendChild(label);
+        row.appendChild(placement);
+        row.appendChild(btnCorrect);
+        row.appendChild(btnIncorrect);
+        row.appendChild(noteInput);
+        grid.appendChild(row);
+      }
+
+      // Star rating handler
+      setupStarRating('chart-stars');
+    }
+
+    function setupStarRating(containerId) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      const stars = container.querySelectorAll('.star');
+      stars.forEach(star => {
+        star.addEventListener('click', () => {
+          const val = parseInt(star.dataset.val);
+          container.dataset.rating = val;
+          stars.forEach(s => {
+            s.classList.toggle('active', parseInt(s.dataset.val) <= val);
+          });
+        });
+      });
+    }
+
+    // ── Submit chart validation ──────────────────────────────────
+
+    document.getElementById('submit-validation').addEventListener('click', async () => {
+      const rating = parseInt(document.getElementById('chart-stars').dataset.rating) || 0;
+      const notes = document.getElementById('validation-notes').value;
+      const statusEl = document.getElementById('validation-status');
+
+      if (rating === 0 && Object.keys(validationState).length === 0) {
+        statusEl.textContent = 'Please rate or validate at least one planet.';
+        statusEl.className = 'text-xs text-red-400 ml-3';
+        return;
+      }
+
+      try {
+        statusEl.textContent = 'Submitting...';
+        statusEl.className = 'text-xs text-cosmic-300 ml-3';
+
+        const resp = await fetch('/api/chart/' + encodeURIComponent(TOKEN) + '/validate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            planetValidations: validationState,
+            overallRating: rating || null,
+            notes,
+          }),
+        });
+
+        if (!resp.ok) throw new Error('Failed to submit');
+
+        statusEl.textContent = 'Validation submitted successfully!';
+        statusEl.className = 'text-xs text-green-400 ml-3';
+      } catch (err) {
+        statusEl.textContent = 'Error submitting. Please try again.';
+        statusEl.className = 'text-xs text-red-400 ml-3';
+      }
+    });
+
+    // ── Readings Feed ────────────────────────────────────────────
+
+    function renderReadings() {
+      const feed = document.getElementById('readings-feed');
+      feed.textContent = '';
+
+      if (!readings || readings.length === 0) {
+        const p = document.createElement('p');
+        p.className = 'text-cosmic-400 text-sm';
+        p.textContent = 'No readings yet. They will appear here as the conversation progresses.';
+        feed.appendChild(p);
+        return;
+      }
+
+      for (const r of readings) {
+        const card = createReadingCard(r);
+        feed.appendChild(card);
+      }
+    }
+
+    function createReadingCard(r) {
+      const card = document.createElement('div');
+      card.className = 'reading-card';
+      card.dataset.messageId = r.messageId;
+
+      // Header: intent + model + time
+      const header = document.createElement('div');
+      header.className = 'flex items-center justify-between mb-2';
+
+      const intentBadge = document.createElement('span');
+      intentBadge.className = 'text-xs px-2 py-0.5 rounded-full bg-cosmic-700/50 text-cosmic-200';
+      intentBadge.textContent = r.intent || 'reading';
+
+      const meta = document.createElement('div');
+      meta.className = 'flex items-center gap-2 text-xs text-cosmic-400';
+      const modelSpan = document.createElement('span');
+      modelSpan.textContent = r.modelUsed || '';
+      const timeSpan = document.createElement('span');
+      timeSpan.textContent = formatTime(r.createdAt);
+      meta.appendChild(modelSpan);
+      meta.appendChild(timeSpan);
+
+      header.appendChild(intentBadge);
+      header.appendChild(meta);
+
+      // User question
+      const questionDiv = document.createElement('div');
+      questionDiv.className = 'mb-2';
+      if (r.userQuestion) {
+        const qLabel = document.createElement('div');
+        qLabel.className = 'text-xs text-cosmic-400 mb-0.5';
+        qLabel.textContent = 'User asked:';
+        const qText = document.createElement('div');
+        qText.className = 'text-sm text-cosmic-200 bg-white/5 rounded px-3 py-2';
+        qText.textContent = r.userQuestion;
+        questionDiv.appendChild(qLabel);
+        questionDiv.appendChild(qText);
+      }
+
+      // Tara's response
+      const responseDiv = document.createElement('div');
+      responseDiv.className = 'mb-3';
+      const rLabel = document.createElement('div');
+      rLabel.className = 'text-xs text-cosmic-400 mb-0.5';
+      rLabel.textContent = 'Tara said:';
+      const rText = document.createElement('div');
+      rText.className = 'text-sm text-white bg-white/5 rounded px-3 py-2 whitespace-pre-wrap';
+      rText.textContent = r.content || '';
+      responseDiv.appendChild(rLabel);
+      responseDiv.appendChild(rText);
+
+      // Feedback section
+      const feedbackDiv = document.createElement('div');
+      feedbackDiv.className = 'border-t border-white/5 pt-3 mt-2';
+
+      // If already has feedback, show it
+      if (r.existingFeedback && r.existingFeedback.id) {
+        const fb = r.existingFeedback;
+        const fbInfo = document.createElement('div');
+        fbInfo.className = 'text-xs text-green-400';
+        fbInfo.textContent = 'Feedback submitted: Accuracy ' + (fb.accuracy_rating || '-') +
+          '/5, Advice ' + (fb.advice_rating || '-') + '/5, Tone ' + (fb.tone_rating || '-') + '/5';
+        if (fb.correction_text) {
+          const corrEl = document.createElement('div');
+          corrEl.className = 'text-xs text-cosmic-300 mt-1';
+          corrEl.textContent = 'Correction: ' + fb.correction_text;
+          fbInfo.appendChild(corrEl);
+        }
+        feedbackDiv.appendChild(fbInfo);
+      } else {
+        // Rating rows
+        const ratings = ['accuracy', 'advice', 'tone'];
+        for (const type of ratings) {
+          const ratingRow = document.createElement('div');
+          ratingRow.className = 'flex items-center gap-2 mb-1';
+          const label = document.createElement('span');
+          label.className = 'text-xs text-cosmic-400 w-16';
+          label.textContent = capitalize(type) + ':';
+          const starDiv = document.createElement('div');
+          starDiv.className = 'star-rating';
+          starDiv.id = 'rating-' + type + '-' + r.messageId;
+          starDiv.dataset.rating = '0';
+          for (let i = 1; i <= 5; i++) {
+            const s = document.createElement('span');
+            s.className = 'star';
+            s.dataset.val = i;
+            s.textContent = '\u2605';
+            s.addEventListener('click', () => {
+              starDiv.dataset.rating = i;
+              starDiv.querySelectorAll('.star').forEach(ss => {
+                ss.classList.toggle('active', parseInt(ss.dataset.val) <= i);
+              });
+            });
+            starDiv.appendChild(s);
+          }
+          ratingRow.appendChild(label);
+          ratingRow.appendChild(starDiv);
+          feedbackDiv.appendChild(ratingRow);
+        }
+
+        // Correction text
+        const corrInput = document.createElement('textarea');
+        corrInput.rows = 2;
+        corrInput.placeholder = 'Corrections or notes...';
+        corrInput.className = 'w-full bg-white/5 border border-white/10 rounded px-2 py-1 text-xs text-white mt-2 focus:outline-none focus:border-star-gold/40';
+        corrInput.id = 'correction-' + r.messageId;
+        feedbackDiv.appendChild(corrInput);
+
+        // Submit button
+        const submitBtn = document.createElement('button');
+        submitBtn.className = 'mt-2 px-3 py-1 bg-cosmic-600/50 text-cosmic-200 rounded text-xs hover:bg-cosmic-600 transition-all';
+        submitBtn.textContent = 'Submit Feedback';
+        submitBtn.addEventListener('click', () => submitReadingFeedback(r.messageId, submitBtn));
+        feedbackDiv.appendChild(submitBtn);
+      }
+
+      card.appendChild(header);
+      card.appendChild(questionDiv);
+      card.appendChild(responseDiv);
+      card.appendChild(feedbackDiv);
+
+      return card;
+    }
+
+    async function submitReadingFeedback(messageId, btn) {
+      const accuracy = parseInt(document.getElementById('rating-accuracy-' + messageId)?.dataset.rating) || null;
+      const advice = parseInt(document.getElementById('rating-advice-' + messageId)?.dataset.rating) || null;
+      const tone = parseInt(document.getElementById('rating-tone-' + messageId)?.dataset.rating) || null;
+      const correction = document.getElementById('correction-' + messageId)?.value || '';
+
+      if (!accuracy && !advice && !tone && !correction) {
+        btn.textContent = 'Please rate or correct';
+        setTimeout(() => { btn.textContent = 'Submit Feedback'; }, 2000);
+        return;
+      }
+
+      try {
+        btn.textContent = 'Submitting...';
+        btn.disabled = true;
+
+        const resp = await fetch('/api/chart/' + encodeURIComponent(TOKEN) + '/feedback', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            messageId,
+            accuracyRating: accuracy,
+            adviceRating: advice,
+            toneRating: tone,
+            correctionText: correction,
+          }),
+        });
+
+        if (!resp.ok) throw new Error('Failed');
+
+        btn.textContent = 'Submitted!';
+        btn.className = 'mt-2 px-3 py-1 bg-green-600/30 text-green-400 rounded text-xs';
+      } catch (err) {
+        btn.textContent = 'Error — retry';
+        btn.disabled = false;
+      }
+    }
+
+    function formatTime(dt) {
+      if (!dt) return '';
+      try {
+        const d = new Date(dt);
+        return d.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+      } catch {
+        return '';
+      }
+    }
+
+    // ── Auto-refresh readings ────────────────────────────────────
+
+    async function refreshReadings() {
+      try {
+        const resp = await fetch('/api/chart/' + encodeURIComponent(TOKEN));
+        if (!resp.ok) return;
+        const data = await resp.json();
+
+        const newReadings = data.readings || [];
+        if (newReadings.length !== readings.length) {
+          readings = newReadings;
+          renderReadings();
+
+          const statusEl = document.getElementById('refresh-status');
+          statusEl.textContent = 'Updated';
+          setTimeout(() => { statusEl.textContent = 'Live'; }, 2000);
+        }
+      } catch {
+        // Silently ignore refresh errors
+      }
+    }
+
+    // ── Initialize ───────────────────────────────────────────────
+
+    loadChart();
+  </script>
+</body>
+</html>
