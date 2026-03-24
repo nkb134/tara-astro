@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tara — Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            cosmic: {
+              950: '#0c0a1d',
+              900: '#130f2e',
+              800: '#1a1440',
+              700: '#251d5e',
+              600: '#322a7a',
+              500: '#4a3f9f',
+              400: '#6b5fc7',
+              300: '#9188db',
+              200: '#b8b0ea',
+              100: '#ddd9f5',
+            },
+            star: {
+              gold: '#fbbf24',
+              warm: '#f59e0b',
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: linear-gradient(135deg, #0c0a1d 0%, #130f2e 40%, #1a1440 100%);
+      min-height: 100vh;
+    }
+    .glass {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.3s ease;
+    }
+    .glass-card:hover {
+      background: rgba(255, 255, 255, 0.07);
+      border-color: rgba(255, 255, 255, 0.12);
+    }
+    .bar-animate {
+      transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .fade-in {
+      animation: fadeIn 0.5s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .pulse-dot {
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    .star-bg {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .star-bg::before {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(107, 95, 199, 0.08) 0%, transparent 70%);
+      top: -100px;
+      right: -100px;
+      border-radius: 50%;
+    }
+    .star-bg::after {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(251, 191, 36, 0.04) 0%, transparent 70%);
+      bottom: -50px;
+      left: -50px;
+      border-radius: 50%;
+    }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+    .health-ring {
+      transform: rotate(-90deg);
+    }
+  </style>
+</head>
+<body class="text-white antialiased">
+  <div class="star-bg"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-10">
+
+    <!-- Header -->
+    <header class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 gap-4">
+      <div>
+        <h1 class="text-2xl sm:text-3xl font-bold tracking-tight">
+          <span class="text-star-gold">&#10035;</span> Tara Dashboard
+        </h1>
+        <p class="text-cosmic-300 text-sm mt-1">Vedic Jyotish Companion — Beta Monitor</p>
+      </div>
+      <div class="flex items-center gap-3 text-sm text-cosmic-300">
+        <span class="flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-dot inline-block"></span>
+          Live
+        </span>
+        <span id="lastUpdated">Loading...</span>
+        <button onclick="fetchData()" class="ml-2 px-3 py-1.5 rounded-lg glass text-xs text-cosmic-200 hover:text-white transition-colors">
+          Refresh
+        </button>
+      </div>
+    </header>
+
+    <!-- Loading state -->
+    <div id="loading" class="text-center py-20">
+      <div class="inline-block w-8 h-8 border-2 border-cosmic-500 border-t-star-gold rounded-full animate-spin"></div>
+      <p class="text-cosmic-300 mt-4">Loading dashboard data...</p>
+    </div>
+
+    <!-- Error state -->
+    <div id="error" class="hidden text-center py-20">
+      <p class="text-red-400 text-lg">Failed to load dashboard data</p>
+      <p id="errorMsg" class="text-cosmic-400 text-sm mt-2"></p>
+      <button onclick="fetchData()" class="mt-4 px-4 py-2 rounded-lg bg-cosmic-700 text-sm hover:bg-cosmic-600 transition-colors">
+        Retry
+      </button>
+    </div>
+
+    <!-- Dashboard content -->
+    <div id="dashboard" class="hidden fade-in space-y-6">
+
+      <!-- Overview cards -->
+      <section class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
+        <div class="glass-card rounded-2xl p-4 sm:p-5">
+          <p class="text-cosmic-300 text-xs uppercase tracking-wider mb-1">Total Users</p>
+          <p id="totalUsers" class="text-2xl sm:text-3xl font-bold text-white">-</p>
+          <p class="text-cosmic-400 text-xs mt-1"><span id="onboarded">-</span> onboarded</p>
+        </div>
+        <div class="glass-card rounded-2xl p-4 sm:p-5">
+          <p class="text-cosmic-300 text-xs uppercase tracking-wider mb-1">Active Today</p>
+          <p id="activeToday" class="text-2xl sm:text-3xl font-bold text-emerald-400">-</p>
+          <p class="text-cosmic-400 text-xs mt-1"><span id="activeWeek">-</span> this week</p>
+        </div>
+        <div class="glass-card rounded-2xl p-4 sm:p-5">
+          <p class="text-cosmic-300 text-xs uppercase tracking-wider mb-1">Messages Today</p>
+          <p id="messagesToday" class="text-2xl sm:text-3xl font-bold text-sky-400">-</p>
+          <p class="text-cosmic-400 text-xs mt-1"><span id="totalMessages">-</span> total</p>
+        </div>
+        <div class="glass-card rounded-2xl p-4 sm:p-5">
+          <p class="text-cosmic-300 text-xs uppercase tracking-wider mb-1">Health Score</p>
+          <div class="flex items-center gap-3">
+            <svg class="health-ring w-14 h-14 -ml-1" viewBox="0 0 60 60">
+              <circle cx="30" cy="30" r="24" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="5"/>
+              <circle id="healthRing" cx="30" cy="30" r="24" fill="none" stroke="#22c55e"
+                stroke-width="5" stroke-linecap="round"
+                stroke-dasharray="150.8" stroke-dashoffset="150.8"/>
+            </svg>
+            <span id="healthScore" class="text-2xl sm:text-3xl font-bold text-emerald-400">-</span>
+          </div>
+        </div>
+        <div class="glass-card rounded-2xl p-4 sm:p-5">
+          <p class="text-cosmic-300 text-xs uppercase tracking-wider mb-1">Avg Response</p>
+          <p id="avgResponse" class="text-2xl sm:text-3xl font-bold text-amber-400">-</p>
+          <p class="text-cosmic-400 text-xs mt-1"><span id="errorRate">-</span>% error rate</p>
+        </div>
+      </section>
+
+      <!-- Two-column layout -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+        <!-- Sentiment gauge -->
+        <section class="glass-card rounded-2xl p-5 sm:p-6">
+          <h2 class="text-sm font-semibold text-cosmic-200 uppercase tracking-wider mb-4">User Sentiment</h2>
+          <div class="space-y-3">
+            <div>
+              <div class="flex justify-between text-xs mb-1">
+                <span class="text-emerald-400">Happy</span>
+                <span id="happyPct" class="text-cosmic-300">-</span>
+              </div>
+              <div class="h-3 rounded-full bg-cosmic-800 overflow-hidden">
+                <div id="happyBar" class="h-full rounded-full bg-gradient-to-r from-emerald-500 to-emerald-400 bar-animate" style="width:0%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs mb-1">
+                <span class="text-cosmic-300">Neutral</span>
+                <span id="neutralPct" class="text-cosmic-400">-</span>
+              </div>
+              <div class="h-3 rounded-full bg-cosmic-800 overflow-hidden">
+                <div id="neutralBar" class="h-full rounded-full bg-gradient-to-r from-cosmic-500 to-cosmic-400 bar-animate" style="width:0%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs mb-1">
+                <span class="text-red-400">Unhappy</span>
+                <span id="unhappyPct" class="text-cosmic-300">-</span>
+              </div>
+              <div class="h-3 rounded-full bg-cosmic-800 overflow-hidden">
+                <div id="unhappyBar" class="h-full rounded-full bg-gradient-to-r from-red-600 to-red-400 bar-animate" style="width:0%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/5 flex items-center gap-4 text-xs text-cosmic-400">
+            <span><span id="happyCount" class="text-emerald-400 font-medium">0</span> happy</span>
+            <span><span id="neutralCount" class="text-cosmic-300 font-medium">0</span> neutral</span>
+            <span><span id="unhappyCount" class="text-red-400 font-medium">0</span> unhappy</span>
+          </div>
+        </section>
+
+        <!-- Language breakdown -->
+        <section class="glass-card rounded-2xl p-5 sm:p-6">
+          <h2 class="text-sm font-semibold text-cosmic-200 uppercase tracking-wider mb-4">Languages</h2>
+          <div id="languageBars" class="space-y-2.5">
+            <p class="text-cosmic-400 text-sm">No data</p>
+          </div>
+        </section>
+
+        <!-- Agent usage -->
+        <section class="glass-card rounded-2xl p-5 sm:p-6">
+          <h2 class="text-sm font-semibold text-cosmic-200 uppercase tracking-wider mb-4">Agent Usage</h2>
+          <div id="agentBars" class="space-y-2.5">
+            <p class="text-cosmic-400 text-sm">No data</p>
+          </div>
+        </section>
+
+        <!-- Model usage -->
+        <section class="glass-card rounded-2xl p-5 sm:p-6">
+          <h2 class="text-sm font-semibold text-cosmic-200 uppercase tracking-wider mb-4">Model Usage</h2>
+          <div id="modelBars" class="space-y-2.5">
+            <p class="text-cosmic-400 text-sm">No data</p>
+          </div>
+        </section>
+      </div>
+
+      <!-- Hourly volume -->
+      <section class="glass-card rounded-2xl p-5 sm:p-6">
+        <h2 class="text-sm font-semibold text-cosmic-200 uppercase tracking-wider mb-4">Message Volume (Last 24h)</h2>
+        <div id="hourlyChart" class="flex items-end gap-1 h-32 sm:h-40">
+          <p class="text-cosmic-400 text-sm">No data</p>
+        </div>
+      </section>
+
+      <!-- Recent conversations -->
+      <section class="glass-card rounded-2xl p-5 sm:p-6">
+        <h2 class="text-sm font-semibold text-cosmic-200 uppercase tracking-wider mb-4">Recent Conversations</h2>
+        <div class="overflow-x-auto -mx-2">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="text-cosmic-400 text-xs uppercase tracking-wider border-b border-white/5">
+                <th class="text-left pb-3 px-2 font-medium">User</th>
+                <th class="text-left pb-3 px-2 font-medium">Message</th>
+                <th class="text-left pb-3 px-2 font-medium hidden sm:table-cell">Tara's Response</th>
+                <th class="text-left pb-3 px-2 font-medium">Agent</th>
+                <th class="text-right pb-3 px-2 font-medium">When</th>
+              </tr>
+            </thead>
+            <tbody id="conversationsBody">
+              <tr><td colspan="5" class="text-cosmic-400 py-4 text-center">No data</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- QA Issues -->
+      <section class="glass-card rounded-2xl p-5 sm:p-6">
+        <h2 class="text-sm font-semibold text-cosmic-200 uppercase tracking-wider mb-4">QA Audit Issues</h2>
+        <div id="qaIssues" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+          <p class="text-cosmic-400 text-sm">No data</p>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="text-center text-xs text-cosmic-500 pt-4 pb-8">
+        Auto-refreshes every 60s &middot; Query took <span id="queryTime">-</span>ms
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    // ── Language labels ────────────────────────────────────────────────
+    const LANG_NAMES = {
+      hi: 'Hindi', en: 'English', ta: 'Tamil', te: 'Telugu',
+      bn: 'Bengali', ml: 'Malayalam', kn: 'Kannada',
+    };
+
+    const AGENT_COLORS = {
+      greeting: '#60a5fa',
+      reading: '#a78bfa',
+      followup: '#34d399',
+      remedy: '#fbbf24',
+      deflect: '#f87171',
+      off_topic: '#fb923c',
+      crisis: '#ef4444',
+      gate: '#94a3b8',
+    };
+
+    const LANG_COLORS = {
+      hi: '#f97316', en: '#3b82f6', ta: '#22c55e', te: '#eab308',
+      bn: '#ec4899', ml: '#8b5cf6', kn: '#14b8a6',
+    };
+
+    const MODEL_COLORS = {
+      'gemini-2.0-flash': '#60a5fa',
+      'gemini-flash': '#60a5fa',
+      flash: '#60a5fa',
+      'gemini-2.0-pro': '#a78bfa',
+      'gemini-pro': '#a78bfa',
+      pro: '#a78bfa',
+      fallback: '#f87171',
+    };
+
+    // ── Safe DOM helpers ──────────────────────────────────────────────
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.textContent;
+    }
+
+    function setText(id, value) {
+      document.getElementById(id).textContent = value;
+    }
+
+    function createBarRow(label, pct, color, val, share) {
+      const row = document.createElement('div');
+      row.className = 'flex items-center gap-3';
+
+      const labelSpan = document.createElement('span');
+      labelSpan.className = 'text-xs text-cosmic-300 w-20 truncate shrink-0';
+      labelSpan.textContent = label;
+
+      const barOuter = document.createElement('div');
+      barOuter.className = 'flex-1 h-4 rounded-full bg-cosmic-800 overflow-hidden';
+      const barInner = document.createElement('div');
+      barInner.className = 'h-full rounded-full bar-animate';
+      barInner.style.width = pct + '%';
+      barInner.style.background = color;
+      barOuter.appendChild(barInner);
+
+      const stats = document.createElement('span');
+      stats.className = 'text-xs text-cosmic-400 w-16 text-right shrink-0';
+      stats.textContent = val + ' (' + share + '%)';
+
+      row.appendChild(labelSpan);
+      row.appendChild(barOuter);
+      row.appendChild(stats);
+      return row;
+    }
+
+    // ── Rendering helpers ─────────────────────────────────────────────
+
+    function renderBars(containerId, data, colorMap, nameMap) {
+      const el = document.getElementById(containerId);
+      el.replaceChildren(); // clear safely
+      const entries = Object.entries(data);
+      if (entries.length === 0) {
+        const p = document.createElement('p');
+        p.className = 'text-cosmic-400 text-sm';
+        p.textContent = 'No data yet';
+        el.appendChild(p);
+        return;
+      }
+      const total = entries.reduce((s, [, v]) => s + v, 0) || 1;
+      const maxVal = Math.max(...entries.map(([, v]) => v));
+
+      for (const [key, val] of entries) {
+        const pct = ((val / maxVal) * 100).toFixed(0);
+        const share = ((val / total) * 100).toFixed(0);
+        const color = (colorMap && colorMap[key]) || pickColor(key);
+        const label = (nameMap && nameMap[key]) || key;
+        el.appendChild(createBarRow(label, pct, color, val, share));
+      }
+    }
+
+    function pickColor(key) {
+      let hash = 0;
+      for (let i = 0; i < key.length; i++) hash = key.charCodeAt(i) + ((hash << 5) - hash);
+      const hue = Math.abs(hash) % 360;
+      return 'hsl(' + hue + ', 60%, 55%)';
+    }
+
+    function formatMs(ms) {
+      if (ms < 1000) return ms + 'ms';
+      return (ms / 1000).toFixed(1) + 's';
+    }
+
+    // ── Health ring animation ─────────────────────────────────────────
+
+    function animateHealthRing(score) {
+      const ring = document.getElementById('healthRing');
+      const circumference = 2 * Math.PI * 24;
+      const offset = circumference - (score / 100) * circumference;
+
+      let color = '#22c55e';
+      if (score < 50) color = '#ef4444';
+      else if (score < 70) color = '#f59e0b';
+
+      ring.style.stroke = color;
+      setTimeout(function() {
+        ring.style.transition = 'stroke-dashoffset 1s cubic-bezier(0.22, 1, 0.36, 1)';
+        ring.style.strokeDashoffset = offset;
+      }, 100);
+
+      const scoreEl = document.getElementById('healthScore');
+      scoreEl.textContent = score;
+      scoreEl.style.color = color;
+    }
+
+    // ── Hourly chart ──────────────────────────────────────────────────
+
+    function renderHourlyChart(data) {
+      const el = document.getElementById('hourlyChart');
+      el.replaceChildren();
+      if (!data || data.length === 0) {
+        const p = document.createElement('p');
+        p.className = 'text-cosmic-400 text-sm';
+        p.textContent = 'No data yet';
+        el.appendChild(p);
+        return;
+      }
+      const maxCount = Math.max(...data.map(function(d) { return d.count; }), 1);
+
+      for (const d of data) {
+        const heightPct = Math.max((d.count / maxCount) * 100, 2);
+
+        const col = document.createElement('div');
+        col.className = 'flex-1 flex flex-col items-center justify-end gap-1 group relative';
+
+        // Tooltip
+        const tooltip = document.createElement('div');
+        tooltip.className = 'absolute -top-6 left-1/2 -translate-x-1/2 bg-cosmic-700 text-white text-xs px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-10';
+        tooltip.textContent = d.count + ' msgs at ' + d.hour;
+
+        // Bar
+        const bar = document.createElement('div');
+        bar.className = 'w-full rounded-t-sm bg-gradient-to-t from-cosmic-500 to-cosmic-400 bar-animate';
+        bar.style.height = heightPct + '%';
+
+        // Hour label
+        const label = document.createElement('span');
+        label.className = 'text-[9px] text-cosmic-500 hidden sm:block';
+        label.textContent = d.hour.slice(0, 2);
+
+        col.appendChild(tooltip);
+        col.appendChild(bar);
+        col.appendChild(label);
+        el.appendChild(col);
+      }
+    }
+
+    // ── Recent conversations table ────────────────────────────────────
+
+    function renderConversations(data) {
+      const body = document.getElementById('conversationsBody');
+      body.replaceChildren();
+
+      if (!data || data.length === 0) {
+        const tr = document.createElement('tr');
+        const td = document.createElement('td');
+        td.colSpan = 5;
+        td.className = 'text-cosmic-400 py-4 text-center';
+        td.textContent = 'No conversations yet';
+        tr.appendChild(td);
+        body.appendChild(tr);
+        return;
+      }
+
+      for (const c of data) {
+        const agentColor = AGENT_COLORS[c.agent] || '#94a3b8';
+
+        const tr = document.createElement('tr');
+        tr.className = 'border-b border-white/[0.03] hover:bg-white/[0.02]';
+
+        const tdUser = document.createElement('td');
+        tdUser.className = 'py-2.5 px-2 text-cosmic-200 font-medium whitespace-nowrap';
+        tdUser.textContent = c.user;
+
+        const tdMsg = document.createElement('td');
+        tdMsg.className = 'py-2.5 px-2 text-cosmic-300 max-w-[200px] truncate';
+        tdMsg.textContent = c.message;
+
+        const tdResp = document.createElement('td');
+        tdResp.className = 'py-2.5 px-2 text-cosmic-400 max-w-[250px] truncate hidden sm:table-cell';
+        tdResp.textContent = c.response || '';
+
+        const tdAgent = document.createElement('td');
+        tdAgent.className = 'py-2.5 px-2';
+        const badge = document.createElement('span');
+        badge.className = 'inline-block px-2 py-0.5 rounded-full text-xs font-medium';
+        badge.style.background = agentColor + '20';
+        badge.style.color = agentColor;
+        badge.textContent = c.agent;
+        tdAgent.appendChild(badge);
+
+        const tdTime = document.createElement('td');
+        tdTime.className = 'py-2.5 px-2 text-cosmic-400 text-right text-xs whitespace-nowrap';
+        tdTime.textContent = c.time;
+
+        tr.appendChild(tdUser);
+        tr.appendChild(tdMsg);
+        tr.appendChild(tdResp);
+        tr.appendChild(tdAgent);
+        tr.appendChild(tdTime);
+        body.appendChild(tr);
+      }
+    }
+
+    // ── QA Issues ─────────────────────────────────────────────────────
+
+    function renderQaIssues(issues) {
+      const el = document.getElementById('qaIssues');
+      el.replaceChildren();
+
+      if (!issues || typeof issues !== 'object') {
+        const p = document.createElement('p');
+        p.className = 'text-cosmic-400 text-sm';
+        p.textContent = 'No audit data';
+        el.appendChild(p);
+        return;
+      }
+
+      const ISSUE_LABELS = {
+        truncated: 'Truncated',
+        topicDrift: 'Topic Drift',
+        repeatedContent: 'Repeated',
+        reGreetings: 'Re-Greetings',
+        longMessages: 'Too Long',
+        fallbacks: 'Fallbacks',
+        bannedWords: 'Banned Words',
+        userComplaints: 'Complaints',
+        slowResponses: 'Slow',
+        error: 'Error',
+      };
+
+      const ISSUE_COLORS = {
+        truncated: '#f59e0b',
+        topicDrift: '#f97316',
+        repeatedContent: '#8b5cf6',
+        reGreetings: '#60a5fa',
+        longMessages: '#eab308',
+        fallbacks: '#ef4444',
+        bannedWords: '#ef4444',
+        userComplaints: '#f87171',
+        slowResponses: '#fb923c',
+        error: '#ef4444',
+      };
+
+      for (const [key, count] of Object.entries(issues)) {
+        const label = ISSUE_LABELS[key] || key;
+        const color = ISSUE_COLORS[key] || '#94a3b8';
+        const isZero = count === 0;
+
+        const card = document.createElement('div');
+        card.className = 'flex items-center justify-between p-3 rounded-xl ' + (isZero ? 'bg-cosmic-800/40' : 'bg-cosmic-800/70');
+
+        const labelEl = document.createElement('span');
+        labelEl.className = 'text-xs ' + (isZero ? 'text-cosmic-500' : 'text-cosmic-200');
+        labelEl.textContent = label;
+
+        const countEl = document.createElement('span');
+        countEl.className = 'text-lg font-bold';
+        countEl.style.color = isZero ? 'rgba(255,255,255,0.15)' : color;
+        countEl.textContent = count;
+
+        card.appendChild(labelEl);
+        card.appendChild(countEl);
+        el.appendChild(card);
+      }
+    }
+
+    // ── Fetch & render ────────────────────────────────────────────────
+
+    async function fetchData() {
+      var loadingEl = document.getElementById('loading');
+      var errorEl = document.getElementById('error');
+      var dashboardEl = document.getElementById('dashboard');
+
+      try {
+        var res = await fetch('/api/dashboard');
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        var data = await res.json();
+
+        loadingEl.classList.add('hidden');
+        errorEl.classList.add('hidden');
+        dashboardEl.classList.remove('hidden');
+
+        // Overview
+        setText('totalUsers', data.overview.totalUsers);
+        setText('onboarded', data.overview.onboarded);
+        setText('activeToday', data.overview.activeToday);
+        setText('activeWeek', data.overview.activeWeek);
+        setText('messagesToday', data.overview.messagesToday);
+        setText('totalMessages', data.overview.totalMessages.toLocaleString());
+        setText('avgResponse', formatMs(data.overview.avgResponseMs));
+        setText('errorRate', data.errorRate);
+
+        // Health ring
+        animateHealthRing(data.overview.healthScore);
+
+        // Sentiment
+        var sentTotal = (data.sentiment.happy + data.sentiment.neutral + data.sentiment.unhappy) || 1;
+        var hPct = ((data.sentiment.happy / sentTotal) * 100).toFixed(0);
+        var nPct = ((data.sentiment.neutral / sentTotal) * 100).toFixed(0);
+        var uPct = ((data.sentiment.unhappy / sentTotal) * 100).toFixed(0);
+
+        setText('happyPct', hPct + '%');
+        setText('neutralPct', nPct + '%');
+        setText('unhappyPct', uPct + '%');
+        setText('happyCount', data.sentiment.happy);
+        setText('neutralCount', data.sentiment.neutral);
+        setText('unhappyCount', data.sentiment.unhappy);
+
+        setTimeout(function() {
+          document.getElementById('happyBar').style.width = hPct + '%';
+          document.getElementById('neutralBar').style.width = nPct + '%';
+          document.getElementById('unhappyBar').style.width = uPct + '%';
+        }, 100);
+
+        // Bars
+        renderBars('languageBars', data.languages, LANG_COLORS, LANG_NAMES);
+        renderBars('agentBars', data.agents, AGENT_COLORS);
+        renderBars('modelBars', data.models, MODEL_COLORS);
+
+        // Charts
+        renderHourlyChart(data.hourlyVolume);
+        renderConversations(data.recentConversations);
+        renderQaIssues(data.qaIssues);
+
+        // Meta
+        setText('queryTime', data.queryTimeMs);
+        setText('lastUpdated', 'Updated ' + new Date().toLocaleTimeString());
+      } catch (err) {
+        loadingEl.classList.add('hidden');
+        dashboardEl.classList.add('hidden');
+        errorEl.classList.remove('hidden');
+        setText('errorMsg', err.message);
+      }
+    }
+
+    // Initial fetch
+    fetchData();
+
+    // Auto-refresh every 60 seconds
+    setInterval(fetchData, 60000);
+  </script>
+</body>
+</html>

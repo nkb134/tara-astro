@@ -1,19 +1,36 @@
 import express from 'express';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { config } from './config/env.js';
 import { logger } from './utils/logger.js';
 import { verifyWebhook, receiveMessage, verifySignature } from './whatsapp/webhook.js';
 import { runAudit } from './services/qaAudit.js';
 import { startQaCron } from './services/qaCron.js';
+import { getDashboardData } from './services/analytics.js';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 
 // Trust proxy (Railway runs behind a reverse proxy)
 app.set('trust proxy', 1);
 
-// Security
-app.use(helmet());
+// Security — allow Tailwind CDN for dashboard
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+      'script-src': ["'self'", "'unsafe-inline'", "https://cdn.tailwindcss.com"],
+      'style-src': ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+      'font-src': ["'self'", "https://fonts.gstatic.com"],
+    },
+  },
+}));
+
+// Serve static files (dashboard assets)
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // Rate limiting on webhook endpoint
 const webhookLimiter = rateLimit({
@@ -90,6 +107,22 @@ app.get('/qa-audit', async (req, res) => {
   } catch (err) {
     logger.error({ err: err.message }, 'QA audit endpoint failed');
     res.status(500).json({ error: 'Audit failed', message: err.message });
+  }
+});
+
+// Dashboard — serves the HTML page
+app.get('/dashboard', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'public', 'dashboard.html'));
+});
+
+// Dashboard API — returns JSON data for the dashboard
+app.get('/api/dashboard', async (req, res) => {
+  try {
+    const data = await getDashboardData();
+    res.json(data);
+  } catch (err) {
+    logger.error({ err: err.message }, 'Dashboard API failed');
+    res.status(500).json({ error: 'Dashboard data unavailable', message: err.message });
   }
 });
 
