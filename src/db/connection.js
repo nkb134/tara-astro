@@ -2,7 +2,12 @@ import pg from 'pg';
 import { config } from '../config/env.js';
 import { logger } from '../utils/logger.js';
 
-const { Pool } = pg;
+const { Pool, types } = pg;
+
+// CRITICAL: Override DATE type parser to return raw string 'YYYY-MM-DD'
+// instead of JS Date objects which shift dates due to timezone conversion.
+// PostgreSQL DATE type OID = 1082
+types.setTypeParser(1082, (val) => val);  // Return as-is: '1991-11-25' → '1991-11-25'
 
 let pool = null;
 

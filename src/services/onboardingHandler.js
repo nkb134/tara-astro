@@ -7,15 +7,18 @@ import { generateReviewToken } from './chartReview.js';
 import { llmParseBirthData } from './llmParser.js';
 import { logger } from '../utils/logger.js';
 
-// Convert birth_date (may be Date object from PostgreSQL or string) to YYYY-MM-DD
+// Convert birth_date to YYYY-MM-DD string
+// node-postgres now returns DATE as raw string (see connection.js type override)
+// so this is mostly a safety net for edge cases
 function formatBirthDate(val) {
   if (!val) return null;
   if (val instanceof Date) {
-    // CRITICAL: Use local date components, NOT toISOString() which converts to UTC
-    // PostgreSQL DATE stored as midnight local → JS Date shifts to previous day in UTC
-    const y = val.getFullYear();
-    const m = String(val.getMonth() + 1).padStart(2, '0');
-    const d = String(val.getDate()).padStart(2, '0');
+    // Fallback: shouldn't happen with type parser override, but just in case
+    // Add IST offset to avoid UTC date shift
+    const istDate = new Date(val.getTime() + (5.5 * 60 * 60 * 1000));
+    const y = istDate.getUTCFullYear();
+    const m = String(istDate.getUTCMonth() + 1).padStart(2, '0');
+    const d = String(istDate.getUTCDate()).padStart(2, '0');
     return `${y}-${m}-${d}`;
   }
   if (typeof val === 'string') return val.split('T')[0];
@@ -864,10 +867,11 @@ function parseTime(text) {
   const lower = text.toLowerCase().trim();
 
   const unknownPhrases = ['theriyaadhu', 'theriyathu', 'therla', "don't know",
-    'dont know', 'not sure', 'pata nahi', 'nahi pata', 'malum nahi', 'teliyadu',
-    'ariyilla', 'gottilla', 'jani na', 'unknown', 'no idea',
+    'dont know', 'not sure', 'not confirmed', 'not exactly', 'not remember',
+    'pata nahi', 'nahi pata', 'malum nahi', 'teliyadu',
+    'ariyilla', 'gottilla', 'jani na', 'unknown', 'no idea', 'no clue',
     'paravala', 'parledu', 'koi baat nahi', 'chalega', 'na janle',
-    'theriyaatina', 'theriyaati'];
+    'theriyaatina', 'theriyaati', 'yaad nahi', 'remember nahi'];
   if (unknownPhrases.some(p => lower.includes(p))) {
     return { time: '12:00:00', known: false };
   }

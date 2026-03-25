@@ -290,6 +290,46 @@ const CASES = [
     step: 'awaiting_dob',
     expect: { date: '1990-03-15' },
   },
+
+  // ═══ From Garima (beta user) ═══
+  {
+    name: 'Garima: "Not confirmed" = unknown time, NOT a place',
+    input: 'Not confirmed',
+    step: 'awaiting_time',
+    expect: { time_known: false },
+  },
+  {
+    name: 'Garima: "not exactly sure" = unknown time',
+    input: 'not exactly sure',
+    step: 'awaiting_time',
+    expect: { time_known: false },
+  },
+  {
+    name: '"I dont remember" = unknown time',
+    input: 'I dont remember',
+    step: 'awaiting_time',
+    expect: { time_known: false },
+  },
+  {
+    name: '"yaad nahi" = unknown time',
+    input: 'yaad nahi',
+    step: 'awaiting_time',
+    expect: { time_known: false },
+  },
+
+  // ═══ From Nihar's parent (beta user) ═══
+  {
+    name: '"Samay-2pm" = time 14:00, NOT a place',
+    input: 'Samay-2pm',
+    step: 'awaiting_time',
+    expect: { time: '14:00', time_known: true },
+  },
+  {
+    name: '"Samay 2pm" with space = time 14:00',
+    input: 'Samay 2pm',
+    step: 'awaiting_time',
+    expect: { time: '14:00', time_known: true },
+  },
 ];
 
 // ─── Test runner ───
