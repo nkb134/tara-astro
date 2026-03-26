@@ -917,9 +917,15 @@ function parseTime(text) {
     let [, hours, minutes, period] = ampmMatch;
     hours = parseInt(hours);
     minutes = parseInt(minutes || '0');
-    if (period.toLowerCase() === 'pm' && hours !== 12) hours += 12;
-    if (period.toLowerCase() === 'am' && hours === 12) hours = 0;
-    return { time: `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:00`, known: true };
+    // Only apply AM/PM conversion for 12-hour format (hours <= 12)
+    // If hours > 12, it's already 24-hour format — ignore AM/PM suffix
+    if (hours <= 12) {
+      if (period.toLowerCase() === 'pm' && hours !== 12) hours += 12;
+      if (period.toLowerCase() === 'am' && hours === 12) hours = 0;
+    }
+    if (hours >= 0 && hours <= 23) {
+      return { time: `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:00`, known: true };
+    }
   }
 
   const h24Match = lower.match(/(\d{1,2}):(\d{2})/);

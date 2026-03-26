@@ -662,6 +662,34 @@ const CASES = [
     step: 'awaiting_name_dob',
     expect: { name: null, date: null },
   },
+
+  // ═══ From Siban (expert — 24h time with PM suffix) ═══
+  {
+    name: 'Siban: "16:10PM" — 24h format with redundant PM = 16:10',
+    input: '16:10PM',
+    step: 'awaiting_time',
+    expect: { time: '16:10', time_known: true },
+  },
+  {
+    name: '"13:30PM" — 24h with PM should stay 13:30',
+    input: '13:30PM',
+    step: 'awaiting_time',
+    expect: { time: '13:30', time_known: true },
+  },
+  {
+    name: '"4:10PM" — normal 12h format = 16:10',
+    input: '4:10PM',
+    step: 'awaiting_time',
+    expect: { time: '16:10', time_known: true },
+  },
+
+  // ═══ From Nissar (Hindi time expressions) ═══
+  {
+    name: '"poune 11 baje raat ko" — should NOT geocode as Ponte 11',
+    input: 'poune 11 baje raat ko',
+    step: 'awaiting_time',
+    expect: { time_known: true },
+  },
 ];
 
 // ─── Test runner ───
