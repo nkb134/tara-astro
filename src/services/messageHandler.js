@@ -218,18 +218,36 @@ async function processMessage(whatsappId, displayName, messageText, messageId) {
     if (prefs.role === 'expert') {
       const cmd = messageText.trim().toLowerCase();
 
-      // #reset — wipe user data, restart onboarding
+      // #reset — archive current data, restart onboarding (keeps history for learning)
       if (cmd === '#reset' || cmd === '#restart') {
         const { query: dbQuery } = await import('../db/connection.js');
-        await dbQuery('DELETE FROM messages WHERE user_id = $1', [user.id]);
-        await dbQuery('DELETE FROM conversations WHERE user_id = $1', [user.id]);
+
+        // Archive current session data in preferences (don't delete — for learning)
+        const prevSessions = prefs.previous_sessions || [];
+        if (user.birth_date || user.display_name) {
+          prevSessions.push({
+            name: user.display_name,
+            birth_date: user.birth_date,
+            birth_time: user.birth_time,
+            birth_place: user.birth_place,
+            chart_summary: user.chart_summary,
+            archived_at: new Date().toISOString(),
+          });
+        }
+
+        // Mark conversations as inactive (don't delete)
+        await dbQuery('UPDATE conversations SET is_active = false WHERE user_id = $1', [user.id]);
+
+        // Reset onboarding fields but keep messages, conversations, and archive
         await updateUser(user.id, {
           display_name: null, birth_date: null, birth_time: null, birth_time_known: true,
           birth_place: null, birth_lat: null, birth_lng: null, birth_timezone: null,
           chart_data: null, chart_summary: null, is_onboarded: false, onboarding_step: 'new',
-          gender: null, preferences: JSON.stringify({ role: 'expert' }),
+          gender: null, preferences: JSON.stringify({ role: 'expert', previous_sessions: prevSessions }),
         });
-        await sendTextMessage(whatsappId, '🔄 Reset done! Send a message to start fresh onboarding.');
+
+        const count = prevSessions.length;
+        await sendTextMessage(whatsappId, `🔄 Reset done! Previous data archived (${count} session${count !== 1 ? 's' : ''} saved). Send a message to start fresh.`);
         return;
       }
 
