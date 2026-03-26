@@ -330,6 +330,338 @@ const CASES = [
     step: 'awaiting_time',
     expect: { time: '14:00', time_known: true },
   },
+
+  // ═══════════════════════════════════════════════════
+  //  MULTI-LANGUAGE ONBOARDING SCENARIOS
+  // ═══════════════════════════════════════════════════
+
+  // ─── Hindi (Devanagari script) ───
+  {
+    name: 'Hindi: name + date in Devanagari numerals',
+    input: 'रवि कुमार 10/06/1990',
+    step: 'awaiting_name_dob',
+    expect: { name_contains: 'रवि', date: '1990-06-10' },
+  },
+  {
+    name: 'Hindi: "poune 11 baje raat ko" = 10:45 PM',
+    input: 'poune 11 baje raat ko',
+    step: 'awaiting_time',
+    expect: { time: '22:45', time_known: true },
+  },
+  {
+    name: 'Hindi: "sawa 3 baje subah" = 3:15 AM',
+    input: 'sawa 3 baje subah',
+    step: 'awaiting_time',
+    expect: { time: '03:15', time_known: true },
+  },
+  {
+    name: 'Hindi: "dedh baje dopahar" = 1:30 PM',
+    input: 'dedh baje dopahar',
+    step: 'awaiting_time',
+    expect: { time: '13:30', time_known: true },
+  },
+  {
+    name: 'Hindi: "dhai baje shaam" = 2:30 PM',
+    input: 'dhai baje shaam ko',
+    step: 'awaiting_time',
+    expect: { time: '14:30', time_known: true },
+  },
+  {
+    name: 'Hindi: "paune" alt spelling = quarter to',
+    input: 'paune 9 baje subah',
+    step: 'awaiting_time',
+    expect: { time: '08:45', time_known: true },
+  },
+
+  // ─── Hinglish (Latin script, Hindi words) ───
+  {
+    name: 'Hinglish: "mera naam Ravi hai, 10 June 1990"',
+    input: 'mera naam Ravi hai, 10 June 1990',
+    step: 'awaiting_name_dob',
+    expect: { name_contains: 'Ravi', date: '1990-06-10' },
+  },
+  {
+    name: 'Hinglish: "mujhe nahi pata time" = unknown time',
+    input: 'mujhe nahi pata time',
+    step: 'awaiting_time',
+    expect: { time_known: false },
+  },
+  {
+    name: 'Hinglish: "lagbhag 3 baje" = approx 3:00',
+    input: 'lagbhag 3 baje dopahar ko',
+    step: 'awaiting_time',
+    expect: { time: '15:00', time_known: true },
+  },
+
+  // ─── Tamil (Romanized) ───
+  {
+    name: 'Tamil: "Priya 15/03/1992"',
+    input: 'Priya 15/03/1992',
+    step: 'awaiting_name_dob',
+    expect: { name_contains: 'Priya', date: '1992-03-15' },
+  },
+  {
+    name: 'Tamil: "theriyaadhu" = unknown time',
+    input: 'theriyaadhu',
+    step: 'awaiting_time',
+    expect: { time_known: false },
+  },
+  {
+    name: 'Tamil: "kaalaiyil 6 mani" = 6 AM',
+    input: 'kaalaiyil 6 mani',
+    step: 'awaiting_time',
+    expect: { time: '06:00', time_known: true },
+  },
+  {
+    name: 'Tamil: "Chennai" as birthplace',
+    input: 'Chennai',
+    step: 'awaiting_place',
+    expect: { place_contains: 'Chennai' },
+  },
+  {
+    name: 'Tamil: "Madurai" as birthplace',
+    input: 'Madurai',
+    step: 'awaiting_place',
+    expect: { place_contains: 'Madurai' },
+  },
+
+  // ─── Telugu (Romanized) ───
+  {
+    name: 'Telugu: "Venkat 05/07/1988"',
+    input: 'Venkat 05/07/1988',
+    step: 'awaiting_name_dob',
+    expect: { name_contains: 'Venkat', date: '1988-07-05' },
+  },
+  {
+    name: 'Telugu: "teliyadu" = unknown time',
+    input: 'teliyadu',
+    step: 'awaiting_time',
+    expect: { time_known: false },
+  },
+
+  // ─── Bengali (Romanized) ───
+  {
+    name: 'Bengali: "Subhajit 22/08/1995"',
+    input: 'Subhajit 22/08/1995',
+    step: 'awaiting_name_dob',
+    expect: { name_contains: 'Subhajit', date: '1995-08-22' },
+  },
+  {
+    name: 'Bengali: "jani na" = unknown time',
+    input: 'jani na',
+    step: 'awaiting_time',
+    expect: { time_known: false },
+  },
+
+  // ─── Odia (Romanized) ───
+  {
+    name: 'Odia: "Nihar 12/12/1986"',
+    input: 'Nihar 12/12/1986',
+    step: 'awaiting_name_dob',
+    expect: { name_contains: 'Nihar', date: '1986-12-12' },
+  },
+
+  // ═══════════════════════════════════════════════════
+  //  SENTENCE vs NAME DISAMBIGUATION
+  // ═══════════════════════════════════════════════════
+  {
+    name: 'Sentence: "I have quit my job" is NOT a name',
+    input: 'I have quit my job and need guidance',
+    step: 'awaiting_name_dob',
+    expect: { name: null },
+  },
+  {
+    name: 'Sentence: "mujhe career guidance chahiye" is NOT a name',
+    input: 'mujhe career guidance chahiye',
+    step: 'awaiting_name_dob',
+    expect: { name: null },
+  },
+  {
+    name: 'Sentence: "Date of birth is 5.7.1990" extracts date not name',
+    input: 'Date of birth is 5.7.1990',
+    step: 'awaiting_name_dob',
+    expect: { date: '1990-07-05', name: null },
+  },
+  {
+    name: 'Sentence: "my date of birth 15 March 1990" extracts date',
+    input: 'my date of birth 15 March 1990',
+    step: 'awaiting_dob',
+    expect: { date: '1990-03-15' },
+  },
+  {
+    name: 'Short name: "Ravi" is a valid name',
+    input: 'Ravi',
+    step: 'awaiting_name_dob',
+    expect: { name_contains: 'Ravi' },
+  },
+  {
+    name: 'Full name: "Aishray Suryawanshi" is a valid name',
+    input: 'Aishray Suryawanshi',
+    step: 'awaiting_name_dob',
+    expect: { name_contains: 'Aishray' },
+  },
+
+  // ═══════════════════════════════════════════════════
+  //  COMBINED INPUTS (all data in one message)
+  // ═══════════════════════════════════════════════════
+  {
+    name: 'All-in-one: "Nissar 10 June 1990 10:45PM Jagdalpur"',
+    input: 'Nissar 10 June 1990 10:45PM Jagdalpur',
+    step: 'awaiting_name_dob',
+    expect: { name_contains: 'Nissar', date: '1990-06-10', time: '22:45', place_contains: 'Jagdalpur' },
+  },
+  {
+    name: 'All-in-one Hindi: "Ravi 15/03/1992 subah 8 baje Delhi"',
+    input: 'Ravi 15/03/1992 subah 8 baje Delhi',
+    step: 'awaiting_name_dob',
+    expect: { name_contains: 'Ravi', date: '1992-03-15', time: '08:00', place_contains: 'Delhi' },
+  },
+  {
+    name: 'Multiline: name on line 1, date on line 2',
+    input: 'Muskan Raj\n20/11/1991',
+    step: 'awaiting_name_dob',
+    expect: { name_contains: 'Muskan', date: '1991-11-20' },
+  },
+  {
+    name: 'Time + place combined: "10:45PM Jagdalpur Chhattisgarh"',
+    input: '10:45PM Jagdalpur Chhattisgarh',
+    step: 'awaiting_time',
+    expect: { time: '22:45', time_known: true, place_contains: 'Jagdalpur' },
+  },
+
+  // ═══════════════════════════════════════════════════
+  //  DATE EDGE CASES
+  // ═══════════════════════════════════════════════════
+  {
+    name: 'Date: DD.MM.YYYY with dots "5.7.1990"',
+    input: '5.7.1990',
+    step: 'awaiting_dob',
+    expect: { date: '1990-07-05' },
+  },
+  {
+    name: 'Date: single digit day "5/3/1995"',
+    input: '5/3/1995',
+    step: 'awaiting_dob',
+    expect: { date: '1995-03-05' },
+  },
+  {
+    name: 'Date: with ordinal "1st January 1985"',
+    input: '1st January 1985',
+    step: 'awaiting_dob',
+    expect: { date: '1985-01-01' },
+  },
+  {
+    name: 'Date: "2nd Feb 1990" ordinal',
+    input: '2nd Feb 1990',
+    step: 'awaiting_dob',
+    expect: { date: '1990-02-02' },
+  },
+
+  // ═══════════════════════════════════════════════════
+  //  PLACE EDGE CASES
+  // ═══════════════════════════════════════════════════
+  {
+    name: 'Place: "Kathmandu Nepal" (international)',
+    input: 'Kathmandu Nepal',
+    step: 'awaiting_place',
+    expect: { place_contains: 'Kathmandu' },
+  },
+  {
+    name: 'Place: "Dubai" (international)',
+    input: 'Dubai',
+    step: 'awaiting_place',
+    expect: { place_contains: 'Dubai' },
+  },
+  {
+    name: 'Place: with district "Vedpura, Gautam Buddha Nagar"',
+    input: 'Vedpura, Gautam Buddha Nagar',
+    step: 'awaiting_place',
+    expect: { place_contains: 'Vedpura' },
+  },
+  {
+    name: 'Place: common name "Rampur" (disambiguation expected)',
+    input: 'Rampur',
+    step: 'awaiting_place',
+    expect: { place_contains: 'Rampur' },
+  },
+
+  // ═══════════════════════════════════════════════════
+  //  DENIAL / CORRECTION DETECTION
+  // ═══════════════════════════════════════════════════
+  {
+    name: 'Denial: "nahi yeh nahi hai" = no data',
+    input: 'nahi yeh nahi hai',
+    step: 'awaiting_place',
+    expect: { place: null, name: null },
+  },
+  {
+    name: 'Denial: "no thats wrong" = no data',
+    input: 'no thats wrong',
+    step: 'awaiting_place',
+    expect: { place: null, name: null },
+  },
+  {
+    name: 'Denial: "galat hai yeh" = no data',
+    input: 'galat hai yeh',
+    step: 'awaiting_place',
+    expect: { place: null, name: null },
+  },
+  {
+    name: 'Denial: "nhi up nhi" = no place',
+    input: 'nhi up nhi',
+    step: 'awaiting_place',
+    expect: { place: null },
+  },
+  {
+    name: 'Question: "What date did you take?" is NOT a place',
+    input: 'What date did you take as final?',
+    step: 'awaiting_place',
+    expect: { place: null },
+  },
+
+  // ═══════════════════════════════════════════════════
+  //  ACKNOWLEDGMENT vs DATA (NON-PLACE TOKENS)
+  // ═══════════════════════════════════════════════════
+  {
+    name: '"ok" during awaiting_place is NOT a place',
+    input: 'ok',
+    step: 'awaiting_place',
+    expect: { place: null },
+  },
+  {
+    name: '"haan ji" during awaiting_place is NOT a place',
+    input: 'haan ji',
+    step: 'awaiting_place',
+    expect: { place: null },
+  },
+  {
+    name: '"kya ho gya" is NOT a place',
+    input: 'kya ho gya',
+    step: 'awaiting_place',
+    expect: { place: null },
+  },
+
+  // ═══════════════════════════════════════════════════
+  //  EDGE: WHITESPACE, EMPTY, SPECIAL CHARS
+  // ═══════════════════════════════════════════════════
+  {
+    name: 'Empty string returns no data',
+    input: '',
+    step: 'awaiting_name_dob',
+    expect: { name: null, date: null },
+  },
+  {
+    name: 'Just spaces returns no data',
+    input: '   ',
+    step: 'awaiting_name_dob',
+    expect: { name: null, date: null },
+  },
+  {
+    name: 'Just emojis 🙏 returns no data',
+    input: '🙏😊',
+    step: 'awaiting_name_dob',
+    expect: { name: null, date: null },
+  },
 ];
 
 // ─── Test runner ───
