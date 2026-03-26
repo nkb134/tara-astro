@@ -5,6 +5,7 @@ import { getSessionContext, saveExchange } from './sessionManager.js';
 import { dispatchToAgent } from '../ai/agents/dispatcher.js';
 import { AGENTS } from '../ai/agents/router.js';
 import { generateHook } from '../ai/responder.js';
+import { generateChartImage } from '../jyotish/chartImage.js';
 import { calculateDelay, sleep } from '../utils/delay.js';
 import { detectLanguage, detectScript, isLanguageNeutral, t } from '../languages/index.js';
 import { logger } from '../utils/logger.js';
@@ -445,7 +446,7 @@ async function handleOnboardingFlow(whatsappId, user, messageText, messageId, st
     logger.warn({ err: err.message }, 'Failed to save onboarding exchange');
   }
 
-  // If chart was just generated, generate and send hook
+  // If chart was just generated, send chart image + hook
   if (result.messageType === 'reading') {
     await sleep(2000);
     await showTyping(messageId);
@@ -460,6 +461,23 @@ async function handleOnboardingFlow(whatsappId, user, messageText, messageId, st
       const freshChart = freshUser?.chart_data
         ? (typeof freshUser.chart_data === 'string' ? JSON.parse(freshUser.chart_data) : freshUser.chart_data)
         : chartData;
+
+      // Send kundli chart image
+      try {
+        const { sendImageMessage } = await import('../whatsapp/sender.js');
+        const chartImageBuf = generateChartImage(freshChart, user.display_name || '');
+        const lang = user.language || 'en';
+        const caption = lang === 'hi'
+          ? `${user.display_name || ''} ki kundli`
+          : `${user.display_name || ''}'s Kundli`;
+        await sendImageMessage(whatsappId, chartImageBuf, caption);
+        logger.info({ whatsappId }, 'Chart image sent');
+      } catch (imgErr) {
+        logger.warn({ err: imgErr.message }, 'Chart image generation/send failed, continuing');
+      }
+
+      await sleep(1500);
+      await showTyping(messageId);
 
       const lang = user.language || 'en';
       const prefs = typeof user.preferences === 'string' ? JSON.parse(user.preferences || '{}') : (user.preferences || {});

@@ -167,6 +167,57 @@ export async function sendListMessage(to, bodyText, buttonText, sections) {
   }
 }
 
+// Send image as PNG buffer via WhatsApp Media API
+export async function sendImageMessage(to, imageBuffer, caption = '') {
+  try {
+    // Step 1: Upload media to WhatsApp
+    const FormData = (await import('form-data')).default;
+    const form = new FormData();
+    form.append('messaging_product', 'whatsapp');
+    form.append('file', imageBuffer, {
+      filename: 'kundli.png',
+      contentType: 'image/png',
+    });
+    form.append('type', 'image/png');
+
+    const uploadResponse = await axios.post(
+      `${WHATSAPP_API_URL}/${config.whatsapp.phoneNumberId}/media`,
+      form,
+      {
+        headers: {
+          ...form.getHeaders(),
+          Authorization: `Bearer ${config.whatsapp.apiToken}`,
+        },
+      }
+    );
+
+    const mediaId = uploadResponse.data?.id;
+    if (!mediaId) {
+      logger.error('Media upload returned no ID');
+      return null;
+    }
+
+    // Step 2: Send image message with media ID
+    const response = await api.post('/messages', {
+      messaging_product: 'whatsapp',
+      recipient_type: 'individual',
+      to,
+      type: 'image',
+      image: {
+        id: mediaId,
+        caption: caption || undefined,
+      },
+    });
+
+    const waMessageId = response.data?.messages?.[0]?.id || null;
+    logger.info({ to, mediaId, waMessageId }, 'Image message sent');
+    return waMessageId;
+  } catch (err) {
+    logger.error({ to, error: err.response?.data || err.message }, 'Failed to send image message');
+    return null;
+  }
+}
+
 // Show "typing..." indicator to user (auto-dismisses after 25s or when we reply)
 // Requires the inbound messageId — piggybacks on the read receipt API
 export async function showTyping(messageId) {

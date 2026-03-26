@@ -54,6 +54,21 @@ export async function receiveMessage(req, res) {
             }
           }
 
+          // Handle reactions — store as feedback signal, don't process as message
+          if (message.type === 'reaction') {
+            const reaction = message.reaction;
+            if (reaction?.message_id && reaction?.emoji) {
+              logger.info({ whatsappId, emoji: reaction.emoji, reactedTo: reaction.message_id }, 'User reaction received');
+              try {
+                const { storeReaction } = await import('../services/reactionTracker.js');
+                storeReaction(whatsappId, reaction.message_id, reaction.emoji).catch(err => {
+                  logger.warn({ err: err.message }, 'Failed to store reaction');
+                });
+              } catch {}
+            }
+            continue;
+          }
+
           // Handle text messages
           if (message.type === 'text') {
             messageText = message.text?.body || '';
