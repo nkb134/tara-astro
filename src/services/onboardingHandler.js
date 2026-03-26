@@ -740,6 +740,25 @@ function extractPlaceStrict(text) {
   return null;
 }
 
+// Common Hindi/English words that should NEVER be treated as place names
+const NEVER_A_PLACE = new Set([
+  // Hindi time/common words
+  'samay', 'waqt', 'time', 'date', 'naam', 'name', 'age', 'umar',
+  'subah', 'shaam', 'raat', 'dopahar', 'morning', 'evening', 'night', 'afternoon',
+  'baje', 'bajhe', 'ghanta', 'minute',
+  // Hindi sentence words
+  'haan', 'nahi', 'nhi', 'ha', 'ji', 'ok', 'okay', 'theek', 'achha', 'sahi',
+  'kya', 'kaise', 'kab', 'kahan', 'kyun', 'kaun',
+  'mera', 'meri', 'mere', 'apna', 'apni', 'aapka', 'aapki',
+  'hai', 'hain', 'tha', 'thi', 'the', 'hoga', 'hogi',
+  'ko', 'ka', 'ki', 'ke', 'se', 'mein', 'par', 'pe',
+  'around', 'approximately', 'lagbhag', 'karib', 'about',
+  // Common misfire words
+  'the', 'and', 'but', 'for', 'not', 'with', 'this', 'that',
+  'confirmed', 'sure', 'exactly', 'remember', 'know',
+  'career', 'job', 'work', 'shaadi', 'marriage', 'health', 'sehat',
+]);
+
 function extractPlace(text) {
   // Try to load cities database
   let cities;
@@ -778,9 +797,18 @@ function extractPlace(text) {
     }
   }
 
-  // If text looks like a place name (not a date/time/name), return as-is
+  // If text looks like a place name (not a date/time/name/common word), return as-is
+  // But ONLY if none of the words are in NEVER_A_PLACE (prevents "Samay" → geocoded)
   if (parts.length <= 3 && !extractDate(text) && !parseTime(text)) {
-    return { place: text.trim(), remaining: '' };
+    const hasPlaceWord = parts.some(p => !NEVER_A_PLACE.has(p));
+    if (hasPlaceWord) {
+      // Filter out never-a-place words, return remaining as place
+      const placeWords = parts.filter(p => !NEVER_A_PLACE.has(p));
+      if (placeWords.length > 0) {
+        return { place: placeWords.join(' '), remaining: '' };
+      }
+    }
+    return null;  // All words are common words, not a place
   }
 
   return null;
