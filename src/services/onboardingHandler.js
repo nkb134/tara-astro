@@ -76,6 +76,14 @@ function isFrustrated(text) {
   return FRUSTRATION_PHRASES.some(p => lower.includes(p));
 }
 
+// Safely merge new fields into user preferences without overwriting existing keys (like 'role')
+function mergePrefs(user, newFields) {
+  const existing = typeof user.preferences === 'string'
+    ? JSON.parse(user.preferences || '{}')
+    : (user.preferences || {});
+  return JSON.stringify({ ...existing, ...newFields });
+}
+
 export async function handleOnboarding(user, messageText) {
   const step = user.onboarding_step || 'new';
 
@@ -85,7 +93,7 @@ export async function handleOnboarding(user, messageText) {
     lang = detectLanguage(messageText);
     const script = detectScript(messageText);
     // Store both language AND script (latin vs devanagari etc.)
-    await updateUser(user.id, { language: lang, preferences: JSON.stringify({ script }) }).catch(() => {});
+    await updateUser(user.id, { language: lang, preferences: mergePrefs(user, { script }) }).catch(() => {});
     user.script = script;
   } else {
     lang = user.language || 'en';
@@ -190,7 +198,7 @@ async function handleTopic(user, messageText, lang) {
   // Try to extract data if they gave it with their topic
   const parsed = await parseWithFallback(messageText, 'awaiting_topic');
   if (parsed.name && parsed.date) {
-    const updates = { display_name: parsed.name, birth_date: parsed.date, preferences: JSON.stringify({ initial_intent: intent }) };
+    const updates = { display_name: parsed.name, birth_date: parsed.date, preferences: mergePrefs(user, { initial_intent: intent }) };
     if (parsed.time) { updates.birth_time = parsed.time.time; updates.birth_time_known = parsed.time.known; }
     updates.onboarding_step = parsed.time ? (parsed.place ? 'onboarded' : 'awaiting_place') : 'awaiting_time';
     await updateUser(user.id, updates);
@@ -204,7 +212,7 @@ async function handleTopic(user, messageText, lang) {
 
   // Use ask_topic_* (no re-introduction) since welcome_greeting already introduced Tara
   const intentKey = { career: 'ask_topic_career', marriage: 'ask_topic_marriage', health: 'ask_topic_health', general: 'ask_topic_general' }[intent] || 'ask_topic_default';
-  await updateUser(user.id, { onboarding_step: 'awaiting_name_dob', preferences: JSON.stringify({ initial_intent: intent }) });
+  await updateUser(user.id, { onboarding_step: 'awaiting_name_dob', preferences: mergePrefs(user, { initial_intent: intent }) });
   return { response: t(lang, intentKey), messageType: 'onboarding' };
 }
 
@@ -241,7 +249,7 @@ async function handleNewUser(user, messageText, lang) {
       language: lang,
       display_name: parsed.name,
       birth_date: parsed.date,
-      preferences: JSON.stringify({ initial_intent: intent }),
+      preferences: mergePrefs(user, { initial_intent: intent }),
       onboarding_step: parsed.time ? (parsed.place ? 'onboarded' : 'awaiting_place') : 'awaiting_time',
       ...(parsed.time ? { birth_time: parsed.time.time, birth_time_known: parsed.time.known } : {}),
     });
@@ -267,7 +275,7 @@ async function handleNewUser(user, messageText, lang) {
   await updateUser(user.id, {
     language: lang,
     onboarding_step: 'awaiting_name_dob',
-    preferences: JSON.stringify({ initial_intent: intent }),
+    preferences: mergePrefs(user, { initial_intent: intent }),
   });
 
   return { response: t(lang, intentKey), messageType: 'greeting' };
