@@ -226,6 +226,16 @@
       .ni-house .house-num {
         font-size: 0.45rem;
       }
+      /* Mobile: tighter padding, full-width cards */
+      main {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+      }
+      .reading-card, .glass-card {
+        padding: 0.75rem !important;
+      }
+      /* Stack sort/view buttons below title on mobile */
+      .flex-wrap { flex-wrap: wrap; }
     }
   </style>
 </head>
@@ -365,10 +375,20 @@
 
       <!-- ── LIVE READINGS FEED ──────────────────────────────────── -->
       <section class="fade-in">
-        <h2 class="text-lg font-semibold text-star-gold mb-4 flex items-center gap-2">
-          <span>&#x1F4AC;</span> Live Readings Feed
-          <span class="text-xs text-cosmic-400 font-normal ml-2">(auto-refreshes every 10s)</span>
-        </h2>
+        <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+          <h2 class="text-lg font-semibold text-star-gold flex items-center gap-2">
+            <span>&#x1F4AC;</span> Live Readings Feed
+            <span class="text-xs text-cosmic-400 font-normal ml-2">(auto-refreshes every 10s)</span>
+          </h2>
+          <div class="flex items-center gap-2">
+            <button id="sort-toggle" onclick="toggleSort()" class="text-xs px-3 py-1.5 rounded-full glass text-cosmic-200 hover:text-white transition-colors">
+              &#x2B07; Latest First
+            </button>
+            <button id="view-toggle" onclick="toggleView()" class="text-xs px-3 py-1.5 rounded-full glass text-cosmic-200 hover:text-white transition-colors">
+              &#x1F4CB; Compact
+            </button>
+          </div>
+        </div>
         <div id="readings-feed" class="space-y-3">
           <p class="text-cosmic-400 text-sm">No readings yet. They will appear here as the conversation progresses.</p>
         </div>
@@ -387,6 +407,22 @@
     let chartData = null;
     let userData = null;
     let readings = [];
+    let sortNewestFirst = true;
+    let compactView = false;
+
+    function toggleSort() {
+      sortNewestFirst = !sortNewestFirst;
+      const btn = document.getElementById('sort-toggle');
+      btn.textContent = sortNewestFirst ? '\u2B07 Latest First' : '\u2B06 Oldest First';
+      renderReadings();
+    }
+
+    function toggleView() {
+      compactView = !compactView;
+      const btn = document.getElementById('view-toggle');
+      btn.textContent = compactView ? '\uD83D\uDCD6 Detailed' : '\uD83D\uDCCB Compact';
+      renderReadings();
+    }
     let validationState = {}; // { planetName: { correct: bool, note: string } }
     let refreshTimer = null;
 
@@ -1041,10 +1077,56 @@
         return;
       }
 
-      for (const r of readings) {
-        const card = createReadingCard(r);
+      // Sort: latest first by default
+      const sorted = [...readings].sort((a, b) => {
+        const ta = new Date(a.createdAt).getTime();
+        const tb = new Date(b.createdAt).getTime();
+        return sortNewestFirst ? (tb - ta) : (ta - tb);
+      });
+
+      // Message count
+      const countEl = document.createElement('div');
+      countEl.className = 'text-xs text-cosmic-400 mb-2';
+      countEl.textContent = sorted.length + ' message' + (sorted.length !== 1 ? 's' : '');
+      feed.appendChild(countEl);
+
+      for (const r of sorted) {
+        const card = compactView ? createCompactCard(r) : createReadingCard(r);
         feed.appendChild(card);
       }
+    }
+
+    function createCompactCard(r) {
+      const card = document.createElement('div');
+      card.className = 'glass-card rounded-lg px-3 py-2 flex items-start gap-3';
+
+      const timeEl = document.createElement('span');
+      timeEl.className = 'text-xs text-cosmic-400 whitespace-nowrap mt-0.5';
+      timeEl.textContent = formatTime(r.createdAt);
+
+      const body = document.createElement('div');
+      body.className = 'flex-1 min-w-0';
+
+      if (r.userQuestion) {
+        const q = document.createElement('div');
+        q.className = 'text-xs text-cosmic-300 truncate';
+        q.textContent = 'Q: ' + r.userQuestion;
+        body.appendChild(q);
+      }
+
+      const a = document.createElement('div');
+      a.className = 'text-sm text-white truncate';
+      a.textContent = (r.content || '').substring(0, 120) + ((r.content || '').length > 120 ? '...' : '');
+      body.appendChild(a);
+
+      const badge = document.createElement('span');
+      badge.className = 'text-xs px-2 py-0.5 rounded-full bg-cosmic-700/50 text-cosmic-200 whitespace-nowrap mt-0.5';
+      badge.textContent = r.intent || 'reading';
+
+      card.appendChild(timeEl);
+      card.appendChild(body);
+      card.appendChild(badge);
+      return card;
     }
 
     function createReadingCard(r) {
