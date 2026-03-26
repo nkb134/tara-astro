@@ -91,7 +91,7 @@ function isRateLimited(whatsappId) {
   return false;
 }
 
-export async function handleIncomingMessage(whatsappId, displayName, messageText, messageId) {
+export async function handleIncomingMessage(whatsappId, displayName, messageText, messageId, quotedContext = null) {
   // Per-user rate limit — silently drop if spamming
   if (isRateLimited(whatsappId)) {
     await markAsRead(messageId).catch(() => {});
@@ -107,12 +107,14 @@ export async function handleIncomingMessage(whatsappId, displayName, messageText
   // Add to buffer
   let buffer = messageBuffers.get(whatsappId);
   if (!buffer) {
-    buffer = { messages: [], displayName, messageIds: [], timer: null };
+    buffer = { messages: [], displayName, messageIds: [], timer: null, quotedContext: null };
     messageBuffers.set(whatsappId, buffer);
   }
   buffer.messages.push(messageText);
   buffer.messageIds.push(messageId);
   buffer.displayName = displayName;
+  // Keep the most recent quoted context (in case multiple messages have replies)
+  if (quotedContext) buffer.quotedContext = quotedContext;
 
   // Reset debounce timer
   if (buffer.timer) clearTimeout(buffer.timer);
@@ -129,7 +131,7 @@ export async function handleIncomingMessage(whatsappId, displayName, messageText
 
     // Process through user lock
     withUserLock(whatsappId, () =>
-      processMessage(whatsappId, buf.displayName, joinedText, lastMessageId)
+      processMessage(whatsappId, buf.displayName, joinedText, lastMessageId, buf.quotedContext)
     ).catch(err => {
       logger.error({ err, whatsappId }, 'Debounced processing failed');
     });
@@ -197,7 +199,7 @@ async function sendMultiPart(whatsappId, messageId, text) {
   }
 }
 
-async function processMessage(whatsappId, displayName, messageText, messageId) {
+async function processMessage(whatsappId, displayName, messageText, messageId, quotedContext = null) {
   const startTime = Date.now();
   let user;
 
@@ -208,6 +210,33 @@ async function processMessage(whatsappId, displayName, messageText, messageId) {
     // Find or create user
     user = await findOrCreateUser(whatsappId, displayName);
     logger.info({ userId: user.id }, 'Processing message');
+
+    // Resolve quoted message context — look up the original text from our DB
+    if (quotedContext?.quotedMessageId && user.is_onboarded) {
+      try {
+        const { query: dbQuery } = await import('../db/connection.js');
+        // WhatsApp message IDs are stored... actually we don't store WA message IDs
+        // But we can search by recent messages from this user's conversations
+        // The quoted message is usually from Tara (assistant), so search assistant messages
+        const result = await dbQuery(
+          `SELECT content FROM messages WHERE user_id = $1 AND role = 'assistant'
+           ORDER BY created_at DESC LIMIT 10`,
+          [user.id]
+        );
+        // We can't match by WA message ID (not stored), but the quoted text
+        // is available in the webhook context for newer API versions.
+        // For now, prepend a hint that this is a reply
+        if (result.rows.length > 0) {
+          // The most recent Tara message is likely what they're replying to
+          const recentTaraMsg = result.rows[0].content;
+          const preview = recentTaraMsg.substring(0, 100) + (recentTaraMsg.length > 100 ? '...' : '');
+          messageText = `[Replying to Tara: "${preview}"]\n${messageText}`;
+          logger.info({ whatsappId }, 'Added quoted context to message');
+        }
+      } catch (err) {
+        logger.warn({ err: err.message }, 'Failed to resolve quoted context, continuing without');
+      }
+    }
 
     // Track activity for follow-up nudge system
     const userPrefs = typeof user.preferences === 'string' ? JSON.parse(user.preferences || '{}') : (user.preferences || {});

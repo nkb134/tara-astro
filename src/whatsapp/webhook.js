@@ -44,6 +44,16 @@ export async function receiveMessage(req, res) {
           const messageId = message.id;
           let messageText = '';
 
+          // Extract quoted message context (when user replies to a specific message)
+          let quotedContext = null;
+          if (message.context) {
+            const quotedMsgId = message.context.id;
+            if (quotedMsgId) {
+              logger.info({ whatsappId, quotedMsgId }, 'Message is a reply to another message');
+              quotedContext = { quotedMessageId: quotedMsgId };
+            }
+          }
+
           // Handle text messages
           if (message.type === 'text') {
             messageText = message.text?.body || '';
@@ -81,7 +91,7 @@ export async function receiveMessage(req, res) {
 
           // Process message (don't await — already responded 200)
           // markAsRead is now handled inside messageHandler
-          handleIncomingMessage(whatsappId, contactName, messageText, messageId).catch(err => {
+          handleIncomingMessage(whatsappId, contactName, messageText, messageId, quotedContext).catch(err => {
             logger.error({ err, whatsappId }, 'Error handling message');
           });
         }
