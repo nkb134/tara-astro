@@ -35,8 +35,8 @@ export async function getOrCreateConversation(userId, sessionId = null) {
 
 export async function saveMessage(conversationId, userId, role, content, metadata = {}) {
   const result = await query(
-    `INSERT INTO messages (conversation_id, user_id, role, content, language, intent, model_used, response_time_ms, created_at)
-     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, NOW())
+    `INSERT INTO messages (conversation_id, user_id, role, content, language, intent, model_used, response_time_ms, wa_message_id, created_at)
+     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, NOW())
      RETURNING *`,
     [
       conversationId, userId, role, content,
@@ -44,6 +44,7 @@ export async function saveMessage(conversationId, userId, role, content, metadat
       metadata.intent || null,
       metadata.model || null,
       metadata.responseTimeMs || null,
+      metadata.waMessageId || null,
     ]
   );
 
@@ -54,6 +55,15 @@ export async function saveMessage(conversationId, userId, role, content, metadat
   );
 
   return result.rows[0];
+}
+
+export async function getMessageByWaId(waMessageId) {
+  if (!waMessageId) return null;
+  const result = await query(
+    'SELECT role, content, intent, created_at FROM messages WHERE wa_message_id = $1 LIMIT 1',
+    [waMessageId]
+  );
+  return result.rows[0] || null;
 }
 
 export async function getRecentMessages(conversationId, limit = 6) {

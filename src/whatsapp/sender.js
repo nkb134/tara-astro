@@ -14,14 +14,17 @@ const api = axios.create({
 
 export async function sendTextMessage(to, text) {
   const chunks = splitMessage(text);
+  let lastWaMessageId = null;
 
   for (let i = 0; i < chunks.length; i++) {
     // Small pause between overflow splits (rare — only for very long messages)
     if (i > 0) {
       await sleep(1000 + Math.random() * 1000);
     }
-    await sendSingleMessage(to, chunks[i]);
+    const data = await sendSingleMessage(to, chunks[i]);
+    lastWaMessageId = data?.messages?.[0]?.id || null;
   }
+  return lastWaMessageId;
 }
 
 async function sendSingleMessage(to, text, retries = 3) {

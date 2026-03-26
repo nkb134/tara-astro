@@ -20,17 +20,19 @@ export async function saveExchange(conversationId, userId, userMessage, botRespo
   if (!conversationId) return;
 
   try {
-    // Save user message
+    // Save user message (with WA message ID if available)
     await saveMessage(conversationId, userId, 'user', userMessage, {
       language: metadata.language,
+      waMessageId: metadata.userWaMessageId || null,
     });
 
-    // Save bot response
+    // Save bot response (with WA message ID if available)
     await saveMessage(conversationId, userId, 'assistant', botResponse, {
       language: metadata.language,
       intent: metadata.intent,
       model: metadata.model,
       responseTimeMs: metadata.responseTimeMs,
+      waMessageId: metadata.botWaMessageId || null,
     });
   } catch (err) {
     logger.error({ err: err.message, conversationId }, 'Failed to save exchange');

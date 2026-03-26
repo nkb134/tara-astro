@@ -141,10 +141,10 @@ export async function handleIncomingMessage(whatsappId, displayName, messageText
 // Thinking simulation with cooldown (max once per 10 min per user)
 const thinkingCooldowns = new Map();
 
+// Returns the last WA message ID sent
 async function sendWithThinking(whatsappId, messageId, responseText, lang, isComplex) {
   if (!isComplex) {
-    await sendMultiPart(whatsappId, messageId, responseText);
-    return;
+    return await sendMultiPart(whatsappId, messageId, responseText);
   }
 
   const now = Date.now();
@@ -164,10 +164,11 @@ async function sendWithThinking(whatsappId, messageId, responseText, lang, isCom
     await sleep(1000 + Math.random() * 1000);
   }
 
-  await sendMultiPart(whatsappId, messageId, responseText);
+  return await sendMultiPart(whatsappId, messageId, responseText);
 }
 
 // Split AI responses on --- delimiter into multiple WhatsApp messages (max 2)
+// Returns the last WA message ID sent
 async function sendMultiPart(whatsappId, messageId, text) {
   // Strip empty preambles that AI loves to add
   const cleaned = text
@@ -185,9 +186,11 @@ async function sendMultiPart(whatsappId, messageId, text) {
     parts.push(merged);
   }
 
+  let lastWaId = null;
+
   if (parts.length <= 1) {
-    await sendTextMessage(whatsappId, cleaned);
-    return;
+    lastWaId = await sendTextMessage(whatsappId, cleaned);
+    return lastWaId;
   }
 
   for (let i = 0; i < parts.length; i++) {
@@ -195,8 +198,9 @@ async function sendMultiPart(whatsappId, messageId, text) {
       await showTyping(messageId);
       await sleep(1500 + Math.random() * 1000);
     }
-    await sendTextMessage(whatsappId, parts[i]);
+    lastWaId = await sendTextMessage(whatsappId, parts[i]);
   }
+  return lastWaId;
 }
 
 async function processMessage(whatsappId, displayName, messageText, messageId, quotedContext = null) {
@@ -211,27 +215,30 @@ async function processMessage(whatsappId, displayName, messageText, messageId, q
     user = await findOrCreateUser(whatsappId, displayName);
     logger.info({ userId: user.id }, 'Processing message');
 
-    // Resolve quoted message context — look up the original text from our DB
+    // Resolve quoted message context — look up the exact quoted message by WA message ID
     if (quotedContext?.quotedMessageId && user.is_onboarded) {
       try {
-        const { query: dbQuery } = await import('../db/connection.js');
-        // WhatsApp message IDs are stored... actually we don't store WA message IDs
-        // But we can search by recent messages from this user's conversations
-        // The quoted message is usually from Tara (assistant), so search assistant messages
-        const result = await dbQuery(
-          `SELECT content FROM messages WHERE user_id = $1 AND role = 'assistant'
-           ORDER BY created_at DESC LIMIT 10`,
-          [user.id]
-        );
-        // We can't match by WA message ID (not stored), but the quoted text
-        // is available in the webhook context for newer API versions.
-        // For now, prepend a hint that this is a reply
-        if (result.rows.length > 0) {
-          // The most recent Tara message is likely what they're replying to
-          const recentTaraMsg = result.rows[0].content;
-          const preview = recentTaraMsg.substring(0, 100) + (recentTaraMsg.length > 100 ? '...' : '');
-          messageText = `[Replying to Tara: "${preview}"]\n${messageText}`;
-          logger.info({ whatsappId }, 'Added quoted context to message');
+        const { getMessageByWaId } = await import('../db/conversations.js');
+        const quotedMsg = await getMessageByWaId(quotedContext.quotedMessageId);
+
+        if (quotedMsg) {
+          const preview = quotedMsg.content.substring(0, 120) + (quotedMsg.content.length > 120 ? '...' : '');
+          const speaker = quotedMsg.role === 'assistant' ? 'Tara' : 'User';
+          messageText = `[Replying to ${speaker}: "${preview}"]\n${messageText}`;
+          logger.info({ whatsappId, quotedRole: quotedMsg.role }, 'Added exact quoted context');
+        } else {
+          // Fallback: WA message ID not in DB yet (old messages before this feature)
+          const { query: dbQuery } = await import('../db/connection.js');
+          const result = await dbQuery(
+            `SELECT content FROM messages WHERE user_id = $1 AND role = 'assistant'
+             ORDER BY created_at DESC LIMIT 1`,
+            [user.id]
+          );
+          if (result.rows.length > 0) {
+            const preview = result.rows[0].content.substring(0, 100) + (result.rows[0].content.length > 100 ? '...' : '');
+            messageText = `[Replying to Tara: "${preview}"]\n${messageText}`;
+            logger.info({ whatsappId }, 'Added fallback quoted context (WA ID not found)');
+          }
         }
       } catch (err) {
         logger.warn({ err: err.message }, 'Failed to resolve quoted context, continuing without');
@@ -510,12 +517,14 @@ async function handleAIConversation(whatsappId, user, messageText, messageId, st
 
   // Gate/crisis responses — send immediately
   if (result.agent === AGENTS.GATE || result.agent === AGENTS.CRISIS) {
-    await sendTextMessage(whatsappId, result.text);
+    const botWaId = await sendTextMessage(whatsappId, result.text);
     await saveExchange(conversationId, user.id, messageText, result.text, {
       language: lang,
       intent: result.intent,
       model: result.model,
       responseTimeMs: result.responseTimeMs,
+      userWaMessageId: messageId,
+      botWaMessageId: botWaId,
     });
     return;
   }
@@ -529,15 +538,17 @@ async function handleAIConversation(whatsappId, user, messageText, messageId, st
   // Show typing before response
   await showTyping(messageId);
 
-  // Send response
-  await sendWithThinking(whatsappId, messageId, result.text, lang, isComplex);
+  // Send response — capture WA message ID for quoted reply matching
+  const botWaId = await sendWithThinking(whatsappId, messageId, result.text, lang, isComplex);
 
-  // Save exchange
+  // Save exchange with WA message IDs
   await saveExchange(conversationId, user.id, messageText, result.text, {
     language: lang,
     intent: result.intent,
     model: result.model,
     responseTimeMs: result.responseTimeMs,
+    userWaMessageId: messageId,
+    botWaMessageId: botWaId,
   });
 
   logger.info({
