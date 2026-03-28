@@ -352,6 +352,66 @@ async function handleDob(user, messageText, lang) {
 
   if (!parsed.date) {
     const retries = trackStepRetry(user.id, 'dob');
+
+    // Accumulate partial date fragments across messages
+    // e.g., user sends "13th Feb" then "1963" in separate messages
+    const prefs = typeof user.preferences === 'string' ? JSON.parse(user.preferences || '{}') : (user.preferences || {});
+    const partialDate = prefs._partialDate || {};
+
+    // Try to extract partial info from current message
+    const lower = messageText.toLowerCase().trim();
+    const monthNames = { jan: 1, january: 1, feb: 2, february: 2, febervery: 2, mar: 3, march: 3, apr: 4, april: 4, may: 5, jun: 6, june: 6, jul: 7, july: 7, aug: 8, august: 8, sep: 9, september: 9, oct: 10, october: 10, nov: 11, november: 11, dec: 12, december: 12 };
+
+    // Extract day (1-31)
+    const dayMatch = lower.match(/\b(\d{1,2})(?:st|nd|rd|th)?\b/);
+    if (dayMatch && parseInt(dayMatch[1]) >= 1 && parseInt(dayMatch[1]) <= 31) {
+      partialDate.day = parseInt(dayMatch[1]);
+    }
+    // Extract month name
+    for (const [mName, mNum] of Object.entries(monthNames)) {
+      if (lower.includes(mName)) { partialDate.month = mNum; break; }
+    }
+    // Extract year (2 or 4 digits)
+    const yearMatch = lower.match(/\b(19\d{2}|20\d{2})\b/) || lower.match(/\b(\d{2})\b/);
+    if (yearMatch) {
+      let yr = parseInt(yearMatch[1]);
+      if (yr < 100) yr += (yr > 25 ? 1900 : 2000); // 63 → 1963, 05 → 2005
+      if (yr >= 1920 && yr <= 2015) partialDate.year = yr;
+    }
+
+    // Save partial date in preferences
+    await updateUser(user.id, { preferences: mergePrefs(user, { _partialDate: partialDate }) }).catch(() => {});
+
+    // Check if we now have enough to construct a full date
+    if (partialDate.day && partialDate.month && partialDate.year) {
+      const d = new Date(partialDate.year, partialDate.month - 1, partialDate.day);
+      if (d instanceof Date && !isNaN(d)) {
+        const fullDate = `${partialDate.year}-${String(partialDate.month).padStart(2, '0')}-${String(partialDate.day).padStart(2, '0')}`;
+        // Clear partial date and continue
+        await updateUser(user.id, {
+          birth_date: fullDate,
+          onboarding_step: 'awaiting_time',
+          preferences: mergePrefs(user, { _partialDate: null }),
+        }).catch(() => {});
+        return {
+          response: t(lang, 'ask_time_after_name_dob').replace('{name}', name),
+          messageType: 'onboarding',
+        };
+      }
+    }
+
+    // Ask specifically for what's missing
+    if (partialDate.day && partialDate.month && !partialDate.year) {
+      return { response: t(lang, 'ask_birth_year'), messageType: 'simple' };
+    }
+    if (partialDate.year && !partialDate.month) {
+      return { response: t(lang, 'ask_birth_month'), messageType: 'simple' };
+    }
+    if (partialDate.month && !partialDate.day) {
+      return { response: t(lang, 'ask_birth_day'), messageType: 'simple' };
+    }
+
+    // Generic retry
     const key = retries >= 3 ? 'invalid_date_final' : retries >= 2 ? 'invalid_date_retry' : 'invalid_date';
     return { response: t(lang, key), messageType: 'simple' };
   }
